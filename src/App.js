@@ -1,5 +1,8 @@
 import styled from "styled-components";
-import { Header } from "./components/header/header";
+import { Header } from "./components/header/Header";
+import { Navbar } from "./components/Navbar/Navbar";
+import { Footer } from "./components/footer/footer";
+import { TyrePage } from "./components/tyrePage/TyrePage";
 
 const StyledContainer = styled.div`
   margin: 0px auto;
@@ -8,10 +11,19 @@ const StyledContainer = styled.div`
   max-width: 1400px;
 `;
 
+const Content = styled.div`
+  min-height: calc(100vh - 70px);
+`;
+
 const AppContainer = () => {
   return (
     <StyledContainer>
-      <Header />
+      <Content>
+        <Header />
+        <Navbar />
+        <TyrePage />
+      </Content>
+      <Footer />
     </StyledContainer>
   );
 };
