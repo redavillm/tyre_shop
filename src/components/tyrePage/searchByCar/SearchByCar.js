@@ -1,6 +1,11 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { TYRES_BY_CAR } from "../../../db/db";
+import {
+  createModelsOptions,
+  createModificationsOpitons,
+  createYearsOpitons,
+} from "./optionsCreators/optionsCreators";
 
 const StyledCatalog = styled.div`
   border-bottom: 1px solid #aec09a;
@@ -31,7 +36,7 @@ const StyledCatalogEl = styled.div`
   }
 `;
 
-export const CatalogByCar = () => {
+export const SearchByCar = () => {
   const [selectedOption, setSelectedOption] = useState({
     brand: "-",
     model: "-",
@@ -42,43 +47,37 @@ export const CatalogByCar = () => {
   const [currentModel, setCurrentModel] = useState();
   const [currentYear, setCurrentYear] = useState();
 
-  const createModelsOptions = (brand) => {
-    if (brand === "-") return <option>-</option>;
-    return currentBrand.models?.map((model, index) => (
-      <option key={index}>{model.name}</option>
-    ));
-  };
-
-  const createYearsOpitons = (model) => {
-    if (model === "-") return <option>-</option>;
-    return currentModel.years?.map((year, index) => (
-      <option key={index}>{year.num}</option>
-    ));
-  };
-
-  const createModificationsOpitons = (year) => {
-    if (year === "-") return <option>-</option>;
-    return currentYear?.modification?.map((mod, index) => (
-      <option key={index}>{mod}</option>
-    ));
-  };
-
   const handleSelectChangeBrand = (event) => {
-    setSelectedOption({ ...selectedOption, brand: event.target.value });
+    setSelectedOption({
+      ...selectedOption,
+      brand: event.target.value,
+      model: "-",
+      year: "-",
+      modification: "-",
+    });
     setCurrentBrand(
       TYRES_BY_CAR.find((car) => car.brand === event.target.value)
     );
   };
 
   const handleSelectChangeModel = (event) => {
-    setSelectedOption({ ...selectedOption, model: event.target.value });
+    setSelectedOption({
+      ...selectedOption,
+      model: event.target.value,
+      year: "-",
+      modification: "-",
+    });
     setCurrentModel(
       currentBrand.models.find((model) => model.name === event.target.value)
     );
   };
 
   const handleSelectChangeYear = (event) => {
-    setSelectedOption({ ...selectedOption, year: event.target.value });
+    setSelectedOption({
+      ...selectedOption,
+      year: event.target.value,
+      modification: "-",
+    });
     setCurrentYear(
       currentModel.years.find((year) => year.num === +event.target.value)
     );
@@ -117,7 +116,7 @@ export const CatalogByCar = () => {
               value={selectedOption.model}
               onChange={handleSelectChangeModel}
             >
-              {createModelsOptions(selectedOption.brand)}
+              {createModelsOptions({ selectedOption, currentBrand })}
             </select>
           </StyledCatalogEl>
           <StyledCatalogEl>
@@ -126,7 +125,7 @@ export const CatalogByCar = () => {
               value={selectedOption.year}
               onChange={handleSelectChangeYear}
             >
-              {createYearsOpitons(selectedOption.model)}
+              {createYearsOpitons({ selectedOption, currentModel })}
             </select>
           </StyledCatalogEl>
           <StyledCatalogEl>
@@ -135,7 +134,7 @@ export const CatalogByCar = () => {
               value={selectedOption.modification}
               onChange={handleSelectChangeModification}
             >
-              {createModificationsOpitons(selectedOption.year)}
+              {createModificationsOpitons({ selectedOption, currentYear })}
             </select>
           </StyledCatalogEl>
         </Flex>

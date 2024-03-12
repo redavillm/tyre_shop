@@ -36,7 +36,7 @@ const StyledCatalogEl = styled.div`
   }
 `;
 
-export const CatalogByParams = () => {
+export const SearchByParams = () => {
   const [selectedOption, setSelectedOption] = useState({
     width: "-",
     height: "-",

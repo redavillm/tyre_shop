@@ -1,7 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { CatalogByParams } from "./catalogByParams/CatalogByParams";
-import { CatalogByCar } from "./catalogByCar/CatalogByCar";
+import { SearchByParams } from "./searchByParams/SearchByParams";
+import { SearchByCar } from "./searchByCar/SearchByCar";
+import { TyresList } from "./tyresList/tyresList";
 
 const StyledTyrePageCatalogButtons = styled.div`
   display: flex;
@@ -43,7 +44,8 @@ export const TyrePage = () => {
           </button>
         </StyledTyrePageCatalogButtons>
       </div>
-      {isByParams ? <CatalogByParams /> : <CatalogByCar />}
+      {isByParams ? <SearchByParams /> : <SearchByCar />}
+      <TyresList />
     </div>
   );
 };
