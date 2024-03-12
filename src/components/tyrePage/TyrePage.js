@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { SearchByParams } from "./searchByParams/SearchByParams";
 import { SearchByCar } from "./searchByCar/SearchByCar";
-import { TyresList } from "./tyresList/tyresList";
+import { TyresCatalog } from "./TyresCatalog/TyresCatalog";
 
 const StyledTyrePageCatalogButtons = styled.div`
   display: flex;
@@ -45,7 +45,7 @@ export const TyrePage = () => {
         </StyledTyrePageCatalogButtons>
       </div>
       {isByParams ? <SearchByParams /> : <SearchByCar />}
-      <TyresList />
+      <TyresCatalog />
     </div>
   );
 };
