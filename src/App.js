@@ -1,8 +1,5 @@
 import styled from "styled-components";
-import { Header } from "./components/header/Header";
-import { Navbar } from "./components/Navbar/Navbar";
-import { Footer } from "./components/footer/footer";
-import { TyrePage } from "./components/tyrePage/TyrePage";
+import { Header, Navbar, TyrePage, Footer } from "./components/index";
 
 const StyledContainer = styled.div`
   margin: 0px auto;

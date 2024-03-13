@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import {
-  TYRE_COMPANY,
+  TYRE_BRAND,
   TYRE_DIAMETER,
   TYRE_HEIGHT,
   TYRE_WIDTH,
 } from "../../../db/db";
 import { useState } from "react";
+import { tyresfilter } from "../../../scripts/tyresfilter";
 
 const StyledCatalogByParams = styled.div`
   border-bottom: 1px solid #aec09a;
@@ -40,8 +41,8 @@ export const SearchByParams = () => {
   const [selectedOption, setSelectedOption] = useState({
     width: "-",
     height: "-",
-    diameter: "-",
-    company: "all",
+    radius: "-",
+    brand: "all",
   });
 
   const handleSelectChangeWidth = (event) => {
@@ -51,16 +52,17 @@ export const SearchByParams = () => {
     setSelectedOption({ ...selectedOption, height: event.target.value });
   };
   const handleSelectChangeDiameter = (event) => {
-    setSelectedOption({ ...selectedOption, diameter: event.target.value });
+    setSelectedOption({ ...selectedOption, radius: event.target.value });
   };
   const handleSelectChangeCompany = (event) => {
-    setSelectedOption({ ...selectedOption, company: event.target.value });
+    setSelectedOption({ ...selectedOption, brand: event.target.value });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(selectedOption);
     //send data to filter or somewhere else
+    console.log(tyresfilter(selectedOption));
   };
 
   return (
@@ -92,7 +94,7 @@ export const SearchByParams = () => {
           <StyledCatalogEl>
             Диаметр
             <select
-              value={selectedOption.diameter}
+              value={selectedOption.radius}
               onChange={handleSelectChangeDiameter}
             >
               {TYRE_DIAMETER.map((width, index) => {
@@ -103,10 +105,10 @@ export const SearchByParams = () => {
           <StyledCatalogEl>
             Производитель
             <select
-              value={selectedOption.company}
+              value={selectedOption.brand}
               onChange={handleSelectChangeCompany}
             >
-              {TYRE_COMPANY.map((width, index) => {
+              {TYRE_BRAND.map((width, index) => {
                 return <option key={index}>{width}</option>;
               })}
             </select>

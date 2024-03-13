@@ -13,7 +13,7 @@ export const TYRE_WIDTH = [
 ];
 export const TYRE_HEIGHT = ["-", 45, 50, 55, 60, 65, 70, 75];
 export const TYRE_DIAMETER = ["-", 13, 15, 16, 17, 18, 19];
-export const TYRE_COMPANY = [
+export const TYRE_BRAND = [
   "All",
   "Bel",
   "Toyo",
