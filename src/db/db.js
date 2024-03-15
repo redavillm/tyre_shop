@@ -1,20 +1,7 @@
-export const TYRE_WIDTH = [
-  "-",
-  175,
-  185,
-  195,
-  205,
-  215,
-  225,
-  235,
-  245,
-  255,
-  265,
-];
-export const TYRE_HEIGHT = ["-", 45, 50, 55, 60, 65, 70, 75];
-export const TYRE_DIAMETER = ["-", 13, 15, 16, 17, 18, 19];
+export const TYRE_WIDTH = [175, 185, 195, 205, 215, 225, 235, 245, 255, 265];
+export const TYRE_HEIGHT = [45, 50, 55, 60, 65, 70, 75];
+export const TYRE_RADIUS = [13, 15, 16, 17, 18, 19];
 export const TYRE_BRAND = [
-  "All",
   "Bel",
   "Toyo",
   "Nokia",
@@ -50,7 +37,6 @@ export const TYRE_BRAND = [
 ];
 
 export const TYRES_BY_CAR = [
-  { brand: "-", models: "-" },
   {
     brand: "ACURA",
     models: [

@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { SearchByParams } from "./searchByParams/SearchByParams";
 import { SearchByCar } from "./searchByCar/SearchByCar";
 import { TyresCatalog } from "./TyresCatalog/TyresCatalog";
+import { WINTER_TYRES } from "../../db/WINTER_TYRES";
+import { SUMMER_TYRES } from "../../db/SUMMER_TYRES";
 
 const StyledTyrePageCatalogButtons = styled.div`
   display: flex;
@@ -23,6 +25,10 @@ const StyledTyrePageCatalogButtons = styled.div`
 
 export const TyrePage = () => {
   const [isByParams, setIsByParams] = useState(true);
+  const [isWinter, setIsWinter] = useState(false);
+  const [tyresList, setTyresList] = useState(
+    !isWinter ? SUMMER_TYRES : WINTER_TYRES
+  );
 
   return (
     <div>
@@ -44,8 +50,16 @@ export const TyrePage = () => {
           </button>
         </StyledTyrePageCatalogButtons>
       </div>
-      {isByParams ? <SearchByParams /> : <SearchByCar />}
-      <TyresCatalog />
+      {isByParams ? (
+        <SearchByParams
+          setTyresList={setTyresList}
+          isWinter={isWinter}
+          setIsWinter={setIsWinter}
+        />
+      ) : (
+        <SearchByCar />
+      )}
+      <TyresCatalog tyresList={tyresList} />
     </div>
   );
 };

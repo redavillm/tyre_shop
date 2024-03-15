@@ -22,7 +22,8 @@ body {
 }
 
 .test_styles {
-  color: #344c11;
+  margin-bottom: 20px;
+  background-color: #2196f3;
 }
 .colors {
   background-color: #1a2902;

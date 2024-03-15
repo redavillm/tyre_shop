@@ -32,14 +32,14 @@ const StyeledCard = styled.span`
   }
 `;
 
-export const TyreCard = () => {
+export const TyreCard = ({ title, tyreParams, price, imgSrc }) => {
   return (
     <StyeledCard>
       <div>
-        <img src="https://xn--j1apr.xn--p1ai/wp-content/uploads/2020/09/11r22.5-kama-nf-701.png" />
-        <h6>Yokohama ICE GUARD IG</h6>
-        <p>185/35/15</p>
-        <p>6731 руб.</p>
+        <img src={imgSrc} alt="tyre img" />
+        <h6>{title}</h6>
+        <p>{tyreParams}</p>
+        <p>{price}</p>
       </div>
     </StyeledCard>
   );

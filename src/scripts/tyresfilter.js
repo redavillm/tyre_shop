@@ -1,16 +1,26 @@
+import { SUMMER_TYRES } from "../db/SUMMER_TYRES";
 import { WINTER_TYRES } from "../db/WINTER_TYRES";
 
-export const tyresfilter = (obj) => {
-  const { brand, width, height, radius } = obj;
+export const tyresfilter = (selectedOption, isWinter) => {
+  const { width, height, radius, brand } = selectedOption;
+  let curretnArr = isWinter ? WINTER_TYRES : SUMMER_TYRES;
+  let tyresArrResult = curretnArr;
 
-  if (brand !== "All") {
-    return WINTER_TYRES.filter((el) => el.width === width)
-      ?.filter((el) => el.height === height)
-      ?.filter((el) => el.radius === radius)
-      ?.filter((el) => el.brand === brand);
+  if (width !== "-") {
+    tyresArrResult = tyresArrResult.filter((el) => el.width === width);
   }
 
-  return WINTER_TYRES.filter((el) => el.width === width)
-    ?.filter((el) => el.height === height)
-    ?.filter((el) => el.radius === radius);
+  if (height !== "-") {
+    tyresArrResult = tyresArrResult.filter((el) => el.height === height);
+  }
+
+  if (radius !== "-") {
+    tyresArrResult = tyresArrResult.filter((el) => el.radius === radius);
+  }
+
+  if (brand !== "-") {
+    tyresArrResult = tyresArrResult.filter((el) => el.brand === brand);
+  }
+
+  return tyresArrResult;
 };

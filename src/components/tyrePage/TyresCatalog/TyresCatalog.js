@@ -6,21 +6,17 @@ const StyledTyresCatalog = styled.div`
   flex-wrap: wrap;
 `;
 
-export const TyresCatalog = () => {
+export const TyresCatalog = ({ tyresList }) => {
   return (
     <StyledTyresCatalog>
-      <TyreCard />
-      <TyreCard />
-      <TyreCard />
-      <TyreCard />
-      <TyreCard />
-      <TyreCard />
-      <TyreCard />
-      <TyreCard />
-      <TyreCard />
-      <TyreCard />
-      <TyreCard />
-      <TyreCard />
+      {tyresList.map((el) => (
+        <TyreCard
+          title={el.brand + " " + el.model}
+          tyreParams={el.width + " " + el.height + " " + el.radius}
+          price={el.price}
+          imgSrc="https://xn--j1apr.xn--p1ai/wp-content/uploads/2020/09/11r22.5-kama-nf-701.png"
+        />
+      ))}
     </StyledTyresCatalog>
   );
 };
