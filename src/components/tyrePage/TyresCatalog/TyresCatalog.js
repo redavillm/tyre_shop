@@ -15,6 +15,7 @@ export const TyresCatalog = ({ tyresList, isWinterIcon }) => {
           tyreParams={el.width + " " + el.height + " " + el.radius}
           price={el.price}
           imgSrc="https://xn--j1apr.xn--p1ai/wp-content/uploads/2020/09/11r22.5-kama-nf-701.png"
+          isWinterIcon={isWinterIcon}
         />
       ))}
     </StyledTyresCatalog>

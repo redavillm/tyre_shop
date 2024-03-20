@@ -67,7 +67,12 @@ const EMPTY_LIST = {
   brand: "-",
 };
 
-export const SearchByParams = ({ setTyresList, isWinter, setIsWinter }) => {
+export const SearchByParams = ({
+  setTyresList,
+  isWinter,
+  setIsWinter,
+  setIsWinterIcon,
+}) => {
   const [selectedOption, setSelectedOption] = useState(EMPTY_LIST);
 
   const handleSelectWidth = (event) => {
@@ -88,7 +93,12 @@ export const SearchByParams = ({ setTyresList, isWinter, setIsWinter }) => {
     if (selectedOption === EMPTY_LIST) {
       setTyresList(isWinter ? WINTER_TYRES : SUMMER_TYRES);
     } else {
-      setTyresList(tyresfilter(selectedOption, isWinter));
+      const { tyresArrResult, isWinterIcon } = tyresfilter(
+        selectedOption,
+        isWinter
+      );
+      setTyresList(tyresArrResult);
+      setIsWinterIcon(isWinterIcon);
     }
   };
 

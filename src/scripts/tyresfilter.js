@@ -6,6 +6,8 @@ export const tyresfilter = (selectedOption, isWinter) => {
 
   let tyresArrResult = isWinter ? WINTER_TYRES : SUMMER_TYRES;
 
+  let isWinterIcon = isWinter;
+
   if (width !== "-") {
     tyresArrResult = tyresArrResult.filter((el) => el.width === width);
   }
@@ -22,5 +24,5 @@ export const tyresfilter = (selectedOption, isWinter) => {
     tyresArrResult = tyresArrResult.filter((el) => el.brand === brand);
   }
 
-  return tyresArrResult;
+  return { tyresArrResult, isWinterIcon };
 };

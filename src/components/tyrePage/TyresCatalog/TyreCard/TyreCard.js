@@ -36,16 +36,22 @@ const StyeledCard = styled.span`
   }
 `;
 
-export const TyreCard = ({ title, tyreParams, price, imgSrc }) => {
+export const TyreCard = ({
+  title,
+  tyreParams,
+  price,
+  imgSrc,
+  isWinterIcon,
+}) => {
   return (
     <StyeledCard>
       <div>
         <img src={imgSrc} alt="tyre img" />
-        {/* {isWinterIcon ? (
+        {isWinterIcon ? (
           <i className="fa fa-snowflake-o" aria-hidden="true" />
         ) : (
           <i className="fa fa-sun-o" aria-hidden="true" />
-        )} */}
+        )}
         <h6>{title}</h6>
         <p>{tyreParams}</p>
         <p>{price}</p>
