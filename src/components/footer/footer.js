@@ -38,10 +38,7 @@ export const Footer = () => {
   return (
     <StyledFooter>
       <a href="https://github.com/redavillm/tyre_shop">
-        <StyledFooterBtn
-          className="fa fa-github"
-          aria-hidden="true"
-        ></StyledFooterBtn>
+        <StyledFooterBtn className="fa fa-github" aria-hidden="true" />
       </a>
       <StyledContacts>
         <a href="/">Санкт-Петербург, ул. Фучика 74 корпус 3</a>

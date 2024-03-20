@@ -3,8 +3,8 @@ import { WINTER_TYRES } from "../db/WINTER_TYRES";
 
 export const tyresfilter = (selectedOption, isWinter) => {
   const { width, height, radius, brand } = selectedOption;
-  let curretnArr = isWinter ? WINTER_TYRES : SUMMER_TYRES;
-  let tyresArrResult = curretnArr;
+
+  let tyresArrResult = isWinter ? WINTER_TYRES : SUMMER_TYRES;
 
   if (width !== "-") {
     tyresArrResult = tyresArrResult.filter((el) => el.width === width);

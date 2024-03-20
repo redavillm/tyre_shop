@@ -83,7 +83,6 @@ export const SearchByParams = ({ setTyresList, isWinter, setIsWinter }) => {
     setSelectedOption({ ...selectedOption, brand: event.target.value });
   };
 
-  //send selectedOption to filter function tyresfilter
   const handleSubmit = (event) => {
     event.preventDefault();
     if (selectedOption === EMPTY_LIST) {

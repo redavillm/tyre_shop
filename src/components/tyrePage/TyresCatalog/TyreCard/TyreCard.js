@@ -30,6 +30,10 @@ const StyeledCard = styled.span`
     -webkit-box-shadow: 1px 2px 19px 1px rgba(0, 0, 0, 0.68);
     -moz-box-shadow: 1px 2px 19px 1px rgba(0, 0, 0, 0.68);
   }
+
+  & i {
+    color: white;
+  }
 `;
 
 export const TyreCard = ({ title, tyreParams, price, imgSrc }) => {
@@ -37,6 +41,11 @@ export const TyreCard = ({ title, tyreParams, price, imgSrc }) => {
     <StyeledCard>
       <div>
         <img src={imgSrc} alt="tyre img" />
+        {/* {isWinterIcon ? (
+          <i className="fa fa-snowflake-o" aria-hidden="true" />
+        ) : (
+          <i className="fa fa-sun-o" aria-hidden="true" />
+        )} */}
         <h6>{title}</h6>
         <p>{tyreParams}</p>
         <p>{price}</p>
