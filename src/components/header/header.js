@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Button } from "../Button/Button";
+import { Link } from "react-router-dom";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -30,7 +31,7 @@ export const Header = () => {
     <StyledHeader>
       <div>
         <h3>
-          <a href="/">Tyreshop</a>
+          <Link to="/">Tyreshop</Link>
         </h3>
         <p>На рынке с 1994 года.</p>
       </div>

@@ -7,8 +7,6 @@ import {
 } from "../../../db/db";
 import { useState } from "react";
 import { tyresfilter } from "../../../scripts/tyresfilter";
-import { WINTER_TYRES } from "../../../db/WINTER_TYRES";
-import { SUMMER_TYRES } from "../../../db/SUMMER_TYRES";
 
 const StyledCatalogByParams = styled.div`
   border-bottom: 1px solid #aec09a;
@@ -90,16 +88,12 @@ export const SearchByParams = ({
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (selectedOption === EMPTY_LIST) {
-      setTyresList(isWinter ? WINTER_TYRES : SUMMER_TYRES);
-    } else {
-      const { tyresArrResult, isWinterIcon } = tyresfilter(
-        selectedOption,
-        isWinter
-      );
-      setTyresList(tyresArrResult);
-      setIsWinterIcon(isWinterIcon);
-    }
+    const { tyresArrResult, isWinterIcon } = tyresfilter(
+      selectedOption,
+      isWinter
+    );
+    setTyresList(tyresArrResult);
+    setIsWinterIcon(isWinterIcon);
   };
 
   const handleChanegeCheckbox = () => {

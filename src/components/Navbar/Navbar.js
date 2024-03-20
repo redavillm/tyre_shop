@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledNavbar = styled.div`
@@ -26,10 +27,10 @@ export const Navbar = () => {
   return (
     <StyledNavbar>
       <StyledNavEl>
-        <a href="/">Шины</a>
+        <Link to="/">Шины</Link>
       </StyledNavEl>
       <StyledNavEl>
-        <a href="/">Диски</a>
+        <Link to="/disk">Диски</Link>
       </StyledNavEl>
       <StyledNavEl>
         <a href="/">Аккумуляторы</a>

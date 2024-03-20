@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Header, Navbar, TyrePage, Footer } from "./components/index";
+import { Route, Routes } from "react-router-dom";
 
 const StyledContainer = styled.div`
   margin: 0px auto;
@@ -16,9 +17,15 @@ const AppContainer = () => {
   return (
     <StyledContainer>
       <Content>
+        <Routes>
+          <Route path="/" />
+        </Routes>
         <Header />
         <Navbar />
-        <TyrePage />
+        <Routes>
+          <Route path="/" element={<TyrePage />} />
+          <Route path="/disks" />
+        </Routes>
       </Content>
       <Footer />
     </StyledContainer>
