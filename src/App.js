@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Header, Navbar, TyrePage, Footer } from "./components/index";
+import { Header, Navbar, TyrePage, Footer, DiskPage } from "./components/index";
 import { Route, Routes } from "react-router-dom";
 
 const StyledContainer = styled.div`
@@ -17,14 +17,11 @@ const AppContainer = () => {
   return (
     <StyledContainer>
       <Content>
-        <Routes>
-          <Route path="/" />
-        </Routes>
         <Header />
         <Navbar />
         <Routes>
           <Route path="/" element={<TyrePage />} />
-          <Route path="/disks" />
+          <Route path="/disks" element={<DiskPage />} />
         </Routes>
       </Content>
       <Footer />

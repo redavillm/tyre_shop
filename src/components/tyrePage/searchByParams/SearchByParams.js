@@ -6,7 +6,7 @@ import {
   TYRE_WIDTH,
 } from "../../../db/db";
 import { useState } from "react";
-import { tyresfilter } from "../../../scripts/tyresfilter";
+import { tyresfilter } from "../../../scripts/tyresFilter";
 
 const StyledCatalogByParams = styled.div`
   border-bottom: 1px solid #aec09a;

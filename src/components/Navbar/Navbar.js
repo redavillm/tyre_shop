@@ -30,7 +30,7 @@ export const Navbar = () => {
         <Link to="/">Шины</Link>
       </StyledNavEl>
       <StyledNavEl>
-        <Link to="/disk">Диски</Link>
+        <Link to="/disks">Диски</Link>
       </StyledNavEl>
       <StyledNavEl>
         <a href="/">Аккумуляторы</a>

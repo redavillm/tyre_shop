@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { SearchDiskByParams } from "./SearchDiskByParams/SearchDiskByParams";
 import { SearchDiskByCar } from "./SearchDiskByCar/SearchDiskByCar";
 import { DiskCatalog } from "./DiskCatalog/DiskCatalog";
+import { DISKS } from "../../db/DISKS";
 
 const StyledDiskPageCatalogButtons = styled.div`
   display: flex;
@@ -23,6 +24,7 @@ const StyledDiskPageCatalogButtons = styled.div`
 
 export const DiskPage = () => {
   const [isByParams, setIsByParams] = useState(true);
+  const [disksList, setDisksList] = useState(DISKS);
   return (
     <div>
       <div>
@@ -43,8 +45,12 @@ export const DiskPage = () => {
           </button>
         </StyledDiskPageCatalogButtons>
       </div>
-      {isByParams ? <SearchDiskByParams /> : <SearchDiskByCar />}
-      <DiskCatalog />
+      {isByParams ? (
+        <SearchDiskByParams setDisksList={setDisksList} />
+      ) : (
+        <SearchDiskByCar setDisksList={setDisksList} />
+      )}
+      <DiskCatalog disksList={disksList} />
     </div>
   );
 };
