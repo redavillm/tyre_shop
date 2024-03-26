@@ -5,6 +5,7 @@ import { SearchByCar } from "./searchByCar/SearchByCar";
 import { TyresCatalog } from "./TyresCatalog/TyresCatalog";
 import { WINTER_TYRES } from "../../db/WINTER_TYRES";
 import { SUMMER_TYRES } from "../../db/SUMMER_TYRES";
+import { Navbar } from "../Navbar/Navbar";
 
 const StyledTyrePageCatalogButtons = styled.div`
   display: flex;
@@ -33,6 +34,7 @@ export const TyrePage = () => {
 
   return (
     <div>
+      <Navbar />
       <div>
         <StyledTyrePageCatalogButtons>
           <button

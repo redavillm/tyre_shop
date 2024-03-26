@@ -36,16 +36,13 @@ export const Header = () => {
         <p>На рынке с 1994 года.</p>
       </div>
       <Flex>
-        <StyledLogInBtn
-          className="fa fa-sign-in"
-          aria-hidden="true"
-        ></StyledLogInBtn>
+        <StyledLogInBtn className="fa fa-sign-in" aria-hidden="true" />
         <Button>
-          <a href="/">Вход</a>
+          <Link to="/auth">Вход</Link>
         </Button>
         /
         <Button>
-          <a href="/">Регистрация</a>
+          <Link to="/registration">Регистрация</Link>
         </Button>
       </Flex>
     </StyledHeader>

@@ -1,7 +1,10 @@
 @import url("fonts/font-awesome.css");
+* {
+  margin: 0;
+  padding: 0;
+}
 html {
   height: 100%;
-  margin: 0;
 }
 
 a {
@@ -22,8 +25,7 @@ body {
 }
 
 .test_styles {
-  margin-bottom: 20px;
-  background-color: #2196f3;
+  width: 200px;
 }
 .colors {
   background-color: #1a2902;

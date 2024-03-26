@@ -33,10 +33,10 @@ export const Navbar = () => {
         <Link to="/disks">Диски</Link>
       </StyledNavEl>
       <StyledNavEl>
-        <a href="/">Аккумуляторы</a>
+        <Link to="/accumulators">Аккумуляторы</Link>
       </StyledNavEl>
       <StyledNavEl>
-        <a href="/">Контакты</a>
+        <Link to="/contacts">Контакты</Link>
       </StyledNavEl>
     </StyledNavbar>
   );

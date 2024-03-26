@@ -1,6 +1,9 @@
 import styled from "styled-components";
-import { Header, Navbar, TyrePage, Footer, DiskPage } from "./components/index";
+import { Header, TyrePage, Footer, DiskPage } from "./components/index";
 import { Route, Routes } from "react-router-dom";
+import { AccumulatorsPage } from "./components/accumulatorsPage/accumulatorsPage";
+import { ContactsPage } from "./components/Contacts/Contacts";
+import { AuthPage } from "./components/authPage/authPage";
 
 const StyledContainer = styled.div`
   margin: 0px auto;
@@ -18,10 +21,12 @@ const AppContainer = () => {
     <StyledContainer>
       <Content>
         <Header />
-        <Navbar />
         <Routes>
           <Route path="/" element={<TyrePage />} />
           <Route path="/disks" element={<DiskPage />} />
+          <Route path="/accumulators" element={<AccumulatorsPage />} />
+          <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="/auth" element={<AuthPage />} />
         </Routes>
       </Content>
       <Footer />

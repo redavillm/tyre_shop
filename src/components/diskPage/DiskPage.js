@@ -4,6 +4,7 @@ import { SearchDiskByParams } from "./SearchDiskByParams/SearchDiskByParams";
 import { SearchDiskByCar } from "./SearchDiskByCar/SearchDiskByCar";
 import { DiskCatalog } from "./DiskCatalog/DiskCatalog";
 import { DISKS } from "../../db/DISKS";
+import { Navbar } from "../Navbar/Navbar";
 
 const StyledDiskPageCatalogButtons = styled.div`
   display: flex;
@@ -27,6 +28,7 @@ export const DiskPage = () => {
   const [disksList, setDisksList] = useState(DISKS);
   return (
     <div>
+      <Navbar />
       <div>
         <StyledDiskPageCatalogButtons>
           <button

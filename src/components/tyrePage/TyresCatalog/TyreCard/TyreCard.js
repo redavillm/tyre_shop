@@ -47,12 +47,14 @@ export const TyreCard = ({
     <StyeledCard>
       <div>
         <img src={imgSrc} alt="tyre img" />
-        {isWinterIcon ? (
-          <i className="fa fa-snowflake-o" aria-hidden="true" />
-        ) : (
-          <i className="fa fa-sun-o" aria-hidden="true" />
-        )}
-        <h6>{title}</h6>
+        <h6>
+          {title}{" "}
+          {isWinterIcon ? (
+            <i className="fa fa-snowflake-o" aria-hidden="true" />
+          ) : (
+            <i className="fa fa-sun-o" aria-hidden="true" />
+          )}
+        </h6>
         <p>{tyreParams}</p>
         <p>{price}</p>
       </div>
