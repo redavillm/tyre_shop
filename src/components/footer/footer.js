@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Footer = () => {
@@ -41,7 +42,9 @@ export const Footer = () => {
         <StyledFooterBtn className="fa fa-github" aria-hidden="true" />
       </a>
       <StyledContacts>
-        <a href="/">Санкт-Петербург, ул. Фучика 74 корпус 3</a>
+        <Link to="https://yandex.com/maps/-/CDRBqMKR">
+          Санкт-Петербург, ул. Фучика 74 корпус 3
+        </Link>
         <div>
           <a href="/">+7(981)122-23-444</a>
         </div>

@@ -25,7 +25,8 @@ body {
 }
 
 .test_styles {
-  width: 200px;
+  width: 40px;
+  display: flex;
 }
 .colors {
   background-color: #1a2902;

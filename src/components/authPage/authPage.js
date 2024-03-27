@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledAuthPage = styled.div`
-  margin-top: 18%;
+  margin-top: 12%;
   display: flex;
   flex-direction: column;
   justify-content: center;
