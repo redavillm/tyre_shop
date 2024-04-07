@@ -36,7 +36,9 @@ export const Header = () => {
         <p>На рынке с 1994 года.</p>
       </div>
       <Flex>
-        <StyledLogInBtn className="fa fa-sign-in" aria-hidden="true" />
+        <Link to="/auth">
+          <StyledLogInBtn className="fa fa-sign-in" aria-hidden="true" />
+        </Link>
         <Button>
           <Link to="/auth">Вход</Link>
         </Button>
