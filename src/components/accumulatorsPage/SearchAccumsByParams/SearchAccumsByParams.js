@@ -2,17 +2,16 @@ import { useState } from "react";
 import styled from "styled-components";
 import {
   brandOptionCreator,
-  diametrOptionCreator,
-  mountOptionCreator,
-  typeOptionCreator,
+  capacityOptionCreator,
+  polarityOptionCreator,
+  sizeOptionCombiner,
 } from "./optionCreators/optionCreators";
-import { disksFilter } from "../../../scripts";
 
 const EMPTY_LIST = {
-  diametr: "-",
-  mount: "-",
+  size: "-",
+  polarity: "-",
+  capacity: "-",
   brand: "-",
-  type: "-",
 };
 
 const StyledCatalogByParams = styled.div`
@@ -45,25 +44,28 @@ const StyledCatalogEl = styled.div`
   }
 `;
 
-export const SearchDiskByParams = ({ setDisksList }) => {
+export const SearchAccumsByParams = ({ setAccumList }) => {
   const [selectedOption, setSelectedOption] = useState(EMPTY_LIST);
 
-  const handleSelectDiameter = (event) => {
-    setSelectedOption({ ...selectedOption, diametr: event.target.value });
+  const handleSelectSize = (event) => {
+    setSelectedOption({ ...selectedOption, size: event.target.value });
   };
-  const handleSelectMount = (event) => {
-    setSelectedOption({ ...selectedOption, mount: event.target.value });
+  const handleSelectPolarity = (event) => {
+    setSelectedOption({
+      ...selectedOption,
+      polarity: event.target.value,
+    });
+  };
+  const handleSelectСapacity = (event) => {
+    setSelectedOption({ ...selectedOption, capacity: event.target.value });
   };
   const handleSelectBrand = (event) => {
     setSelectedOption({ ...selectedOption, brand: event.target.value });
   };
-  const handleSelectType = (event) => {
-    setSelectedOption({ ...selectedOption, type: event.target.value });
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setDisksList(disksFilter(selectedOption));
+    setAccumList();
   };
 
   return (
@@ -71,23 +73,35 @@ export const SearchDiskByParams = ({ setDisksList }) => {
       <form onSubmit={handleSubmit}>
         <Flex>
           <StyledCatalogEl>
-            Диаметр
-            <select
-              value={selectedOption.diametr}
-              onChange={handleSelectDiameter}
-            >
+            Размер
+            <select value={selectedOption.size} onChange={handleSelectSize}>
               <option>-</option>
-              {diametrOptionCreator().map((el, index) => (
-                <option key={index}>{el}</option>
+              {sizeOptionCombiner().map((el, index) => (
+                <option id={index}>{el}</option>
               ))}
             </select>
           </StyledCatalogEl>
           <StyledCatalogEl>
-            Крепление
-            <select value={selectedOption.mount} onChange={handleSelectMount}>
+            Полярность
+            <select
+              value={selectedOption.polarity}
+              onChange={handleSelectPolarity}
+            >
               <option>-</option>
-              {mountOptionCreator().map((el, index) => (
-                <option key={index}>{el}</option>
+              {polarityOptionCreator().map((el, index) => (
+                <option id={index}>{el}</option>
+              ))}
+            </select>
+          </StyledCatalogEl>
+          <StyledCatalogEl>
+            Емкость
+            <select
+              value={selectedOption.capacity}
+              onChange={handleSelectСapacity}
+            >
+              <option>-</option>
+              {capacityOptionCreator().map((el, index) => (
+                <option id={index}>{el}</option>
               ))}
             </select>
           </StyledCatalogEl>
@@ -96,16 +110,7 @@ export const SearchDiskByParams = ({ setDisksList }) => {
             <select value={selectedOption.brand} onChange={handleSelectBrand}>
               <option>-</option>
               {brandOptionCreator().map((el, index) => (
-                <option key={index}>{el}</option>
-              ))}
-            </select>
-          </StyledCatalogEl>
-          <StyledCatalogEl>
-            Тип
-            <select value={selectedOption.type} onChange={handleSelectType}>
-              <option>-</option>
-              {typeOptionCreator().map((el, index) => (
-                <option key={index}>{el}</option>
+                <option id={index}>{el}</option>
               ))}
             </select>
           </StyledCatalogEl>

@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import { AccumulatorsPage } from "./components/accumulatorsPage/accumulatorsPage";
 import { ContactsPage } from "./components/Contacts/Contacts";
 import { AuthPage } from "./components/authPage/authPage";
+import { RegistrationPage } from "./components/registrationPage/registrationPage";
 
 const StyledContainer = styled.div`
   margin: 0px auto;
@@ -27,6 +28,7 @@ const AppContainer = () => {
           <Route path="/accumulators" element={<AccumulatorsPage />} />
           <Route path="/contacts" element={<ContactsPage />} />
           <Route path="/auth" element={<AuthPage />} />
+          <Route path="/registration" element={<RegistrationPage />} />
         </Routes>
       </Content>
       <Footer />
