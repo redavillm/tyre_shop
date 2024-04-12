@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { Navbar } from "../Navbar/Navbar";
+import { Navbar } from "../../components/Navbar/Navbar";
 import { Link } from "react-router-dom";
 
-const StyledContactsPage = styled.div`
+const StyledContacts = styled.div`
   color: #1a2902;
   margin: 15px 30px;
   display: flex;
@@ -57,13 +57,13 @@ const StyledMap = styled.div`
   }
 `;
 
-export const ContactsPage = () => {
+export const Contacts = () => {
   return (
     <>
       <Navbar />
       <div>
         <h1>Как связаться с нами?</h1>
-        <StyledContactsPage>
+        <StyledContacts>
           <div>
             <span>
               <h4>Нам можно позвонить:</h4>
@@ -126,7 +126,7 @@ export const ContactsPage = () => {
               ></textarea>
             </form>
           </StyledContactForm>
-        </StyledContactsPage>
+        </StyledContacts>
       </div>
     </>
   );

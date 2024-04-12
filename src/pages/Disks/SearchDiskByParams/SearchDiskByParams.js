@@ -1,12 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
-import {
-  brandOptionCreator,
-  diametrOptionCreator,
-  mountOptionCreator,
-  typeOptionCreator,
-} from "./optionCreators/optionCreators";
-import { disksFilter } from "../../../scripts";
+import { disksFilter, optionsCreator } from "../../../scripts";
+import { DISKS } from "../../../db/DISKS";
 
 const EMPTY_LIST = {
   diametr: "-",
@@ -48,17 +43,11 @@ const StyledCatalogEl = styled.div`
 export const SearchDiskByParams = ({ setDisksList }) => {
   const [selectedOption, setSelectedOption] = useState(EMPTY_LIST);
 
-  const handleSelectDiameter = (event) => {
-    setSelectedOption({ ...selectedOption, diametr: event.target.value });
-  };
-  const handleSelectMount = (event) => {
-    setSelectedOption({ ...selectedOption, mount: event.target.value });
-  };
-  const handleSelectBrand = (event) => {
-    setSelectedOption({ ...selectedOption, brand: event.target.value });
-  };
-  const handleSelectType = (event) => {
-    setSelectedOption({ ...selectedOption, type: event.target.value });
+  const handleSelectChange = (key) => (event) => {
+    setSelectedOption((prevOptions) => ({
+      ...prevOptions,
+      [key]: event.target.value,
+    }));
   };
 
   const handleSubmit = (event) => {
@@ -74,37 +63,46 @@ export const SearchDiskByParams = ({ setDisksList }) => {
             Диаметр
             <select
               value={selectedOption.diametr}
-              onChange={handleSelectDiameter}
+              onChange={handleSelectChange("diametr")}
             >
               <option>-</option>
-              {diametrOptionCreator().map((el, index) => (
+              {optionsCreator("diametr", DISKS).map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
             </select>
           </StyledCatalogEl>
           <StyledCatalogEl>
             Крепление
-            <select value={selectedOption.mount} onChange={handleSelectMount}>
+            <select
+              value={selectedOption.mount}
+              onChange={handleSelectChange("mount")}
+            >
               <option>-</option>
-              {mountOptionCreator().map((el, index) => (
+              {optionsCreator("mount", DISKS).map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
             </select>
           </StyledCatalogEl>
           <StyledCatalogEl>
             Производитель
-            <select value={selectedOption.brand} onChange={handleSelectBrand}>
+            <select
+              value={selectedOption.brand}
+              onChange={handleSelectChange("brand")}
+            >
               <option>-</option>
-              {brandOptionCreator().map((el, index) => (
+              {optionsCreator("brand", DISKS).map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
             </select>
           </StyledCatalogEl>
           <StyledCatalogEl>
             Тип
-            <select value={selectedOption.type} onChange={handleSelectType}>
+            <select
+              value={selectedOption.type}
+              onChange={handleSelectChange("type")}
+            >
               <option>-</option>
-              {typeOptionCreator().map((el, index) => (
+              {optionsCreator("type", DISKS).map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
             </select>

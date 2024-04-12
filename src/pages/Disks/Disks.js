@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Navbar } from "../Navbar/Navbar";
-import { AccumulatorsList } from "./AccumulatorsList/AccumulatorsList";
 import styled from "styled-components";
-import { SearchAccumsByParams } from "./SearchAccumsByParams/SearchAccumsByParams";
-import { SearchAccumsByCar } from "./SearchAccumsByCar/SearchAccumsByCar";
+import { SearchDiskByParams } from "./SearchDiskByParams/SearchDiskByParams";
+import { SearchDiskByCar } from "./SearchDiskByCar/SearchDiskByCar";
+import { DiskCatalog } from "./DiskCatalog/DiskCatalog";
+import { DISKS } from "../../db/DISKS";
+import { Navbar } from "../../components/Navbar/Navbar";
 
-const StyledAccumsPageCatalogButtons = styled.div`
+const StyledDisksCatalogButtons = styled.div`
   display: flex;
   margin-top: 30px;
   & button {
@@ -22,14 +23,14 @@ const StyledAccumsPageCatalogButtons = styled.div`
   }
 `;
 
-export const AccumulatorsPage = () => {
+export const Disks = () => {
   const [isByParams, setIsByParams] = useState(true);
-  const [accumList, setAccumList] = useState();
+  const [disksList, setDisksList] = useState(DISKS);
   return (
     <div>
       <Navbar />
       <div>
-        <StyledAccumsPageCatalogButtons>
+        <StyledDisksCatalogButtons>
           <button
             onClick={() => {
               setIsByParams(true);
@@ -44,14 +45,14 @@ export const AccumulatorsPage = () => {
           >
             По авто
           </button>
-        </StyledAccumsPageCatalogButtons>
+        </StyledDisksCatalogButtons>
       </div>
       {isByParams ? (
-        <SearchAccumsByParams setAccumList={setAccumList} />
+        <SearchDiskByParams setDisksList={setDisksList} />
       ) : (
-        <SearchAccumsByCar setAccumList={setAccumList} />
+        <SearchDiskByCar setDisksList={setDisksList} />
       )}
-      <AccumulatorsList accumList={accumList} />
+      <DiskCatalog disksList={disksList} />
     </div>
   );
 };

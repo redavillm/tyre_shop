@@ -3,11 +3,10 @@ import styled from "styled-components";
 import { SearchByParams } from "./searchByParams/SearchByParams";
 import { SearchByCar } from "./searchByCar/SearchByCar";
 import { TyresCatalog } from "./TyresCatalog/TyresCatalog";
-import { WINTER_TYRES } from "../../db/WINTER_TYRES";
-import { SUMMER_TYRES } from "../../db/SUMMER_TYRES";
-import { Navbar } from "../Navbar/Navbar";
+import { Navbar } from "../../components/Navbar/Navbar";
+import { TYRES } from "../../db/TYRES";
 
-const StyledTyrePageCatalogButtons = styled.div`
+const StyledTyreCatalogButtons = styled.div`
   display: flex;
   margin-top: 30px;
   & button {
@@ -24,19 +23,21 @@ const StyledTyrePageCatalogButtons = styled.div`
   }
 `;
 
-export const TyrePage = () => {
+export const Tyres = () => {
   const [isByParams, setIsByParams] = useState(true);
   const [isWinter, setIsWinter] = useState(false);
   const [isWinterIcon, setIsWinterIcon] = useState(false);
   const [tyresList, setTyresList] = useState(
-    !isWinter ? SUMMER_TYRES : WINTER_TYRES
+    !isWinter
+      ? TYRES.filter((el) => el.season === "summer")
+      : TYRES.filter((el) => el.season === "winter")
   );
 
   return (
     <div>
       <Navbar />
       <div>
-        <StyledTyrePageCatalogButtons>
+        <StyledTyreCatalogButtons>
           <button
             onClick={() => {
               setIsByParams(true);
@@ -51,7 +52,7 @@ export const TyrePage = () => {
           >
             По авто
           </button>
-        </StyledTyrePageCatalogButtons>
+        </StyledTyreCatalogButtons>
       </div>
       {isByParams ? (
         <SearchByParams

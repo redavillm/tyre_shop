@@ -1,12 +1,7 @@
 import styled from "styled-components";
-import {
-  TYRE_BRAND,
-  TYRE_HEIGHT,
-  TYRE_RADIUS,
-  TYRE_WIDTH,
-} from "../../../db/db";
 import { useState } from "react";
-import { tyresfilter } from "../../../scripts/tyresFilter";
+import { tyresfilter, optionsCreator } from "../../../scripts";
+import { TYRES } from "../../../db/TYRES";
 
 const StyledCatalogByParams = styled.div`
   border-bottom: 1px solid #aec09a;
@@ -73,17 +68,11 @@ export const SearchByParams = ({
 }) => {
   const [selectedOption, setSelectedOption] = useState(EMPTY_LIST);
 
-  const handleSelectWidth = (event) => {
-    setSelectedOption({ ...selectedOption, width: event.target.value });
-  };
-  const handleSelectHeight = (event) => {
-    setSelectedOption({ ...selectedOption, height: event.target.value });
-  };
-  const handleSelectDiameter = (event) => {
-    setSelectedOption({ ...selectedOption, radius: event.target.value });
-  };
-  const handleSelectCompany = (event) => {
-    setSelectedOption({ ...selectedOption, brand: event.target.value });
+  const handleSelectChange = (key) => (event) => {
+    setSelectedOption((prevOptions) => ({
+      ...prevOptions,
+      [key]: event.target.value,
+    }));
   };
 
   const handleSubmit = (event) => {
@@ -106,18 +95,24 @@ export const SearchByParams = ({
         <Flex>
           <StyledCatalogEl>
             Ширина
-            <select value={selectedOption.width} onChange={handleSelectWidth}>
+            <select
+              value={selectedOption.width}
+              onChange={handleSelectChange("width")}
+            >
               <option>-</option>
-              {TYRE_WIDTH.map((width, index) => {
+              {optionsCreator("width", TYRES).map((width, index) => {
                 return <option key={index}>{width}</option>;
               })}
             </select>
           </StyledCatalogEl>
           <StyledCatalogEl>
             Высота
-            <select value={selectedOption.height} onChange={handleSelectHeight}>
+            <select
+              value={selectedOption.height}
+              onChange={handleSelectChange("height")}
+            >
               <option>-</option>
-              {TYRE_HEIGHT.map((height, index) => {
+              {optionsCreator("height", TYRES).map((height, index) => {
                 return <option key={index}>{height}</option>;
               })}
             </select>
@@ -126,19 +121,22 @@ export const SearchByParams = ({
             Диаметр
             <select
               value={selectedOption.radius}
-              onChange={handleSelectDiameter}
+              onChange={handleSelectChange("radius")}
             >
               <option>-</option>
-              {TYRE_RADIUS.map((radius, index) => {
+              {optionsCreator("radius", TYRES).map((radius, index) => {
                 return <option key={index}>{radius}</option>;
               })}
             </select>
           </StyledCatalogEl>
           <StyledCatalogEl>
             Производитель
-            <select value={selectedOption.brand} onChange={handleSelectCompany}>
+            <select
+              value={selectedOption.brand}
+              onChange={handleSelectChange("brand")}
+            >
               <option>-</option>
-              {TYRE_BRAND.map((width, index) => {
+              {optionsCreator("brand", TYRES).map((width, index) => {
                 return <option key={index}>{width}</option>;
               })}
             </select>

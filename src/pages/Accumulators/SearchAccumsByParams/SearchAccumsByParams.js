@@ -1,11 +1,11 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { ACCUMULATORS } from "../../../db/ACCUMULATORS";
 import {
-  brandOptionCreator,
-  capacityOptionCreator,
-  polarityOptionCreator,
   sizeOptionCombiner,
-} from "./optionCreators/optionCreators";
+  AccumsOptionCreator,
+} from "./optionCreators/AccumsOptionCreator";
+import { accumFilter } from "../../../scripts/accumFilte";
 
 const EMPTY_LIST = {
   size: "-",
@@ -47,25 +47,16 @@ const StyledCatalogEl = styled.div`
 export const SearchAccumsByParams = ({ setAccumList }) => {
   const [selectedOption, setSelectedOption] = useState(EMPTY_LIST);
 
-  const handleSelectSize = (event) => {
-    setSelectedOption({ ...selectedOption, size: event.target.value });
-  };
-  const handleSelectPolarity = (event) => {
-    setSelectedOption({
-      ...selectedOption,
-      polarity: event.target.value,
-    });
-  };
-  const handleSelectСapacity = (event) => {
-    setSelectedOption({ ...selectedOption, capacity: event.target.value });
-  };
-  const handleSelectBrand = (event) => {
-    setSelectedOption({ ...selectedOption, brand: event.target.value });
+  const handleSelectChange = (key) => (event) => {
+    setSelectedOption((prevOptions) => ({
+      ...prevOptions,
+      [key]: event.target.value,
+    }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setAccumList();
+    setAccumList(accumFilter(selectedOption));
   };
 
   return (
@@ -74,7 +65,10 @@ export const SearchAccumsByParams = ({ setAccumList }) => {
         <Flex>
           <StyledCatalogEl>
             Размер
-            <select value={selectedOption.size} onChange={handleSelectSize}>
+            <select
+              value={selectedOption.size}
+              onChange={handleSelectChange("size")}
+            >
               <option>-</option>
               {sizeOptionCombiner().map((el, index) => (
                 <option id={index}>{el}</option>
@@ -85,31 +79,38 @@ export const SearchAccumsByParams = ({ setAccumList }) => {
             Полярность
             <select
               value={selectedOption.polarity}
-              onChange={handleSelectPolarity}
+              onChange={handleSelectChange("polarity")}
             >
               <option>-</option>
-              {polarityOptionCreator().map((el, index) => (
-                <option id={index}>{el}</option>
-              ))}
+              {AccumsOptionCreator("polarity", ACCUMULATORS).map(
+                (el, index) => (
+                  <option id={index}>{el}</option>
+                )
+              )}
             </select>
           </StyledCatalogEl>
           <StyledCatalogEl>
             Емкость
             <select
               value={selectedOption.capacity}
-              onChange={handleSelectСapacity}
+              onChange={handleSelectChange("capacity")}
             >
               <option>-</option>
-              {capacityOptionCreator().map((el, index) => (
-                <option id={index}>{el}</option>
-              ))}
+              {AccumsOptionCreator("capacity", ACCUMULATORS, "number").map(
+                (el, index) => (
+                  <option id={index}>{el}</option>
+                )
+              )}
             </select>
           </StyledCatalogEl>
           <StyledCatalogEl>
             Производитель
-            <select value={selectedOption.brand} onChange={handleSelectBrand}>
+            <select
+              value={selectedOption.brand}
+              onChange={handleSelectChange("brand")}
+            >
               <option>-</option>
-              {brandOptionCreator().map((el, index) => (
+              {AccumsOptionCreator("brand", ACCUMULATORS).map((el, index) => (
                 <option id={index}>{el}</option>
               ))}
             </select>

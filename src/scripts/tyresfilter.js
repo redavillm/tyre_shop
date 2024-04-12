@@ -1,28 +1,26 @@
-import { SUMMER_TYRES } from "../db/SUMMER_TYRES";
-import { WINTER_TYRES } from "../db/WINTER_TYRES";
+import { TYRES } from "../db/TYRES";
 
 export const tyresfilter = (selectedOption, isWinter) => {
-  const { width, height, radius, brand } = selectedOption;
+  const filters = {
+    width: (value) => (el) => value === "-" || el.width === value,
+    height: (value) => (el) => value === "-" || el.height === value,
+    radius: (value) => (el) => value === "-" || el.radius === value,
+    brand: (value) => (el) => value === "-" || el.brand === value,
+  };
 
-  let tyresArrResult = isWinter ? WINTER_TYRES : SUMMER_TYRES;
+  let tyresArrResult = TYRES.filter((el) => {
+    if (isWinter) {
+      return el.season === "winter";
+    } else {
+      return el.season === "summer";
+    }
+  });
 
-  let isWinterIcon = isWinter;
+  Object.entries(selectedOption).forEach(([key, value]) => {
+    if (filters[key]) {
+      tyresArrResult = tyresArrResult.filter(filters[key](value));
+    }
+  });
 
-  if (width !== "-") {
-    tyresArrResult = tyresArrResult.filter((el) => el.width === width);
-  }
-
-  if (height !== "-") {
-    tyresArrResult = tyresArrResult.filter((el) => el.height === height);
-  }
-
-  if (radius !== "-") {
-    tyresArrResult = tyresArrResult.filter((el) => el.radius === radius);
-  }
-
-  if (brand !== "-") {
-    tyresArrResult = tyresArrResult.filter((el) => el.brand === brand);
-  }
-
-  return { tyresArrResult, isWinterIcon };
+  return { tyresArrResult, isWinterIcon: isWinter };
 };

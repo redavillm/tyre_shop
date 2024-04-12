@@ -1,10 +1,13 @@
 import styled from "styled-components";
-import { Header, TyrePage, Footer, DiskPage } from "./components/index";
 import { Route, Routes } from "react-router-dom";
-import { AccumulatorsPage } from "./components/accumulatorsPage/accumulatorsPage";
-import { ContactsPage } from "./components/Contacts/Contacts";
-import { AuthPage } from "./components/authPage/authPage";
-import { RegistrationPage } from "./components/registrationPage/registrationPage";
+import { Header } from "./components/Header/Header";
+import { Footer } from "./components/Footer/Footer";
+import { Accumulators } from "./pages/Accumulators/Accumulators";
+import { Tyres } from "./pages/Tyres/Tyres";
+import { Disks } from "./pages/Disks/Disks";
+import { Contacts } from "./pages/Contacts/Contacts";
+import { Auth } from "./pages/Auth/Auth";
+import { Registration } from "./pages/Registration/Registration";
 
 const StyledContainer = styled.div`
   margin: 0px auto;
@@ -23,12 +26,12 @@ const AppContainer = () => {
       <Content>
         <Header />
         <Routes>
-          <Route path="/" element={<TyrePage />} />
-          <Route path="/disks" element={<DiskPage />} />
-          <Route path="/accumulators" element={<AccumulatorsPage />} />
-          <Route path="/contacts" element={<ContactsPage />} />
-          <Route path="/auth" element={<AuthPage />} />
-          <Route path="/registration" element={<RegistrationPage />} />
+          <Route path="/" element={<Tyres />} />
+          <Route path="/disks" element={<Disks />} />
+          <Route path="/accumulators" element={<Accumulators />} />
+          <Route path="/contacts" element={<Contacts />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/registration" element={<Registration />} />
         </Routes>
       </Content>
       <Footer />

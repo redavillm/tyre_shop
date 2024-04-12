@@ -25,7 +25,7 @@ body {
 }
 
 .test_styles {
-  margin-right: 20px;
+  padding: 50px 25px;
 }
 .colors {
   background-color: #1a2902;

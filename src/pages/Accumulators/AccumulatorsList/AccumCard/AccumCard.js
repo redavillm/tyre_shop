@@ -3,6 +3,7 @@ import styled from "styled-components";
 const StyeledCard = styled.span`
   width: 260px;
   margin: 20px 10px;
+  padding: 25px 25px;
   background-color: #aec670;
   text-align: center;
   cursor: pointer;
@@ -36,13 +37,13 @@ const StyeledCard = styled.span`
   }
 `;
 
-export const DiskCard = ({ title, diskParams, price, imgSrc }) => {
+export const AccumCard = ({ title, accumParams, price, imgSrc }) => {
   return (
     <StyeledCard>
       <div>
         <img src={imgSrc} alt="disk img" />
         <h6>{title}</h6>
-        <p>{diskParams}</p>
+        <p>{accumParams}</p>
         <p>{price}</p>
       </div>
     </StyeledCard>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledAuthPage = styled.div`
+const StyledAuth = styled.div`
   margin-top: 12%;
   display: flex;
   flex-direction: column;
@@ -14,7 +14,7 @@ const StyledAuthPage = styled.div`
       all: unset;
       padding: 5px 10px;
       margin-top: 20px;
-      width: 400px;
+      width: 200px;
       border: 1px solid black;
       background-color: #aec670;
       font-size: 18px;
@@ -35,10 +35,10 @@ const StyledAuthPage = styled.div`
   }
 `;
 
-export const RegistrationPage = () => {
+export const Auth = () => {
   return (
-    <StyledAuthPage>
-      <h7>Регистрация</h7>
+    <StyledAuth>
+      <h7>Введте логин и пароль</h7>
       <div>
         <form>
           <input type="text" />
@@ -46,6 +46,6 @@ export const RegistrationPage = () => {
           <button>Войти</button>
         </form>
       </div>
-    </StyledAuthPage>
+    </StyledAuth>
   );
 };
