@@ -6,7 +6,7 @@ const StyledTyresCatalog = styled.div`
   flex-wrap: wrap;
 `;
 
-export const TyresCatalog = ({ tyresList, isWinterIcon }) => {
+export const TyresList = ({ tyresList, isWinterIcon }) => {
   return (
     <StyledTyresCatalog>
       {tyresList.map((el) => (

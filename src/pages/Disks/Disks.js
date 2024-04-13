@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { SearchDiskByParams } from "./SearchDiskByParams/SearchDiskByParams";
 import { SearchDiskByCar } from "./SearchDiskByCar/SearchDiskByCar";
-import { DiskCatalog } from "./DiskCatalog/DiskCatalog";
+import { DisksList } from "./DisksList/DisksList";
 import { DISKS } from "../../db/DISKS";
 import { Navbar } from "../../components/Navbar/Navbar";
 
@@ -52,7 +52,7 @@ export const Disks = () => {
       ) : (
         <SearchDiskByCar setDisksList={setDisksList} />
       )}
-      <DiskCatalog disksList={disksList} />
+      <DisksList disksList={disksList} />
     </div>
   );
 };

@@ -37,13 +37,13 @@ const StyeledCard = styled.span`
   }
 `;
 
-export const AccumCard = ({ title, accumParams, price, imgSrc }) => {
+export const Card = ({ title, params, price, imgSrc }) => {
   return (
     <StyeledCard>
       <div>
-        <img src={imgSrc} alt="disk img" />
+        <img src={imgSrc} alt="Product img" />
         <h6>{title}</h6>
-        <p>{accumParams}</p>
+        <p>{params}</p>
         <p>{price}</p>
       </div>
     </StyeledCard>

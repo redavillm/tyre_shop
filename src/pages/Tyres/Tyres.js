@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { SearchByParams } from "./searchByParams/SearchByParams";
 import { SearchByCar } from "./searchByCar/SearchByCar";
-import { TyresCatalog } from "./TyresCatalog/TyresCatalog";
+import { TyresList } from "./TyresList/TyresList";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { TYRES } from "../../db/TYRES";
 
@@ -64,7 +64,7 @@ export const Tyres = () => {
       ) : (
         <SearchByCar />
       )}
-      <TyresCatalog tyresList={tyresList} isWinterIcon={isWinterIcon} />
+      <TyresList tyresList={tyresList} isWinterIcon={isWinterIcon} />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { AccumCard } from "./AccumCard/AccumCard";
+import { Card } from "../../../components/Card/Card";
 
 const StyledTyresCatalog = styled.div`
   display: flex;
@@ -10,9 +10,9 @@ export const AccumulatorsList = ({ accumList }) => {
   return (
     <StyledTyresCatalog>
       {accumList.map((el) => (
-        <AccumCard
+        <Card
           title={el.brand + " " + el.model}
-          accumParams={el.length + "x" + el.width + "x" + el.height}
+          params={el.length + "x" + el.width + "x" + el.height}
           price={el.price}
           imgSrc="https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png"
         />
