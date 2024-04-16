@@ -8,6 +8,8 @@ export const TYRES = [
     radius: "15",
     height: "60",
     price: 3900,
+    imgSrc:
+      "https://xn--j1apr.xn--p1ai/wp-content/uploads/2020/09/11r22.5-kama-nf-701.png",
     count: 9,
   },
   {
@@ -19,6 +21,8 @@ export const TYRES = [
     radius: "15",
     height: "60",
     price: 4900,
+    imgSrc:
+      "https://xn--j1apr.xn--p1ai/wp-content/uploads/2020/09/11r22.5-kama-nf-701.png",
     count: 6,
   },
   {
@@ -30,6 +34,8 @@ export const TYRES = [
     radius: "15",
     height: "60",
     price: 5262,
+    imgSrc:
+      "https://xn--j1apr.xn--p1ai/wp-content/uploads/2020/09/11r22.5-kama-nf-701.png",
     count: 10,
   },
   {
@@ -41,6 +47,8 @@ export const TYRES = [
     radius: "15",
     height: "65",
     price: 4100,
+    imgSrc:
+      "https://xn--j1apr.xn--p1ai/wp-content/uploads/2020/09/11r22.5-kama-nf-701.png",
     count: 11,
   },
   {
@@ -52,6 +60,8 @@ export const TYRES = [
     radius: "15",
     height: "65",
     price: 4227,
+    imgSrc:
+      "https://xn--j1apr.xn--p1ai/wp-content/uploads/2020/09/11r22.5-kama-nf-701.png",
     count: 9,
   },
   {
@@ -63,6 +73,8 @@ export const TYRES = [
     radius: "15",
     height: "65",
     price: 4170,
+    imgSrc:
+      "https://xn--j1apr.xn--p1ai/wp-content/uploads/2020/09/11r22.5-kama-nf-701.png",
     count: 4,
   },
   {
@@ -74,6 +86,8 @@ export const TYRES = [
     radius: "15",
     height: "65",
     price: 4293,
+    imgSrc:
+      "https://xn--j1apr.xn--p1ai/wp-content/uploads/2020/09/11r22.5-kama-nf-701.png",
     count: 4,
   },
   {
@@ -85,6 +99,8 @@ export const TYRES = [
     radius: "15",
     height: "65",
     price: 2769,
+    imgSrc:
+      "https://xn--j1apr.xn--p1ai/wp-content/uploads/2020/09/11r22.5-kama-nf-701.png",
     count: 5,
   },
   {
@@ -96,6 +112,8 @@ export const TYRES = [
     radius: "15",
     height: "65",
     price: 4499,
+    imgSrc:
+      "https://xn--j1apr.xn--p1ai/wp-content/uploads/2020/09/11r22.5-kama-nf-701.png",
     count: 7,
   },
   {
@@ -107,6 +125,8 @@ export const TYRES = [
     radius: "15",
     height: "60",
     price: 4200,
+    imgSrc:
+      "https://xn--j1apr.xn--p1ai/wp-content/uploads/2020/09/11r22.5-kama-nf-701.png",
     count: 9,
   },
   {
@@ -118,6 +138,8 @@ export const TYRES = [
     radius: "15",
     height: "60",
     price: 4800,
+    imgSrc:
+      "https://xn--j1apr.xn--p1ai/wp-content/uploads/2020/09/11r22.5-kama-nf-701.png",
     count: 9,
   },
   {
@@ -129,6 +151,8 @@ export const TYRES = [
     radius: "15",
     height: "60",
     price: 4375,
+    imgSrc:
+      "https://xn--j1apr.xn--p1ai/wp-content/uploads/2020/09/11r22.5-kama-nf-701.png",
     count: 9,
   },
   {
@@ -140,6 +164,8 @@ export const TYRES = [
     radius: "15",
     height: "65",
     price: 5000,
+    imgSrc:
+      "https://xn--j1apr.xn--p1ai/wp-content/uploads/2020/09/11r22.5-kama-nf-701.png",
     count: 9,
   },
   {
@@ -151,6 +177,8 @@ export const TYRES = [
     radius: "15",
     height: "65",
     price: 4650,
+    imgSrc:
+      "https://xn--j1apr.xn--p1ai/wp-content/uploads/2020/09/11r22.5-kama-nf-701.png",
     count: 9,
   },
   {
@@ -162,6 +190,8 @@ export const TYRES = [
     radius: "15",
     height: "65",
     price: 4325,
+    imgSrc:
+      "https://xn--j1apr.xn--p1ai/wp-content/uploads/2020/09/11r22.5-kama-nf-701.png",
     count: 9,
   },
   {
@@ -173,6 +203,8 @@ export const TYRES = [
     radius: "15",
     height: "65",
     price: 4600,
+    imgSrc:
+      "https://xn--j1apr.xn--p1ai/wp-content/uploads/2020/09/11r22.5-kama-nf-701.png",
     count: 9,
   },
   {
@@ -184,6 +216,8 @@ export const TYRES = [
     radius: "15",
     height: "65",
     price: 5400,
+    imgSrc:
+      "https://xn--j1apr.xn--p1ai/wp-content/uploads/2020/09/11r22.5-kama-nf-701.png",
     count: 9,
   },
 ];

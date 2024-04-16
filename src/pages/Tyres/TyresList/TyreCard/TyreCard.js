@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { fetchTyre } from "../../../../scripts";
 
 const StyeledCard = styled.span`
   width: 260px;
@@ -36,26 +37,22 @@ const StyeledCard = styled.span`
   }
 `;
 
-export const TyreCard = ({
-  title,
-  tyreParams,
-  price,
-  imgSrc,
-  isWinterIcon,
-}) => {
+export const TyreCard = ({ id, isWinterIcon }) => {
+  const { brand, model, width, height, radius, price, imgSrc } = fetchTyre(id);
+
   return (
     <StyeledCard>
       <div>
         <img src={imgSrc} alt="tyre img" />
         <h6>
-          {title}{" "}
+          {brand + " " + model}{" "}
           {isWinterIcon ? (
             <i className="fa fa-snowflake-o" aria-hidden="true" />
           ) : (
             <i className="fa fa-sun-o" aria-hidden="true" />
           )}
         </h6>
-        <p>{tyreParams}</p>
+        <p>{width + "x" + height + "x" + radius}</p>
         <p>{price}</p>
       </div>
     </StyeledCard>

@@ -1,6 +1,6 @@
 export const DISKS = [
   {
-    id: 1,
+    id: 18,
     type: "alloy",
     brand: "Xtrike",
     model: "103",
@@ -9,9 +9,11 @@ export const DISKS = [
     width: "-",
     color: "HSB",
     price: 4400,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 2,
+    id: 19,
     type: "alloy",
     brand: "Xtrike",
     model: "104",
@@ -20,9 +22,11 @@ export const DISKS = [
     width: "-",
     color: "HSB",
     price: 4400,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 3,
+    id: 20,
     type: "alloy",
     brand: "Xtrike",
     model: "103",
@@ -31,9 +35,11 @@ export const DISKS = [
     width: "-",
     color: "HS",
     price: 4400,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 4,
+    id: 21,
     type: "alloy",
     brand: "Xtrike",
     model: "114",
@@ -42,9 +48,11 @@ export const DISKS = [
     width: "-",
     color: "HS",
     price: 4400,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 5,
+    id: 22,
     type: "stamp",
     brand: "ГАЗ",
     model: "-",
@@ -55,9 +63,11 @@ export const DISKS = [
     hole: "58.6",
     color: "HS",
     price: 900,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 6,
+    id: 23,
     type: "stamp",
     brand: "ГАЗ",
     model: "-",
@@ -68,9 +78,11 @@ export const DISKS = [
     hole: "58.6",
     color: "HS",
     price: 900,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 7,
+    id: 24,
     type: "stamp",
     brand: "Trebl",
     model: "-",
@@ -81,9 +93,11 @@ export const DISKS = [
     hole: "69",
     color: "silver",
     price: 2250,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 8,
+    id: 25,
     type: "stamp",
     brand: "CT",
     model: "-",
@@ -94,9 +108,11 @@ export const DISKS = [
     hole: "69",
     color: "silver",
     price: 1300,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 9,
+    id: 26,
     type: "stamp",
     brand: "ТЗСК",
     model: "-",
@@ -107,9 +123,11 @@ export const DISKS = [
     hole: "58.6",
     color: "black",
     price: 1750,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 10,
+    id: 27,
     type: "stamp",
     brand: "Trebl",
     model: "-",
@@ -120,9 +138,11 @@ export const DISKS = [
     hole: "58.6",
     color: "black",
     price: 1570,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 11,
+    id: 28,
     type: "stamp",
     brand: "CT",
     model: "-",
@@ -133,9 +153,11 @@ export const DISKS = [
     hole: "58.1",
     color: "silver",
     price: 1500,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 12,
+    id: 29,
     type: "stamp",
     brand: "CT",
     model: "-",
@@ -146,9 +168,11 @@ export const DISKS = [
     hole: "56.1",
     color: "silver",
     price: 2200,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 13,
+    id: 30,
     type: "stamp",
     brand: "Trebl",
     model: "5220",
@@ -159,9 +183,11 @@ export const DISKS = [
     hole: "54.1",
     color: "black",
     price: 1450,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 14,
+    id: 31,
     type: "stamp",
     brand: "Trebl",
     model: "-",
@@ -172,9 +198,11 @@ export const DISKS = [
     hole: "54.1",
     color: "black",
     price: 1500,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 15,
+    id: 32,
     type: "stamp",
     brand: "CT",
     model: "-",
@@ -185,9 +213,11 @@ export const DISKS = [
     hole: "54.1",
     color: "silver",
     price: 1450,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 16,
+    id: 32,
     type: "stamp",
     brand: "CT",
     model: "-",
@@ -198,9 +228,11 @@ export const DISKS = [
     hole: "54.1",
     color: "silver",
     price: 1400,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 17,
+    id: 33,
     type: "stamp",
     brand: "CT",
     model: "-",
@@ -211,9 +243,11 @@ export const DISKS = [
     hole: "56.6",
     color: "silver",
     price: 1400,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 17,
+    id: 34,
     type: "stamp",
     brand: "Trebl",
     model: "-",
@@ -224,9 +258,11 @@ export const DISKS = [
     hole: "56.6",
     color: "black",
     price: 2200,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 18,
+    id: 35,
     type: "stamp",
     brand: "Trebl",
     model: "-",
@@ -237,9 +273,11 @@ export const DISKS = [
     hole: "56.6",
     color: "silver",
     price: 1400,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 19,
+    id: 36,
     type: "stamp",
     brand: "Trebl",
     model: "-",
@@ -250,9 +288,11 @@ export const DISKS = [
     hole: "57",
     color: "black",
     price: 2200,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 20,
+    id: 37,
     type: "stamp",
     brand: "CT",
     model: "-",
@@ -263,9 +303,11 @@ export const DISKS = [
     hole: "57",
     color: "black",
     price: 2200,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 21,
+    id: 38,
     type: "stamp",
     brand: "CT",
     model: "-",
@@ -276,9 +318,11 @@ export const DISKS = [
     hole: "60.1",
     color: "silver",
     price: 2200,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 22,
+    id: 39,
     type: "stamp",
     brand: "Trebl",
     model: "53A36C",
@@ -289,9 +333,11 @@ export const DISKS = [
     hole: "60.1",
     color: "black",
     price: 2200,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 23,
+    id: 40,
     type: "stamp",
     brand: "Trebl",
     model: "-",
@@ -302,9 +348,11 @@ export const DISKS = [
     hole: "60.1",
     color: "black",
     price: 1450,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 24,
+    id: 41,
     type: "stamp",
     brand: "CT",
     model: "-",
@@ -315,9 +363,11 @@ export const DISKS = [
     hole: "60.1",
     color: "silver",
     price: 2200,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 25,
+    id: 42,
     type: "stamp",
     brand: "Ford",
     model: "-",
@@ -328,9 +378,11 @@ export const DISKS = [
     hole: "63.3",
     color: "black",
     price: 1750,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
   {
-    id: 25,
+    id: 43,
     type: "stamp",
     brand: "CT",
     model: "-",
@@ -341,5 +393,7 @@ export const DISKS = [
     hole: "63.3",
     color: "silver",
     price: 2400,
+    imgSrc:
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fskad.ru%2Fupload%2Fresize_cache%2Fiblock%2Fd54%2F468_468_1%2Fd5414e57cdd1a4df21cd1750d59fec33.png&f=1&nofb=1&ipt=bea95df033c23e08859c3a3604fda55610b499ed0855ec721488c5ba1cf529d0&ipo=images",
   },
 ];

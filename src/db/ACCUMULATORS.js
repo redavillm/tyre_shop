@@ -1,6 +1,6 @@
 export const ACCUMULATORS = [
   {
-    id: 1,
+    id: 44,
     brand: "TOPLA",
     width: 175,
     height: 276,
@@ -9,9 +9,11 @@ export const ACCUMULATORS = [
     polarity: "Обратная",
     capacity: "73",
     price: 9500,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 2,
+    id: 45,
     brand: "TOPLA",
     width: 175,
     height: 225,
@@ -20,9 +22,11 @@ export const ACCUMULATORS = [
     polarity: "Обратная",
     capacity: "60",
     price: 9500,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 3,
+    id: 46,
     brand: "TOPLA",
     size: "242х175х175",
     width: 175,
@@ -32,9 +36,11 @@ export const ACCUMULATORS = [
     polarity: "Обратная",
     capacity: "62",
     price: 9590,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 4,
+    id: 47,
     brand: "TOPLA",
     width: 175,
     height: 190,
@@ -43,9 +49,11 @@ export const ACCUMULATORS = [
     polarity: "Обратная",
     capacity: "66",
     price: 9590,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 5,
+    id: 48,
     brand: "TAXXON",
     width: 175,
     height: 190,
@@ -54,9 +62,11 @@ export const ACCUMULATORS = [
     polarity: "Обратная",
     capacity: "50",
     price: 6250,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 6,
+    id: 49,
     brand: "VARTA",
     width: 175,
     height: 175,
@@ -65,9 +75,11 @@ export const ACCUMULATORS = [
     polarity: "Обратная",
     capacity: "60",
     price: 11200,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 7,
+    id: 50,
     brand: "VARTA",
     width: 175,
     height: 175,
@@ -76,9 +88,11 @@ export const ACCUMULATORS = [
     polarity: "Обратная",
     capacity: "72",
     price: 11200,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 8,
+    id: 51,
     brand: "VARTA",
     width: 175,
     height: 225,
@@ -87,9 +101,11 @@ export const ACCUMULATORS = [
     polarity: "Обратная",
     capacity: "60",
     price: 8350,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 9,
+    id: 52,
     brand: "VARTA",
     width: 175,
     height: 190,
@@ -98,9 +114,11 @@ export const ACCUMULATORS = [
     polarity: "Обратная",
     capacity: "60",
     price: 10950,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 10,
+    id: 53,
     brand: "VST",
     width: 175,
     height: 190,
@@ -109,9 +127,11 @@ export const ACCUMULATORS = [
     polarity: "Обратная",
     capacity: "60",
     price: 5950,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 11,
+    id: 54,
     brand: "VST",
     width: 175,
     height: 190,
@@ -120,9 +140,11 @@ export const ACCUMULATORS = [
     polarity: "Обратная",
     capacity: "60",
     price: 8800,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 12,
+    id: 55,
     brand: "VST",
     width: 175,
     height: 225,
@@ -131,9 +153,11 @@ export const ACCUMULATORS = [
     polarity: "Обратная",
     capacity: "75",
     price: 9500,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 13,
+    id: 56,
     brand: "VST",
     width: 175,
     height: 190,
@@ -142,9 +166,11 @@ export const ACCUMULATORS = [
     polarity: "Обратная",
     capacity: "100",
     price: 11800,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 14,
+    id: 57,
     brand: "TAXXON",
     width: 175,
     height: 190,
@@ -153,9 +179,11 @@ export const ACCUMULATORS = [
     polarity: "Обратная",
     capacity: "60",
     price: 5750,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 15,
+    id: 58,
     brand: "TAXXON",
     width: 175,
     height: 190,
@@ -164,9 +192,11 @@ export const ACCUMULATORS = [
     polarity: "Прямая",
     capacity: "62",
     price: 5850,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 16,
+    id: 59,
     brand: "TAXXON",
     width: 127,
     height: 225,
@@ -175,9 +205,11 @@ export const ACCUMULATORS = [
     polarity: "Прямая",
     capacity: "40",
     price: 4450,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 17,
+    id: 60,
     brand: "VARTA",
     width: 175,
     height: 225,
@@ -186,9 +218,11 @@ export const ACCUMULATORS = [
     polarity: "Прямая",
     capacity: "95",
     price: 15950,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 18,
+    id: 61,
     brand: "VST",
     width: 175,
     height: 190,
@@ -197,9 +231,11 @@ export const ACCUMULATORS = [
     polarity: "Прямая",
     capacity: "60",
     price: 5950,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 19,
+    id: 62,
     brand: "VST",
     width: 175,
     height: 190,
@@ -208,9 +244,11 @@ export const ACCUMULATORS = [
     polarity: "Прямая",
     capacity: "74",
     price: 8900,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 20,
+    id: 63,
     brand: "СОЮЗ (Turkey)",
     width: 175,
     height: 190,
@@ -219,9 +257,11 @@ export const ACCUMULATORS = [
     polarity: "Прямая",
     capacity: "60",
     price: 3990,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 21,
+    id: 64,
     brand: "ТИТАН",
     width: 175,
     height: 225,
@@ -230,9 +270,11 @@ export const ACCUMULATORS = [
     polarity: "Прямая",
     capacity: "100",
     price: 13250,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 22,
+    id: 65,
     brand: "MUTLU",
     width: 175,
     height: 190,
@@ -241,9 +283,11 @@ export const ACCUMULATORS = [
     polarity: "Прямая",
     capacity: "60",
     price: 9950,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 23,
+    id: 66,
     brand: "КАТОД",
     width: 175,
     height: 190,
@@ -252,9 +296,11 @@ export const ACCUMULATORS = [
     polarity: "Прямая",
     capacity: "60",
     price: 5550,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 24,
+    id: 67,
     brand: "КАТОД",
     width: 175,
     height: 190,
@@ -263,9 +309,11 @@ export const ACCUMULATORS = [
     polarity: "Прямая",
     capacity: "62",
     price: 5650,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 25,
+    id: 68,
     brand: "КАТОД",
     width: 175,
     height: 190,
@@ -274,9 +322,11 @@ export const ACCUMULATORS = [
     polarity: "Прямая",
     capacity: "75",
     price: 6500,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 26,
+    id: 69,
     brand: "HITEC",
     width: 175,
     height: 190,
@@ -285,9 +335,11 @@ export const ACCUMULATORS = [
     polarity: "Прямая",
     capacity: "77",
     price: 9120,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 27,
+    id: 70,
     brand: "HITEC",
     width: 175,
     height: 225,
@@ -296,9 +348,11 @@ export const ACCUMULATORS = [
     polarity: "Прямая",
     capacity: "80",
     price: 8330,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 28,
+    id: 71,
     brand: "Eurostart",
     width: 175,
     height: 225,
@@ -307,9 +361,11 @@ export const ACCUMULATORS = [
     polarity: "Прямая",
     capacity: "90",
     price: 9950,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 28,
+    id: 72,
     brand: "NORD",
     width: 61,
     height: 131,
@@ -318,9 +374,11 @@ export const ACCUMULATORS = [
     polarity: "Прямая",
     capacity: "5",
     price: 600,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 29,
+    id: 73,
     brand: "HYUNDAI",
     width: 175,
     height: 190,
@@ -329,9 +387,11 @@ export const ACCUMULATORS = [
     polarity: "Прямая",
     capacity: "60",
     price: 5900,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 30,
+    id: 74,
     brand: "HYUNDAI",
     width: 175,
     height: 190,
@@ -340,9 +400,11 @@ export const ACCUMULATORS = [
     polarity: "Прямая",
     capacity: "60",
     price: 5900,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 31,
+    id: 75,
     brand: "EXIDE",
     width: 175,
     height: 225,
@@ -351,9 +413,11 @@ export const ACCUMULATORS = [
     polarity: "Обратная",
     capacity: "65",
     price: 12500,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 32,
+    id: 76,
     brand: "ТИТАН",
     width: 175,
     height: 175,
@@ -362,9 +426,11 @@ export const ACCUMULATORS = [
     polarity: "Обратная",
     capacity: "60",
     price: 8950,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 33,
+    id: 77,
     brand: "ТИТАН",
     width: 175,
     height: 190,
@@ -373,9 +439,11 @@ export const ACCUMULATORS = [
     polarity: "Обратная",
     capacity: "100",
     price: 14250,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 34,
+    id: 78,
     brand: "ТИТАН",
     width: 175,
     height: 225,
@@ -384,9 +452,11 @@ export const ACCUMULATORS = [
     polarity: "Обратная",
     capacity: "80",
     price: 10850,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 35,
+    id: 79,
     brand: "MUTLU",
     width: 175,
     height: 225,
@@ -395,9 +465,11 @@ export const ACCUMULATORS = [
     polarity: "Обратная",
     capacity: "60",
     price: 9430,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 36,
+    id: 80,
     brand: "MUTLU",
     width: 175,
     height: 175,
@@ -406,9 +478,11 @@ export const ACCUMULATORS = [
     polarity: "Обратная",
     capacity: "60",
     price: 9100,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 37,
+    id: 81,
     brand: "ZUBR",
     width: 175,
     height: 190,
@@ -417,9 +491,11 @@ export const ACCUMULATORS = [
     polarity: "Обратная",
     capacity: "50",
     price: 6100,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
   {
-    id: 38,
+    id: 82,
     brand: "ZUBR",
     width: 127,
     height: 225,
@@ -428,5 +504,7 @@ export const ACCUMULATORS = [
     polarity: "Обратная",
     capacity: "40",
     price: 5950,
+    imgSrc:
+      "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
   },
 ];

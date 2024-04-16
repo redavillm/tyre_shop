@@ -41,8 +41,8 @@ export const Auth = () => {
       <h7>Введте логин и пароль</h7>
       <div>
         <form>
-          <input type="text" placeholder="Login..." />
-          <input type="password" placeholder="Password..." />
+          <input type="text" placeholder="Логин..." />
+          <input type="password" placeholder="Пароль..." />
           <button>Войти</button>
         </form>
       </div>

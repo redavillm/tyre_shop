@@ -1,22 +1,23 @@
 import styled from "styled-components";
 import { TyreCard } from "./TyreCard/TyreCard";
+import { Link } from "react-router-dom";
 
 const StyledTyresCatalog = styled.div`
   display: flex;
   flex-wrap: wrap;
+  & a {
+    display: flex;
+    flex-wrap: wrap;
+  }
 `;
 
 export const TyresList = ({ tyresList, isWinterIcon }) => {
   return (
     <StyledTyresCatalog>
-      {tyresList.map((el) => (
-        <TyreCard
-          title={el.brand + " " + el.model}
-          tyreParams={el.width + " " + el.height + " " + el.radius}
-          price={el.price}
-          imgSrc="https://xn--j1apr.xn--p1ai/wp-content/uploads/2020/09/11r22.5-kama-nf-701.png"
-          isWinterIcon={isWinterIcon}
-        />
+      {tyresList.map(({ id }) => (
+        <Link to={`/tyres/${id}`} key={id}>
+          <TyreCard id={id} isWinterIcon={isWinterIcon} />
+        </Link>
       ))}
     </StyledTyresCatalog>
   );

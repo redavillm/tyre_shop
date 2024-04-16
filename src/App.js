@@ -8,6 +8,8 @@ import { Disks } from "./pages/Disks/Disks";
 import { Contacts } from "./pages/Contacts/Contacts";
 import { Auth } from "./pages/Auth/Auth";
 import { Registration } from "./pages/Registration/Registration";
+import { Tyre } from "./pages/Tyre/Tyre";
+import { NotFound } from "./pages/NotFound.js/NotFound";
 
 const StyledContainer = styled.div`
   margin: 0px auto;
@@ -27,11 +29,13 @@ const AppContainer = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Tyres />} />
-          <Route path="/disks" element={<Disks />} />
-          <Route path="/accumulators" element={<Accumulators />} />
+          <Route path="/tyres/:id" element={<Tyre />} />
+          <Route path="/disks" element={<Disks />}></Route>
+          <Route path="/accumulators" element={<Accumulators />}></Route>
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/registration" element={<Registration />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Content>
       <Footer />
