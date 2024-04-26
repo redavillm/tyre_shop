@@ -11,12 +11,12 @@ const StyledTyresCatalog = styled.div`
   }
 `;
 
-export const TyresList = ({ tyresList, isWinterIcon }) => {
+export const TyresList = ({ tyresList }) => {
   return (
     <StyledTyresCatalog>
       {tyresList.map(({ id }) => (
         <Link to={`/tyres/${id}`} key={id}>
-          <TyreCard id={id} isWinterIcon={isWinterIcon} />
+          <TyreCard id={id} />
         </Link>
       ))}
     </StyledTyresCatalog>

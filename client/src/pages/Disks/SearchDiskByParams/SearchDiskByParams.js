@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { disksFilter, optionsCreator } from "../../../scripts";
-import { DISKS } from "../../../db/DISKS";
+import { disksFilter, disksOptionsCreator } from "../../../scripts";
 
 const EMPTY_LIST = {
   diametr: "-",
@@ -66,7 +65,7 @@ export const SearchDiskByParams = ({ setDisksList }) => {
               onChange={handleSelectChange("diametr")}
             >
               <option>-</option>
-              {optionsCreator("diametr", DISKS).map((el, index) => (
+              {disksOptionsCreator("diametr").map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
             </select>
@@ -78,7 +77,7 @@ export const SearchDiskByParams = ({ setDisksList }) => {
               onChange={handleSelectChange("mount")}
             >
               <option>-</option>
-              {optionsCreator("mount", DISKS).map((el, index) => (
+              {disksOptionsCreator("mount").map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
             </select>
@@ -90,7 +89,7 @@ export const SearchDiskByParams = ({ setDisksList }) => {
               onChange={handleSelectChange("brand")}
             >
               <option>-</option>
-              {optionsCreator("brand", DISKS).map((el, index) => (
+              {disksOptionsCreator("brand").map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
             </select>
@@ -102,7 +101,7 @@ export const SearchDiskByParams = ({ setDisksList }) => {
               onChange={handleSelectChange("type")}
             >
               <option>-</option>
-              {optionsCreator("type", DISKS).map((el, index) => (
+              {disksOptionsCreator("type").map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
             </select>

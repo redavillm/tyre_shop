@@ -26,7 +26,6 @@ const StyledTyreCatalogButtons = styled.div`
 export const Tyres = () => {
   const [isByParams, setIsByParams] = useState(true);
   const [isWinter, setIsWinter] = useState(false);
-  const [isWinterIcon, setIsWinterIcon] = useState(false);
   const [tyresList, setTyresList] = useState(
     !isWinter
       ? TYRES.filter((el) => el.season === "summer")
@@ -59,12 +58,11 @@ export const Tyres = () => {
           setTyresList={setTyresList}
           isWinter={isWinter}
           setIsWinter={setIsWinter}
-          setIsWinterIcon={setIsWinterIcon}
         />
       ) : (
         <SearchByCar />
       )}
-      <TyresList tyresList={tyresList} isWinterIcon={isWinterIcon} />
+      <TyresList tyresList={tyresList} />
     </div>
   );
 };

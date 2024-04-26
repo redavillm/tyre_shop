@@ -5,7 +5,7 @@ export const disksFilter = (selectedOption) => {
 
   return DISKS.filter(
     (el) =>
-      (diametr === "-" || el.diametr === diametr) &&
+      (diametr === "-" || el.diametr === +diametr) &&
       (mount === "-" || el.mount === mount) &&
       (type === "-" || el.type === type) &&
       (brand === "-" || el.brand === brand)

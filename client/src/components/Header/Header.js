@@ -36,6 +36,9 @@ export const Header = () => {
         <p>На рынке с 1994 года.</p>
       </div>
       <Flex>
+        <Link to="/cart">
+          <StyledLogInBtn className="fa fa-shopping-cart" aria-hidden="true" />
+        </Link>
         <Link to="/auth">
           <StyledLogInBtn className="fa fa-sign-in" aria-hidden="true" />
         </Link>

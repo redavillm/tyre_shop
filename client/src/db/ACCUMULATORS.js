@@ -7,7 +7,7 @@ export const ACCUMULATORS = [
     length: 276,
     model: "Energy 630 En",
     polarity: "Обратная",
-    capacity: "73",
+    capacity: 73,
     price: 9500,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -20,7 +20,7 @@ export const ACCUMULATORS = [
     length: 232,
     model: "Top JIS 600 En",
     polarity: "Обратная",
-    capacity: "60",
+    capacity: 60,
     price: 9500,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -34,7 +34,7 @@ export const ACCUMULATORS = [
     length: 242,
     model: "Top 600 En",
     polarity: "Обратная",
-    capacity: "62",
+    capacity: 62,
     price: 9590,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -47,7 +47,7 @@ export const ACCUMULATORS = [
     length: 242,
     model: "Energy 620 En",
     polarity: "Обратная",
-    capacity: "66",
+    capacity: 66,
     price: 9590,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -60,7 +60,7 @@ export const ACCUMULATORS = [
     length: 207,
     model: "DRIVE EURO 470 En",
     polarity: "Обратная",
-    capacity: "50",
+    capacity: 50,
     price: 6250,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -73,7 +73,7 @@ export const ACCUMULATORS = [
     length: 242,
     model: "BDn 540 En",
     polarity: "Обратная",
-    capacity: "60",
+    capacity: 60,
     price: 11200,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -86,7 +86,7 @@ export const ACCUMULATORS = [
     length: 276,
     model: "BDn 680 En",
     polarity: "Обратная",
-    capacity: "72",
+    capacity: 72,
     price: 11200,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -99,7 +99,7 @@ export const ACCUMULATORS = [
     length: 232,
     model: "Standart 520 En",
     polarity: "Обратная",
-    capacity: "60",
+    capacity: 60,
     price: 8350,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -112,7 +112,7 @@ export const ACCUMULATORS = [
     length: 242,
     model: "BDn 540 En",
     polarity: "Обратная",
-    capacity: "60",
+    capacity: 60,
     price: 10950,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -125,7 +125,7 @@ export const ACCUMULATORS = [
     length: 242,
     model: "L2-1 540 En",
     polarity: "Обратная",
-    capacity: "60",
+    capacity: 60,
     price: 5950,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -138,7 +138,7 @@ export const ACCUMULATORS = [
     length: 242,
     model: "EFB 600 En",
     polarity: "Обратная",
-    capacity: "60",
+    capacity: 60,
     price: 8800,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -151,7 +151,7 @@ export const ACCUMULATORS = [
     length: 260,
     model: "D26-3 680 En",
     polarity: "Обратная",
-    capacity: "75",
+    capacity: 75,
     price: 9500,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -164,7 +164,7 @@ export const ACCUMULATORS = [
     length: 353,
     model: "L5-1 820 En",
     polarity: "Обратная",
-    capacity: "100",
+    capacity: 100,
     price: 11800,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -177,7 +177,7 @@ export const ACCUMULATORS = [
     length: 242,
     model: "DRIVE EURO 550 En",
     polarity: "Обратная",
-    capacity: "60",
+    capacity: 60,
     price: 5750,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -190,7 +190,7 @@ export const ACCUMULATORS = [
     length: 242,
     model: "DRIVE EURO 600 En",
     polarity: "Прямая",
-    capacity: "62",
+    capacity: 62,
     price: 5850,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -203,7 +203,7 @@ export const ACCUMULATORS = [
     length: 187,
     model: "DRIVE ASIA 310 En",
     polarity: "Прямая",
-    capacity: "40",
+    capacity: 40,
     price: 4450,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -216,7 +216,7 @@ export const ACCUMULATORS = [
     length: 306,
     model: "BDn 830 En",
     polarity: "Прямая",
-    capacity: "95",
+    capacity: 95,
     price: 15950,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -229,7 +229,7 @@ export const ACCUMULATORS = [
     length: 242,
     model: "L2R-1 540 En",
     polarity: "Прямая",
-    capacity: "60",
+    capacity: 60,
     price: 5950,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -242,7 +242,7 @@ export const ACCUMULATORS = [
     length: 276,
     model: "L3R-1 680 En",
     polarity: "Прямая",
-    capacity: "74",
+    capacity: 74,
     price: 8900,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -255,7 +255,7 @@ export const ACCUMULATORS = [
     length: 242,
     model: "6 СТ 500 En",
     polarity: "Прямая",
-    capacity: "60",
+    capacity: 60,
     price: 3990,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -268,7 +268,7 @@ export const ACCUMULATORS = [
     length: 306,
     model: "ASIA EFB 6СТ 850 En",
     polarity: "Прямая",
-    capacity: "100",
+    capacity: 100,
     price: 13250,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -281,7 +281,7 @@ export const ACCUMULATORS = [
     length: 242,
     model: "SFB M3 540 En",
     polarity: "Прямая",
-    capacity: "60",
+    capacity: 60,
     price: 9950,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -294,7 +294,7 @@ export const ACCUMULATORS = [
     length: 242,
     model: "6СТ 540 En",
     polarity: "Прямая",
-    capacity: "60",
+    capacity: 60,
     price: 5550,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -307,7 +307,7 @@ export const ACCUMULATORS = [
     length: 242,
     model: "6СТ 580 En",
     polarity: "Прямая",
-    capacity: "62",
+    capacity: 62,
     price: 5650,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -320,7 +320,7 @@ export const ACCUMULATORS = [
     length: 276,
     model: "6СТ 680 En",
     polarity: "Прямая",
-    capacity: "75",
+    capacity: 75,
     price: 6500,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -333,7 +333,7 @@ export const ACCUMULATORS = [
     length: 276,
     model: "Superior Reliability 690 En",
     polarity: "Прямая",
-    capacity: "77",
+    capacity: 77,
     price: 9120,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -346,7 +346,7 @@ export const ACCUMULATORS = [
     length: 276,
     model: "ASIA 640 En",
     polarity: "Прямая",
-    capacity: "80",
+    capacity: 80,
     price: 8330,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -359,7 +359,7 @@ export const ACCUMULATORS = [
     length: 306,
     model: "6 СТ 700 En",
     polarity: "Прямая",
-    capacity: "90",
+    capacity: 90,
     price: 9950,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -372,7 +372,7 @@ export const ACCUMULATORS = [
     length: 136,
     model: "Light",
     polarity: "Прямая",
-    capacity: "5",
+    capacity: 5,
     price: 600,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -385,7 +385,7 @@ export const ACCUMULATORS = [
     length: 242,
     model: "Bolt 590 En",
     polarity: "Прямая",
-    capacity: "60",
+    capacity: 60,
     price: 5900,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -398,7 +398,7 @@ export const ACCUMULATORS = [
     length: 242,
     model: "Bolt 590 En",
     polarity: "Прямая",
-    capacity: "60",
+    capacity: 60,
     price: 5900,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -411,7 +411,7 @@ export const ACCUMULATORS = [
     length: 232,
     model: "Premium 580 En",
     polarity: "Обратная",
-    capacity: "65",
+    capacity: 65,
     price: 12500,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -424,7 +424,7 @@ export const ACCUMULATORS = [
     length: 242,
     model: "EURO Silver 600 En",
     polarity: "Обратная",
-    capacity: "60",
+    capacity: 60,
     price: 8950,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -437,7 +437,7 @@ export const ACCUMULATORS = [
     length: 353,
     model: "EFB 6СТ 930 En",
     polarity: "Обратная",
-    capacity: "100",
+    capacity: 100,
     price: 14250,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -450,7 +450,7 @@ export const ACCUMULATORS = [
     length: 260,
     model: "ASIA EFB 6СТ 710 En",
     polarity: "Обратная",
-    capacity: "80",
+    capacity: 80,
     price: 10850,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -463,7 +463,7 @@ export const ACCUMULATORS = [
     length: 232,
     model: "SFB M2 520 En",
     polarity: "Обратная",
-    capacity: "60",
+    capacity: 60,
     price: 9430,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -476,7 +476,7 @@ export const ACCUMULATORS = [
     length: 242,
     model: "SFB M3 540 En",
     polarity: "Обратная",
-    capacity: "60",
+    capacity: 60,
     price: 9100,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -489,7 +489,7 @@ export const ACCUMULATORS = [
     length: 207,
     model: "Ultra 440 En",
     polarity: "Обратная",
-    capacity: "50",
+    capacity: 50,
     price: 6100,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",
@@ -502,7 +502,7 @@ export const ACCUMULATORS = [
     length: 187,
     model: "PREMIUM ASIA 300 En",
     polarity: "Обратная",
-    capacity: "40",
+    capacity: 40,
     price: 5950,
     imgSrc:
       "https://pngimg.com/uploads/automotive_battery/automotive_battery_PNG12100.png",

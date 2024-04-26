@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { tyresfilter, optionsCreator } from "../../../scripts";
-import { TYRES } from "../../../db/TYRES";
+import { tyresfilter, tyresOptionsCreator } from "../../../scripts";
 
 const StyledCatalogByParams = styled.div`
   border-bottom: 1px solid #aec09a;
@@ -53,23 +52,18 @@ const StyledCheckbox = styled.label`
   }
 `;
 
-const EMPTY_LIST = {
-  width: "-",
-  height: "-",
-  radius: "-",
-  brand: "-",
+const EMPTY_OPTIONS_LIST = {
+  width: "all",
+  height: "all",
+  radius: "all",
+  brand: "all",
 };
 
-export const SearchByParams = ({
-  setTyresList,
-  isWinter,
-  setIsWinter,
-  setIsWinterIcon,
-}) => {
-  const [selectedOption, setSelectedOption] = useState(EMPTY_LIST);
+export const SearchByParams = ({ setTyresList, isWinter, setIsWinter }) => {
+  const [selectedOptions, setSelectedOptions] = useState(EMPTY_OPTIONS_LIST);
 
   const handleSelectChange = (key) => (event) => {
-    setSelectedOption((prevOptions) => ({
+    setSelectedOptions((prevOptions) => ({
       ...prevOptions,
       [key]: event.target.value,
     }));
@@ -77,12 +71,7 @@ export const SearchByParams = ({
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { tyresArrResult, isWinterIcon } = tyresfilter(
-      selectedOption,
-      isWinter
-    );
-    setTyresList(tyresArrResult);
-    setIsWinterIcon(isWinterIcon);
+    setTyresList(tyresfilter(selectedOptions, isWinter));
   };
 
   const handleChanegeCheckbox = () => {
@@ -96,49 +85,49 @@ export const SearchByParams = ({
           <StyledCatalogEl>
             Ширина
             <select
-              value={selectedOption.width}
+              value={selectedOptions.width}
               onChange={handleSelectChange("width")}
             >
-              <option>-</option>
-              {optionsCreator("width", TYRES).map((width, index) => {
-                return <option key={index}>{width}</option>;
-              })}
+              <option>all</option>
+              {tyresOptionsCreator("width").map((el, index) => (
+                <option key={index}>{el}</option>
+              ))}
             </select>
           </StyledCatalogEl>
           <StyledCatalogEl>
             Высота
             <select
-              value={selectedOption.height}
+              value={selectedOptions.height}
               onChange={handleSelectChange("height")}
             >
-              <option>-</option>
-              {optionsCreator("height", TYRES).map((height, index) => {
-                return <option key={index}>{height}</option>;
-              })}
+              <option>all</option>
+              {tyresOptionsCreator("height").map((el, index) => (
+                <option key={index}>{el}</option>
+              ))}
             </select>
           </StyledCatalogEl>
           <StyledCatalogEl>
             Диаметр
             <select
-              value={selectedOption.radius}
+              value={selectedOptions.radius}
               onChange={handleSelectChange("radius")}
             >
-              <option>-</option>
-              {optionsCreator("radius", TYRES).map((radius, index) => {
-                return <option key={index}>{radius}</option>;
-              })}
+              <option>all</option>
+              {tyresOptionsCreator("radius").map((el, index) => (
+                <option key={index}>{el}</option>
+              ))}
             </select>
           </StyledCatalogEl>
           <StyledCatalogEl>
             Производитель
             <select
-              value={selectedOption.brand}
+              value={selectedOptions.brand}
               onChange={handleSelectChange("brand")}
             >
-              <option>-</option>
-              {optionsCreator("brand", TYRES).map((width, index) => {
-                return <option key={index}>{width}</option>;
-              })}
+              <option>all</option>
+              {tyresOptionsCreator("brand").map((el, index) => (
+                <option key={index}>{el}</option>
+              ))}
             </select>
           </StyledCatalogEl>
           <StyledCheckbox>

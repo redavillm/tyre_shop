@@ -37,23 +37,25 @@ const StyeledCard = styled.span`
   }
 `;
 
-export const TyreCard = ({ id, isWinterIcon }) => {
-  const { brand, model, width, height, radius, price, imgSrc } = fetchTyre(id);
+export const TyreCard = ({ id }) => {
+  const tyre = fetchTyre(id);
 
   return (
     <StyeledCard>
       <div>
-        <img src={imgSrc} alt="tyre img" />
+        <img src={tyre.imgSrc} alt="tyre img" />
         <h6>
-          {brand + " " + model}{" "}
-          {isWinterIcon ? (
+          {tyre.brand + " " + tyre.model}{" "}
+          {tyre.season === "winter" ? (
             <i className="fa fa-snowflake-o" aria-hidden="true" />
           ) : (
             <i className="fa fa-sun-o" aria-hidden="true" />
           )}
         </h6>
-        <p>{width + "x" + height + "x" + radius}</p>
-        <p>{price} руб.</p>
+        <p>
+          {tyre.size.width + "x" + tyre.size.height + "x" + tyre.size.radius}
+        </p>
+        <p>{tyre.price} руб.</p>
       </div>
     </StyeledCard>
   );

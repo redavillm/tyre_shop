@@ -1,17 +1,18 @@
 import styled from "styled-components";
 import { Route, Routes } from "react-router-dom";
-import { Header } from "./components/Header/Header";
-import { Footer } from "./components/Footer/Footer";
-import { Accumulators } from "./pages/Accumulators/Accumulators";
-import { Tyres } from "./pages/Tyres/Tyres";
-import { Disks } from "./pages/Disks/Disks";
-import { Contacts } from "./pages/Contacts/Contacts";
-import { Auth } from "./pages/Auth/Auth";
-import { Registration } from "./pages/Registration/Registration";
-import { Tyre } from "./pages/Tyre/Tyre";
-import { NotFound } from "./pages/NotFound.js/NotFound";
-import { Disk } from "./pages/Disk/Disk";
-import { Accumulator } from "./pages/Accumulator/Accumulator";
+import { Header, Footer } from "./components";
+import {
+  Tyre,
+  Tyres,
+  Disk,
+  Disks,
+  Accumulator,
+  Accumulators,
+  Contacts,
+  Auth,
+  Registration,
+  NotFound,
+} from "./pages";
 
 const StyledContainer = styled.div`
   margin: 0px auto;

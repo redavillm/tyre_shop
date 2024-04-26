@@ -5,9 +5,15 @@ export const accumFilter = (selectedOption) => {
 
   return ACCUMULATORS.filter(
     (el) =>
-      (size === "-" || el.size === size) &&
-      (polarity === "-" || el.polarity === polarity) &&
-      (capacity === "-" || el.capacity === capacity) &&
-      (brand === "-" || el.brand === brand)
+      (size === "all" ||
+        el.length + "x" + el.height + "x" + el.width ===
+          ACCUMULATORS.length +
+            "x" +
+            ACCUMULATORS.height +
+            "x" +
+            ACCUMULATORS.width) &&
+      (polarity === "all" || el.polarity === polarity) &&
+      (capacity === "all" || el.capacity === capacity) &&
+      (brand === "all" || el.brand === brand)
   );
 };
