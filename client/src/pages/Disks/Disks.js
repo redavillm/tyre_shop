@@ -23,7 +23,7 @@ const StyledDisksCatalogButtons = styled.div`
   }
 `;
 
-export const Disks = () => {
+export const Disks = (setCartItems) => {
   const [isByParams, setIsByParams] = useState(true);
   const [disksList, setDisksList] = useState(DISKS);
   return (

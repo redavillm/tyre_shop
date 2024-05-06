@@ -12,7 +12,9 @@ import {
   Auth,
   Registration,
   NotFound,
+  Cart,
 } from "./pages";
+import { useState } from "react";
 
 const StyledContainer = styled.div`
   margin: 0px auto;
@@ -26,21 +28,41 @@ const Content = styled.div`
 `;
 
 const AppContainer = () => {
+  const [cartItems, setCartItems] = useState();
   return (
     <StyledContainer>
       <Content>
         <Header />
         <Routes>
-          <Route path="/" element={<Tyres />} />
-          <Route path="/tyres/:id" element={<Tyre />} />
-          <Route path="/disks" element={<Disks />}></Route>
-          <Route path="/disks/:id" element={<Disk />} />
-          <Route path="/accumulators" element={<Accumulators />} />
-          <Route path="/accumulators/:id" element={<Accumulator />} />
+          <Route path="/" element={<Tyres setCartItems={setCartItems} />} />
+          <Route
+            path="/tyres/:id"
+            element={<Tyre setCartItems={setCartItems} />}
+          />
+          <Route
+            path="/disks"
+            element={<Disks setCartItems={setCartItems} />}
+          ></Route>
+          <Route
+            path="/disks/:id"
+            element={<Disk setCartItems={setCartItems} />}
+          />
+          <Route
+            path="/accumulators"
+            element={<Accumulators setCartItems={setCartItems} />}
+          />
+          <Route
+            path="/accumulators/:id"
+            element={<Accumulator setCartItems={setCartItems} />}
+          />
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/registration" element={<Registration />} />
           <Route path="*" element={<NotFound />} />
+          <Route
+            path="/cart"
+            element={<Cart cartItems={cartItems} setCartItems={setCartItems} />}
+          />
         </Routes>
       </Content>
       <Footer />

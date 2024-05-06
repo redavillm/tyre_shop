@@ -23,7 +23,7 @@ const StyledAccumsCatalogButtons = styled.div`
   }
 `;
 
-export const Accumulators = () => {
+export const Accumulators = (setCartItems) => {
   const [isByParams, setIsByParams] = useState(true);
   const [accumList, setAccumList] = useState(ACCUMULATORS);
   return (

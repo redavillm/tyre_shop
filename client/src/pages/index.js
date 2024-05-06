@@ -8,3 +8,4 @@ export * from "./Registration/Registration";
 export * from "./Tyres/Tyres";
 export * from "./Tyre/Tyre";
 export * from "./NotFound/NotFound";
+export * from "./Cart/Cart";

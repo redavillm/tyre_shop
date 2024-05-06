@@ -5,3 +5,5 @@ export * from "./tyresOptionsCreator";
 export * from "./fetchProduct";
 export * from "./disksOptionsCreator";
 export * from "./accumsOptionCreator";
+export * from "./getProductTypeById";
+export * from "./findProductById";

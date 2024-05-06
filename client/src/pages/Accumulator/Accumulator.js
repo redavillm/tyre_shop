@@ -68,7 +68,7 @@ const StyledCounter = styled.div`
   }
 `;
 
-export const Accumulator = () => {
+export const Accumulator = (setCartItems) => {
   const [counter, setCounter] = useState(1);
   const navigate = useNavigate();
 

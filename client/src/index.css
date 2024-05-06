@@ -29,8 +29,14 @@ body {
 }
 
 .test_styles {
-  font-size: 48px;
+  padding: 10px 0px 0px 0px;
 }
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
 .colors {
   background-color: #1a2902;
   background-color: #344c11;

@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { fetchTyre } from "../../../../scripts";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const StyeledCard = styled.span`
   width: 260px;
@@ -37,15 +39,66 @@ const StyeledCard = styled.span`
   }
 `;
 
+const Flex = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const StyledCounter = styled.div`
+  & button {
+    padding: 10px 20px 10px 20px;
+    background-color: #aec09a;
+    border: solid transparent 1px;
+    color: white;
+    cursor: pointer;
+    &:hover {
+      border: solid white 1px;
+    }
+  }
+  & span {
+    text-align: center;
+    margin: 0px 20px 0px 20px;
+  }
+`;
+
+const StyledCardButton = styled.button`
+  background: rgba(52, 76, 17, 0.5);
+  padding: 10px;
+  margin: 10px 10px;
+  cursor: pointer;
+  border: solid 1px transparent;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: white;
+  &:hover {
+    border: solid 1px white;
+  }
+`;
+
 export const TyreCard = ({ id }) => {
+  const [counter, setCounter] = useState(2);
+
+  const increaseCounter = () => {
+    if (counter >= 40) {
+      return;
+    }
+    setCounter(counter + 2);
+  };
+  const decreaseCounter = () => {
+    if (counter <= 2) {
+      return;
+    }
+    setCounter(counter - 2);
+  };
+
   const tyre = fetchTyre(id);
 
   return (
     <StyeledCard>
-      <div>
+      <Link to={`/tyres/${id}`} key={id}>
         <img src={tyre.imgSrc} alt="tyre img" />
         <h6>
-          {tyre.brand + " " + tyre.model}{" "}
+          {tyre.brand + " " + tyre.model + " "}
           {tyre.season === "winter" ? (
             <i className="fa fa-snowflake-o" aria-hidden="true" />
           ) : (
@@ -55,8 +108,21 @@ export const TyreCard = ({ id }) => {
         <p>
           {tyre.size.width + "x" + tyre.size.height + "x" + tyre.size.radius}
         </p>
-        <p>{tyre.price} руб.</p>
-      </div>
+        <p>{tyre.price * counter} руб.</p>
+      </Link>
+      <StyledCounter>
+        <button onClick={decreaseCounter}>
+          <i class="fa fa-minus" aria-hidden="true" />
+        </button>
+        <span>{counter}</span>
+        <button onClick={increaseCounter}>
+          <i class="fa fa-plus" aria-hidden="true" />
+        </button>
+      </StyledCounter>
+      <Flex>
+        <StyledCardButton>В коризину</StyledCardButton>
+        <StyledCardButton>Купить</StyledCardButton>
+      </Flex>
     </StyeledCard>
   );
 };

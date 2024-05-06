@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { disksFilter, disksOptionsCreator } from "../../../scripts";
 
 const EMPTY_LIST = {
-  diametr: "-",
-  mount: "-",
-  brand: "-",
-  type: "-",
+  diametr: "all",
+  mount: "all",
+  brand: "all",
+  type: "all",
 };
 
 const StyledCatalogByParams = styled.div`
@@ -64,7 +64,7 @@ export const SearchDiskByParams = ({ setDisksList }) => {
               value={selectedOption.diametr}
               onChange={handleSelectChange("diametr")}
             >
-              <option>-</option>
+              <option>all</option>
               {disksOptionsCreator("diametr").map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
@@ -76,7 +76,7 @@ export const SearchDiskByParams = ({ setDisksList }) => {
               value={selectedOption.mount}
               onChange={handleSelectChange("mount")}
             >
-              <option>-</option>
+              <option>all</option>
               {disksOptionsCreator("mount").map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
@@ -88,7 +88,7 @@ export const SearchDiskByParams = ({ setDisksList }) => {
               value={selectedOption.brand}
               onChange={handleSelectChange("brand")}
             >
-              <option>-</option>
+              <option>all</option>
               {disksOptionsCreator("brand").map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
@@ -100,7 +100,7 @@ export const SearchDiskByParams = ({ setDisksList }) => {
               value={selectedOption.type}
               onChange={handleSelectChange("type")}
             >
-              <option>-</option>
+              <option>all</option>
               {disksOptionsCreator("type").map((el, index) => (
                 <option key={index}>{el}</option>
               ))}

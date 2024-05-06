@@ -64,7 +64,7 @@ const StyledCounter = styled.div`
   }
 `;
 
-export const Disk = () => {
+export const Disk = (setCartItems) => {
   const [counter, setCounter] = useState(2);
   const navigate = useNavigate();
 

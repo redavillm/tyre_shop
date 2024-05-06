@@ -23,7 +23,7 @@ const StyledTyreCatalogButtons = styled.div`
   }
 `;
 
-export const Tyres = () => {
+export const Tyres = (setCartItems) => {
   const [isByParams, setIsByParams] = useState(true);
   const [isWinter, setIsWinter] = useState(false);
   const [tyresList, setTyresList] = useState(

@@ -64,7 +64,7 @@ const StyledCounter = styled.div`
   }
 `;
 
-export const Tyre = () => {
+export const Tyre = (setCartItems) => {
   const [counter, setCounter] = useState(2);
   const navigate = useNavigate();
 
