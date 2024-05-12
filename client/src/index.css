@@ -29,12 +29,13 @@ body {
 }
 
 .test_styles {
-  padding: 10px 0px 0px 0px;
+  font-size: 16px;
 }
 
 .flex {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  flex-wrap: nowrap;
 }
 
 .colors {

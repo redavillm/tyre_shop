@@ -7,12 +7,17 @@ const StyledCatalogByParams = styled.div`
   padding-bottom: 20px;
   & button {
     width: 150px;
-    padding: 5px 20px;
+    padding: 10px 20px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(190, 190, 190);
+    }
   }
   & form {
     display: flex;
     flex-direction: column;
-    align-items: center;
   }
 `;
 
@@ -22,7 +27,7 @@ const Flex = styled.div`
 `;
 
 const StyledCatalogEl = styled.div`
-  margin: 20px 40px;
+  margin: 20px 40px 20px 0px;
   & select {
     width: 100%;
     padding: 10px;
@@ -42,6 +47,7 @@ const StyledCheckbox = styled.label`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  margin-top: 40px;
   & input {
     position: absolute;
     top: 0;
@@ -50,6 +56,10 @@ const StyledCheckbox = styled.label`
     width: 25px;
     background-color: #eee;
   }
+`;
+
+const Filter = styled.div`
+  font-size: 22px;
 `;
 
 const EMPTY_OPTIONS_LIST = {
@@ -142,6 +152,14 @@ export const SearchByParams = ({ setTyresList, isWinter, setIsWinter }) => {
         </Flex>
         <button type="submit">Поиск</button>
       </form>
+      <Filter>
+        Фильтр:
+        <select>
+          <option>По популяроности</option>
+          <option>Дешевле</option>
+          <option>Дороже</option>
+        </select>
+      </Filter>
     </StyledCatalogByParams>
   );
 };

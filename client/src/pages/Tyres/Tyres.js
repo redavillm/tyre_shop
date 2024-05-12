@@ -23,7 +23,7 @@ const StyledTyreCatalogButtons = styled.div`
   }
 `;
 
-export const Tyres = (setCartItems) => {
+export const Tyres = ({ setCartItems, cartItems }) => {
   const [isByParams, setIsByParams] = useState(true);
   const [isWinter, setIsWinter] = useState(false);
   const [tyresList, setTyresList] = useState(
@@ -62,7 +62,12 @@ export const Tyres = (setCartItems) => {
       ) : (
         <SearchByCar />
       )}
-      <ProductsList productsList={tyresList} type="tyres" />
+      <ProductsList
+        productsList={tyresList}
+        type="tyres"
+        setCartItems={setCartItems}
+        cartItems={cartItems}
+      />
     </div>
   );
 };

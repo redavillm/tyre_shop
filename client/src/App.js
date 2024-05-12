@@ -28,13 +28,23 @@ const Content = styled.div`
 `;
 
 const AppContainer = () => {
-  const [cartItems, setCartItems] = useState();
+  const [cartItems, setCartItems] = useState([
+    {
+      id: 12,
+      count: 0,
+    },
+  ]);
   return (
     <StyledContainer>
       <Content>
         <Header />
         <Routes>
-          <Route path="/" element={<Tyres setCartItems={setCartItems} />} />
+          <Route
+            path="/"
+            element={
+              <Tyres setCartItems={setCartItems} cartItems={cartItems} />
+            }
+          />
           <Route
             path="/tyres/:id"
             element={<Tyre setCartItems={setCartItems} />}
