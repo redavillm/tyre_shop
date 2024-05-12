@@ -2,9 +2,9 @@ import { useState } from "react";
 import styled from "styled-components";
 import { SearchDiskByParams } from "./SearchDiskByParams/SearchDiskByParams";
 import { SearchDiskByCar } from "./SearchDiskByCar/SearchDiskByCar";
-import { DisksList } from "./DisksList/DisksList";
 import { DISKS } from "../../db/DISKS";
 import { Navbar } from "../../components/Navbar/Navbar";
+import { ProductsList } from "../../components/ProductsList/ProductsList";
 
 const StyledDisksCatalogButtons = styled.div`
   display: flex;
@@ -52,7 +52,7 @@ export const Disks = (setCartItems) => {
       ) : (
         <SearchDiskByCar setDisksList={setDisksList} />
       )}
-      <DisksList disksList={disksList} />
+      <ProductsList productsList={disksList} type="disks" />
     </div>
   );
 };

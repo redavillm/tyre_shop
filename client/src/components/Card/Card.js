@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { findProductById, getProductTypeById } from "../../scripts";
+import { getProductTypeById } from "../../scripts";
 
 const StyeledCard = styled.span`
   width: 260px;
@@ -76,48 +76,55 @@ const StyledCardButton = styled.button`
   }
 `;
 
-export const Card = ({ id }) => {
-  const [counter, setCounter] = useState(2);
-
-  const productData = findProductById(id);
-
-  let productType = "";
-
-  //последняя мысль, нужно в switch case так же парсить productData в зависимости от типа товара
-  //далее нужно создавать соответствующую схему Card
-
-  switch (getProductTypeById(id)) {
-    case "accumulator":
-      return (productType = "accumulator");
-    case "disk":
-      return (productType = "disk");
-    case "tyre":
-      return (productType = "tyre");
-    default:
-      break;
-  }
+export const Card = ({
+  id,
+  title,
+  params,
+  price,
+  imgSrc,
+  season,
+  counterStep,
+}) => {
+  const [counter, setCounter] = useState(counterStep);
 
   const increaseCounter = () => {
     if (counter >= 40) {
       return;
     }
-    setCounter(counter + 2);
+    setCounter(counter + counterStep);
   };
   const decreaseCounter = () => {
-    if (counter <= 2) {
+    if (counter <= counterStep) {
       return;
     }
-    setCounter(counter - 2);
+    setCounter(counter - counterStep);
+  };
+
+  const StyledIcon = styled.i`
+    margin-left: 5px;
+  `;
+
+  const isSeasonIcon = () => {
+    if (season) {
+      return season === "winter" ? (
+        <StyledIcon className="fa fa-snowflake-o" aria-hidden="true" />
+      ) : (
+        <StyledIcon className="fa fa-sun-o" aria-hidden="true" />
+      );
+    }
   };
 
   return (
     <StyeledCard>
-      <Link to={`/${productType}s/${id}`} key={id}>
+      <Link to={`/${getProductTypeById(id)}s/${id}`} key={id}>
         <div>
           <img src={imgSrc} alt="Product img" />
-          <h6>{title}</h6>
+          <h6>
+            {title}
+            {isSeasonIcon()}
+          </h6>
           <p>{params}</p>
-          <p>{price} руб.</p>
+          <p>{price * counter} руб.</p>
         </div>
       </Link>
       <StyledCounter>

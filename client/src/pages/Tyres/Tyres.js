@@ -2,9 +2,9 @@ import { useState } from "react";
 import styled from "styled-components";
 import { SearchByParams } from "./searchByParams/SearchByParams";
 import { SearchByCar } from "./searchByCar/SearchByCar";
-import { TyresList } from "./TyresList/TyresList";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { TYRES } from "../../db/TYRES";
+import { ProductsList } from "../../components/ProductsList/ProductsList";
 
 const StyledTyreCatalogButtons = styled.div`
   display: flex;
@@ -62,7 +62,7 @@ export const Tyres = (setCartItems) => {
       ) : (
         <SearchByCar />
       )}
-      <TyresList tyresList={tyresList} />
+      <ProductsList productsList={tyresList} type="tyres" />
     </div>
   );
 };

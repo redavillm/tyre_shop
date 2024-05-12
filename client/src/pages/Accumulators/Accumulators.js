@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { AccumulatorsList } from "./AccumulatorsList/AccumulatorsList";
 import styled from "styled-components";
 import { SearchAccumsByParams } from "./SearchAccumsByParams/SearchAccumsByParams";
 import { SearchAccumsByCar } from "./SearchAccumsByCar/SearchAccumsByCar";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { ACCUMULATORS } from "../../db/ACCUMULATORS";
+import { ProductsList } from "../../components/ProductsList/ProductsList";
 
 const StyledAccumsCatalogButtons = styled.div`
   display: flex;
@@ -52,7 +52,7 @@ export const Accumulators = (setCartItems) => {
       ) : (
         <SearchAccumsByCar setAccumList={setAccumList} />
       )}
-      <AccumulatorsList accumList={accumList} />
+      <ProductsList productsList={accumList} type="accumulators" />
     </div>
   );
 };

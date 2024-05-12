@@ -15,3 +15,7 @@ to launch backend of the application,
 ### `npm start client`
 
 to launch the application client.
+
+### `npm start bulid`
+
+to launch building of the application.

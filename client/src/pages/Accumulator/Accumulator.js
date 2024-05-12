@@ -124,11 +124,11 @@ export const Accumulator = (setCartItems) => {
           <p>Полярность: {polarity}</p>
           <p>Размер:</p>
           <ul>
-            <li>Длинна: {length}</li>
-            <li>Высота: {height}</li>
-            <li>Ширина: {width}</li>
+            <li>Длинна: {length} см</li>
+            <li>Высота: {height} см</li>
+            <li>Ширина: {width} см</li>
           </ul>
-          <p>Емкость: {capacity}</p>
+          <p>Емкость: {capacity} Ah</p>
           <p>Цена: {price} руб.</p>
 
           <StyledCounter>
