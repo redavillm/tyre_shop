@@ -8,15 +8,15 @@ const SizeSchema = new Schema({
 });
 
 const TyresSchema = new Schema({
-  season: { type: String, required: true },
-  brand: { type: String, required: true },
-  model: { type: String, required: true },
+  season: String,
+  brand: String,
+  model: String,
   size: SizeSchema,
   price: Number,
   imgSrc: String,
   count: Number,
 });
 
-const model = mongoose.model("Tyres", TyresSchema, "tyres");
+const model = mongoose.model("Tyre", TyresSchema, "tyres");
 
 module.exports = model;

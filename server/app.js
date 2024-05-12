@@ -1,9 +1,12 @@
+require("dotenv").config();
+require("./models/db");
+
 const express = require("express");
 const cors = require("cors");
 const app = express();
 const PORT = 3001;
 
-const TyresController = require("./controllers/Tyres");
+const TyreController = require("./controllers/Tyre");
 
 app.use(cors());
 
@@ -11,7 +14,8 @@ app.use(express.static("public"));
 
 app.use(express.json());
 
-app.get("/tyres", TyresController.list);
+app.get("/tyres", TyreController.list);
+app.get("/tyres/:id", TyreController.getById);
 
 app.use("*", (req, res) => {
   res.status(404).json({
