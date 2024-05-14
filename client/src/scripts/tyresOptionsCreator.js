@@ -1,21 +1,19 @@
-import { TYRES } from "../db/TYRES";
-
-export const tyresOptionsCreator = (value) => {
+export const tyresOptionsCreator = (data, value) => {
   try {
     const optionsdResult = [];
 
     switch (value) {
       case "width":
-        TYRES.map((el) => optionsdResult.push(el.size.width));
+        data.map((el) => optionsdResult.push(el.size.width));
         break;
       case "height":
-        TYRES.map((el) => optionsdResult.push(el.size.height));
+        data.map((el) => optionsdResult.push(el.size.height));
         break;
       case "radius":
-        TYRES.map((el) => optionsdResult.push(el.size.radius));
+        data.map((el) => optionsdResult.push(el.size.radius));
         break;
       case "brand":
-        TYRES.map((el) => optionsdResult.push(el.brand));
+        data.map((el) => optionsdResult.push(el.brand));
         break;
       default:
         break;

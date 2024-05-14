@@ -1,10 +1,17 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { SearchByParams } from "./searchByParams/SearchByParams";
 import { SearchByCar } from "./searchByCar/SearchByCar";
-import { Navbar } from "../../components/Navbar/Navbar";
-import { TYRES } from "../../db/TYRES";
-import { ProductsList } from "../../components/ProductsList/ProductsList";
+import { Navbar, ProductsList } from "../../components";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectTyres,
+  selectIsWinter,
+  selectIsTyresByParams,
+} from "../../store/selectors";
+import {
+  CHANGE_IS_BY_PARAMS_FALSE,
+  CHANGE_IS_BY_PARAMS_TRUE,
+} from "../../store/actions";
 
 const StyledTyreCatalogButtons = styled.div`
   display: flex;
@@ -24,13 +31,15 @@ const StyledTyreCatalogButtons = styled.div`
 `;
 
 export const Tyres = ({ setCartItems, cartItems }) => {
-  const [isByParams, setIsByParams] = useState(true);
-  const [isWinter, setIsWinter] = useState(false);
-  const [tyresList, setTyresList] = useState(
-    !isWinter
-      ? TYRES.filter((el) => el.season === "summer")
-      : TYRES.filter((el) => el.season === "winter")
-  );
+  const isWinter = useSelector(selectIsWinter);
+  const isByParams = useSelector(selectIsTyresByParams);
+  const tyresList = useSelector(selectTyres)?.filter((el) => {
+    return isWinter ? el.season === "summer" : el.season === "winter";
+  });
+
+  console.log("tyreList", tyresList);
+
+  const dispatch = useDispatch();
 
   return (
     <div>
@@ -39,29 +48,21 @@ export const Tyres = ({ setCartItems, cartItems }) => {
         <StyledTyreCatalogButtons>
           <button
             onClick={() => {
-              setIsByParams(true);
+              dispatch(CHANGE_IS_BY_PARAMS_TRUE);
             }}
           >
             По параметрам
           </button>
           <button
             onClick={() => {
-              setIsByParams(false);
+              dispatch(CHANGE_IS_BY_PARAMS_FALSE);
             }}
           >
             По авто
           </button>
         </StyledTyreCatalogButtons>
       </div>
-      {isByParams ? (
-        <SearchByParams
-          setTyresList={setTyresList}
-          isWinter={isWinter}
-          setIsWinter={setIsWinter}
-        />
-      ) : (
-        <SearchByCar />
-      )}
+      {isByParams ? <SearchByParams /> : <SearchByCar />}
       <ProductsList
         productsList={tyresList}
         type="tyres"

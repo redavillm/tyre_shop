@@ -84,8 +84,6 @@ export const Card = ({
   imgSrc,
   season,
   counterStep,
-  setCartItems,
-  cartItems,
 }) => {
   const [counter, setCounter] = useState(counterStep);
 
@@ -116,10 +114,6 @@ export const Card = ({
     }
   };
 
-  const addCartItemHandler = () => {
-    setCartItems({ ...cartItems });
-  };
-
   return (
     <StyeledCard>
       <Link to={`/${getProductTypeById(id)}s/${id}`} key={id}>
@@ -143,9 +137,7 @@ export const Card = ({
         </button>
       </StyledCounter>
       <Flex>
-        <StyledCardButton onClick={addCartItemHandler()}>
-          В коризину
-        </StyledCardButton>
+        <StyledCardButton>В коризину</StyledCardButton>
         <StyledCardButton>Купить</StyledCardButton>
       </Flex>
     </StyeledCard>

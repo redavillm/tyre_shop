@@ -1,10 +1,8 @@
-import { TYRES } from "../db/TYRES";
-
-export const tyresfilter = (selectedOption, isWinter) => {
+export const tyresfilter = (data, selectedOption, isWinter) => {
   try {
     const { width, height, radius, brand } = selectedOption;
 
-    let tyresArrResult = TYRES.filter((el) => {
+    let tyresArrResult = data.filter((el) => {
       if (isWinter) {
         return el.season === "winter";
       } else {

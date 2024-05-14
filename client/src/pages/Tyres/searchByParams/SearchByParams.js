@@ -1,6 +1,13 @@
 import styled from "styled-components";
-import { useState } from "react";
 import { tyresfilter, tyresOptionsCreator } from "../../../scripts";
+import { useDispatch, useSelector } from "react-redux";
+import { selectTyresOptions } from "../../../store/selectors/tyres/selectedOptions";
+import {
+  CHANGE_IS_WINTER,
+  changeSerachOptions,
+  filteredList,
+} from "../../../store/actions";
+import { selectIsWinter, selectTyres } from "../../../store/selectors";
 
 const StyledCatalogByParams = styled.div`
   border-bottom: 1px solid #aec09a;
@@ -62,30 +69,29 @@ const Filter = styled.div`
   font-size: 22px;
 `;
 
-const EMPTY_OPTIONS_LIST = {
-  width: "all",
-  height: "all",
-  radius: "all",
-  brand: "all",
-};
+export const SearchByParams = () => {
+  const dispatch = useDispatch();
 
-export const SearchByParams = ({ setTyresList, isWinter, setIsWinter }) => {
-  const [selectedOptions, setSelectedOptions] = useState(EMPTY_OPTIONS_LIST);
+  const searchOptions = useSelector(selectTyresOptions);
+  const isWinter = useSelector(selectIsWinter);
+  const tyresList = useSelector(selectTyres);
 
   const handleSelectChange = (key) => (event) => {
-    setSelectedOptions((prevOptions) => ({
-      ...prevOptions,
-      [key]: event.target.value,
-    }));
+    dispatch(
+      changeSerachOptions({
+        ...searchOptions,
+        [key]: event.target.value,
+      })
+    );
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setTyresList(tyresfilter(selectedOptions, isWinter));
+    dispatch(filteredList(tyresfilter(tyresList, searchOptions, isWinter)));
   };
 
   const handleChanegeCheckbox = () => {
-    setIsWinter(!isWinter);
+    dispatch(CHANGE_IS_WINTER);
   };
 
   return (
@@ -95,11 +101,11 @@ export const SearchByParams = ({ setTyresList, isWinter, setIsWinter }) => {
           <StyledCatalogEl>
             Ширина
             <select
-              value={selectedOptions.width}
+              value={searchOptions.width}
               onChange={handleSelectChange("width")}
             >
               <option>all</option>
-              {tyresOptionsCreator("width").map((el, index) => (
+              {tyresOptionsCreator(tyresList, "width")?.map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
             </select>
@@ -107,11 +113,11 @@ export const SearchByParams = ({ setTyresList, isWinter, setIsWinter }) => {
           <StyledCatalogEl>
             Высота
             <select
-              value={selectedOptions.height}
+              value={searchOptions.height}
               onChange={handleSelectChange("height")}
             >
               <option>all</option>
-              {tyresOptionsCreator("height").map((el, index) => (
+              {tyresOptionsCreator(tyresList, "height")?.map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
             </select>
@@ -119,11 +125,11 @@ export const SearchByParams = ({ setTyresList, isWinter, setIsWinter }) => {
           <StyledCatalogEl>
             Диаметр
             <select
-              value={selectedOptions.radius}
+              value={searchOptions.radius}
               onChange={handleSelectChange("radius")}
             >
               <option>all</option>
-              {tyresOptionsCreator("radius").map((el, index) => (
+              {tyresOptionsCreator(tyresList, "radius")?.map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
             </select>
@@ -131,11 +137,11 @@ export const SearchByParams = ({ setTyresList, isWinter, setIsWinter }) => {
           <StyledCatalogEl>
             Производитель
             <select
-              value={selectedOptions.brand}
+              value={searchOptions.brand}
               onChange={handleSelectChange("brand")}
             >
               <option>all</option>
-              {tyresOptionsCreator("brand").map((el, index) => (
+              {tyresOptionsCreator(tyresList, "brand")?.map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
             </select>

@@ -29,16 +29,11 @@ const Container = styled.div`
   margin: 0px auto;
 `;
 
-export const ProductsList = ({
-  productsList,
-  type,
-  setCartItems,
-  cartItems,
-}) => {
+export const ProductsList = ({ productsList, type }) => {
   return (
     <Container>
       <StyledProductList>
-        {productsList.map((product) => {
+        {productsList?.map((product) => {
           const { title, params, counterStep, season } = getProductData(
             product,
             type
@@ -53,8 +48,6 @@ export const ProductsList = ({
               imgSrc={product.imgSrc}
               counterStep={counterStep}
               season={season}
-              setCartItems={setCartItems}
-              cartItems={cartItems}
             />
           );
         })}
