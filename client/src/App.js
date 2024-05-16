@@ -14,6 +14,9 @@ import {
   NotFound,
   Cart,
 } from "./pages";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { CHANGE_REFRESH_LIST_FLAG, getTyresFromServer } from "./store/actions";
 
 const StyledContainer = styled.div`
   margin: 0px auto;
@@ -26,7 +29,14 @@ const Content = styled.div`
   min-height: calc(100vh - 70px);
 `;
 
-const AppContainer = () => {
+const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTyresFromServer());
+    dispatch(CHANGE_REFRESH_LIST_FLAG);
+  }, [dispatch]);
+
   return (
     <StyledContainer>
       <Content>
@@ -50,4 +60,4 @@ const AppContainer = () => {
   );
 };
 
-export default AppContainer;
+export default App;

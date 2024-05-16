@@ -11,7 +11,7 @@ const reducer = combineReducers({
   tyresState: tyresReducer,
   disksState: disksReducer,
   acumulatorsState: accumulatorsReducer,
-  seterStore: seterReducer,
+  seterState: seterReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -7,8 +7,8 @@ export const initialTyresState = {
     radius: "all",
     brand: "all",
   },
-  tyresList: {},
-  filtredList: {},
+  tyresList: [],
+  filtredList: [],
 };
 
 export const tyresReducer = (state = initialTyresState, action) => {

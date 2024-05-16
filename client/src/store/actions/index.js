@@ -4,6 +4,7 @@ export * from "./change_loading_true";
 export * from "./change_loading_false";
 export * from "./change_by_params_true";
 export * from "./change_by_params_false";
+export * from "./change_refresh_flag";
 export * from "./action_creators/tyres/get_tyres_from_server";
 export * from "./action_creators/tyres/change_serach_options";
 export * from "./action_creators/tyres/filtered_list";
