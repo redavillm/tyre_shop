@@ -7,6 +7,8 @@ const app = express();
 const PORT = 3001;
 
 const TyreController = require("./controllers/Tyre");
+const DiskController = require("./controllers/Disk");
+const AccumulatorController = require("./controllers/Accumulator");
 
 app.use(cors());
 
@@ -16,6 +18,12 @@ app.use(express.json());
 
 app.get("/tyres", TyreController.list);
 app.get("/tyres/:id", TyreController.getById);
+
+app.get("/disks", DiskController.list);
+app.get("/disks/:id", DiskController.getById);
+
+app.get("/accumulators", AccumulatorController.list);
+app.get("/accumulators/:id", AccumulatorController.getById);
 
 app.use("*", (req, res) => {
   res.status(404).json({
