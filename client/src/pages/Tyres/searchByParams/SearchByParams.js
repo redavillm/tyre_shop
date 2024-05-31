@@ -1,13 +1,15 @@
 import styled from "styled-components";
-import { tyresfilter, tyresOptionsCreator } from "../../../scripts";
 import { useDispatch, useSelector } from "react-redux";
-import { selectTyresOptions } from "../../../store/selectors/tyres/selectedOptions";
 import {
-  CHANGE_IS_WINTER,
-  changeSerachOptions,
-  filteredList,
-} from "../../../store/actions";
-import { selectIsWinter, selectTyres } from "../../../store/selectors";
+  selectIsWinter,
+  selectTyresList,
+  selectTyresOptions,
+} from "../../../store/selectors/tyres/tyres_selectors";
+import { changeSerachOptions } from "../../../store/actions/action_creators/tyres/change_serach_options";
+import { filteredList } from "../../../store/actions/action_creators/tyres/filtered_list";
+import { CHANGE_IS_WINTER } from "../../../store/actions";
+import { tyresOptionsCreator } from "../../../scripts/tyre/tyresOptionsCreator";
+import { tyresfilter } from "../../../scripts/tyre/tyresFilter";
 
 const StyledCatalogByParams = styled.div`
   border-bottom: 1px solid #aec09a;
@@ -74,7 +76,7 @@ export const SearchByParams = () => {
 
   const searchOptions = useSelector(selectTyresOptions);
   const isWinter = useSelector(selectIsWinter);
-  const tyresList = useSelector(selectTyres);
+  const tyresList = useSelector(selectTyresList);
 
   const handleSelectChange = (key) => (event) => {
     dispatch(

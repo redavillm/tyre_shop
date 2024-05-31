@@ -1,6 +1,5 @@
 import { ACCUMULATORS } from "../db/ACCUMULATORS";
 import { DISKS } from "../db/DISKS";
-import { TYRES } from "../db/TYRES";
 
 export const findProductById = (id) => {
   try {
@@ -16,12 +15,6 @@ export const findProductById = (id) => {
     const diskProduct = DISKS.find((product) => product.id === id);
     if (diskProduct) {
       return diskProduct;
-    }
-
-    // Поиск товара в базе данных шин
-    const tyreProduct = TYRES.find((product) => product.id === id);
-    if (tyreProduct) {
-      return tyreProduct;
     }
   } catch (error) {
     console.log(error.message);

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { getProductTypeById } from "../../scripts";
+import { getProductData } from "../ProductsList/getProductData/getProductData";
 
 const StyeledCard = styled.span`
   width: 260px;
@@ -76,15 +76,14 @@ const StyledCardButton = styled.button`
   }
 `;
 
-export const Card = ({
-  id,
-  title,
-  params,
-  price,
-  imgSrc,
-  season,
-  counterStep,
-}) => {
+const StyledIcon = styled.i`
+  margin-left: 5px;
+`;
+
+export const Card = ({ product, type }) => {
+  const { _id, price, imgSrc } = product;
+  const { title, params, counterStep, season } = getProductData(product, type);
+
   const [counter, setCounter] = useState(counterStep);
 
   const increaseCounter = () => {
@@ -100,10 +99,6 @@ export const Card = ({
     setCounter(counter - counterStep);
   };
 
-  const StyledIcon = styled.i`
-    margin-left: 5px;
-  `;
-
   const isSeasonIcon = () => {
     if (season) {
       return season === "winter" ? (
@@ -116,7 +111,7 @@ export const Card = ({
 
   return (
     <StyeledCard>
-      <Link to={`/${getProductTypeById(id)}s/${id}`} key={id}>
+      <Link to={`/${type}/${_id}`}>
         <div>
           <img src={imgSrc} alt="Product img" />
           <h6>
@@ -129,11 +124,11 @@ export const Card = ({
       </Link>
       <StyledCounter>
         <button onClick={decreaseCounter}>
-          <i class="fa fa-minus" aria-hidden="true" />
+          <i className="fa fa-minus" aria-hidden="true" />
         </button>
         <span>{counter}</span>
         <button onClick={increaseCounter}>
-          <i class="fa fa-plus" aria-hidden="true" />
+          <i className="fa fa-plus" aria-hidden="true" />
         </button>
       </StyledCounter>
       <Flex>

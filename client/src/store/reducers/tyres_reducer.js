@@ -9,12 +9,15 @@ export const initialTyresState = {
   },
   tyresList: [],
   filtredList: [],
+  tyreById: [],
 };
 
 export const tyresReducer = (state = initialTyresState, action) => {
   switch (action.type) {
     case "GET_TYRES_FROM_SERVER":
       return { ...state, tyresList: action.payload };
+    case "GET_TYRES_BY_ID":
+      return { ...state, tyreById: action.payload };
     case "SET_FILTRED_LIST":
       return { ...state, filtredList: action.payload };
     case "CHANGE_IS_WINTER":

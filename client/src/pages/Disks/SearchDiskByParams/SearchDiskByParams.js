@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { disksFilter, disksOptionsCreator } from "../../../scripts";
+import { disksFilter } from "../../../scripts/disk/disksFilter";
+import { disksOptionsCreator } from "../../../scripts/disk/disksOptionsCreator";
 
 const EMPTY_LIST = {
   diametr: "all",

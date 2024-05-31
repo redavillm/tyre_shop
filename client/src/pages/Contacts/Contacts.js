@@ -76,10 +76,10 @@ export const Contacts = () => {
             <h4>Так же можно воспользоваться мессенджером:</h4>
             <StyledIcons>
               <Link to="/contacts">
-                <i class="fa fa-telegram" aria-hidden="true"></i>
+                <i className="fa fa-telegram" aria-hidden="true"></i>
               </Link>
               <Link to="/contacts">
-                <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                <i className="fa fa-whatsapp" aria-hidden="true"></i>
               </Link>
             </StyledIcons>
             <span>

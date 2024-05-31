@@ -14,9 +14,6 @@ import {
   NotFound,
   Cart,
 } from "./pages";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { CHANGE_REFRESH_LIST_FLAG, getTyresFromServer } from "./store/actions";
 
 const StyledContainer = styled.div`
   margin: 0px auto;
@@ -30,13 +27,6 @@ const Content = styled.div`
 `;
 
 const App = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getTyresFromServer());
-    dispatch(CHANGE_REFRESH_LIST_FLAG);
-  }, [dispatch]);
-
   return (
     <StyledContainer>
       <Content>
@@ -51,8 +41,8 @@ const App = () => {
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/registration" element={<Registration />} />
-          <Route path="*" element={<NotFound />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Content>
       <Footer />

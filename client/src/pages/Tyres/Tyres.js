@@ -3,16 +3,19 @@ import { SearchByParams } from "./searchByParams/SearchByParams";
 import { SearchByCar } from "./searchByCar/SearchByCar";
 import { Navbar, ProductsList } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectTyres,
-  selectIsTyresByParams,
-  selectIsLoading,
-  selectIsWinter,
-} from "../../store/selectors";
+import { useEffect } from "react";
+import { getTyresFromServer } from "../../store/actions/action_creators/tyres/get_tyres_from_server";
 import {
   CHANGE_IS_BY_PARAMS_FALSE,
   CHANGE_IS_BY_PARAMS_TRUE,
+  CHANGE_REFRESH_LIST_FLAG,
 } from "../../store/actions";
+import {
+  selectIsTyresByParams,
+  selectIsWinter,
+  selectTyresList,
+} from "../../store/selectors/tyres/tyres_selectors";
+import { selectIsLoading } from "../../store/selectors/isLoading";
 
 const StyledTyreCatalogButtons = styled.div`
   display: flex;
@@ -53,12 +56,18 @@ const Loader = styled.div`
   }
 `;
 
-export const Tyres = ({ setCartItems, cartItems }) => {
+export const Tyres = () => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTyresFromServer());
+    dispatch(CHANGE_REFRESH_LIST_FLAG);
+  }, [dispatch]);
+
   const isWinter = useSelector(selectIsWinter);
   const isByParams = useSelector(selectIsTyresByParams);
   const isLoading = useSelector(selectIsLoading);
-  const tyresList = useSelector(selectTyres)?.filter((el) => {
+  const tyresList = useSelector(selectTyresList)?.filter((el) => {
     return !isWinter ? el.season === "summer" : el.season === "winter";
   });
 
@@ -85,12 +94,7 @@ export const Tyres = ({ setCartItems, cartItems }) => {
       </div>
       {isByParams ? <SearchByParams /> : <SearchByCar />}
       {!isLoading ? (
-        <ProductsList
-          productsList={tyresList}
-          type="tyres"
-          setCartItems={setCartItems}
-          cartItems={cartItems}
-        />
+        <ProductsList productsList={tyresList} type="tyres" />
       ) : (
         <Loader />
       )}

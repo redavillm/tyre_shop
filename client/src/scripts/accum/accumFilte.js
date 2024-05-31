@@ -1,4 +1,4 @@
-import { ACCUMULATORS } from "../db/ACCUMULATORS";
+import { ACCUMULATORS } from "../../db/ACCUMULATORS";
 
 export const accumFilter = (selectedOption) => {
   try {

@@ -110,7 +110,7 @@ export const Accumulator = (setCartItems) => {
       <Navbar />
       <BackArrow>
         <i
-          class="fa fa-long-arrow-left"
+          className="fa fa-long-arrow-left"
           aria-hidden="true"
           onClick={handleBackArrow}
         />
@@ -133,11 +133,11 @@ export const Accumulator = (setCartItems) => {
 
           <StyledCounter>
             <button onClick={decreaseCounter}>
-              <i class="fa fa-minus" aria-hidden="true" />
+              <i className="fa fa-minus" aria-hidden="true" />
             </button>
             <span>{counter}</span>
             <button onClick={increaseCounter}>
-              <i class="fa fa-plus" aria-hidden="true" />
+              <i className="fa fa-plus" aria-hidden="true" />
             </button>
             <div>Итог: {counter * price} руб.</div>
           </StyledCounter>

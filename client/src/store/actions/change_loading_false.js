@@ -1,3 +1,0 @@
-export const CHANGE_LOADING_IS_FALSE = {
-  type: "CHANGE_LOADING_IS_FALSE",
-};

@@ -1,4 +1,4 @@
-import { DISKS } from "../db/DISKS";
+import { DISKS } from "../../db/DISKS";
 
 export const disksOptionsCreator = (value) => {
   try {

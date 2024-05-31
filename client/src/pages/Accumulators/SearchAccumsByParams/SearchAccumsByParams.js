@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { accumFilter } from "../../../scripts/accumFilte";
-import { accumsOptionCreator } from "../../../scripts";
+import { accumFilter } from "../../../scripts/accum/accumFilte";
+import { accumsOptionCreator } from "../../../scripts/accum/accumsOptionCreator";
 
 const EMPTY_LIST = {
   size: "all",

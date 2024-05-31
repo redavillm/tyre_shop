@@ -4,9 +4,9 @@ import {
   CHANGE_LOADING_IS_TRUE,
 } from "../../changes";
 
-export const getTyresFromServer = () => (dispatch) => {
+export const getTyreById = (id) => (dispatch) => {
   dispatch(CHANGE_LOADING_IS_TRUE);
-  fetch("http://localhost:3001/tyres")
+  fetch(`http://localhost:3001/tyres/${id}`)
     .then((res) => {
       if (res.status >= 200 && res.status < 300) {
         return res.json();
@@ -18,8 +18,8 @@ export const getTyresFromServer = () => (dispatch) => {
     })
     .then((data) => {
       return dispatch({
-        type: "GET_TYRES_FROM_SERVER",
-        payload: data.items,
+        type: "GET_TYRES_BY_ID",
+        payload: data.item,
       });
     })
     .finally(() => dispatch(CHANGE_LOADING_IS_FALSE))
