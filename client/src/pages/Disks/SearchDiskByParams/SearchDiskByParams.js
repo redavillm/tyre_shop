@@ -3,13 +3,6 @@ import styled from "styled-components";
 import { disksFilter } from "../../../scripts/disk/disksFilter";
 import { disksOptionsCreator } from "../../../scripts/disk/disksOptionsCreator";
 
-const EMPTY_LIST = {
-  diametr: "all",
-  mount: "all",
-  brand: "all",
-  type: "all",
-};
-
 const StyledCatalogByParams = styled.div`
   border-bottom: 1px solid #aec09a;
   padding-bottom: 20px;

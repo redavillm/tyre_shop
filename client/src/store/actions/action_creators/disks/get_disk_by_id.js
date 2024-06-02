@@ -4,9 +4,9 @@ import {
   CHANGE_LOADING_IS_TRUE,
 } from "../../changes";
 
-export const getAccumulatorsFromServer = (dispatch) => {
+export const getDiskById = (id) => (dispatch) => {
   dispatch(CHANGE_LOADING_IS_TRUE);
-  fetch("http://localhost:3001/accumulators")
+  fetch(`http://localhost:3001/disks/${id}`)
     .then((res) => {
       if (res.status >= 200 && res.status < 300) {
         return res.json();
@@ -17,9 +17,9 @@ export const getAccumulatorsFromServer = (dispatch) => {
       }
     })
     .then((data) => {
-      dispatch({
-        type: "GET_ACCUMULATORS_FROM_SERVER",
-        payload: data,
+      return dispatch({
+        type: "GET_DISK_BY_ID",
+        payload: data.item,
       });
     })
     .finally(() => dispatch(CHANGE_LOADING_IS_FALSE))

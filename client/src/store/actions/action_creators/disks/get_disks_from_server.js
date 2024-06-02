@@ -1,6 +1,8 @@
-import { CHANGE_IS_ERROR } from "../../change_is_error";
-import { CHANGE_LOADING_IS_FALSE } from "../../change_loading_false";
-import { CHANGE_LOADING_IS_TRUE } from "../../change_loading_true";
+import {
+  CHANGE_IS_ERROR,
+  CHANGE_LOADING_IS_FALSE,
+  CHANGE_LOADING_IS_TRUE,
+} from "../../changes";
 
 export const getDisksFromServer = (dispatch) => {
   dispatch(CHANGE_LOADING_IS_TRUE);

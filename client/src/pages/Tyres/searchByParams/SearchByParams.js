@@ -6,10 +6,10 @@ import {
   selectTyresOptions,
 } from "../../../store/selectors/tyres/tyres_selectors";
 import { changeSerachOptions } from "../../../store/actions/action_creators/tyres/change_serach_options";
-import { filteredList } from "../../../store/actions/action_creators/tyres/filtered_list";
 import { CHANGE_IS_WINTER } from "../../../store/actions";
 import { tyresOptionsCreator } from "../../../scripts/tyre/tyresOptionsCreator";
 import { tyresfilter } from "../../../scripts/tyre/tyresFilter";
+import { changeFilterList } from "../../../store/actions/action_creators/tyres/chandge_filter_list";
 
 const StyledCatalogByParams = styled.div`
   border-bottom: 1px solid #aec09a;
@@ -76,7 +76,10 @@ export const SearchByParams = () => {
 
   const searchOptions = useSelector(selectTyresOptions);
   const isWinter = useSelector(selectIsWinter);
-  const tyresList = useSelector(selectTyresList);
+
+  const tyresList = useSelector(selectTyresList)?.filter((el) => {
+    return !isWinter ? el.season === "summer" : el.season === "winter";
+  });
 
   const handleSelectChange = (key) => (event) => {
     dispatch(
@@ -89,7 +92,7 @@ export const SearchByParams = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(filteredList(tyresfilter(tyresList, searchOptions, isWinter)));
+    dispatch(changeFilterList(tyresfilter(tyresList, searchOptions)));
   };
 
   const handleChanegeCheckbox = () => {

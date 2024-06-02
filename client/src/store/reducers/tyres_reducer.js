@@ -18,13 +18,15 @@ export const tyresReducer = (state = initialTyresState, action) => {
       return { ...state, tyresList: action.payload };
     case "GET_TYRES_BY_ID":
       return { ...state, tyreById: action.payload };
-    case "SET_FILTRED_LIST":
+    case "SET_TYRES_FILTRED_LIST":
       return { ...state, filtredList: action.payload };
     case "CHANGE_IS_WINTER":
       return { ...state, isWinter: !state.isWinter };
-    case "CHANGE_IS_BY_PARAMS":
-      return { ...state, isByParams: !state.isByParams };
-    case "CHANGE_SEARCH_OPTIONS":
+    case "CHANGE_TYRES_BY_PARAMS_TRUE":
+      return { ...state, isByParams: true };
+    case "CHANGE_TYRES_BY_PARAMS_FALSE":
+      return { ...state, isByParams: false };
+    case "SET_TYRES_SEARCH_OPTIONS":
       return { ...state, searchOptions: action.payload };
     default:
       return state;
