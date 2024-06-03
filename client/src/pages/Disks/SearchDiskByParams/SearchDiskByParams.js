@@ -1,7 +1,13 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { disksFilter } from "../../../scripts/disk/disksFilter";
 import { disksOptionsCreator } from "../../../scripts/disk/disksOptionsCreator";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectDisksFilteredList,
+  selectDisksList,
+  selectDisksOptions,
+} from "../../../store/selectors/disks/disks_selectors";
+import { setDisksSearchOptions } from "../../../store/actions/action_creators/disks/set_search_options";
 
 const StyledCatalogByParams = styled.div`
   border-bottom: 1px solid #aec09a;
@@ -33,19 +39,25 @@ const StyledCatalogEl = styled.div`
   }
 `;
 
-export const SearchDiskByParams = ({ setDisksList }) => {
-  const [selectedOption, setSelectedOption] = useState(EMPTY_LIST);
+export const SearchDiskByParams = () => {
+  const dispatch = useDispatch();
+
+  const searchOptions = useSelector(selectDisksOptions);
+
+  const disksList = useSelector(selectDisksList);
 
   const handleSelectChange = (key) => (event) => {
-    setSelectedOption((prevOptions) => ({
-      ...prevOptions,
-      [key]: event.target.value,
-    }));
+    dispatch(
+      setDisksSearchOptions({
+        ...searchOptions,
+        [key]: event.target.value,
+      })
+    );
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setDisksList(disksFilter(selectedOption));
+    dispatch(selectDisksFilteredList(disksFilter(disksList, searchOptions)));
   };
 
   return (
@@ -55,11 +67,11 @@ export const SearchDiskByParams = ({ setDisksList }) => {
           <StyledCatalogEl>
             Диаметр
             <select
-              value={selectedOption.diametr}
+              value={searchOptions.diametr}
               onChange={handleSelectChange("diametr")}
             >
               <option>all</option>
-              {disksOptionsCreator("diametr").map((el, index) => (
+              {disksOptionsCreator(disksList, "diametr").map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
             </select>
@@ -67,11 +79,11 @@ export const SearchDiskByParams = ({ setDisksList }) => {
           <StyledCatalogEl>
             Крепление
             <select
-              value={selectedOption.mount}
+              value={searchOptions.mount}
               onChange={handleSelectChange("mount")}
             >
               <option>all</option>
-              {disksOptionsCreator("mount").map((el, index) => (
+              {disksOptionsCreator(disksList, "mount").map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
             </select>
@@ -79,11 +91,11 @@ export const SearchDiskByParams = ({ setDisksList }) => {
           <StyledCatalogEl>
             Производитель
             <select
-              value={selectedOption.brand}
+              value={searchOptions.brand}
               onChange={handleSelectChange("brand")}
             >
               <option>all</option>
-              {disksOptionsCreator("brand").map((el, index) => (
+              {disksOptionsCreator(disksList, "brand").map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
             </select>
@@ -91,11 +103,11 @@ export const SearchDiskByParams = ({ setDisksList }) => {
           <StyledCatalogEl>
             Тип
             <select
-              value={selectedOption.type}
+              value={searchOptions.type}
               onChange={handleSelectChange("type")}
             >
               <option>all</option>
-              {disksOptionsCreator("type").map((el, index) => (
+              {disksOptionsCreator(disksList, "type").map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
             </select>

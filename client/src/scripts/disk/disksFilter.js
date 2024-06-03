@@ -1,10 +1,8 @@
-import { DISKS } from "../../db/DISKS";
-
-export const disksFilter = (selectedOption) => {
+export const disksFilter = (data, selectedOption) => {
   try {
     const { diametr, mount, brand, type } = selectedOption;
 
-    return DISKS.filter(
+    return data.filter(
       (el) =>
         (diametr === "all" || el.diametr === +diametr) &&
         (mount === "all" || el.mount === mount) &&

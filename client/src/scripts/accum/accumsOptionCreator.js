@@ -1,23 +1,21 @@
-import { ACCUMULATORS } from "../../db/ACCUMULATORS";
-
-export const accumsOptionCreator = (value) => {
+export const accumsOptionCreator = (data, value) => {
   try {
     const optionsdResult = [];
 
     switch (value) {
       case "size":
-        ACCUMULATORS.map((el) =>
+        data.map((el) =>
           optionsdResult.push(el.length + "x" + el.height + "x" + el.width)
         );
         break;
       case "polarity":
-        ACCUMULATORS.map((el) => optionsdResult.push(el.polarity));
+        data.map((el) => optionsdResult.push(el.polarity));
         break;
       case "capacity":
-        ACCUMULATORS.map((el) => optionsdResult.push(el.capacity));
+        data.map((el) => optionsdResult.push(el.capacity));
         break;
       case "brand":
-        ACCUMULATORS.map((el) => optionsdResult.push(el.brand));
+        data.map((el) => optionsdResult.push(el.brand));
         break;
       default:
         break;

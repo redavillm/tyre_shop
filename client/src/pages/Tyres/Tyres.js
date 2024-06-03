@@ -1,22 +1,22 @@
 import styled from "styled-components";
-import { SearchByParams } from "./searchByParams/SearchByParams";
+import { SearchTyreByParams } from "./searchByParams/SearchByParams";
 import { SearchByCar } from "./searchByCar/SearchByCar";
 import { Navbar, ProductsList } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getTyresFromServer } from "../../store/actions/action_creators/tyres/get_tyres_from_server";
+import { selectIsLoading } from "../../store/selectors/isLoading";
+import { CHANGE_REFRESH_LIST_FLAG } from "../../store/actions";
 import {
-  selectFilteredList,
+  CHANGE_TYRES_BY_PARAMS_FALSE,
+  CHANGE_TYRES_BY_PARAMS_TRUE,
+} from "../../store/actions/action_creators/tyres/is_by_params";
+import {
   selectIsTyresByParams,
   selectIsWinter,
+  selectTyresFilteredList,
   selectTyresList,
 } from "../../store/selectors/tyres/tyres_selectors";
-import { selectIsLoading } from "../../store/selectors/isLoading";
-import {
-  CHANGE_IS_BY_PARAMS_FALSE,
-  CHANGE_IS_BY_PARAMS_TRUE,
-  CHANGE_REFRESH_LIST_FLAG,
-} from "../../store/actions";
 
 const StyledTyreCatalogButtons = styled.div`
   display: flex;
@@ -71,15 +71,15 @@ export const Tyres = () => {
   const tyresList = useSelector(selectTyresList)?.filter((el) => {
     return !isWinter ? el.season === "summer" : el.season === "winter";
   });
-  const filtredList = useSelector(selectFilteredList);
+  const filtredList = useSelector(selectTyresFilteredList);
   const listToDisplay = filtredList.length === 0 ? tyresList : filtredList;
 
   const setSearchByParams = () => {
-    dispatch(CHANGE_IS_BY_PARAMS_TRUE);
+    dispatch(CHANGE_TYRES_BY_PARAMS_TRUE);
   };
 
   const setSearchByCar = () => {
-    dispatch(CHANGE_IS_BY_PARAMS_FALSE);
+    dispatch(CHANGE_TYRES_BY_PARAMS_FALSE);
   };
 
   return (
@@ -95,7 +95,7 @@ export const Tyres = () => {
           </button>
         </StyledTyreCatalogButtons>
       </div>
-      {isByParams ? <SearchByParams /> : <SearchByCar />}
+      {isByParams ? <SearchTyreByParams /> : <SearchByCar />}
       {!isLoading ? (
         <ProductsList productsList={listToDisplay} type="tyres" />
       ) : (

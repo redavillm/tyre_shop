@@ -1,14 +1,13 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { accumFilter } from "../../../scripts/accum/accumFilte";
 import { accumsOptionCreator } from "../../../scripts/accum/accumsOptionCreator";
-
-const EMPTY_LIST = {
-  size: "all",
-  polarity: "all",
-  capacity: "all",
-  brand: "all",
-};
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectAccumulatorsFilteredList,
+  selectAccumulatorsList,
+  selectAccumulatorsOptions,
+} from "../../../store/selectors/accumulators/accumulators_selectors";
+import { setAccumulatorsSerachOptions } from "../../../store/actions/action_creators/accumulators/set_search_options";
 
 const StyledCatalogByParams = styled.div`
   border-bottom: 1px solid #aec09a;
@@ -40,20 +39,29 @@ const StyledCatalogEl = styled.div`
   }
 `;
 
-export const SearchAccumsByParams = ({ setAccumList }) => {
-  const [selectedOptions, setSelectedOptions] = useState(EMPTY_LIST);
+export const SearchAccumsByParams = () => {
+  const dispatch = useDispatch();
+
+  const searchOptions = useSelector(selectAccumulatorsOptions);
+
+  const accumulatorsList = useSelector(selectAccumulatorsList);
 
   const handleSelectChange = (key) => (event) => {
-    setSelectedOptions((prevOptions) => ({
-      ...prevOptions,
-      [key]: event.target.value,
-    }));
+    dispatch(
+      setAccumulatorsSerachOptions({
+        ...searchOptions,
+        [key]: event.target.value,
+      })
+    );
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("selectedOptions ==>", selectedOptions);
-    setAccumList(accumFilter(selectedOptions));
+    dispatch(
+      selectAccumulatorsFilteredList(
+        accumFilter(accumulatorsList, searchOptions)
+      )
+    );
   };
 
   return (
@@ -63,7 +71,7 @@ export const SearchAccumsByParams = ({ setAccumList }) => {
           <StyledCatalogEl>
             Размер
             <select
-              value={selectedOptions.size}
+              value={searchOptions.size}
               onChange={handleSelectChange("size")}
             >
               <option>all</option>
@@ -75,7 +83,7 @@ export const SearchAccumsByParams = ({ setAccumList }) => {
           <StyledCatalogEl>
             Полярность
             <select
-              value={selectedOptions.polarity}
+              value={searchOptions.polarity}
               onChange={handleSelectChange("polarity")}
             >
               <option>all</option>
@@ -87,7 +95,7 @@ export const SearchAccumsByParams = ({ setAccumList }) => {
           <StyledCatalogEl>
             Емкость
             <select
-              value={selectedOptions.capacity}
+              value={searchOptions.capacity}
               onChange={handleSelectChange("capacity")}
             >
               <option>all</option>
@@ -99,7 +107,7 @@ export const SearchAccumsByParams = ({ setAccumList }) => {
           <StyledCatalogEl>
             Производитель
             <select
-              value={selectedOptions.brand}
+              value={searchOptions.brand}
               onChange={handleSelectChange("brand")}
             >
               <option>all</option>

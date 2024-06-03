@@ -10,7 +10,7 @@ import {
 const reducer = combineReducers({
   tyresState: tyresReducer,
   disksState: disksReducer,
-  acumulatorsState: accumulatorsReducer,
+  accumulatorsState: accumulatorsReducer,
   seterState: seterReducer,
 });
 

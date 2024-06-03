@@ -4,7 +4,7 @@ import {
   CHANGE_LOADING_IS_TRUE,
 } from "../../changes";
 
-export const getAccumulatorsFromServer = (dispatch) => {
+export const getAccumulatorsFromServer = () => (dispatch) => {
   dispatch(CHANGE_LOADING_IS_TRUE);
   fetch("http://localhost:3001/accumulators")
     .then((res) => {
@@ -19,7 +19,7 @@ export const getAccumulatorsFromServer = (dispatch) => {
     .then((data) => {
       dispatch({
         type: "GET_ACCUMULATORS_FROM_SERVER",
-        payload: data,
+        payload: data.items,
       });
     })
     .finally(() => dispatch(CHANGE_LOADING_IS_FALSE))

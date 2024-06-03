@@ -4,7 +4,7 @@ import {
   CHANGE_LOADING_IS_TRUE,
 } from "../../changes";
 
-export const getDisksFromServer = (dispatch) => {
+export const getDisksFromServer = () => (dispatch) => {
   dispatch(CHANGE_LOADING_IS_TRUE);
   fetch("http://localhost:3001/disks")
     .then((res) => {
@@ -19,7 +19,7 @@ export const getDisksFromServer = (dispatch) => {
     .then((data) => {
       dispatch({
         type: "GET_DISKS_FROM_SERVER",
-        payload: data,
+        payload: data.items,
       });
     })
     .finally(() => dispatch(CHANGE_LOADING_IS_FALSE))

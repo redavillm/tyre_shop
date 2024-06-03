@@ -5,11 +5,11 @@ import {
   selectTyresList,
   selectTyresOptions,
 } from "../../../store/selectors/tyres/tyres_selectors";
-import { changeSerachOptions } from "../../../store/actions/action_creators/tyres/change_serach_options";
-import { CHANGE_IS_WINTER } from "../../../store/actions";
 import { tyresOptionsCreator } from "../../../scripts/tyre/tyresOptionsCreator";
 import { tyresfilter } from "../../../scripts/tyre/tyresFilter";
-import { changeFilterList } from "../../../store/actions/action_creators/tyres/chandge_filter_list";
+import { CHANGE_IS_WINTER } from "../../../store/actions/action_creators/tyres/is_winter";
+import { setTyresSearchOptions } from "../../../store/actions/action_creators/tyres/set_search_options";
+import { setTyresFilterList } from "../../../store/actions/action_creators/tyres/set_filter_list";
 
 const StyledCatalogByParams = styled.div`
   border-bottom: 1px solid #aec09a;
@@ -71,7 +71,7 @@ const Filter = styled.div`
   font-size: 22px;
 `;
 
-export const SearchByParams = () => {
+export const SearchTyreByParams = () => {
   const dispatch = useDispatch();
 
   const searchOptions = useSelector(selectTyresOptions);
@@ -83,7 +83,7 @@ export const SearchByParams = () => {
 
   const handleSelectChange = (key) => (event) => {
     dispatch(
-      changeSerachOptions({
+      setTyresSearchOptions({
         ...searchOptions,
         [key]: event.target.value,
       })
@@ -92,7 +92,7 @@ export const SearchByParams = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(changeFilterList(tyresfilter(tyresList, searchOptions)));
+    dispatch(setTyresFilterList(tyresfilter(tyresList, searchOptions)));
   };
 
   const handleChanegeCheckbox = () => {

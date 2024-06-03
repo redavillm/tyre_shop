@@ -1,18 +1,12 @@
-import { ACCUMULATORS } from "../../db/ACCUMULATORS";
-
-export const accumFilter = (selectedOption) => {
+export const accumFilter = (data, selectedOption) => {
   try {
     const { size, polarity, capacity, brand } = selectedOption;
 
-    return ACCUMULATORS.filter(
+    return data.filter(
       (el) =>
         (size === "all" ||
           el.length + "x" + el.height + "x" + el.width ===
-            ACCUMULATORS.length +
-              "x" +
-              ACCUMULATORS.height +
-              "x" +
-              ACCUMULATORS.width) &&
+            data.length + "x" + data.height + "x" + data.width) &&
         (polarity === "all" || el.polarity === polarity) &&
         (capacity === "all" || el.capacity === capacity) &&
         (brand === "all" || el.brand === brand)
