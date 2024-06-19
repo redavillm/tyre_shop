@@ -1,13 +1,14 @@
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Navbar } from "../../components/Navbar/Navbar";
-import { fetchDisk } from "../../scripts";
-
-const BackArrow = styled.i`
-  font-size: 48px;
-  cursor: pointer;
-`;
+import { BackArrow } from "../../components/BackArrow/BackArrow";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsLoading } from "../../store/selectors/isLoading";
+import { getDiskById } from "../../store/actions/action_creators/disks/get_disk_by_id";
+import { CHANGE_REFRESH_LIST_FLAG } from "../../store/actions";
+import { selectDiskById } from "../../store/selectors/disks/disks_selectors";
+import { ProductNotFound } from "../ProductNotFound/ProductNotFound";
 
 const Flex = styled.div`
   height: 500px;
@@ -64,9 +65,49 @@ const StyledCounter = styled.div`
   }
 `;
 
+const Loader = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  border: 5px solid white;
+  border-radius: 50%;
+  border-left-color: transparent;
+  animation: loader 1s infinite;
+
+  @keyframes loader {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`;
+
 export const Disk = (setCartItems) => {
-  const [counter, setCounter] = useState(2);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const params = useParams();
+  const id = params.id;
+
+  const [counter, setCounter] = useState(2);
+
+  const isLoading = useSelector(selectIsLoading);
+
+  useEffect(() => {
+    dispatch(getDiskById(id));
+    dispatch(CHANGE_REFRESH_LIST_FLAG);
+  }, [dispatch, id]);
+
+  const disk = useSelector(selectDiskById);
+
+  if (disk.length === 0) {
+    return <ProductNotFound />;
+  }
 
   const handleBackArrow = () => {
     navigate(-1);
@@ -85,45 +126,39 @@ export const Disk = (setCartItems) => {
     setCounter(counter - 2);
   };
 
-  const params = useParams();
-
-  const id = params.id;
-
-  const { brand, model, diametr, mount, price, imgSrc } = fetchDisk(+id);
+  const { brand, model, imgSrc, diametr, price, mount } = disk || [];
 
   return (
     <>
       <Navbar />
-      <BackArrow>
-        <i
-          className="fa fa-long-arrow-left"
-          aria-hidden="true"
-          onClick={handleBackArrow}
-        />
-      </BackArrow>
-      <Flex>
-        <StyledImg>
-          <img src={imgSrc} alt="product pictur" width="300px" />
-        </StyledImg>
-        <StyledProductInfo>
-          <h2>{brand + " " + model}</h2>
-          <p>Диаметр: {diametr}</p>
-          <p>Размер: {mount}</p>
-          <p>Цена: {price} руб.</p>
+      <BackArrow handler={handleBackArrow} />
+      {!isLoading ? (
+        <Flex>
+          <StyledImg>
+            <img src={imgSrc} alt="product pictur" width="300px" />
+          </StyledImg>
+          <StyledProductInfo>
+            <h2>{brand + " " + model}</h2>
+            <p>Диаметр: {diametr}</p>
+            <p>Размер: {mount}</p>
+            <p>Цена: {price} руб.</p>
 
-          <StyledCounter>
-            <button onClick={decreaseCounter}>
-              <i className="fa fa-minus" aria-hidden="true" />
-            </button>
-            <span>{counter}</span>
-            <button onClick={increaseCounter}>
-              <i className="fa fa-plus" aria-hidden="true" />
-            </button>
-            <div>Итог: {counter * price} руб.</div>
-          </StyledCounter>
-          <StyledButton>В корзину</StyledButton>
-        </StyledProductInfo>
-      </Flex>
+            <StyledCounter>
+              <button onClick={decreaseCounter}>
+                <i className="fa fa-minus" aria-hidden="true" />
+              </button>
+              <span>{counter}</span>
+              <button onClick={increaseCounter}>
+                <i className="fa fa-plus" aria-hidden="true" />
+              </button>
+              <div>Итог: {counter * price} руб.</div>
+            </StyledCounter>
+            <StyledButton>В корзину</StyledButton>
+          </StyledProductInfo>
+        </Flex>
+      ) : (
+        <Loader />
+      )}
     </>
   );
 };
