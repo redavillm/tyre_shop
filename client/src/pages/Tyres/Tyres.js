@@ -33,7 +33,26 @@ export const Tyres = () => {
     return !isWinter ? el.season === "summer" : el.season === "winter";
   });
   const filtredList = useSelector(selectTyresFilteredList);
-  const listToDisplay = filtredList.length === 0 ? tyresList : filtredList;
+  let listToDisplay;
+
+  switch (filtredList) {
+    case false: {
+      console.log("filtredList [] = ", filtredList);
+      listToDisplay = [];
+      break;
+    }
+    case filtredList.length === 0: {
+      console.log("filtredList false = ", filtredList);
+      listToDisplay = tyresList;
+      console.log("listToDisplay = ", listToDisplay);
+      break;
+    }
+    default: {
+      console.log("filtredList def = ", filtredList);
+      listToDisplay = filtredList;
+      break;
+    }
+  }
 
   const setSearchByParams = () => {
     dispatch(CHANGE_TYRES_BY_PARAMS_TRUE);

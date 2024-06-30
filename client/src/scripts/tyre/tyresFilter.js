@@ -1,21 +1,22 @@
 export const tyresfilter = (data, selectedOption) => {
   try {
     const { width, height, radius, brand } = selectedOption;
+    let result = data;
 
     if (width !== "all") {
-      data = data.filter((el) => el.size.width === +width);
+      result = result.filter((el) => el.size.width === +width);
     }
     if (height !== "all") {
-      data = data.filter((el) => el.size.height === +height);
+      result = result.filter((el) => el.size.height === +height);
     }
     if (radius !== "all") {
-      data = data.filter((el) => el.size.radius === +radius);
+      result = result.filter((el) => el.size.radius === +radius);
     }
     if (brand !== "all") {
-      data = data.filter((el) => el.brand === brand);
+      result = result.filter((el) => el.brand === brand);
     }
 
-    return data;
+    return result.length !== 0 ? result : false;
   } catch (error) {
     console.log(error.message);
   }
