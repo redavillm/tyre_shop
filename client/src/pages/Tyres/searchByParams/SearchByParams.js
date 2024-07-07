@@ -6,14 +6,14 @@ import {
   selectTyresOptions,
 } from "../../../store/selectors/tyres/tyres_selectors";
 import { tyresOptionsCreator } from "../../../scripts/tyre/tyresOptionsCreator";
-import { tyresfilter } from "../../../scripts/tyre/tyresFilter";
 import { CHANGE_IS_WINTER } from "../../../store/actions/action_creators/tyres/is_winter";
 import { setTyresSearchOptions } from "../../../store/actions/action_creators/tyres/set_search_options";
-import { setTyresFilterList } from "../../../store/actions/action_creators/tyres/set_filter_list";
+import { CHANGE_TYRES_IS_FILTER } from "../../../store/actions/action_creators/tyres";
 
 const StyledCatalogByParams = styled.div`
   border-bottom: 1px solid #aec09a;
   padding-bottom: 20px;
+  position: relative;
   & button {
     width: 150px;
     padding: 10px 20px;
@@ -67,8 +67,19 @@ const StyledCheckbox = styled.label`
   }
 `;
 
-const Filter = styled.div`
+const StyledSorting = styled.div`
   font-size: 22px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  & select {
+    padding: 5px 0px;
+    margin-left: 5px;
+    border: 0;
+    // appearance: none;
+    // -webkit-appearance: none;
+    // -moz-appearance: none;
+  }
 `;
 
 export const SearchTyreByParams = () => {
@@ -92,7 +103,7 @@ export const SearchTyreByParams = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(setTyresFilterList(tyresfilter(tyresList, searchOptions)));
+    dispatch(CHANGE_TYRES_IS_FILTER);
   };
 
   const handleChanegeCheckbox = () => {
@@ -158,19 +169,18 @@ export const SearchTyreByParams = () => {
               value="isWinter"
               onChange={handleChanegeCheckbox}
             />
-            <span></span>
           </StyledCheckbox>
         </Flex>
         <button type="submit">Поиск</button>
       </form>
-      <Filter>
-        Фильтр:
+      <StyledSorting>
+        Сортировать:
         <select>
           <option>По популяроности</option>
           <option>Дешевле</option>
           <option>Дороже</option>
         </select>
-      </Filter>
+      </StyledSorting>
     </StyledCatalogByParams>
   );
 };

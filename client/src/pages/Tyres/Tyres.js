@@ -12,11 +12,13 @@ import {
 } from "../../store/actions/action_creators/tyres/is_by_params";
 import {
   selectIsTyresByParams,
+  selectIsTyresFilter,
   selectIsWinter,
-  selectTyresFilteredList,
   selectTyresList,
+  selectTyresOptions,
 } from "../../store/selectors/tyres/tyres_selectors";
 import { Loader, StyledTyreCatalogButtons } from "./tyres_styles";
+import { tyresfilter } from "../../scripts/tyre";
 
 export const Tyres = () => {
   const dispatch = useDispatch();
@@ -27,32 +29,13 @@ export const Tyres = () => {
   }, [dispatch]);
 
   const isWinter = useSelector(selectIsWinter);
+  const selectedOption = useSelector(selectTyresOptions);
+  const isFilter = useSelector(selectIsTyresFilter);
   const isByParams = useSelector(selectIsTyresByParams);
   const isLoading = useSelector(selectIsLoading);
   const tyresList = useSelector(selectTyresList)?.filter((el) => {
     return !isWinter ? el.season === "summer" : el.season === "winter";
   });
-  const filtredList = useSelector(selectTyresFilteredList);
-  let listToDisplay;
-
-  switch (filtredList) {
-    case false: {
-      console.log("filtredList [] = ", filtredList);
-      listToDisplay = [];
-      break;
-    }
-    case filtredList.length === 0: {
-      console.log("filtredList false = ", filtredList);
-      listToDisplay = tyresList;
-      console.log("listToDisplay = ", listToDisplay);
-      break;
-    }
-    default: {
-      console.log("filtredList def = ", filtredList);
-      listToDisplay = filtredList;
-      break;
-    }
-  }
 
   const setSearchByParams = () => {
     dispatch(CHANGE_TYRES_BY_PARAMS_TRUE);
@@ -61,6 +44,10 @@ export const Tyres = () => {
   const setSearchByCar = () => {
     dispatch(CHANGE_TYRES_BY_PARAMS_FALSE);
   };
+
+  const displayList = !isFilter
+    ? tyresList
+    : tyresfilter(tyresList, selectedOption);
 
   return (
     <div>
@@ -77,7 +64,10 @@ export const Tyres = () => {
       </div>
       {isByParams ? <SearchTyreByParams /> : <SearchByCar />}
       {!isLoading ? (
-        <ProductsList productsList={listToDisplay} type="tyres" />
+        <ProductsList
+          productsList={!displayList ? [] : displayList}
+          type="tyres"
+        />
       ) : (
         <Loader />
       )}
