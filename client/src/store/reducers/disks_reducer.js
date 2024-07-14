@@ -6,8 +6,8 @@ export const initialDisksState = {
     brand: "all",
     type: "all",
   },
+  isFilter: false,
   disksList: [],
-  filtredList: [],
   diskById: [],
 };
 
@@ -17,8 +17,8 @@ export const disksReducer = (state = initialDisksState, action) => {
       return { ...state, disksList: action.payload };
     case "GET_DISK_BY_ID":
       return { ...state, diskById: action.payload };
-    case "SET_DISKS_FILTRED_LIST":
-      return { ...state, filtredList: action.payload };
+    case "CHANGE_DISKS_FILTRED_TRUE":
+      return { ...state, isFilter: true };
     case "CHANGE_DISKS_IS_BY_PARAMS_TRUE":
       return { ...state, isByParams: true };
     case "CHANGE_DISKS_IS_BY_PARAMS_FALSE":

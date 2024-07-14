@@ -1,0 +1,3 @@
+export const CHANGE_DISKS_FILTRED_TRUE = {
+  type: "CHANGE_DISKS_FILTRED_TRUE",
+};

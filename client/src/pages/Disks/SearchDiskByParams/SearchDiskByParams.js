@@ -1,43 +1,16 @@
-import styled from "styled-components";
-import { disksFilter } from "../../../scripts/disk/disksFilter";
 import { disksOptionsCreator } from "../../../scripts/disk/disksOptionsCreator";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  selectDisksFilteredList,
   selectDisksList,
   selectDisksOptions,
 } from "../../../store/selectors/disks/disks_selectors";
 import { setDisksSearchOptions } from "../../../store/actions/action_creators/disks/set_search_options";
-
-const StyledCatalogByParams = styled.div`
-  border-bottom: 1px solid #aec09a;
-  padding-bottom: 20px;
-  & button {
-    width: 150px;
-    padding: 5px 20px;
-  }
-  & form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-`;
-
-const Flex = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const StyledCatalogEl = styled.div`
-  margin: 20px 40px;
-  & select {
-    width: 100%;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 14px;
-    color: black;
-  }
-`;
+import {
+  FlexCenter,
+  StyledCatalogByParams,
+  StyledCatalogEl,
+} from "../../../components/Styles/Styles";
+import { CHANGE_DISKS_FILTRED_TRUE } from "../../../store/actions/action_creators/disks/is_filter";
 
 export const SearchDiskByParams = () => {
   const dispatch = useDispatch();
@@ -57,13 +30,13 @@ export const SearchDiskByParams = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(selectDisksFilteredList(disksFilter(disksList, searchOptions)));
+    dispatch(CHANGE_DISKS_FILTRED_TRUE);
   };
 
   return (
     <StyledCatalogByParams>
       <form onSubmit={handleSubmit}>
-        <Flex>
+        <FlexCenter>
           <StyledCatalogEl>
             Диаметр
             <select
@@ -112,7 +85,7 @@ export const SearchDiskByParams = () => {
               ))}
             </select>
           </StyledCatalogEl>
-        </Flex>
+        </FlexCenter>
         <button type="submit">Поиск</button>
       </form>
     </StyledCatalogByParams>

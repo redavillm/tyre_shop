@@ -1,6 +1,6 @@
 export const selectDisksList = (state) => state.disksState.disksList;
 
-export const selectDisksFilteredList = (state) => state.disksState.filtredList;
+export const selectIsDisksFilter = (state) => state.disksState.isFilter;
 
 export const selectDiskById = (state) => state.disksState.diskById;
 

@@ -9,42 +9,11 @@ import { tyresOptionsCreator } from "../../../scripts/tyre/tyresOptionsCreator";
 import { CHANGE_IS_WINTER } from "../../../store/actions/action_creators/tyres/is_winter";
 import { setTyresSearchOptions } from "../../../store/actions/action_creators/tyres/set_search_options";
 import { CHANGE_TYRES_IS_FILTER } from "../../../store/actions/action_creators/tyres";
-
-const StyledCatalogByParams = styled.div`
-  border-bottom: 1px solid #aec09a;
-  padding-bottom: 20px;
-  position: relative;
-  & button {
-    width: 150px;
-    padding: 10px 20px;
-    background-color: white;
-    border: none;
-    cursor: pointer;
-    &:hover {
-      background-color: rgb(190, 190, 190);
-    }
-  }
-  & form {
-    display: flex;
-    flex-direction: column;
-  }
-`;
-
-const Flex = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const StyledCatalogEl = styled.div`
-  margin: 20px 40px 20px 0px;
-  & select {
-    width: 100%;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 14px;
-    color: black;
-  }
-`;
+import {
+  FlexCenter,
+  StyledCatalogByParams,
+  StyledCatalogEl,
+} from "../../../components/Styles/Styles";
 
 const StyledCheckbox = styled.label`
   display: block;
@@ -113,7 +82,7 @@ export const SearchTyreByParams = () => {
   return (
     <StyledCatalogByParams>
       <form onSubmit={handleSubmit}>
-        <Flex>
+        <FlexCenter>
           <StyledCatalogEl>
             Ширина
             <select
@@ -170,7 +139,7 @@ export const SearchTyreByParams = () => {
               onChange={handleChanegeCheckbox}
             />
           </StyledCheckbox>
-        </Flex>
+        </FlexCenter>
         <button type="submit">Поиск</button>
       </form>
       <StyledSorting>

@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getTyresFromServer } from "../../store/actions/action_creators/tyres/get_tyres_from_server";
 import { selectIsLoading } from "../../store/selectors/isLoading";
-import { CHANGE_REFRESH_LIST_FLAG } from "../../store/actions";
 import {
   CHANGE_TYRES_BY_PARAMS_FALSE,
   CHANGE_TYRES_BY_PARAMS_TRUE,
@@ -17,15 +16,15 @@ import {
   selectTyresList,
   selectTyresOptions,
 } from "../../store/selectors/tyres/tyres_selectors";
-import { Loader, StyledTyreCatalogButtons } from "./tyres_styles";
 import { tyresfilter } from "../../scripts/tyre";
+import { Loader, StyledCatalogButtons } from "../../components/Styles/Styles";
 
 export const Tyres = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getTyresFromServer());
-    dispatch(CHANGE_REFRESH_LIST_FLAG); //???
+    // dispatch(CHANGE_REFRESH_LIST_FLAG); //???
   }, [dispatch]);
 
   const isWinter = useSelector(selectIsWinter);
@@ -53,14 +52,14 @@ export const Tyres = () => {
     <div>
       <Navbar />
       <div>
-        <StyledTyreCatalogButtons>
+        <StyledCatalogButtons>
           <button id="byParams" onClick={setSearchByParams}>
             По параметрам
           </button>
           <button id="byCar" onClick={setSearchByCar}>
             По авто
           </button>
-        </StyledTyreCatalogButtons>
+        </StyledCatalogButtons>
       </div>
       {isByParams ? <SearchTyreByParams /> : <SearchByCar />}
       {!isLoading ? (
