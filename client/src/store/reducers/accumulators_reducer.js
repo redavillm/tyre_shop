@@ -6,8 +6,8 @@ export const initialAccumulatorsState = {
     capacity: "all",
     brand: "all",
   },
+  isFilter: false,
   accumulatorsList: [],
-  filtredList: [],
   accumulatorById: [],
 };
 
@@ -20,14 +20,14 @@ export const accumulatorsReducer = (
       return { ...state, accumulatorsList: action.payload };
     case "GET_ACCUMULATOR_BY_ID":
       return { ...state, accumulatorById: action.payload };
-    case "SET_ACCUMULATORS_FILTRED_LIST":
-      return { ...state, filtredList: action.payload };
     case "CHANGE_ACCUMULATORS_IS_BY_PARAMS_TRUE":
       return { ...state, isByParams: true };
     case "CHANGE_ACCUMULATORS_IS_BY_PARAMS_FALSE":
       return { ...state, isByParams: false };
     case "SET_ACCUMULATORS_SEARCH_OPTIONS":
       return { ...state, searchOptions: action.payload };
+    case "CHANGE_ACCUMULATORS_FILTRED_TRUE":
+      return { ...state, isFilter: true };
     default:
       return state;
   }

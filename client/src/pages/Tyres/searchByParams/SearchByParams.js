@@ -137,6 +137,7 @@ export const SearchTyreByParams = () => {
               type="checkbox"
               value="isWinter"
               onChange={handleChanegeCheckbox}
+              checked={isWinter}
             />
           </StyledCheckbox>
         </FlexCenter>

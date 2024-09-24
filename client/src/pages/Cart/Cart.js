@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { CartList } from "./CartList/CartList";
-import { findProductById } from "../../scripts/findProductById";
-
 const Flex = styled.div`
   display: flex;
   justify-content: space-between;
@@ -9,8 +7,6 @@ const Flex = styled.div`
 
 export const Cart = ({ cartItems, setCartItems }) => {
   const cartBacket = [];
-
-  cartItems.map((el) => cartBacket.push(findProductById(el.id)));
 
   return (
     <div>

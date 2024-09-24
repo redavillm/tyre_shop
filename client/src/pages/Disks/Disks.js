@@ -23,7 +23,6 @@ export const Disks = () => {
 
   useEffect(() => {
     dispatch(getDisksFromServer());
-    // dispatch(CHANGE_REFRESH_LIST_FLAG); //???
   }, [dispatch]);
 
   const isByParams = useSelector(selectIsDisksByParams);

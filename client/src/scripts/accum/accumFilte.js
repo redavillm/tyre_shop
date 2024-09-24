@@ -1,4 +1,5 @@
 export const accumFilter = (data, selectedOption) => {
+  console.log("selectedOption in accumFilter = ", selectedOption);
   try {
     const { size, polarity, capacity, brand } = selectedOption;
 

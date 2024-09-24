@@ -1,48 +1,23 @@
-import styled from "styled-components";
-import { accumFilter } from "../../../scripts/accum/accumFilte";
 import { accumsOptionCreator } from "../../../scripts/accum/accumsOptionCreator";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  selectAccumulatorsFilteredList,
   selectAccumulatorsList,
   selectAccumulatorsOptions,
+  selectIsAccumulatorsFilter,
 } from "../../../store/selectors/accumulators/accumulators_selectors";
 import { setAccumulatorsSerachOptions } from "../../../store/actions/action_creators/accumulators/set_search_options";
-
-const StyledCatalogByParams = styled.div`
-  border-bottom: 1px solid #aec09a;
-  padding-bottom: 20px;
-  & button {
-    width: 150px;
-    padding: 5px 20px;
-  }
-  & form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-`;
-
-const Flex = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const StyledCatalogEl = styled.div`
-  margin: 20px 40px;
-  & select {
-    width: 100%;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 14px;
-    color: black;
-  }
-`;
+import {
+  StyledCatalogByParams,
+  StyledCatalogEl,
+} from "../../../components/Styles/Styles";
+import { Flex } from "../../../components/Card/StyledCard";
+import { CHANGE_ACCUMULATORS_FILTRED_TRUE } from "../../../store/actions/action_creators/accumulators/is_filter";
 
 export const SearchAccumsByParams = () => {
   const dispatch = useDispatch();
 
   const searchOptions = useSelector(selectAccumulatorsOptions);
+  const isFilter = useSelector(selectIsAccumulatorsFilter);
 
   const accumulatorsList = useSelector(selectAccumulatorsList);
 
@@ -57,11 +32,8 @@ export const SearchAccumsByParams = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(
-      selectAccumulatorsFilteredList(
-        accumFilter(accumulatorsList, searchOptions)
-      )
-    );
+    dispatch(CHANGE_ACCUMULATORS_FILTRED_TRUE);
+    console.log("isFilter in searchBar => ", isFilter);
   };
 
   return (
@@ -75,9 +47,11 @@ export const SearchAccumsByParams = () => {
               onChange={handleSelectChange("size")}
             >
               <option>all</option>
-              {accumsOptionCreator("size").map((el, index) => (
-                <option id={index}>{el}</option>
-              ))}
+              {accumsOptionCreator(accumulatorsList, "size").map(
+                (el, index) => (
+                  <option key={index}>{el}</option>
+                )
+              )}
             </select>
           </StyledCatalogEl>
           <StyledCatalogEl>
@@ -87,9 +61,11 @@ export const SearchAccumsByParams = () => {
               onChange={handleSelectChange("polarity")}
             >
               <option>all</option>
-              {accumsOptionCreator("polarity").map((el, index) => (
-                <option id={index}>{el}</option>
-              ))}
+              {accumsOptionCreator(accumulatorsList, "polarity").map(
+                (el, index) => (
+                  <option key={index}>{el}</option>
+                )
+              )}
             </select>
           </StyledCatalogEl>
           <StyledCatalogEl>
@@ -99,9 +75,11 @@ export const SearchAccumsByParams = () => {
               onChange={handleSelectChange("capacity")}
             >
               <option>all</option>
-              {accumsOptionCreator("capacity").map((el, index) => (
-                <option id={index}>{el}</option>
-              ))}
+              {accumsOptionCreator(accumulatorsList, "capacity").map(
+                (el, index) => (
+                  <option key={index}>{el}</option>
+                )
+              )}
             </select>
           </StyledCatalogEl>
           <StyledCatalogEl>
@@ -111,9 +89,11 @@ export const SearchAccumsByParams = () => {
               onChange={handleSelectChange("brand")}
             >
               <option>all</option>
-              {accumsOptionCreator("brand").map((el, index) => (
-                <option id={index}>{el}</option>
-              ))}
+              {accumsOptionCreator(accumulatorsList, "brand").map(
+                (el, index) => (
+                  <option key={index}>{el}</option>
+                )
+              )}
             </select>
           </StyledCatalogEl>
         </Flex>

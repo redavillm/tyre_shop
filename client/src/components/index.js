@@ -4,3 +4,5 @@ export * from "./Header/Header";
 export * from "./Navbar/Navbar";
 export * from "./Card/Card";
 export * from "./ProductsList/ProductsList";
+export * from "./ItemPage/ItemPage";
+export * from "./BackArrow/BackArrow";
