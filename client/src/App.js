@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Route, Routes } from "react-router-dom";
 import { Header, Footer } from "./components";
+import Modal from "react-modal";
 import {
   Tyre,
   Tyres,
@@ -9,10 +10,8 @@ import {
   Accumulator,
   Accumulators,
   Contacts,
-  Auth,
   Registration,
   NotFound,
-  Cart,
 } from "./pages";
 
 const StyledContainer = styled.div`
@@ -25,6 +24,8 @@ const StyledContainer = styled.div`
 const Content = styled.div`
   min-height: calc(100vh - 70px);
 `;
+
+Modal.setAppElement("#root");
 
 const App = () => {
   return (
@@ -39,9 +40,7 @@ const App = () => {
           <Route path="/accumulators" element={<Accumulators />} />
           <Route path="/accumulators/:id" element={<Accumulator />} />
           <Route path="/contacts" element={<Contacts />} />
-          <Route path="/auth" element={<Auth />} />
           <Route path="/registration" element={<Registration />} />
-          <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Content>

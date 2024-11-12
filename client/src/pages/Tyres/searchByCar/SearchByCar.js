@@ -1,40 +1,15 @@
 import { useState } from "react";
-import styled from "styled-components";
 import { TYRES_BY_CAR } from "../../../db/db";
 import {
   createModelsOptions,
   createModificationsOpitons,
   createYearsOpitons,
 } from "./optionsCreators/optionsCreators";
-
-const StyledCatalog = styled.div`
-  border-bottom: 1px solid #aec09a;
-  padding-bottom: 20px;
-  & button {
-    width: 150px;
-    padding: 5px 20px;
-  }
-  & form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-`;
-
-const Flex = styled.div`
-  display: flex;
-`;
-
-const StyledCatalogEl = styled.div`
-  margin: 20px 40px;
-  & select {
-    width: 100%;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 14px;
-    color: black;
-  }
-`;
+import { Flex } from "../../../components/Styles/mainStyeles";
+import {
+  StyledCatalog,
+  StyledCatalogEl,
+} from "../../../components/Styles/StyledCatalog";
 
 export const SearchByCar = () => {
   const [selectedOption, setSelectedOption] = useState({

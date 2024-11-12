@@ -1,55 +1,20 @@
-import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectIsWinter,
   selectTyresList,
   selectTyresOptions,
 } from "../../../store/selectors/tyres/tyres_selectors";
-import { tyresOptionsCreator } from "../../../scripts/tyre/tyresOptionsCreator";
+import { tyresOptionsCreator } from "../../../utilities/tyre/tyresOptionsCreator";
 import { CHANGE_IS_WINTER } from "../../../store/actions/action_creators/tyres/is_winter";
 import { setTyresSearchOptions } from "../../../store/actions/action_creators/tyres/set_search_options";
 import { CHANGE_TYRES_IS_FILTER } from "../../../store/actions/action_creators/tyres";
 import {
-  FlexCenter,
   StyledCatalogByParams,
   StyledCatalogEl,
-} from "../../../components/Styles/Styles";
-
-const StyledCheckbox = styled.label`
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  margin-top: 40px;
-  & input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-  }
-`;
-
-const StyledSorting = styled.div`
-  font-size: 22px;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  & select {
-    padding: 5px 0px;
-    margin-left: 5px;
-    border: 0;
-    // appearance: none;
-    // -webkit-appearance: none;
-    // -moz-appearance: none;
-  }
-`;
+  StyledCheckbox,
+  StyledSorting,
+} from "../../../components/Styles/StyledCatalog";
+import { FlexCenter } from "../../../components";
 
 export const SearchTyreByParams = () => {
   const dispatch = useDispatch();
@@ -146,7 +111,6 @@ export const SearchTyreByParams = () => {
       <StyledSorting>
         Сортировать:
         <select>
-          <option>По популяроности</option>
           <option>Дешевле</option>
           <option>Дороже</option>
         </select>

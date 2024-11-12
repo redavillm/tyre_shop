@@ -6,14 +6,14 @@ const StyledFooter = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 50px;
-  border-top: solid 1px #aec09a;
+  border-top: solid 1px var(--grey);
   font-size: 14px;
   padding: 30px 10px;
 `;
 
 const StyledFooterBtn = styled.i`
   font-size: 26px;
-  color: white;
+  color: var(--white);
   transition: all 400ms ease;
   &:hover {
     font-size: 30px;
@@ -31,7 +31,7 @@ const StyledContacts = styled.div`
     transition: all 400ms ease;
   }
   & a:hover {
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid var(--font_2);
   }
 `;
 
@@ -45,12 +45,8 @@ export const Footer = () => {
         <Link to="https://yandex.com/maps/-/CDRBqMKR">
           Санкт-Петербург, ул. Фучика 74 корпус 3
         </Link>
-        <div>
-          <a href="/">+7(981)122-23-444</a>
-        </div>
-        <div>
-          <a href="/">info@tyre-shop.ru</a>
-        </div>
+        <Link to="/contacts">+7(981)122-23-444</Link>
+        <Link to="/contacts">info@tyre-shop.ru</Link>
       </StyledContacts>
     </StyledFooter>
   );

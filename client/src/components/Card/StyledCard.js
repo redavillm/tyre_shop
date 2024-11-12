@@ -4,7 +4,7 @@ export const StyeledCard = styled.span`
   width: 260px;
   margin: 20px 10px;
   padding: 10px 0px 0px 0px;
-  background-color: #aec670;
+  background-color: var(--bg_2);
   text-align: center;
   cursor: pointer;
   box-shadow: 1px 2px 6px 1px rgba(0, 0, 0, 0.68);
@@ -13,13 +13,13 @@ export const StyeledCard = styled.span`
 
   h6 {
     margin: 5px 5px;
-    color: #1a2902;
+    color: var(--font);
   }
 
   p {
     font-size: 18px;
     margin: 5px 5px;
-    color: #344c11;
+    color: var(--font_2);
   }
 
   img {
@@ -33,7 +33,8 @@ export const StyeledCard = styled.span`
   }
 
   & i {
-    color: white;
+    color: var(--font_2);
+    margin-left: 5px;
   }
 `;
 
@@ -45,13 +46,10 @@ export const Flex = styled.div`
 export const StyledCounter = styled.div`
   & button {
     padding: 10px 20px 10px 20px;
-    background-color: #aec09a;
+    background-color: var(--grey);
     border: solid transparent 1px;
-    color: white;
+    color: var(--font_2);
     cursor: pointer;
-    &:hover {
-      border: solid white 1px;
-    }
   }
   & span {
     text-align: center;
@@ -69,10 +67,6 @@ export const StyledCardButton = styled.button`
   font-size: 12px;
   color: white;
   &:hover {
-    border: solid 1px white;
+    border: solid 1px var(--font_2);
   }
-`;
-
-export const StyledCardIcon = styled.i`
-  margin-left: 5px;
 `;

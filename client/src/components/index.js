@@ -6,3 +6,6 @@ export * from "./Card/Card";
 export * from "./ProductsList/ProductsList";
 export * from "./ItemPage/ItemPage";
 export * from "./BackArrow/BackArrow";
+export * from "./Styles/mainStyeles";
+export * from "./Styles/StyledCatalog";
+export * from "./CartBtns/CartBtn";

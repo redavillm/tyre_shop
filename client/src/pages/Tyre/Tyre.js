@@ -1,13 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { selectIsLoading } from "../../store/selectors/isLoading";
-import { CHANGE_REFRESH_LIST_FLAG } from "../../store/actions";
+import { selectIsLoading } from "../../store/selectors/mainSelector";
 import { getTyreById } from "../../store/actions/action_creators/tyres/get_tyre_by_id";
 import { selectTyreById } from "../../store/selectors/tyres/tyres_selectors";
 import { ProductNotFound } from "../ProductNotFound/ProductNotFound";
-import { Loader } from "../../components/Styles/Styles";
-import { BackArrow, ItemPage, Navbar } from "../../components";
+import { BackArrow, ItemPage, Loader, Navbar } from "../../components";
 
 export const Tyre = () => {
   const navigate = useNavigate();
@@ -23,7 +21,6 @@ export const Tyre = () => {
 
   useEffect(() => {
     dispatch(getTyreById(id));
-    dispatch(CHANGE_REFRESH_LIST_FLAG);
   }, [dispatch, id]);
 
   const tyre = useSelector(selectTyreById);

@@ -5,15 +5,17 @@ import {
   Flex,
   StyeledCard,
   StyledCardButton,
-  StyledCardIcon,
   StyledCounter,
 } from "./StyledCard";
+import { useDispatch } from "react-redux";
+import { ADD_TO_CART } from "../../store/actions";
 
 export const Card = ({ product, type }) => {
   const { _id, price, imgSrc } = product;
   const { title, params, counterStep, season } = getProductData(product, type);
-
   const [counter, setCounter] = useState(counterStep);
+
+  const dispatch = useDispatch();
 
   const increaseCounter = () => {
     if (counter >= 40) {
@@ -31,11 +33,15 @@ export const Card = ({ product, type }) => {
   const isSeasonIcon = () => {
     if (season) {
       return season === "winter" ? (
-        <StyledCardIcon className="fa fa-snowflake-o" aria-hidden="true" />
+        <i className="fa fa-snowflake-o" aria-hidden="true" />
       ) : (
-        <StyledCardIcon className="fa fa-sun-o" aria-hidden="true" />
+        <i className="fa fa-sun-o" aria-hidden="true" />
       );
     }
+  };
+
+  const handlerAddToCart = () => {
+    dispatch(ADD_TO_CART(_id, type, counter));
   };
 
   return (
@@ -61,8 +67,10 @@ export const Card = ({ product, type }) => {
         </button>
       </StyledCounter>
       <Flex>
-        <StyledCardButton>В коризину</StyledCardButton>
-        <StyledCardButton>Купить</StyledCardButton>
+        <StyledCardButton onClick={handlerAddToCart}>
+          В коризину
+        </StyledCardButton>
+        {/* <StyledCardButton>Купить</StyledCardButton> */}
       </Flex>
     </StyeledCard>
   );

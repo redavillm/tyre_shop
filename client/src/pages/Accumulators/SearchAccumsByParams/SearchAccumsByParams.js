@@ -1,4 +1,4 @@
-import { accumsOptionCreator } from "../../../scripts/accum/accumsOptionCreator";
+import { accumsOptionCreator } from "../../../utilities/accum/accumsOptionCreator";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectAccumulatorsList,
@@ -6,12 +6,9 @@ import {
   selectIsAccumulatorsFilter,
 } from "../../../store/selectors/accumulators/accumulators_selectors";
 import { setAccumulatorsSerachOptions } from "../../../store/actions/action_creators/accumulators/set_search_options";
-import {
-  StyledCatalogByParams,
-  StyledCatalogEl,
-} from "../../../components/Styles/Styles";
 import { Flex } from "../../../components/Card/StyledCard";
 import { CHANGE_ACCUMULATORS_FILTRED_TRUE } from "../../../store/actions/action_creators/accumulators/is_filter";
+import { StyledCatalogByParams, StyledCatalogEl } from "../../../components";
 
 export const SearchAccumsByParams = () => {
   const dispatch = useDispatch();

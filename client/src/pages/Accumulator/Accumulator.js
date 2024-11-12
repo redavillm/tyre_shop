@@ -1,12 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectIsLoading } from "../../store/selectors/isLoading";
 import { getAccumulatorById } from "../../store/actions/action_creators/accumulators/get_accumulator_by_id";
 import { selectAccumulatorById } from "../../store/selectors/accumulators/accumulators_selectors";
 import { ProductNotFound } from "../ProductNotFound/ProductNotFound";
-import { Loader } from "../../components/Styles/Styles";
-import { BackArrow, ItemPage, Navbar } from "../../components";
+import { BackArrow, ItemPage, Loader, Navbar } from "../../components";
+import { selectIsLoading } from "../../store/selectors/mainSelector";
 
 export const Accumulator = () => {
   const navigate = useNavigate();

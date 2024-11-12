@@ -7,7 +7,7 @@ const StyledButton = styled.div`
   border-bottom: 1px solid transparent;
   transition: all 400ms ease;
   &:hover {
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid var(--white);
   }
 `;
 

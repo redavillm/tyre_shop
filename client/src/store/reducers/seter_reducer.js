@@ -1,19 +1,23 @@
+import { MAIN_ACTIONS } from "../store_const";
+
 export const initialSeterState = {
-  refreshListFlag: false,
   isLoading: false,
   isError: false,
+  isModalCartOpen: false,
 };
 
 export const seterReducer = (state = initialSeterState, action) => {
   switch (action.type) {
-    case "CHANGE_REFRESH_LIST_FLAG":
-      return { ...state, refreshListFlag: !state.refreshListFlag };
-    case "CHANGE_LOADING_IS_TRUE":
+    case MAIN_ACTIONS.CHANGE_LOADING_IS_TRUE:
       return { ...state, isLoading: true };
-    case "CHANGE_LOADING_IS_FALSE":
+    case MAIN_ACTIONS.CHANGE_LOADING_IS_FALSE:
       return { ...state, isLoading: false };
-    case "CHANGE_IS_ERROR":
+    case MAIN_ACTIONS.CHANGE_IS_ERROR:
       return { ...state, isError: !state.isError };
+    case MAIN_ACTIONS.OPEN_CART_MODAL:
+      return { ...state, isModalCartOpen: true };
+    case MAIN_ACTIONS.CLOSE_CART_MODAL:
+      return { ...state, isModalCartOpen: false };
     default:
       return state;
   }

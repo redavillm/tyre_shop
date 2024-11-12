@@ -1,16 +1,16 @@
-import { disksOptionsCreator } from "../../../scripts/disk/disksOptionsCreator";
+import { disksOptionsCreator } from "../../../utilities/disk/disksOptionsCreator";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectDisksList,
   selectDisksOptions,
 } from "../../../store/selectors/disks/disks_selectors";
 import { setDisksSearchOptions } from "../../../store/actions/action_creators/disks/set_search_options";
+import { CHANGE_DISKS_FILTRED_TRUE } from "../../../store/actions/action_creators/disks/is_filter";
 import {
   FlexCenter,
   StyledCatalogByParams,
   StyledCatalogEl,
-} from "../../../components/Styles/Styles";
-import { CHANGE_DISKS_FILTRED_TRUE } from "../../../store/actions/action_creators/disks/is_filter";
+} from "../../../components";
 
 export const SearchDiskByParams = () => {
   const dispatch = useDispatch();

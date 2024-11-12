@@ -7,14 +7,19 @@ const app = express();
 const PORT = 3001;
 
 const TyreController = require("./controllers/Tyre");
+const ProductController = require("./controllers/Product");
 const DiskController = require("./controllers/Disk");
 const AccumulatorController = require("./controllers/Accumulator");
 
-app.use(cors());
-
-app.use(express.static("public"));
+app.use(
+  cors({
+    origin: "http://localhost:3002",
+  })
+);
 
 app.use(express.json());
+
+app.use(express.static("public"));
 
 app.get("/tyres", TyreController.list);
 app.get("/tyres/:id", TyreController.getById);
@@ -25,13 +30,15 @@ app.get("/disks/:id", DiskController.getById);
 app.get("/accumulators", AccumulatorController.list);
 app.get("/accumulators/:id", AccumulatorController.getById);
 
+app.post("/products", ProductController.getCartItems);
+
 app.use("*", (req, res) => {
   res.status(404).json({
     message: "404 Not Found",
   });
 });
 
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   const { statusCode = 500, message } = err;
   console.log({ err });
   res.status(statusCode).send({

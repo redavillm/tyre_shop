@@ -1,3 +1,12 @@
+:root {
+  --bg: #778d45;
+  --font_2: #ffffff;
+  --bg_2: #aec670;
+  --font: #000000;
+  --borders: #344c11;
+  --grey: #aec09a;
+}
+
 @import url("fonts/font-awesome.css");
 * {
   margin: 0;
@@ -9,10 +18,11 @@ html {
 
 a {
   text-decoration: none;
-  color: white;
+  color: var(--font_2);
 }
+
 .active {
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid var(--font_2);
   font-weight: 600;
 }
 
@@ -24,18 +34,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
-  background-color: #778d45;
+  background-color: var(--bg);
   height: 100%;
 }
 
 .test_styles {
   font-size: 16px;
-}
-
-.flex {
-  display: flex;
-  justify-content: center;
-  flex-wrap: nowrap;
+  background-color: #000000;
 }
 
 .colors {
@@ -52,31 +57,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-/* .modal_none {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 99997;
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  visibility: hidden;
-  opacity: 0;
-}
-
-.modal_new_task_window {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 99997;
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  visibility: visible;
-  opacity: 1;
-} */

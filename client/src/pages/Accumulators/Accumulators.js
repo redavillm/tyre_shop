@@ -1,10 +1,15 @@
 import { SearchAccumsByParams } from "./SearchAccumsByParams/SearchAccumsByParams";
 import { SearchAccumsByCar } from "./SearchAccumsByCar/SearchAccumsByCar";
-import { Navbar, ProductsList } from "../../components";
+import {
+  Loader,
+  Navbar,
+  ProductsList,
+  StyledCatalogButtons,
+} from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getAccumulatorsFromServer } from "../../store/actions/action_creators/accumulators/get_accumulators_from_server";
-import { selectIsLoading } from "../../store/selectors/isLoading";
+import { selectIsLoading } from "../../store/selectors/mainSelector";
 import {
   CHANGE_ACCUMULATORS_BY_PARAMS_FALSE,
   CHANGE_ACCUMULATORS_BY_PARAMS_TRUE,
@@ -15,8 +20,7 @@ import {
   selectIsAccumulatorsByParams,
   selectIsAccumulatorsFilter,
 } from "../../store/selectors/accumulators/accumulators_selectors";
-import { Loader, StyledCatalogButtons } from "../../components/Styles/Styles";
-import { accumFilter } from "../../scripts/accum/accumFilte";
+import { accumFilter } from "../../utilities/accum/accumFilte";
 
 export const Accumulators = () => {
   const dispatch = useDispatch();
