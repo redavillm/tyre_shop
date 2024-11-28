@@ -2,7 +2,7 @@ import { CART_ACTIONS } from "../store_const";
 
 export const ADD_TO_CART = (id, type, count = 1) => ({
   type: CART_ACTIONS.ADD_TO_CART,
-  payload: { id, type, count },
+  payload: { id: id, type: type, count: count },
 });
 export const REMOVE_FROM_CART = (id) => ({
   type: CART_ACTIONS.REMOVE_FROM_CART,

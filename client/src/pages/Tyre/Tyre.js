@@ -46,6 +46,8 @@ export const Tyre = () => {
       <BackArrow handler={handleBackArrow} />
       {!isLoading ? (
         <ItemPage
+          id={id}
+          type={"tyres"}
           img={imgSrc}
           title={brand + " " + model}
           description={description}

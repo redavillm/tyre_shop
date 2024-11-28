@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { ADD_TO_CART } from "../../store/actions";
 
 const Flex = styled.div`
   height: 500px;
@@ -60,8 +62,18 @@ const StyledCounter = styled.div`
   }
 `;
 
-export const ItemPage = ({ img, title, description, price, minProdVal }) => {
+export const ItemPage = ({
+  img,
+  title,
+  description,
+  price,
+  minProdVal,
+  id,
+  type,
+}) => {
   const [counter, setCounter] = useState(minProdVal);
+
+  const dispatch = useDispatch();
 
   const increaseCounter = () => {
     if (counter >= 40) {
@@ -76,10 +88,14 @@ export const ItemPage = ({ img, title, description, price, minProdVal }) => {
     setCounter(counter - minProdVal);
   };
 
+  const handlerAddToCart = () => {
+    dispatch(ADD_TO_CART(id, type, counter));
+  };
+
   return (
     <Flex>
       <StyledImg>
-        <img src={img} alt="product pictur" width="300px" />
+        <img src={img} alt="product_picture" width="300px" />
       </StyledImg>
       <StyledProductInfo>
         <h2>{title}</h2>
@@ -102,7 +118,7 @@ export const ItemPage = ({ img, title, description, price, minProdVal }) => {
           </button>
           <div>Итог: {counter * price} руб.</div>
         </StyledCounter>
-        <StyledButton>В корзину</StyledButton>
+        <StyledButton onClick={handlerAddToCart}>В корзину</StyledButton>
       </StyledProductInfo>
     </Flex>
   );

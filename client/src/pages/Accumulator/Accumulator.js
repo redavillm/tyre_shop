@@ -57,6 +57,8 @@ export const Accumulator = () => {
       <BackArrow handler={handleBackArrow} />
       {!isLoading ? (
         <ItemPage
+          id={id}
+          type={"accumulators"}
           img={imgSrc}
           title={brand + " " + model}
           description={description}

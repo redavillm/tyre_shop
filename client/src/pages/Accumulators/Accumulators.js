@@ -36,8 +36,6 @@ export const Accumulators = () => {
 
   const accumulatorsList = useSelector(selectAccumulatorsList);
 
-  console.log("isFilter in main comp = ", isFilter);
-
   const listToDisplay = !isFilter
     ? accumulatorsList
     : accumFilter(accumulatorsList, selectedOption);

@@ -33,7 +33,7 @@ export const Disk = () => {
   const { brand, model, imgSrc, diametr, price, mount } = disk || [];
 
   const description = {
-    Диамтр: diametr + " " + "cm",
+    Диамтр: diametr + " cm",
     Разболтовка: mount,
   };
 
@@ -43,6 +43,8 @@ export const Disk = () => {
       <BackArrow handler={handleBackArrow} />
       {!isLoading ? (
         <ItemPage
+          id={id}
+          type={"disks"}
           img={imgSrc}
           title={brand + " " + model}
           description={description}

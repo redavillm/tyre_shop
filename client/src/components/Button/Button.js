@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const StyledButton = styled.div`
+color: black
   font-size: 18px;
   border-bottom: none;
   cursor: pointer;

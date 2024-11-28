@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, UPDATE_CART_ITEM } from "../actions";
+import { CART_ACTIONS } from "../store_const";
 
 const initialCartState = {
   items: [],
@@ -6,36 +6,56 @@ const initialCartState = {
 
 export const cartReducer = (state = initialCartState, action) => {
   switch (action.type) {
-    case ADD_TO_CART: {
+    case CART_ACTIONS.ADD_TO_CART: {
       const { id, type, count } = action.payload;
-      const existingItem = state.items.find((item) => item.id === id);
-      console.log("state => ", state);
-      console.log("existingItem => ", existingItem);
-      return existingItem
-        ? {
-            ...state,
-            items: state.items.map((item) =>
-              item.id === id ? { ...item, count: item.count + count } : item
-            ),
-          }
-        : {
-            ...state,
-            items: [...state.items, { id, type, count }],
-          };
-    }
-    case REMOVE_FROM_CART: {
+      const existingItemIndex = state.items.findIndex((item) => item.id === id);
+
+      if (existingItemIndex !== -1) {
+        const updatedItem = {
+          ...state.items[existingItemIndex],
+          count: state.items[existingItemIndex].count + count,
+        };
+
+        return {
+          ...state,
+          items: [
+            ...state.items.slice(0, existingItemIndex),
+            updatedItem,
+            ...state.items.slice(existingItemIndex + 1),
+          ],
+        };
+      }
+
       return {
         ...state,
-        items: [state.items.filter((items) => items.id !== action.payload)],
+        items: [...state.items, { id, type, count }],
       };
     }
-    case UPDATE_CART_ITEM: {
-      const { id, count } = action.payload;
+
+    case CART_ACTIONS.REMOVE_FROM_CART: {
       return {
         ...state,
-        items: state.items.map((item) =>
-          item.id === id ? { ...item, count } : item
-        ),
+        items: state.items.filter((item) => item.id !== action.payload),
+      };
+    }
+
+    case CART_ACTIONS.UPDATE_CART_ITEM: {
+      const { id, count } = action.payload;
+      const existingItemIndex = state.items.findIndex((item) => item.id === id);
+
+      if (existingItemIndex === -1) {
+        return state;
+      }
+
+      const updatedItem = { ...state.items[existingItemIndex], count };
+
+      return {
+        ...state,
+        items: [
+          ...state.items.slice(0, existingItemIndex),
+          updatedItem,
+          ...state.items.slice(existingItemIndex + 1),
+        ],
       };
     }
 

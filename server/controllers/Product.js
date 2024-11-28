@@ -3,11 +3,11 @@ const Disk = require("../models/Disk");
 const Accumulator = require("../models/Accumulator");
 
 const getCartItems = async (req, res) => {
-  const { items } = req.body;
+  const { cartItems } = req.body;
 
   try {
     const results = await Promise.all(
-      items.map(async ({ id, type }) => {
+      cartItems.map(async ({ id, type }) => {
         switch (type) {
           case "tyres":
             return await Tyre.findById(id);
