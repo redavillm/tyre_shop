@@ -44,9 +44,9 @@ export const Accumulator = () => {
   } = accumulator || [];
 
   const description = {
-    Ширина: width + " " + "cm",
-    Высота: height + " " + "cm",
-    Длинна: length + " " + "cm",
+    Ширина: width + " cm",
+    Высота: height + " cm",
+    Длинна: length + " cm",
     Ёмкость: capacity,
     Полярность: polarity,
   };

@@ -1,8 +1,10 @@
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { REMOVE_FROM_CART } from "../../store/actions/cartActions";
 
 const StyledCartImg = styled.img`
+  cursor: pointer;
   padding: 20px;
   border: solid black 1px;
   width: 120px;
@@ -20,20 +22,22 @@ const Flex = styled.div`
 
 export const CartListItem = (props) => {
   const dispatch = useDispatch();
-  const { id, item, count, type } = props;
+  const navigate = useNavigate();
+  const { id, item, count, type, closeModal } = props;
   if (!item) {
     return null;
   }
 
   const { imgSrc, brand, model, price } = item;
 
-  const handleDeleteItemFormCart = (id) => {
-    dispatch(REMOVE_FROM_CART(id));
+  const openItemPage = () => {
+    navigate(`/${type}/${id}`);
+    closeModal();
   };
 
   return (
     <Flex>
-      <StyledCartImg src={imgSrc} alt="Item picture" />
+      <StyledCartImg src={imgSrc} alt="Item picture" onClick={openItemPage} />
       <div>
         <h4>{brand + " " + model}</h4>
         <p>Тип: {type}</p>
@@ -41,7 +45,7 @@ export const CartListItem = (props) => {
         <p>Цена за единицу: {price} руб.</p>
         <p>Стоисость: {price * count} руб.</p>
       </div>
-      <button onClick={() => handleDeleteItemFormCart(id)}>Удалить</button>
+      <button onClick={() => dispatch(REMOVE_FROM_CART(id))}>Удалить</button>
     </Flex>
   );
 };

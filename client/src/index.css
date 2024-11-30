@@ -40,7 +40,8 @@ body {
 
 .test_styles {
   font-size: 16px;
-  background-color: #000000;
+  background: #9b9b9b;
+  cursor: pointer;
 }
 
 .colors {

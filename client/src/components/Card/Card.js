@@ -2,18 +2,20 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { getProductData } from "../ProductsList/getProductData/getProductData";
 import {
-  Flex,
+  // Flex,
   StyeledCard,
   StyledCardButton,
   StyledCounter,
 } from "./StyledCard";
 import { useDispatch } from "react-redux";
 import { ADD_TO_CART } from "../../store/actions";
+import { Toast } from "../Toast/Toast";
 
 export const Card = ({ product, type }) => {
   const { _id, price, imgSrc } = product;
   const { title, params, counterStep, season } = getProductData(product, type);
   const [counter, setCounter] = useState(counterStep);
+  const [toastMessage, setToastMessage] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -42,6 +44,7 @@ export const Card = ({ product, type }) => {
 
   const handlerAddToCart = () => {
     dispatch(ADD_TO_CART(_id, type, counter));
+    setToastMessage("Товар добавлен");
   };
 
   return (
@@ -66,12 +69,19 @@ export const Card = ({ product, type }) => {
           <i className="fa fa-plus" aria-hidden="true" />
         </button>
       </StyledCounter>
-      <Flex>
+      <div>
         <StyledCardButton onClick={handlerAddToCart}>
           В коризину
         </StyledCardButton>
         {/* <StyledCardButton>Купить</StyledCardButton> */}
-      </Flex>
+      </div>
+      {toastMessage && (
+        <Toast
+          message={toastMessage}
+          duration={3000}
+          onClose={() => setToastMessage(null)}
+        />
+      )}
     </StyeledCard>
   );
 };

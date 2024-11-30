@@ -30,9 +30,9 @@ export const Tyre = () => {
   const { width, height, radius } = size || [];
 
   const description = {
-    Ширина: width + " " + "cm",
-    Высота: height + " " + "cm",
-    Радиус: radius + " " + "cm",
+    Ширина: width + " cm",
+    Высота: height + " cm",
+    Радиус: radius + " cm",
     Сезон: season === "summer" ? "Лето" : "Зима",
   };
 

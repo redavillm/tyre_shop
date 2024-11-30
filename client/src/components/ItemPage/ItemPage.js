@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { ADD_TO_CART } from "../../store/actions";
+import { Toast } from "../Toast/Toast";
 
 const Flex = styled.div`
   height: 500px;
@@ -72,6 +73,7 @@ export const ItemPage = ({
   type,
 }) => {
   const [counter, setCounter] = useState(minProdVal);
+  const [toastMessage, setToastMessage] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -90,6 +92,7 @@ export const ItemPage = ({
 
   const handlerAddToCart = () => {
     dispatch(ADD_TO_CART(id, type, counter));
+    setToastMessage("Товар добавлен");
   };
 
   return (
@@ -120,6 +123,13 @@ export const ItemPage = ({
         </StyledCounter>
         <StyledButton onClick={handlerAddToCart}>В корзину</StyledButton>
       </StyledProductInfo>
+      {toastMessage && (
+        <Toast
+          message={toastMessage}
+          duration={3000}
+          onClose={() => setToastMessage(null)}
+        />
+      )}
     </Flex>
   );
 };
