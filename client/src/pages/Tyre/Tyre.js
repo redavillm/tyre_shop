@@ -2,10 +2,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { selectIsLoading } from "../../store/selectors/mainSelector";
-import { getTyreById } from "../../store/actions/action_creators/tyres/get_tyre_by_id";
 import { selectTyreById } from "../../store/selectors/tyres/tyres_selectors";
 import { ProductNotFound } from "../ProductNotFound/ProductNotFound";
 import { BackArrow, ItemPage, Loader, Navbar } from "../../components";
+import { fetchProductById } from "../../utilities/fetchProductById";
+// import { ProductPage } from "../../components/ProductPage/ProductPage";
 
 export const Tyre = () => {
   const navigate = useNavigate();
@@ -18,6 +19,11 @@ export const Tyre = () => {
   const handleBackArrow = () => {
     navigate(-1);
   };
+
+  const getTyreById = fetchProductById(
+    "http://localhost:3001/tyres",
+    "GET_TYRES_BY_ID"
+  );
 
   useEffect(() => {
     dispatch(getTyreById(id));
@@ -36,9 +42,25 @@ export const Tyre = () => {
     Сезон: season === "summer" ? "Лето" : "Зима",
   };
 
-  if (tyre.length === 0) {
+  if (!isLoading && !tyre) {
     return <ProductNotFound />;
   }
+
+  // const formatTyresDescription = (tyre) => ({
+  //   Ширина: tyre.size.width + " cm",
+  //   Высота: tyre.size.height + " cm",
+  //   Радиус: tyre.size.radius + " cm",
+  //   Сезон: tyreseason === "summer" ? "Лето" : "Зима",
+  // });
+
+  // return (
+  //   <ProductPage
+  //     fetchProductById={getTyreById}
+  //     selectProductById={selectTyreById}
+  //     formatDescription={formatTyresDescription}
+  //     type="accumulators"
+  //   />
+  // );
 
   return (
     <>

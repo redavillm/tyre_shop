@@ -2,11 +2,11 @@ import {
   CHANGE_IS_ERROR,
   CHANGE_LOADING_IS_FALSE,
   CHANGE_LOADING_IS_TRUE,
-} from "../../changes";
+} from "../store/actions";
 
-export const getTyreById = (id) => (dispatch) => {
+export const fetchProductById = (url, actionType) => (id) => (dispatch) => {
   dispatch(CHANGE_LOADING_IS_TRUE);
-  fetch(`http://localhost:3001/tyres/${id}`)
+  fetch(`${url}/${id}`)
     .then((res) => {
       if (res.status >= 200 && res.status < 300) {
         return res.json();
@@ -17,14 +17,14 @@ export const getTyreById = (id) => (dispatch) => {
       }
     })
     .then((data) => {
-      return dispatch({
-        type: "GET_TYRES_BY_ID",
+      dispatch({
+        type: actionType,
         payload: data.item,
       });
     })
-    .finally(() => dispatch(CHANGE_LOADING_IS_FALSE))
     .catch((e) => {
       console.log("Error: " + e.message);
       dispatch(CHANGE_IS_ERROR);
-    });
+    })
+    .finally(() => dispatch(CHANGE_LOADING_IS_FALSE));
 };

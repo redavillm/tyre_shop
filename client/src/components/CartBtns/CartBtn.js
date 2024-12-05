@@ -1,13 +1,22 @@
 import { FlexCenter } from "../Styles/mainStyeles";
 import Modal from "react-modal";
-import { ModalCart } from "./ModalCart";
-import { useCart } from "./useCart";
+import { ModalCart } from "./CartModal/ModalCart";
+import { useCart } from "./CartModal/useCart";
 import { BaseModal } from "../BaseModal/BaseModal";
+import { useState } from "react";
+import { OrderModal } from "./OrderModal/OrderModal";
+import { StyledCloseModalBtn } from "./StyledCart";
 
 Modal.setAppElement("#root");
 
 export const CartBtn = () => {
+  const [isOrder, setIsOrder] = useState(false);
   const { openModal, cartItems, isModalCartOpen, closeModal } = useCart();
+
+  const onChangeIsOrderFalse = () => {
+    setIsOrder(false);
+  };
+
   return (
     <>
       <FlexCenter>
@@ -35,7 +44,26 @@ export const CartBtn = () => {
       </FlexCenter>
 
       <BaseModal isModalCartOpen={isModalCartOpen} closeModal={closeModal}>
-        <ModalCart />
+        <StyledCloseModalBtn>
+          <i
+            className="fa fa-times"
+            aria-hidden="true"
+            onClick={() => {
+              closeModal();
+              onChangeIsOrderFalse();
+            }}
+            style={{ cursor: "pointer" }}
+          />
+        </StyledCloseModalBtn>
+
+        {isOrder ? (
+          <OrderModal
+            closeModal={closeModal}
+            onChangeIsOrderFalse={onChangeIsOrderFalse}
+          />
+        ) : (
+          <ModalCart isOrder={isOrder} setIsOrder={setIsOrder} />
+        )}
       </BaseModal>
     </>
   );

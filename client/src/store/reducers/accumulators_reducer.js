@@ -24,10 +24,10 @@ export const accumulatorsReducer = (
       return { ...state, isByParams: true };
     case "CHANGE_ACCUMULATORS_IS_BY_PARAMS_FALSE":
       return { ...state, isByParams: false };
-    case "SET_ACCUMULATORS_SEARCH_OPTIONS":
-      return { ...state, searchOptions: action.payload };
     case "CHANGE_ACCUMULATORS_FILTRED_TRUE":
       return { ...state, isFilter: true };
+    case "SET_ACCUMULATORS_SEARCH_OPTIONS":
+      return { ...state, searchOptions: action.payload };
     default:
       return state;
   }

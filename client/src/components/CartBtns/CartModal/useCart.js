@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { CLOSE_CART_MODAL, OPEN_CART_MODAL } from "../../store/actions/changes";
+import {
+  CLOSE_CART_MODAL,
+  OPEN_CART_MODAL,
+} from "../../../store/actions/changes";
 import {
   selectCartItems,
   selectIsModalCartOpen,
-} from "../../store/selectors/mainSelector";
+} from "../../../store/selectors/mainSelector";
 
 export const useCart = () => {
   const [cartProducts, setCartProducts] = useState([]);

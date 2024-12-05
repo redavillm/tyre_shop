@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { REMOVE_FROM_CART } from "../../store/actions/cartActions";
+import { REMOVE_FROM_CART } from "../../../store/actions/cartActions";
 
 const StyledCartImg = styled.img`
   cursor: pointer;

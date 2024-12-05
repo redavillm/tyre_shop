@@ -5,10 +5,12 @@
   "main": "index.js",
   "scripts": {
     "client": "npm run start --prefix=./client",
-    "build": "npm run build --prefix=./client",
     "server": "npm run dev --prefix=./server"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "yup": "^1.5.0"
+  }
 }

@@ -1,26 +1,25 @@
-import { totalPrice } from "../../utilities/calculateTotalPrice";
+import { totalPrice } from "../../../utilities/calculateTotalPrice";
 import { CartListItem } from "./CartListItem";
 import {
   StyledCart,
   StyledCartContent,
   StyledCartFooter,
-  StyledCartHeader,
-} from "./StyledCart";
+  StyledModalHeader,
+} from "../StyledCart";
 import { useCart } from "./useCart";
 
-export const ModalCart = () => {
+export const ModalCart = ({ isOrder, setIsOrder }) => {
   const { cartProducts, cartItems, closeModal } = useCart();
+
+  const handlSubmit = () => {
+    setIsOrder(!isOrder);
+  };
+
   return (
     <StyledCart>
-      <StyledCartHeader>
+      <StyledModalHeader>
         <h2> Корзина </h2>
-        <i
-          class="fa fa-times"
-          aria-hidden="true"
-          onClick={closeModal}
-          style={{ cursor: "pointer" }}
-        />
-      </StyledCartHeader>
+      </StyledModalHeader>
       <StyledCartContent>
         {cartItems.length <= 0 ? (
           <div>Корзина пока что пуста</div>
@@ -40,7 +39,9 @@ export const ModalCart = () => {
       <StyledCartFooter>
         <p>Итоговая цена: {totalPrice(cartItems, cartProducts)} руб.</p>
 
-        <button>Оформить</button>
+        <button disabled={cartItems.length === 0} onClick={handlSubmit}>
+          Оформить
+        </button>
       </StyledCartFooter>
     </StyledCart>
   );

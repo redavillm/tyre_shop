@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-export const StyledCartHeader = styled.div`
+export const StyledModalHeader = styled.div`
   display: flex;
   justify-content: space-between;
 `;
 export const StyledCart = styled.div`
-  height: 100%;
+  height: 96%;
   display: flex;
   flex-direction: column;
   & button {
@@ -29,4 +29,9 @@ export const StyledCartContent = styled.section`
   flex-grow: 1;
   overflow-y: auto;
   padding: 10px;
+`;
+
+export const StyledCloseModalBtn = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `;

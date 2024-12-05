@@ -1,12 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { getProductData } from "../ProductsList/getProductData/getProductData";
-import {
-  // Flex,
-  StyeledCard,
-  StyledCardButton,
-  StyledCounter,
-} from "./StyledCard";
+import { StyeledCard, StyledCardButton, StyledCounter } from "./StyledCard";
 import { useDispatch } from "react-redux";
 import { ADD_TO_CART } from "../../store/actions";
 import { Toast } from "../Toast/Toast";
@@ -42,7 +37,9 @@ export const Card = ({ product, type }) => {
     }
   };
 
-  const handlerAddToCart = () => {
+  const handlerAddToCart = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     dispatch(ADD_TO_CART(_id, type, counter));
     setToastMessage("Товар добавлен");
   };
