@@ -1,3 +1,4 @@
+import { ACCUMULATOR_ACTIONS } from "../../../store_const";
 import {
   CHANGE_IS_ERROR,
   CHANGE_LOADING_IS_FALSE,
@@ -18,7 +19,7 @@ export const getAccumulatorsFromServer = () => (dispatch) => {
     })
     .then((data) => {
       dispatch({
-        type: "GET_ACCUMULATORS_FROM_SERVER",
+        type: ACCUMULATOR_ACTIONS.GET_ACCUMULATORS_FROM_SERVER,
         payload: data.items,
       });
     })

@@ -1,3 +1,5 @@
-export const CHANGE_TYRES_IS_FILTER = {
-  type: "CHANGE_TYRES_IS_FILTER",
+import { TYRE_ACTIONS } from "../../../store_const";
+
+export const TYRES_FILTERED_TRUE = {
+  type: TYRE_ACTIONS.TYRES_FILTERED_TRUE,
 };

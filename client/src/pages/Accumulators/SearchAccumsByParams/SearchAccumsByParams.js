@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   selectAccumulatorsList,
   selectAccumulatorsOptions,
-  selectIsAccumulatorsFilter,
 } from "../../../store/selectors/accumulators/accumulators_selectors";
 import { setAccumulatorsSerachOptions } from "../../../store/actions/action_creators/accumulators/set_search_options";
 import { Flex } from "../../../components/Card/StyledCard";
@@ -14,7 +13,6 @@ export const SearchAccumsByParams = () => {
   const dispatch = useDispatch();
 
   const searchOptions = useSelector(selectAccumulatorsOptions);
-  const isFilter = useSelector(selectIsAccumulatorsFilter);
 
   const accumulatorsList = useSelector(selectAccumulatorsList);
 
@@ -30,7 +28,6 @@ export const SearchAccumsByParams = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(CHANGE_ACCUMULATORS_FILTRED_TRUE);
-    console.log("isFilter in searchBar => ", isFilter);
   };
 
   return (

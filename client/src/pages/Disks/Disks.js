@@ -11,16 +11,16 @@ import { useEffect } from "react";
 import { getDisksFromServer } from "../../store/actions/action_creators/disks/get_disks_from_server";
 import { selectIsLoading } from "../../store/selectors/mainSelector";
 import {
-  CHANGE_DISKS_BY_PARAMS_FALSE,
-  CHANGE_DISKS_BY_PARAMS_TRUE,
-} from "../../store/actions/action_creators/disks/is_by_params";
-import {
   selectDisksList,
   selectDisksOptions,
   selectIsDisksByParams,
   selectIsDisksFilter,
 } from "../../store/selectors/disks/disks_selectors";
 import { disksFilter } from "../../utilities/disk/disksFilter";
+import {
+  DISKS_BY_PARAMS_FALSE,
+  DISKS_BY_PARAMS_TRUE,
+} from "../../store/actions/action_creators/disks/is_by_params";
 
 export const Disks = () => {
   const dispatch = useDispatch();
@@ -35,11 +35,11 @@ export const Disks = () => {
   const selectedOption = useSelector(selectDisksOptions);
 
   const setSearchByParams = () => {
-    dispatch(CHANGE_DISKS_BY_PARAMS_TRUE);
+    dispatch(DISKS_BY_PARAMS_TRUE);
   };
 
   const setSearchByCar = () => {
-    dispatch(CHANGE_DISKS_BY_PARAMS_FALSE);
+    dispatch(DISKS_BY_PARAMS_FALSE);
   };
 
   const disksList = useSelector(selectDisksList);

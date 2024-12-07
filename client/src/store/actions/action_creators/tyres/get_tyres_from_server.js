@@ -1,3 +1,4 @@
+import { TYRE_ACTIONS } from "../../../store_const";
 import {
   CHANGE_IS_ERROR,
   CHANGE_LOADING_IS_FALSE,
@@ -18,7 +19,7 @@ export const getTyresFromServer = () => (dispatch) => {
     })
     .then((data) => {
       return dispatch({
-        type: "GET_TYRES_FROM_SERVER",
+        type: TYRE_ACTIONS.GET_TYRES_FROM_SERVER,
         payload: data.items,
       });
     })

@@ -7,7 +7,6 @@ import {
 import { tyresOptionsCreator } from "../../../utilities/tyre/tyresOptionsCreator";
 import { CHANGE_IS_WINTER } from "../../../store/actions/action_creators/tyres/is_winter";
 import { setTyresSearchOptions } from "../../../store/actions/action_creators/tyres/set_search_options";
-import { CHANGE_TYRES_IS_FILTER } from "../../../store/actions/action_creators/tyres";
 import {
   StyledCatalogByParams,
   StyledCatalogEl,
@@ -15,6 +14,7 @@ import {
   StyledSorting,
 } from "../../../components/Styles/StyledCatalog";
 import { FlexCenter } from "../../../components";
+import { TYRES_FILTERED_TRUE } from "../../../store/actions/action_creators/tyres/is_filter";
 
 export const SearchTyreByParams = () => {
   const dispatch = useDispatch();
@@ -37,7 +37,7 @@ export const SearchTyreByParams = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(CHANGE_TYRES_IS_FILTER);
+    dispatch(TYRES_FILTERED_TRUE);
   };
 
   const handleChanegeCheckbox = () => {

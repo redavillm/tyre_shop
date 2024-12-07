@@ -1,3 +1,5 @@
+import { ACCUMULATOR_ACTIONS } from "../store_const";
+
 export const initialAccumulatorsState = {
   isByParams: true,
   searchOptions: {
@@ -16,17 +18,17 @@ export const accumulatorsReducer = (
   action
 ) => {
   switch (action.type) {
-    case "GET_ACCUMULATORS_FROM_SERVER":
+    case ACCUMULATOR_ACTIONS.GET_ACCUMULATORS_FROM_SERVER:
       return { ...state, accumulatorsList: action.payload };
-    case "GET_ACCUMULATOR_BY_ID":
+    case ACCUMULATOR_ACTIONS.GET_ACCUMULATOR_BY_ID:
       return { ...state, accumulatorById: action.payload };
-    case "CHANGE_ACCUMULATORS_IS_BY_PARAMS_TRUE":
+    case ACCUMULATOR_ACTIONS.CHANGE_ACCUMULATORS_IS_BY_PARAMS_TRUE:
       return { ...state, isByParams: true };
-    case "CHANGE_ACCUMULATORS_IS_BY_PARAMS_FALSE":
+    case ACCUMULATOR_ACTIONS.CHANGE_ACCUMULATORS_IS_BY_PARAMS_FALSE:
       return { ...state, isByParams: false };
-    case "CHANGE_ACCUMULATORS_FILTRED_TRUE":
+    case ACCUMULATOR_ACTIONS.ACCUMULATORS_FILTRED_TRUE:
       return { ...state, isFilter: true };
-    case "SET_ACCUMULATORS_SEARCH_OPTIONS":
+    case ACCUMULATOR_ACTIONS.SET_ACCUMULATORS_SEARCH_OPTIONS:
       return { ...state, searchOptions: action.payload };
     default:
       return state;

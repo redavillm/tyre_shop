@@ -5,7 +5,7 @@ import {
   selectDisksOptions,
 } from "../../../store/selectors/disks/disks_selectors";
 import { setDisksSearchOptions } from "../../../store/actions/action_creators/disks/set_search_options";
-import { CHANGE_DISKS_FILTRED_TRUE } from "../../../store/actions/action_creators/disks/is_filter";
+import { DISKS_FILTRED_TRUE } from "../../../store/actions/action_creators/disks/is_filter";
 import {
   FlexCenter,
   StyledCatalogByParams,
@@ -30,7 +30,7 @@ export const SearchDiskByParams = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(CHANGE_DISKS_FILTRED_TRUE);
+    dispatch(DISKS_FILTRED_TRUE);
   };
 
   return (

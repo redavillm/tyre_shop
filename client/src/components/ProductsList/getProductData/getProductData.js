@@ -28,7 +28,7 @@ export const getProductData = (product, type) => {
     case "accumulators":
       productData.title = product.brand + " " + product.model;
       productData.params =
-        product.length + "x" + product.width + "x" + product.height;
+        product.length + "x" + product.height + "x" + product.width;
       productData.counterStep = 1;
       break;
     default:

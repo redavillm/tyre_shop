@@ -1,3 +1,4 @@
+import { DISK_ACTIONS } from "../../../store_const";
 import {
   CHANGE_IS_ERROR,
   CHANGE_LOADING_IS_FALSE,
@@ -18,7 +19,7 @@ export const getDisksFromServer = () => (dispatch) => {
     })
     .then((data) => {
       dispatch({
-        type: "GET_DISKS_FROM_SERVER",
+        type: DISK_ACTIONS.GET_DISKS_FROM_SERVER,
         payload: data.items,
       });
     })
