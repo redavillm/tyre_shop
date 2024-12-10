@@ -21,12 +21,18 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
+app.get("/tyres/unique-parameters", TyreController.getUniqueParameters);
 app.get("/tyres", TyreController.list);
 app.get("/tyres/:id", TyreController.getById);
 
+app.get("/disks/unique-parameters", DiskController.getUniqueParameters);
 app.get("/disks", DiskController.list);
 app.get("/disks/:id", DiskController.getById);
 
+app.get(
+  "/accumulators/unique-parameters",
+  AccumulatorController.getUniqueParameters
+);
 app.get("/accumulators", AccumulatorController.list);
 app.get("/accumulators/:id", AccumulatorController.getById);
 

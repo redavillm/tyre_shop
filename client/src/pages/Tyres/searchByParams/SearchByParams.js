@@ -1,10 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectIsWinter,
-  selectTyresList,
   selectTyresOptions,
 } from "../../../store/selectors/tyres/tyres_selectors";
-import { tyresOptionsCreator } from "../../../utilities/tyre/tyresOptionsCreator";
 import { CHANGE_IS_WINTER } from "../../../store/actions/action_creators/tyres/is_winter";
 import { setTyresSearchOptions } from "../../../store/actions/action_creators/tyres/set_search_options";
 import {
@@ -15,16 +13,14 @@ import {
 } from "../../../components/Styles/StyledCatalog";
 import { FlexCenter } from "../../../components";
 import { TYRES_FILTERED_TRUE } from "../../../store/actions/action_creators/tyres/is_filter";
+import { useEffect, useState } from "react";
 
 export const SearchTyreByParams = () => {
+  const [options, setOptions] = useState({});
   const dispatch = useDispatch();
 
   const searchOptions = useSelector(selectTyresOptions);
   const isWinter = useSelector(selectIsWinter);
-
-  const tyresList = useSelector(selectTyresList)?.filter((el) => {
-    return !isWinter ? el.season === "summer" : el.season === "winter";
-  });
 
   const handleSelectChange = (key) => (event) => {
     dispatch(
@@ -34,6 +30,21 @@ export const SearchTyreByParams = () => {
       })
     );
   };
+
+  useEffect(() => {
+    fetch("http://localhost:3001/tyres/unique-parameters")
+      .then((res) => {
+        if (res.status >= 200 && res.status < 300) {
+          return res.json();
+        } else {
+          let error = new Error(res.statusText);
+          error.response = res;
+          throw error;
+        }
+      })
+      .then((data) => setOptions(data))
+      .catch((error) => console.log("Error: " + error.message));
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -55,7 +66,7 @@ export const SearchTyreByParams = () => {
               onChange={handleSelectChange("width")}
             >
               <option>all</option>
-              {tyresOptionsCreator(tyresList, "width")?.map((el, index) => (
+              {options.widths?.map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
             </select>
@@ -67,7 +78,7 @@ export const SearchTyreByParams = () => {
               onChange={handleSelectChange("height")}
             >
               <option>all</option>
-              {tyresOptionsCreator(tyresList, "height")?.map((el, index) => (
+              {options.heights?.map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
             </select>
@@ -79,7 +90,7 @@ export const SearchTyreByParams = () => {
               onChange={handleSelectChange("radius")}
             >
               <option>all</option>
-              {tyresOptionsCreator(tyresList, "radius")?.map((el, index) => (
+              {options.radius?.map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
             </select>
@@ -91,7 +102,7 @@ export const SearchTyreByParams = () => {
               onChange={handleSelectChange("brand")}
             >
               <option>all</option>
-              {tyresOptionsCreator(tyresList, "brand")?.map((el, index) => (
+              {options.brands?.map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
             </select>
