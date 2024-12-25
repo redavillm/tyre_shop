@@ -86,9 +86,6 @@ export const StyledCheckbox = styled.label`
 
 export const StyledSorting = styled.div`
   font-size: 22px;
-  position: absolute;
-  right: 0;
-  bottom: 0;
   & select {
     padding: 5px 0px;
     margin-left: 5px;

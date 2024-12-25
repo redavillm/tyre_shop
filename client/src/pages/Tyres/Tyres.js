@@ -1,21 +1,21 @@
 import { SearchTyreByParams } from "./searchByParams/SearchByParams";
-import { SearchByCar } from "./searchByCar/SearchByCar";
+// import { SearchByCar } from "./searchByCar/SearchByCar";
 import {
   Loader,
   Navbar,
   ProductsList,
-  StyledCatalogButtons,
+  // StyledCatalogButtons,
 } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getTyresFromServer } from "../../store/actions/action_creators/tyres/get_tyres_from_server";
 import { selectIsLoading } from "../../store/selectors/mainSelector";
+// import {
+//   CHANGE_TYRES_BY_PARAMS_FALSE,
+//   CHANGE_TYRES_BY_PARAMS_TRUE,
+// } from "../../store/actions/action_creators/tyres/is_by_params";
 import {
-  CHANGE_TYRES_BY_PARAMS_FALSE,
-  CHANGE_TYRES_BY_PARAMS_TRUE,
-} from "../../store/actions/action_creators/tyres/is_by_params";
-import {
-  selectIsTyresByParams,
+  // selectIsTyresByParams,
   selectIsTyresFilter,
   selectIsWinter,
   selectTyresList,
@@ -33,19 +33,19 @@ export const Tyres = () => {
   const isWinter = useSelector(selectIsWinter);
   const selectedOption = useSelector(selectTyresOptions);
   const isFilter = useSelector(selectIsTyresFilter);
-  const isByParams = useSelector(selectIsTyresByParams);
+  // const isByParams = useSelector(selectIsTyresByParams);
   const isLoading = useSelector(selectIsLoading);
   const tyresList = useSelector(selectTyresList)?.filter((el) => {
     return !isWinter ? el.season === "summer" : el.season === "winter";
   });
 
-  const setSearchByParams = () => {
-    dispatch(CHANGE_TYRES_BY_PARAMS_TRUE);
-  };
+  // const setSearchByParams = () => {
+  //   dispatch(CHANGE_TYRES_BY_PARAMS_TRUE);
+  // };
 
-  const setSearchByCar = () => {
-    dispatch(CHANGE_TYRES_BY_PARAMS_FALSE);
-  };
+  // const setSearchByCar = () => {
+  //   dispatch(CHANGE_TYRES_BY_PARAMS_FALSE);
+  // };
 
   const displayList = !isFilter
     ? tyresList
@@ -54,7 +54,7 @@ export const Tyres = () => {
   return (
     <div>
       <Navbar />
-      <div>
+      {/* <div>
         <StyledCatalogButtons>
           <button id="byParams" onClick={setSearchByParams}>
             По параметрам
@@ -63,8 +63,9 @@ export const Tyres = () => {
             По авто
           </button>
         </StyledCatalogButtons>
-      </div>
-      {isByParams ? <SearchTyreByParams /> : <SearchByCar />}
+      </div> */}
+      {/* {isByParams ? <SearchTyreByParams /> : <SearchByCar />} */}
+      <SearchTyreByParams />
       {!isLoading ? (
         <ProductsList
           productsList={!displayList ? [] : displayList}

@@ -1,5 +1,4 @@
 export const disksFilter = (data, selectedOption) => {
-  console.log("selectedOption in disksFilter = ", selectedOption);
   try {
     const { diametr, mount, brand, type } = selectedOption;
 

@@ -1,20 +1,16 @@
-import { accumsOptionCreator } from "../../../utilities/accum/accumsOptionCreator";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectAccumulatorsList,
-  selectAccumulatorsOptions,
-} from "../../../store/selectors/accumulators/accumulators_selectors";
+import { selectAccumulatorsOptions } from "../../../store/selectors/accumulators/accumulators_selectors";
 import { setAccumulatorsSerachOptions } from "../../../store/actions/action_creators/accumulators/set_search_options";
 import { Flex } from "../../../components/Card/StyledCard";
 import { CHANGE_ACCUMULATORS_FILTRED_TRUE } from "../../../store/actions/action_creators/accumulators/is_filter";
 import { StyledCatalogByParams, StyledCatalogEl } from "../../../components";
+import { useEffect, useState } from "react";
 
 export const SearchAccumsByParams = () => {
+  const [options, setOptions] = useState({});
   const dispatch = useDispatch();
 
   const searchOptions = useSelector(selectAccumulatorsOptions);
-
-  const accumulatorsList = useSelector(selectAccumulatorsList);
 
   const handleSelectChange = (key) => (event) => {
     dispatch(
@@ -24,6 +20,21 @@ export const SearchAccumsByParams = () => {
       })
     );
   };
+
+  useEffect(() => {
+    fetch("http://localhost:3001/accumulators/unique-parameters")
+      .then((res) => {
+        if (res.status >= 200 && res.status < 300) {
+          return res.json();
+        } else {
+          let error = new Error(res.statusText);
+          error.response = res;
+          throw error;
+        }
+      })
+      .then((data) => setOptions(data))
+      .catch((error) => console.log("Error: " + error.message));
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -41,11 +52,9 @@ export const SearchAccumsByParams = () => {
               onChange={handleSelectChange("size")}
             >
               <option>all</option>
-              {accumsOptionCreator(accumulatorsList, "size").map(
-                (el, index) => (
-                  <option key={index}>{el}</option>
-                )
-              )}
+              {options.size?.map((el, index) => (
+                <option key={index}>{el}</option>
+              ))}
             </select>
           </StyledCatalogEl>
           <StyledCatalogEl>
@@ -55,11 +64,9 @@ export const SearchAccumsByParams = () => {
               onChange={handleSelectChange("polarity")}
             >
               <option>all</option>
-              {accumsOptionCreator(accumulatorsList, "polarity").map(
-                (el, index) => (
-                  <option key={index}>{el}</option>
-                )
-              )}
+              {options.polarity?.map((el, index) => (
+                <option key={index}>{el}</option>
+              ))}
             </select>
           </StyledCatalogEl>
           <StyledCatalogEl>
@@ -69,11 +76,9 @@ export const SearchAccumsByParams = () => {
               onChange={handleSelectChange("capacity")}
             >
               <option>all</option>
-              {accumsOptionCreator(accumulatorsList, "capacity").map(
-                (el, index) => (
-                  <option key={index}>{el}</option>
-                )
-              )}
+              {options.capacity?.map((el, index) => (
+                <option key={index}>{el}</option>
+              ))}
             </select>
           </StyledCatalogEl>
           <StyledCatalogEl>
@@ -83,11 +88,9 @@ export const SearchAccumsByParams = () => {
               onChange={handleSelectChange("brand")}
             >
               <option>all</option>
-              {accumsOptionCreator(accumulatorsList, "brand").map(
-                (el, index) => (
-                  <option key={index}>{el}</option>
-                )
-              )}
+              {options.brand?.map((el, index) => (
+                <option key={index}>{el}</option>
+              ))}
             </select>
           </StyledCatalogEl>
         </Flex>

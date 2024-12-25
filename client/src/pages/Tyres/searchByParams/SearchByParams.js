@@ -9,7 +9,6 @@ import {
   StyledCatalogByParams,
   StyledCatalogEl,
   StyledCheckbox,
-  StyledSorting,
 } from "../../../components/Styles/StyledCatalog";
 import { FlexCenter } from "../../../components";
 import { TYRES_FILTERED_TRUE } from "../../../store/actions/action_creators/tyres/is_filter";
@@ -119,13 +118,6 @@ export const SearchTyreByParams = () => {
         </FlexCenter>
         <button type="submit">Поиск</button>
       </form>
-      <StyledSorting>
-        Сортировать:
-        <select>
-          <option>Дешевле</option>
-          <option>Дороже</option>
-        </select>
-      </StyledSorting>
     </StyledCatalogByParams>
   );
 };

@@ -1,10 +1,10 @@
 import { SearchDiskByParams } from "./SearchDiskByParams/SearchDiskByParams";
-import { SearchDiskByCar } from "./SearchDiskByCar/SearchDiskByCar";
+// import { SearchDiskByCar } from "./SearchDiskByCar/SearchDiskByCar";
 import {
   Loader,
   Navbar,
   ProductsList,
-  StyledCatalogButtons,
+  // StyledCatalogButtons,
 } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -13,14 +13,14 @@ import { selectIsLoading } from "../../store/selectors/mainSelector";
 import {
   selectDisksList,
   selectDisksOptions,
-  selectIsDisksByParams,
+  // selectIsDisksByParams,
   selectIsDisksFilter,
 } from "../../store/selectors/disks/disks_selectors";
 import { disksFilter } from "../../utilities/disk/disksFilter";
-import {
-  DISKS_BY_PARAMS_FALSE,
-  DISKS_BY_PARAMS_TRUE,
-} from "../../store/actions/action_creators/disks/is_by_params";
+// import {
+//   DISKS_BY_PARAMS_FALSE,
+//   DISKS_BY_PARAMS_TRUE,
+// } from "../../store/actions/action_creators/disks/is_by_params";
 
 export const Disks = () => {
   const dispatch = useDispatch();
@@ -29,18 +29,18 @@ export const Disks = () => {
     dispatch(getDisksFromServer());
   }, [dispatch]);
 
-  const isByParams = useSelector(selectIsDisksByParams);
+  // const isByParams = useSelector(selectIsDisksByParams);
   const isLoading = useSelector(selectIsLoading);
   const isFilter = useSelector(selectIsDisksFilter);
   const selectedOption = useSelector(selectDisksOptions);
 
-  const setSearchByParams = () => {
-    dispatch(DISKS_BY_PARAMS_TRUE);
-  };
+  // const setSearchByParams = () => {
+  //   dispatch(DISKS_BY_PARAMS_TRUE);
+  // };
 
-  const setSearchByCar = () => {
-    dispatch(DISKS_BY_PARAMS_FALSE);
-  };
+  // const setSearchByCar = () => {
+  //   dispatch(DISKS_BY_PARAMS_FALSE);
+  // };
 
   const disksList = useSelector(selectDisksList);
 
@@ -52,16 +52,17 @@ export const Disks = () => {
     <div>
       <Navbar />
       <div>
-        <StyledCatalogButtons>
+        {/* <StyledCatalogButtons>
           <button id="byParams" onClick={setSearchByParams}>
             По параметрам
           </button>
           <button id="byCar" onClick={setSearchByCar}>
             По авто
           </button>
-        </StyledCatalogButtons>
+        </StyledCatalogButtons> */}
       </div>
-      {isByParams ? <SearchDiskByParams /> : <SearchDiskByCar />}
+      {/* {isByParams ? <SearchDiskByParams /> : <SearchDiskByCar />} */}
+      <SearchDiskByParams />
       {!isLoading ? (
         <ProductsList productsList={displayList} type="disks" />
       ) : (

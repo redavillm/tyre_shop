@@ -13,10 +13,7 @@ const list = async (req, res) => {
 
 const getById = async (req, res) => {
   try {
-    const item = await Tyre.findById(req.params.id);
-    if (!item) {
-      return res.status(404).json({ message: "Шина не найдена" });
-    }
+    res.json({ item: await Tyre.findById(req.params.id) });
   } catch (error) {
     console.error("Error fetching tyre by ID:", error);
     res.status(500).json({ message: "Ошибка при получении данных" });

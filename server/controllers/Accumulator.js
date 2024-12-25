@@ -31,7 +31,6 @@ const getUniqueParameters = async (req, res) => {
       {
         $group: {
           _id: null,
-          // size: { $addToSet: "$length" + "x" + "$height" + "x" + "$width" }
           size: {
             $addToSet: {
               $concat: [

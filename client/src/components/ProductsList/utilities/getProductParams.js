@@ -1,4 +1,4 @@
-export const getProductData = (product, type) => {
+export const getProductParams = (product, type) => {
   const productData = {
     title: "",
     params: "",
@@ -9,12 +9,7 @@ export const getProductData = (product, type) => {
   switch (type) {
     case "tyres":
       productData.title = product.brand + " " + product.model;
-      productData.params =
-        product.size.width +
-        " " +
-        product.size.radius +
-        " " +
-        product.size.height;
+      productData.params = `${product.size.width}/${product.size.radius} R${product.size.radius}`;
       productData.counterStep = 2;
       productData.season = product.season;
       break;

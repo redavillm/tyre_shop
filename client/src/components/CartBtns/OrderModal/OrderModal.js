@@ -71,7 +71,7 @@ export const OrderModal = ({ closeModal, onChangeIsOrderFalse }) => {
           value={clientEmail}
           onChange={onEmailChange}
         />
-        <div style={{ marginTop: "20px" }}>Номре телеофна: </div>
+        <div style={{ marginTop: "20px" }}>Номер телефона: </div>
         <input
           type="phone"
           value={clientPhoneNumber}

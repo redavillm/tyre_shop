@@ -1,23 +1,16 @@
-import { disksOptionsCreator } from "../../../utilities/disk/disksOptionsCreator";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectDisksList,
-  selectDisksOptions,
-} from "../../../store/selectors/disks/disks_selectors";
+import { selectDisksOptions } from "../../../store/selectors/disks/disks_selectors";
 import { setDisksSearchOptions } from "../../../store/actions/action_creators/disks/set_search_options";
 import { DISKS_FILTRED_TRUE } from "../../../store/actions/action_creators/disks/is_filter";
-import {
-  FlexCenter,
-  StyledCatalogByParams,
-  StyledCatalogEl,
-} from "../../../components";
+import { StyledCatalogByParams, StyledCatalogEl } from "../../../components";
+import { useEffect, useState } from "react";
+import { Flex } from "../../../components/Card/StyledCard";
 
 export const SearchDiskByParams = () => {
+  const [options, setOptions] = useState({});
   const dispatch = useDispatch();
 
   const searchOptions = useSelector(selectDisksOptions);
-
-  const disksList = useSelector(selectDisksList);
 
   const handleSelectChange = (key) => (event) => {
     dispatch(
@@ -28,6 +21,21 @@ export const SearchDiskByParams = () => {
     );
   };
 
+  useEffect(() => {
+    fetch("http://localhost:3001/disks/unique-parameters")
+      .then((res) => {
+        if (res.status >= 200 && res.status < 300) {
+          return res.json();
+        } else {
+          let error = new Error(res.statusText);
+          error.response = res;
+          throw error;
+        }
+      })
+      .then((data) => setOptions(data))
+      .catch((error) => console.log("Error: " + error.message));
+  }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(DISKS_FILTRED_TRUE);
@@ -36,7 +44,7 @@ export const SearchDiskByParams = () => {
   return (
     <StyledCatalogByParams>
       <form onSubmit={handleSubmit}>
-        <FlexCenter>
+        <Flex>
           <StyledCatalogEl>
             Диаметр
             <select
@@ -44,7 +52,7 @@ export const SearchDiskByParams = () => {
               onChange={handleSelectChange("diametr")}
             >
               <option>all</option>
-              {disksOptionsCreator(disksList, "diametr").map((el, index) => (
+              {options.widths?.map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
             </select>
@@ -56,7 +64,7 @@ export const SearchDiskByParams = () => {
               onChange={handleSelectChange("mount")}
             >
               <option>all</option>
-              {disksOptionsCreator(disksList, "mount").map((el, index) => (
+              {options.mount?.map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
             </select>
@@ -68,7 +76,7 @@ export const SearchDiskByParams = () => {
               onChange={handleSelectChange("brand")}
             >
               <option>all</option>
-              {disksOptionsCreator(disksList, "brand").map((el, index) => (
+              {options.brand?.map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
             </select>
@@ -80,12 +88,12 @@ export const SearchDiskByParams = () => {
               onChange={handleSelectChange("type")}
             >
               <option>all</option>
-              {disksOptionsCreator(disksList, "type").map((el, index) => (
+              {options.type?.map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
             </select>
           </StyledCatalogEl>
-        </FlexCenter>
+        </Flex>
         <button type="submit">Поиск</button>
       </form>
     </StyledCatalogByParams>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { getProductData } from "../ProductsList/getProductData/getProductData";
+import { getProductParams } from "../ProductsList/utilities/getProductParams";
 import { StyeledCard, StyledCardButton, StyledCounter } from "./StyledCard";
 import { useDispatch } from "react-redux";
 import { ADD_TO_CART } from "../../store/actions";
@@ -8,7 +8,10 @@ import { Toast } from "../Toast/Toast";
 
 export const Card = ({ product, type }) => {
   const { _id, price, imgSrc } = product;
-  const { title, params, counterStep, season } = getProductData(product, type);
+  const { title, params, counterStep, season } = getProductParams(
+    product,
+    type
+  );
   const [counter, setCounter] = useState(counterStep);
   const [toastMessage, setToastMessage] = useState(null);
 
