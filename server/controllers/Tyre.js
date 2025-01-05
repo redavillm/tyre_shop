@@ -55,8 +55,36 @@ const getUniqueParameters = async (req, res) => {
   }
 };
 
+const createNewTyre = async (req, res) => {
+  try {
+    const { season, brand, model, size, price, imagSrc, count } = req.body;
+    const { width, radius, height } = size;
+    const newTyre = new Tyre({
+      season,
+      brand,
+      model,
+      size: {
+        width,
+        radius,
+        height,
+      },
+      price,
+      imagSrc,
+      count,
+    });
+
+    await newTyre.save();
+
+    res.status(200).json({ message: "Товар добавлен", product: newTyre });
+  } catch (error) {
+    console.error("Ошибка при добавлении товара: ", error);
+    res.status(500).json({ message: "Ошибка при добавлении товара" });
+  }
+};
+
 module.exports = {
   list,
   getById,
   getUniqueParameters,
+  createNewTyre,
 };

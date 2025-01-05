@@ -3,6 +3,7 @@ require("./models/db");
 
 const express = require("express");
 const cors = require("cors");
+const upload = require("./middleware/upload");
 const app = express();
 const PORT = 3001;
 
@@ -10,20 +11,27 @@ const TyreController = require("./controllers/Tyre");
 const ProductController = require("./controllers/Product");
 const DiskController = require("./controllers/Disk");
 const AccumulatorController = require("./controllers/Accumulator");
+const { tyreValidation } = require("./middleware/validationRules");
+const { uploadImage } = require("./sevices/imagService");
 
-app.use(
-  cors({
-    origin: "http://localhost:3002",
-  })
-);
+const corsOptions = {
+  origin: ["http://localhost:3000", "http://localhost:3003"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
 app.use(express.static("public"));
+app.post("/upload-image", upload.single("image"), uploadImage);
 
 app.get("/tyres/unique-parameters", TyreController.getUniqueParameters);
 app.get("/tyres", TyreController.list);
 app.get("/tyres/:id", TyreController.getById);
+app.post("/add-new-tyre", tyreValidation, TyreController.createNewTyre);
 
 app.get("/disks/unique-parameters", DiskController.getUniqueParameters);
 app.get("/disks", DiskController.list);
@@ -36,7 +44,7 @@ app.get(
 app.get("/accumulators", AccumulatorController.list);
 app.get("/accumulators/:id", AccumulatorController.getById);
 
-app.post("/products", ProductController.getCartItems);
+app.post("/get-cart-items", ProductController.getCartItems);
 
 app.use("*", (req, res) => {
   res.status(404).json({
