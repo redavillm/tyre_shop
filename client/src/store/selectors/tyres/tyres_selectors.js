@@ -8,6 +8,8 @@ export const selectIsTyresByParams = (state) => state.tyresState.isByParams;
 
 export const selectIsWinter = (state) => state.tyresState.isWinter;
 
+export const selectIsSpiked = (state) => state.tyresState.isSpiked;
+
 export const selectTyresOptions = (state) => state.tyresState.searchOptions;
 
 export const selectIsTyresFilter = (state) => state.tyresState.isFilter;

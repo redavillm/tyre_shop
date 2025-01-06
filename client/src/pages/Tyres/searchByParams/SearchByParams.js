@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
+  selectIsSpiked,
   selectIsWinter,
   selectTyresOptions,
 } from "../../../store/selectors/tyres/tyres_selectors";
@@ -13,6 +14,7 @@ import {
 import { FlexCenter } from "../../../components";
 import { TYRES_FILTERED_TRUE } from "../../../store/actions/action_creators/tyres/is_filter";
 import { useEffect, useState } from "react";
+import { CHANGE_IS_SPIKED } from "../../../store/actions/action_creators/tyres/is_spiked";
 
 export const SearchTyreByParams = () => {
   const [options, setOptions] = useState({});
@@ -20,6 +22,7 @@ export const SearchTyreByParams = () => {
 
   const searchOptions = useSelector(selectTyresOptions);
   const isWinter = useSelector(selectIsWinter);
+  const isSpiked = useSelector(selectIsSpiked);
 
   const handleSelectChange = (key) => (event) => {
     dispatch(
@@ -50,8 +53,13 @@ export const SearchTyreByParams = () => {
     dispatch(TYRES_FILTERED_TRUE);
   };
 
-  const handleChanegeCheckbox = () => {
+  const handleChanegeWinterCheckbox = () => {
     dispatch(CHANGE_IS_WINTER);
+  };
+
+  const handleChanegeSpikedCheckbox = () => {
+    dispatch(CHANGE_IS_SPIKED);
+    console.log({ isSpiked });
   };
 
   return (
@@ -111,10 +119,21 @@ export const SearchTyreByParams = () => {
             <input
               type="checkbox"
               value="isWinter"
-              onChange={handleChanegeCheckbox}
+              onChange={handleChanegeWinterCheckbox}
               checked={isWinter}
             />
           </StyledCheckbox>
+          {isWinter ? (
+            <StyledCheckbox>
+              С шипами
+              <input
+                type="checkbox"
+                value="isWinter"
+                onChange={handleChanegeSpikedCheckbox}
+                checked={isSpiked}
+              />
+            </StyledCheckbox>
+          ) : null}
         </FlexCenter>
         <button type="submit">Поиск</button>
       </form>

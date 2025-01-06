@@ -15,6 +15,7 @@ import { selectIsLoading } from "../../store/selectors/mainSelector";
 //   CHANGE_TYRES_BY_PARAMS_TRUE,
 // } from "../../store/actions/action_creators/tyres/is_by_params";
 import {
+  selectIsSpiked,
   // selectIsTyresByParams,
   selectIsTyresFilter,
   selectIsWinter,
@@ -31,6 +32,7 @@ export const Tyres = () => {
   }, [dispatch]);
 
   const isWinter = useSelector(selectIsWinter);
+  const isSpiked = useSelector(selectIsSpiked);
   const selectedOption = useSelector(selectTyresOptions);
   const isFilter = useSelector(selectIsTyresFilter);
   // const isByParams = useSelector(selectIsTyresByParams);
@@ -49,7 +51,7 @@ export const Tyres = () => {
 
   const displayList = !isFilter
     ? tyresList
-    : tyresfilter(tyresList, selectedOption);
+    : tyresfilter(tyresList, selectedOption, isSpiked, isWinter);
 
   return (
     <div>

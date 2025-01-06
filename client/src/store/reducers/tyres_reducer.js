@@ -3,6 +3,7 @@ import { TYRE_ACTIONS } from "../store_const";
 export const initialTyresState = {
   isWinter: false,
   isByParams: true,
+  isSpiked: false,
   searchOptions: {
     width: "all",
     height: "all",
@@ -22,6 +23,8 @@ export const tyresReducer = (state = initialTyresState, action) => {
       return { ...state, tyreById: action.payload };
     case TYRE_ACTIONS.CHANGE_IS_WINTER:
       return { ...state, isWinter: !state.isWinter };
+    case TYRE_ACTIONS.CHANGE_IS_SPIKED:
+      return { ...state, isSpiked: !state.isSpiked };
     case TYRE_ACTIONS.CHANGE_TYRES_BY_PARAMS_TRUE:
       return { ...state, isByParams: true };
     case TYRE_ACTIONS.CHANGE_TYRES_BY_PARAMS_FALSE:
