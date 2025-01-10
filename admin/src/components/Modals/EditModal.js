@@ -1,12 +1,14 @@
-import { Button, Form, Input, Modal, Upload } from "antd";
+import { Button, Card, Form, Input, Modal, Select, Space, Upload } from "antd";
 import { UploadOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useState } from "react";
 
 export const EditModal = ({ open, product, onOk, onCancel }) => {
   const [form] = Form.useForm();
-  const [currentPhoto, setCurrentPhoto] = useState(product?.imgSrc || "");
-
+  const [currentPhoto, setCurrentPhoto] = useState(product?.imgSrc);
   const [newPhoto, setNewPhoto] = useState(null);
+  const [showSpikes, setShowSpikes] = useState(false);
+
+  console.log("currentPhoto => ", currentPhoto);
 
   const handlePhotoUpload = (file) => {
     const reader = new FileReader();
@@ -24,7 +26,6 @@ export const EditModal = ({ open, product, onOk, onCancel }) => {
     setNewPhoto(null);
   };
 
-  // Передача данных формы и фото в родительский компонент
   const handleFinish = () => {
     form
       .validateFields()
@@ -38,6 +39,10 @@ export const EditModal = ({ open, product, onOk, onCancel }) => {
       });
   };
 
+  const handleIsWinter = (value) => {
+    return value === "winter" ? setShowSpikes(true) : setShowSpikes(false);
+  };
+
   return (
     <Modal
       title="Редактирование товара"
@@ -49,30 +54,25 @@ export const EditModal = ({ open, product, onOk, onCancel }) => {
         onCancel();
       }}
     >
-      {/* <img
-        src={product?.imgSrc}
-        alt="Текущее фото"
-        style={{
-          maxWidth: "100%",
-          maxHeight: "200px",
-          marginBottom: "8px",
-        }}
-      /> */}
-
-      <div style={{ marginBottom: "16px", textAlign: "center" }}>
-        <img
-          src={product?.imgSrc}
-          alt="Текущее фото"
-          style={{
-            maxWidth: "100%",
-            maxHeight: "200px",
-            marginBottom: "8px",
-          }}
-        />
+      <Card
+        style={{ marginBottom: "16px", textAlign: "center" }}
+        cover={
+          <img
+            src={product?.imgSrc}
+            alt="Текущее фото"
+            style={{
+              maxWidth: "100%",
+              maxHeight: "200px",
+              objectFit: "contain", // добавляем для более корректного отображения изображений
+            }}
+          />
+        }
+      ></Card>
+      <Space direction="vertical" align="end" style={{ width: "100%" }}>
         <Button danger icon={<DeleteOutlined />} onClick={handleDeletePhoto}>
           Удалить фото
         </Button>
-      </div>
+      </Space>
 
       {/* Форма редактирования товара */}
       <Form
@@ -83,8 +83,24 @@ export const EditModal = ({ open, product, onOk, onCancel }) => {
           model: product?.model,
           price: product?.price,
           count: product?.count,
+          season: product?.season,
+          isSpiked: product?.isSpiked,
+          size: {
+            width: product?.size?.width,
+            radius: product?.size?.radius,
+            height: product?.size?.height,
+          },
         }}
       >
+        <Form.Item label="Загрузить новое фото">
+          <Upload
+            beforeUpload={handlePhotoUpload}
+            accept="image/*"
+            showUploadList={false}
+          >
+            <Button icon={<UploadOutlined />}>Загрузить фото</Button>
+          </Upload>
+        </Form.Item>
         <Form.Item
           name="brand"
           label="Бренд"
@@ -99,6 +115,65 @@ export const EditModal = ({ open, product, onOk, onCancel }) => {
         >
           <Input />
         </Form.Item>
+
+        <Form.Item
+          name="season"
+          label="Сезон"
+          rules={[{ required: true, message: "Укажите сезон" }]}
+        >
+          <Select placeholder="Выберите значение" onChange={handleIsWinter}>
+            <Select.Option value="summer">Лето</Select.Option>
+            <Select.Option value="winter">Зима</Select.Option>
+          </Select>
+        </Form.Item>
+
+        {showSpikes ? (
+          <Form.Item name="spikes" label="Тип зимней резины">
+            <Select placeholder="Выберите значение">
+              <Select.Option value={true}>С шипами</Select.Option>
+              <Select.Option value={false}>Без шипов</Select.Option>
+            </Select>
+          </Form.Item>
+        ) : null}
+
+        <Form.Item label="Размеры товара">
+          <Space.Compact>
+            <Form.Item
+              name={["size", "width"]}
+              noStyle
+              rules={[{ required: true, message: "Введите ширину" }]}
+            >
+              <Input
+                type="number"
+                style={{ width: "33%" }}
+                placeholder="Ширина"
+              />
+            </Form.Item>
+            <Form.Item
+              name={["size", "height"]}
+              noStyle
+              rules={[{ required: true, message: "Введите высоту" }]}
+            >
+              <Input
+                type="number"
+                style={{ width: "33%" }}
+                placeholder="Высота"
+              />
+            </Form.Item>
+            <Form.Item
+              name={["size", "radius"]}
+              noStyle
+              rules={[{ required: true, message: "Введите радиус" }]}
+            >
+              <Input
+                type="number"
+                style={{ width: "33%" }}
+                placeholder="Радиус"
+              />
+            </Form.Item>
+          </Space.Compact>
+        </Form.Item>
+
         <Form.Item
           name="price"
           label="Цена"
@@ -106,23 +181,8 @@ export const EditModal = ({ open, product, onOk, onCancel }) => {
         >
           <Input type="number" />
         </Form.Item>
-        <Form.Item
-          name="count"
-          label="Количество"
-          rules={[{ required: true, message: "Введите количество" }]}
-        >
+        <Form.Item name="count" label="Количество">
           <Input type="number" />
-        </Form.Item>
-
-        {/* Загрузка нового фото */}
-        <Form.Item label="Загрузить новое фото">
-          <Upload
-            beforeUpload={handlePhotoUpload}
-            accept="image/*"
-            showUploadList={false}
-          >
-            <Button icon={<UploadOutlined />}>Загрузить фото</Button>
-          </Upload>
         </Form.Item>
       </Form>
     </Modal>

@@ -17,6 +17,11 @@ export const Tyres = () => {
 
   const [currentProduct, setCurrentProduct] = useState(null);
 
+  const handlerNewTyreSubmit = (newProduct) => {
+    console.log("New Product:", newProduct);
+    newTyreModalOptions.accept();
+  };
+
   const handleEditClick = (product) => {
     setCurrentProduct(product);
     editModalOptions.show();
@@ -33,7 +38,7 @@ export const Tyres = () => {
     deleteModalOptions.show(); // Открываем модалку
   };
 
-  const handleDeleteConfirm = () => {
+  const handleDeleteSubmit = () => {
     console.log("delete => ", currentProduct._id);
     deleteModalOptions.accept();
   };
@@ -104,7 +109,7 @@ export const Tyres = () => {
       />
       <DeleteModal
         open={isDeleteModal}
-        onOk={handleDeleteConfirm} // Подтверждение удаления
+        onOk={handleDeleteSubmit} // Подтверждение удаления
         onCancel={() => {
           deleteModalOptions.cancel();
           setCurrentProduct(null);
@@ -112,7 +117,7 @@ export const Tyres = () => {
       />
       <NewTyreModal
         open={isNewTyreModal}
-        onOk={newTyreModalOptions.accept}
+        onOk={handlerNewTyreSubmit}
         onCancel={newTyreModalOptions.cancel}
       />
     </>
