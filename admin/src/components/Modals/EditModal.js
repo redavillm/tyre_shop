@@ -8,8 +8,6 @@ export const EditModal = ({ open, product, onOk, onCancel }) => {
   const [newPhoto, setNewPhoto] = useState(null);
   const [showSpikes, setShowSpikes] = useState(false);
 
-  console.log("currentPhoto => ", currentPhoto);
-
   const handlePhotoUpload = (file) => {
     const reader = new FileReader();
     reader.onload = () => {

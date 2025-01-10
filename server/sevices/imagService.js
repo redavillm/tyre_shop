@@ -15,7 +15,7 @@ const uploadImage = async (req, res) => {
 
     const uploadParams = {
       Bucket: process.env.S3_BUCKET_NAME,
-      Key: `products/${fileName}`,
+      Key: `/tyreImgs/${fileName}`,
       Body: optimizedImage,
       ContentType: file.mimetype,
       ACL: "public-read",

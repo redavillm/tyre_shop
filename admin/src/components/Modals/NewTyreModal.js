@@ -4,19 +4,19 @@ import { useState } from "react";
 
 export const NewTyreModal = ({ open, onOk, onCancel }) => {
   const [form] = Form.useForm();
-  const [newPhoto, setNewPhoto] = useState(null);
+  const [newTyreImg, setNewTyreImg] = useState(null);
   const [currentPhoto, setCurrentPhoto] = useState(null);
   const [showSpikes, setShowSpikes] = useState(false);
 
   const handleDeletePhoto = () => {
     setCurrentPhoto("");
-    setNewPhoto(null);
+    setNewTyreImg(null);
   };
 
   const handlePhotoUpload = (file) => {
     const reader = new FileReader();
     reader.onload = () => {
-      setNewPhoto(file);
+      setNewTyreImg(file);
       setCurrentPhoto(reader.result); // Показываем предпросмотр
     };
     reader.readAsDataURL(file);
@@ -27,9 +27,9 @@ export const NewTyreModal = ({ open, onOk, onCancel }) => {
     form
       .validateFields()
       .then((values) => {
-        onOk({ ...values, newPhoto }); // Передаем данные формы и новое фото
+        onOk({ ...values, ImgSrc: newTyreImg }); // Передаем данные формы и новое фото
         form.resetFields();
-        setNewPhoto(null);
+        setNewTyreImg(null);
       })
       .catch((error) => {
         console.error("Validation failed:", error);
@@ -47,7 +47,7 @@ export const NewTyreModal = ({ open, onOk, onCancel }) => {
       onOk={handleFinish}
       onCancel={() => {
         form.resetFields();
-        setNewPhoto(null);
+        setNewTyreImg(null);
         onCancel();
       }}
     >
