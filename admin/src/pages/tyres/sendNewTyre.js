@@ -1,20 +1,30 @@
-export const sendNewTyre = async (newTyre) => {
+import { notification } from "antd";
+
+export const sendNewTyre = async (formData) => {
   try {
-    const response = await fetch("http://localhost:3001/tyres/add_new", {
+    const response = await fetch("http://localhost:3001/tyres", {
       method: "POST",
-      headers: { "Content-Type": "application/json;charset=utf-8" },
-      body: JSON.stringify(newTyre),
+      body: formData,
     });
 
     if (!response.ok) {
       throw new Error(`Ошибка: ${response.status}`);
     }
 
-    const data = await response.json();
-    console.log("Товар успешно добавлен:", data);
-    return data;
+    const result = await response.json();
+    console.log("result => ", result);
+    notification.success({
+      message: "Успех",
+      description: "Товар успешно добавлен!",
+      placement: "bottomRight",
+    });
   } catch (error) {
-    console.error("Ошибка при добавлении товара:", error);
-    throw error;
+    console.error("Ошибка при отправке данных:", error);
+
+    notification.error({
+      message: "Ошибка",
+      description: "Не удалось добавить товар. Попробуйте снова.",
+      placement: "bottomRight",
+    });
   }
 };

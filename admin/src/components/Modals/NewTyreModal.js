@@ -27,7 +27,7 @@ export const NewTyreModal = ({ open, onOk, onCancel }) => {
     form
       .validateFields()
       .then((values) => {
-        onOk({ ...values, ImgSrc: newTyreImg }); // Передаем данные формы и новое фото
+        onOk({ ...values, imgSrc: newTyreImg }); // Передаем данные формы и новое фото
         form.resetFields();
         setNewTyreImg(null);
       })

@@ -1,6 +1,4 @@
-const {
-  S3,
-} = require("@aws-sdk/client-s3");
+const { S3 } = require("@aws-sdk/client-s3");
 
 const s3 = new S3({
   credentials: {
@@ -9,6 +7,8 @@ const s3 = new S3({
   },
 
   region: process.env.S3_REGION,
+  endpoint: "https://s3.timeweb.cloud",
+  forcePathStyle: true,
 });
 
 module.exports = s3;

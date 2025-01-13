@@ -1,9 +1,10 @@
-import { Button, notification, Space } from "antd";
+import { Button, Space } from "antd";
 import { ProductList } from "../../components/ProductList";
 import { EditModal } from "../../components/Modals/EditModal";
 import { DeleteModal, NewTyreModal } from "../../components/Modals";
 import { useTyreModal } from "./useTyreModal";
 import { useState } from "react";
+import { sendNewTyre } from "./sendNewTyre";
 
 export const Tyres = () => {
   const {
@@ -20,7 +21,7 @@ export const Tyres = () => {
   const handlerNewTyreSubmit = async (newTyre) => {
     const formData = new FormData();
 
-    console.log("newTyre ==>", newTyre);
+    console.log("newTyre from frontend ==>", newTyre);
 
     formData.append("brand", newTyre.brand);
     formData.append("model", newTyre.model);
@@ -31,31 +32,11 @@ export const Tyres = () => {
     formData.append("size[radius]", newTyre.size.radius);
 
     // Добавьте файл только если он существует
-    if (newTyre.ImgSrc?.file) {
-      formData.append("ImgSrc", newTyre.ImgSrc.file);
+    if (newTyre.imgSrc) {
+      formData.append("imgSrc", newTyre.imgSrc);
     }
-    try {
-      const response = await fetch("http://localhost:3001/tyres/add_new", {
-        method: "POST",
-        body: formData,
-      });
 
-      const result = await response.json();
-      console.log(result);
-      notification.success({
-        message: "Успех",
-        description: "Товар успешно добавлен!",
-        placement: "bottomRight",
-      });
-    } catch (error) {
-      console.error("Ошибка при отправке данных:", error);
-
-      notification.error({
-        message: "Ошибка",
-        description: "Не удалось добавить товар. Попробуйте снова.",
-        placement: "bottomRight",
-      });
-    }
+    sendNewTyre(formData);
     newTyreModalOptions.accept();
   };
 

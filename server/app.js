@@ -3,20 +3,14 @@ require("./models/db");
 
 const express = require("express");
 const cors = require("cors");
-// const upload = require("./middleware/upload");
 const app = express();
 const PORT = 3001;
-const multer = require("multer");
 
 const TyreController = require("./controllers/Tyre");
 const ProductController = require("./controllers/Product");
 const DiskController = require("./controllers/Disk");
 const AccumulatorController = require("./controllers/Accumulator");
-// const { tyreValidation } = require("./middleware/validationRules");
-// const { uploadImage } = require("./sevices/imagService");
-
-const storage = multer.memoryStorage();
-const upload = multer({ storage });
+const upload = require("./middleware/upload");
 
 const corsOptions = {
   origin: ["http://localhost:3002", "http://localhost:3003"],
@@ -30,15 +24,10 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use(express.static("public"));
-// app.post("/upload-image", upload.single("image"), uploadImage);
 
 app.get("/tyres/unique-parameters", TyreController.getUniqueParameters);
-app.post(
-  "/tyres/add_new",
-  upload.single("ImgSrc"),
-  // tyreValidation,
-  TyreController.createNewTyre
-);
+app.post("/tyres", upload.single("imgSrc"), TyreController.createNewTyre);
+app.delete("/tyres", TyreController.createNewTyre);
 app.get("/tyres", TyreController.list);
 app.get("/tyres/:id", TyreController.getById);
 

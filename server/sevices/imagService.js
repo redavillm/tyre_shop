@@ -1,10 +1,13 @@
 const s3 = require("../config/s3Config");
 const { v4: uuidv4 } = require("uuid");
 const sharp = require("sharp");
+const { Upload } = require("@aws-sdk/lib-storage");
 
-const uploadImage = async (req, res) => {
+const uploadImage = async (file, bucketFolder) => {
   try {
-    const file = req.file;
+    if (!file) {
+      throw new Error("Файл изображения отсутствует");
+    }
     const fileName = `${uuidv4()}_${file.originalname}`;
 
     const optimizedImage = await sharp(file.buffer)
@@ -13,20 +16,29 @@ const uploadImage = async (req, res) => {
       .jpeg({ quality: 80 }) // Установка качества на 80%
       .toBuffer();
 
-    const uploadParams = {
-      Bucket: process.env.S3_BUCKET_NAME,
-      Key: `/tyreImgs/${fileName}`,
-      Body: optimizedImage,
-      ContentType: file.mimetype,
-      ACL: "public-read",
-    };
+    const upload = new Upload({
+      client: s3,
+      params: {
+        Bucket: process.env.S3_BUCKET_NAME,
+        Key: `${bucketFolder}/${fileName}`,
+        Body: optimizedImage,
+        ContentType: "image/jpeg",
+        ACL: "public-read",
+      },
+    });
 
-    const data = await s3.upload(uploadParams).promise();
-    res.status(200).json({ imageUrl: data.Location });
+    const { Location: imageUrl } = await upload.done();
+
+    if (!imageUrl) {
+      return res
+        .status(500)
+        .json({ message: "Ошибка при загрузке изображения" });
+    }
+
+    return imageUrl;
   } catch (error) {
     console.error("Ошибка загрузки изображения:", error);
-    res.status(500).json({ message: "Ошибка при загрузке изображения" });
   }
 };
 
-module.exports = { uploadImage };
+module.exports = uploadImage;
