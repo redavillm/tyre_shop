@@ -17,7 +17,6 @@ export const senderNewItem = async (formData, type) => {
       description: "Товар успешно добавлен!",
       placement: "bottomRight",
     });
-    console.log("result => ", result); //удалить
     return result;
   } catch (error) {
     console.error("Ошибка при отправке данных:", error);

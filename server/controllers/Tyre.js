@@ -2,6 +2,7 @@ const Tyre = require("../models/Tyre");
 const s3 = require("../config/s3Config");
 const createNewProduct = require("../sevices/createNewProduct");
 const updateProduct = require("../sevices/updateProduct");
+const deleteProduct = require("../sevices/deleteProduct");
 
 const list = async (req, res) => {
   try {
@@ -64,10 +65,13 @@ const createNewTyre = async (req, res) =>
 const updateTyre = async (req, res) =>
   updateProduct(req, res, Tyre, "tyreImgs");
 
+const deleteTyre = async (req, res) => deleteProduct(req, res, Tyre);
+
 module.exports = {
   list,
   getById,
   getUniqueParameters,
   createNewTyre,
   updateTyre,
+  deleteTyre,
 };

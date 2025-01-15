@@ -16,7 +16,6 @@ export const itemUpdater = async (formaData, type) => {
       description: "Товар успешно обновлен!",
       placement: "bottomRight",
     });
-    console.log("result после обновления товара => ", result); //удалить
     return result;
   } catch (error) {
     console.error("Ошибка при отправке данных:", error);

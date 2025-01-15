@@ -36,7 +36,7 @@ export const EditTyreModal = ({ open, product, onOk, onCancel }) => {
           _id: product._id,
           imgSrc: newImg || currentImg,
           deleteImg: !currentImg,
-        }); // Передаем данные формы и новое фото
+        });
         form.resetFields();
         setNewImg(null);
       })

@@ -107,6 +107,7 @@ export const Tyres = () => {
     formData.append("model", updatedTyre.model);
     formData.append("season", updatedTyre.season);
     formData.append("price", updatedTyre.price);
+    formData.append("deleteImg", updatedTyre.deleteImg);
     formData.append("size[width]", updatedTyre.size.width);
     formData.append("size[height]", updatedTyre.size.height);
     formData.append("size[radius]", updatedTyre.size.radius);
@@ -116,6 +117,7 @@ export const Tyres = () => {
     }
 
     const updatedProduct = await itemUpdater(formData, "tyres");
+    console.log("updatedProduct => ", updatedProduct);
     setProductsList((prev) =>
       prev.map((prod) =>
         prod._id === updatedProduct.product._id ? updatedProduct.product : prod
