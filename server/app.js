@@ -27,7 +27,7 @@ app.use(express.static("public"));
 
 app.get("/tyres/unique-parameters", TyreController.getUniqueParameters);
 app.post("/tyres", upload.single("imgSrc"), TyreController.createNewTyre);
-app.delete("/tyres", TyreController.createNewTyre);
+app.put("/tyres", upload.single("imgSrc"), TyreController.updateTyre);
 app.get("/tyres", TyreController.list);
 app.get("/tyres/:id", TyreController.getById);
 

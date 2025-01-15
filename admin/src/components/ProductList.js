@@ -1,9 +1,12 @@
 import { Table } from "antd";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-export const ProductList = ({ columns, type }) => {
-  const [productData, setProductsData] = useState([]);
-
+export const ProductList = ({
+  columns,
+  type,
+  productsList,
+  setProductsList,
+}) => {
   useEffect(() => {
     fetch(`http://localhost:3001/${type}`)
       .then((res) => {
@@ -15,13 +18,13 @@ export const ProductList = ({ columns, type }) => {
           throw error;
         }
       })
-      .then((data) => setProductsData(data.items))
+      .then((data) => setProductsList(data.items))
       .catch((e) => {
         console.log("Error: " + e.message);
       });
-  }, [type]);
+  }, [type, setProductsList]);
 
-  return productData ? (
-    <Table columns={columns} dataSource={productData} />
+  return productsList ? (
+    <Table columns={columns} dataSource={productsList} />
   ) : null;
 };

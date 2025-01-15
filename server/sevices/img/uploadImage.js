@@ -1,4 +1,4 @@
-const s3 = require("../config/s3Config");
+const s3 = require("../../config/s3Config");
 const { v4: uuidv4 } = require("uuid");
 const sharp = require("sharp");
 const { Upload } = require("@aws-sdk/lib-storage");

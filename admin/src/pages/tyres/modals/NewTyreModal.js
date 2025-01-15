@@ -4,20 +4,20 @@ import { useState } from "react";
 
 export const NewTyreModal = ({ open, onOk, onCancel }) => {
   const [form] = Form.useForm();
-  const [newTyreImg, setNewTyreImg] = useState(null);
-  const [currentPhoto, setCurrentPhoto] = useState(null);
+  const [newImg, setNewImg] = useState(null);
+  const [currentImg, setCurrentImg] = useState(null);
   const [showSpikes, setShowSpikes] = useState(false);
 
   const handleDeletePhoto = () => {
-    setCurrentPhoto("");
-    setNewTyreImg(null);
+    setCurrentImg("");
+    setNewImg(null);
   };
 
   const handlePhotoUpload = (file) => {
     const reader = new FileReader();
     reader.onload = () => {
-      setNewTyreImg(file);
-      setCurrentPhoto(reader.result); // Показываем предпросмотр
+      setNewImg(file);
+      setCurrentImg(reader.result); // Показываем предпросмотр
     };
     reader.readAsDataURL(file);
     return false; // Останавливаем автоматическую загрузку
@@ -27,9 +27,9 @@ export const NewTyreModal = ({ open, onOk, onCancel }) => {
     form
       .validateFields()
       .then((values) => {
-        onOk({ ...values, imgSrc: newTyreImg }); // Передаем данные формы и новое фото
+        onOk({ ...values, imgSrc: newImg }); // Передаем данные формы и новое фото
         form.resetFields();
-        setNewTyreImg(null);
+        setNewImg(null);
       })
       .catch((error) => {
         console.error("Validation failed:", error);
@@ -47,7 +47,7 @@ export const NewTyreModal = ({ open, onOk, onCancel }) => {
       onOk={handleFinish}
       onCancel={() => {
         form.resetFields();
-        setNewTyreImg(null);
+        setNewImg(null);
         onCancel();
       }}
     >
@@ -55,7 +55,7 @@ export const NewTyreModal = ({ open, onOk, onCancel }) => {
         style={{ marginBottom: "16px", textAlign: "center" }}
         cover={
           <img
-            src={currentPhoto}
+            src={currentImg}
             alt="Текущее фото"
             style={{
               maxWidth: "100%",
@@ -163,17 +163,6 @@ export const NewTyreModal = ({ open, onOk, onCancel }) => {
         <Form.Item name="count" label="Количество">
           <Input type="number" />
         </Form.Item>
-
-        {/* Загрузка нового фото */}
-        {/* <Form.Item label="Загрузить новое фото">
-          <Upload
-            beforeUpload={handlePhotoUpload}
-            accept="image/*"
-            showUploadList={false}
-          >
-            <Button icon={<UploadOutlined />}>Загрузить фото</Button>
-          </Upload>
-        </Form.Item> */}
       </Form>
     </Modal>
   );

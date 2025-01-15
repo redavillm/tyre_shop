@@ -1,10 +1,12 @@
 import { Button, Space } from "antd";
 import { ProductList } from "../../components/ProductList";
-import { EditModal } from "../../components/Modals/EditModal";
-import { DeleteModal, NewTyreModal } from "../../components/Modals";
-import { useTyreModal } from "./useTyreModal";
+import { DeleteModal } from "../../components/Modals";
 import { useState } from "react";
-import { sendNewTyre } from "./sendNewTyre";
+import { useModal } from "../../hooks/useModal";
+import { EditTyreModal } from "./modals/EditTyreModal";
+import { NewTyreModal } from "./modals/NewTyreModal";
+import { senderNewItem } from "../../services/senderNewItem";
+import { itemUpdater } from "../../services/itemUpdater";
 
 export const Tyres = () => {
   const {
@@ -12,54 +14,12 @@ export const Tyres = () => {
     editModalOptions,
     isDeleteModal,
     deleteModalOptions,
-    isNewTyreModal,
-    newTyreModalOptions,
-  } = useTyreModal();
+    isNewProductModal,
+    newProductModalOptions,
+  } = useModal();
 
+  const [productsList, setProductsList] = useState([]);
   const [currentProduct, setCurrentProduct] = useState(null);
-
-  const handlerNewTyreSubmit = async (newTyre) => {
-    const formData = new FormData();
-
-    console.log("newTyre from frontend ==>", newTyre);
-
-    formData.append("brand", newTyre.brand);
-    formData.append("model", newTyre.model);
-    formData.append("season", newTyre.season);
-    formData.append("price", newTyre.price);
-    formData.append("size[width]", newTyre.size.width);
-    formData.append("size[height]", newTyre.size.height);
-    formData.append("size[radius]", newTyre.size.radius);
-
-    // Добавьте файл только если он существует
-    if (newTyre.imgSrc) {
-      formData.append("imgSrc", newTyre.imgSrc);
-    }
-
-    sendNewTyre(formData);
-    newTyreModalOptions.accept();
-  };
-
-  const handleEditClick = (product) => {
-    setCurrentProduct(product);
-    editModalOptions.show();
-  };
-
-  const handleEditSubmit = (updatedProduct) => {
-    console.log("Updated Product:", updatedProduct);
-    editModalOptions.accept();
-    setCurrentProduct(null);
-  };
-
-  const handleDeleteClick = (product) => {
-    setCurrentProduct(product); // Устанавливаем текущий товар для удаления
-    deleteModalOptions.show(); // Открываем модалку
-  };
-
-  const handleDeleteSubmit = () => {
-    console.log("delete => ", currentProduct._id);
-    deleteModalOptions.accept();
-  };
 
   const columns = [
     {
@@ -103,40 +63,111 @@ export const Tyres = () => {
       key: "action",
       render: (product) => (
         <Space size="middle">
-          <Button onClick={() => handleEditClick(product)}>
+          <Button onClick={() => handleEditOpenModal(product)}>
             Редактировать
           </Button>
-          <Button onClick={() => handleDeleteClick(product)}>Удалить</Button>
+          <Button onClick={() => handleDeleteOpenModal(product)}>
+            Удалить
+          </Button>
         </Space>
       ),
     },
   ];
 
+  const handlerNewItemSubmit = async (newTyre) => {
+    const formData = new FormData();
+
+    formData.append("brand", newTyre.brand);
+    formData.append("model", newTyre.model);
+    formData.append("season", newTyre.season);
+    formData.append("price", newTyre.price);
+    formData.append("size[width]", newTyre.size.width);
+    formData.append("size[height]", newTyre.size.height);
+    formData.append("size[radius]", newTyre.size.radius);
+
+    if (newTyre.imgSrc) {
+      formData.append("imgSrc", newTyre.imgSrc);
+    }
+
+    const addedProduct = await senderNewItem(formData, "tyres");
+    setProductsList((prev) => [...prev, addedProduct.product]);
+    newProductModalOptions.close();
+  };
+
+  const handleEditOpenModal = (product) => {
+    setCurrentProduct(product);
+    editModalOptions.show();
+  };
+
+  const handleEditSubmit = async (updatedTyre) => {
+    const formData = new FormData();
+
+    formData.append("_id", updatedTyre._id);
+    formData.append("brand", updatedTyre.brand);
+    formData.append("model", updatedTyre.model);
+    formData.append("season", updatedTyre.season);
+    formData.append("price", updatedTyre.price);
+    formData.append("size[width]", updatedTyre.size.width);
+    formData.append("size[height]", updatedTyre.size.height);
+    formData.append("size[radius]", updatedTyre.size.radius);
+
+    if (updatedTyre.imgSrc) {
+      formData.append("imgSrc", updatedTyre.imgSrc);
+    }
+
+    const updatedProduct = await itemUpdater(formData, "tyres");
+    setProductsList((prev) =>
+      prev.map((prod) =>
+        prod._id === updatedProduct.product._id ? updatedProduct.product : prod
+      )
+    );
+    setCurrentProduct(null);
+    editModalOptions.close();
+  };
+
+  const handleDeleteOpenModal = (product) => {
+    setCurrentProduct(product); // Устанавливаем текущий товар для удаления
+    deleteModalOptions.show(); // Открываем модалку
+  };
+
+  const handleDeleteSubmit = () => {
+    console.log("delete => ", currentProduct._id);
+    deleteModalOptions.close();
+  };
+
   return (
     <>
-      <Button onClick={newTyreModalOptions.show}>Добавить новый товра</Button>
-      <ProductList columns={columns} type={"tyres"} />
-      <EditModal
+      <Button onClick={newProductModalOptions.show}>
+        Добавить новый товра
+      </Button>
+      {productsList.length}
+      <ProductList
+        columns={columns}
+        type={"tyres"}
+        productsList={productsList}
+        setProductsList={setProductsList}
+      />
+      <EditTyreModal
         open={isEditModal}
         product={currentProduct}
         onOk={handleEditSubmit}
         onCancel={() => {
-          editModalOptions.cancel();
+          editModalOptions.close();
           setCurrentProduct(null);
         }}
       />
       <DeleteModal
         open={isDeleteModal}
-        onOk={handleDeleteSubmit} // Подтверждение удаления
+        onOk={handleDeleteSubmit}
         onCancel={() => {
-          deleteModalOptions.cancel();
+          deleteModalOptions.close();
           setCurrentProduct(null);
         }}
       />
       <NewTyreModal
-        open={isNewTyreModal}
-        onOk={handlerNewTyreSubmit}
-        onCancel={newTyreModalOptions.cancel}
+        open={isNewProductModal}
+        onOk={handlerNewItemSubmit}
+        onCancel={newProductModalOptions.close}
       />
     </>
   );

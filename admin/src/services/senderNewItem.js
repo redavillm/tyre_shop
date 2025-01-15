@@ -1,8 +1,8 @@
 import { notification } from "antd";
 
-export const sendNewTyre = async (formData) => {
+export const senderNewItem = async (formData, type) => {
   try {
-    const response = await fetch("http://localhost:3001/tyres", {
+    const response = await fetch(`http://localhost:3001/${type}`, {
       method: "POST",
       body: formData,
     });
@@ -12,12 +12,13 @@ export const sendNewTyre = async (formData) => {
     }
 
     const result = await response.json();
-    console.log("result => ", result);
     notification.success({
       message: "Успех",
       description: "Товар успешно добавлен!",
       placement: "bottomRight",
     });
+    console.log("result => ", result); //удалить
+    return result;
   } catch (error) {
     console.error("Ошибка при отправке данных:", error);
 

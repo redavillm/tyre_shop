@@ -1,36 +1,44 @@
 import { Button, Card, Form, Input, Modal, Select, Space, Upload } from "antd";
 import { UploadOutlined, DeleteOutlined } from "@ant-design/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export const EditModal = ({ open, product, onOk, onCancel }) => {
+export const EditTyreModal = ({ open, product, onOk, onCancel }) => {
   const [form] = Form.useForm();
-  const [currentPhoto, setCurrentPhoto] = useState(product?.imgSrc);
-  const [newPhoto, setNewPhoto] = useState(null);
+  const [currentImg, setCurrentImg] = useState(null);
+  const [newImg, setNewImg] = useState(null);
   const [showSpikes, setShowSpikes] = useState(false);
+
+  useEffect(() => {
+    setCurrentImg(product?.imgSrc || "");
+  }, [product]);
+
+  const handleDeletePhoto = () => {
+    setCurrentImg(null);
+    setNewImg(null);
+  };
 
   const handlePhotoUpload = (file) => {
     const reader = new FileReader();
     reader.onload = () => {
-      setNewPhoto(file);
-      setCurrentPhoto(reader.result); // Показываем предпросмотр
+      setNewImg(file);
+      setCurrentImg(reader.result); // Показываем предпросмотр
     };
     reader.readAsDataURL(file);
     return false; // Останавливаем автоматическую загрузку
-  };
-
-  // Удаление текущего фото
-  const handleDeletePhoto = () => {
-    setCurrentPhoto("");
-    setNewPhoto(null);
   };
 
   const handleFinish = () => {
     form
       .validateFields()
       .then((values) => {
-        onOk({ ...values, newPhoto }); // Передаем данные формы и новое фото
+        onOk({
+          ...values,
+          _id: product._id,
+          imgSrc: newImg || currentImg,
+          deleteImg: !currentImg,
+        }); // Передаем данные формы и новое фото
         form.resetFields();
-        setNewPhoto(null);
+        setNewImg(null);
       })
       .catch((error) => {
         console.error("Validation failed:", error);
@@ -48,7 +56,7 @@ export const EditModal = ({ open, product, onOk, onCancel }) => {
       onOk={handleFinish}
       onCancel={() => {
         form.resetFields();
-        setNewPhoto(null);
+        setNewImg(null);
         onCancel();
       }}
     >
@@ -56,7 +64,7 @@ export const EditModal = ({ open, product, onOk, onCancel }) => {
         style={{ marginBottom: "16px", textAlign: "center" }}
         cover={
           <img
-            src={product?.imgSrc}
+            src={currentImg}
             alt="Текущее фото"
             style={{
               maxWidth: "100%",

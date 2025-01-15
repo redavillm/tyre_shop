@@ -1,10 +1,9 @@
-const uploadImage = require("./imagService");
+const uploadImage = require("./img/uploadImage");
 
 const createNewProduct = async (req, res, Model, bucketFolder) => {
   try {
     const { body, file } = req;
     const imageUrl = await uploadImage(file, bucketFolder);
-    console.log("imageUrl in createNewProduct => ", imageUrl);
 
     const newProduct = new Model({
       ...body,
