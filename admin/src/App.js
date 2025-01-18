@@ -8,6 +8,7 @@ function App() {
     <Main>
       <Routes>
         <Route path="/" element={<Tyres />} />
+        <Route path="/tyres" element={<Tyres />} />
         <Route path="/disks" element={<Disks />} />
         <Route path="/accumulators" element={<Accumulators />} />
       </Routes>

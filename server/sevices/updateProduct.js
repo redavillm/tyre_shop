@@ -10,9 +10,14 @@ const updateProduct = async (req, res, Model, bucketFolder) => {
 
     let updatedData = { ...body };
 
-    if (body.deleteImg && product.imgSrc) {
+    const deleteImgFlag = body.deleteImg === true || body.deleteImg === "true";
+
+    if (deleteImgFlag) {
       await deleteImage(product.imgSrc);
       updatedData.imgSrc = null; // Удаляем ссылку на изображение
+    } else if (!file && !deleteImgFlag) {
+      // Если нет файла и флаг удаления изображения не установлен
+      updatedData.imgSrc = product.imgSrc; // Сохраняем текущее изображение
     }
 
     if (file) {
@@ -22,6 +27,7 @@ const updateProduct = async (req, res, Model, bucketFolder) => {
       }
       updatedData.imgSrc = newImageUrl;
     }
+
     const updatedProduct = await Model.findByIdAndUpdate(
       id,
       updatedData,

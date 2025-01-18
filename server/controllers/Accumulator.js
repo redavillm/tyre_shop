@@ -1,5 +1,9 @@
 const Accumulator = require("../models/Accumulator");
 
+const createNewProduct = require("../sevices/createNewProduct");
+const deleteProduct = require("../sevices/deleteProduct");
+const updateProduct = require("../sevices/updateProduct");
+
 const list = async (req, res) => {
   try {
     res.json({
@@ -71,8 +75,20 @@ const getUniqueParameters = async (req, res) => {
   }
 };
 
+const createNewAccumulator = async (req, res) =>
+  createNewProduct(req, res, Accumulator, "accumulatorImgs");
+
+const updateAccumulator = async (req, res) =>
+  updateProduct(req, res, Accumulator, "accumulatorImgs");
+
+const deleteAccumulator = async (req, res) =>
+  deleteProduct(req, res, Accumulator);
+
 module.exports = {
   list,
   getById,
   getUniqueParameters,
+  createNewAccumulator,
+  updateAccumulator,
+  deleteAccumulator,
 };

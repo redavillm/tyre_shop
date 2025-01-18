@@ -1,4 +1,7 @@
 const Disk = require("../models/Disk");
+const createNewProduct = require("../sevices/createNewProduct");
+const deleteProduct = require("../sevices/deleteProduct");
+const updateProduct = require("../sevices/updateProduct");
 
 const list = async (req, res) => {
   try {
@@ -53,8 +56,19 @@ const getUniqueParameters = async (req, res) => {
   }
 };
 
+const createNewDisk = async (req, res) =>
+  createNewProduct(req, res, Disk, "diskImgs");
+
+const updateDisk = async (req, res) =>
+  updateProduct(req, res, Disk, "diskImgs");
+
+const deleteDisk = async (req, res) => deleteProduct(req, res, Disk);
+
 module.exports = {
   list,
   getById,
   getUniqueParameters,
+  createNewDisk,
+  updateDisk,
+  deleteDisk,
 };

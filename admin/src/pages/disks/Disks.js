@@ -1,11 +1,13 @@
 import { Button, Space } from "antd";
 import { ProductList } from "../../components/ProductList";
-import { useState } from "react";
 import { DeleteModal } from "../../components/Modals";
+import { useState } from "react";
 import { useModal } from "../../hooks/useModal";
-import { senderNewItem } from "../../services/senderNewItem";
 import { EditDiskModal } from "./modals/EditDiskModal";
 import { NewDiskModal } from "./modals/NewDiskModal";
+import { senderNewItem } from "../../services/senderNewItem";
+import { itemUpdater } from "../../services/itemUpdater";
+import { deleteProduct } from "../../services/deleteProduct";
 
 export const Disks = () => {
   const {
@@ -115,24 +117,55 @@ export const Disks = () => {
   };
 
   const handleEditOpenModal = (product) => {
-    setCurrentProduct(product);
+    setCurrentProduct({ ...product });
     editModalOptions.show();
   };
 
-  const handleEditSubmit = (updatedProduct) => {
-    console.log("Updated Product:", updatedProduct);
-    editModalOptions.close();
+  const handleEditSubmit = async (updatedDisk) => {
+    const formData = new FormData();
+
+    formData.append("_id", updatedDisk._id);
+    formData.append("brand", updatedDisk.brand);
+    formData.append("model", updatedDisk.model);
+    formData.append("type", updatedDisk.type);
+    formData.append("price", updatedDisk.price);
+    formData.append("diametr", updatedDisk.diametr);
+    formData.append("mount", updatedDisk.mount);
+    formData.append("width", updatedDisk.width);
+    formData.append("offset", updatedDisk.offset);
+    formData.append("color", updatedDisk.color);
+    formData.append("deleteImg", updatedDisk.deleteImg || false);
+
+    if (updatedDisk.imgSrc && updatedDisk.imgSrc !== currentProduct?.imgSrc) {
+      formData.append("imgSrc", updatedDisk.imgSrc);
+    }
+
+    const updatedProduct = await itemUpdater(formData, "disks");
+
+    setProductsList((prev) =>
+      prev.map((prod) =>
+        prod._id === updatedProduct.product._id ? updatedProduct.product : prod
+      )
+    );
     setCurrentProduct(null);
+    editModalOptions.close();
   };
 
   const handleDeleteOpenModal = (product) => {
-    setCurrentProduct(product); // Устанавливаем текущий товар для удаления
+    setCurrentProduct({ ...product }); // Устанавливаем текущий товар для удаления
     deleteModalOptions.show(); // Открываем модалку
   };
 
-  const handleDeleteSubmit = () => {
-    console.log("delete => ", currentProduct._id);
-    deleteModalOptions.close();
+  const handleDeleteSubmit = async () => {
+    try {
+      await deleteProduct(currentProduct._id, "disks");
+      setProductsList((prev) =>
+        prev.filter((prod) => prod._id !== currentProduct._id)
+      );
+      deleteModalOptions.close();
+    } catch (error) {
+      console.error("Ошибка при удалении товара:", error);
+    }
   };
 
   return (
@@ -140,6 +173,7 @@ export const Disks = () => {
       <Button onClick={newProductModalOptions.show}>
         Добавить новый товра
       </Button>
+      {productsList.length}
       <ProductList
         columns={columns}
         type={"disks"}

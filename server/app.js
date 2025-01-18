@@ -28,11 +28,14 @@ app.use(express.static("public"));
 app.get("/tyres/unique-parameters", TyreController.getUniqueParameters);
 app.post("/tyres", upload.single("imgSrc"), TyreController.createNewTyre);
 app.put("/tyres", upload.single("imgSrc"), TyreController.updateTyre);
-app.delete("/tyres", upload.single("imgSrc"), TyreController.deleteTyre);
+app.delete("/tyres/:id", TyreController.deleteTyre);
 app.get("/tyres", TyreController.list);
 app.get("/tyres/:id", TyreController.getById);
 
 app.get("/disks/unique-parameters", DiskController.getUniqueParameters);
+app.post("/disks", upload.single("imgSrc"), DiskController.createNewDisk);
+app.put("/disks", upload.single("imgSrc"), DiskController.updateDisk);
+app.delete("/disks/:id", DiskController.deleteDisk);
 app.get("/disks", DiskController.list);
 app.get("/disks/:id", DiskController.getById);
 
@@ -40,6 +43,17 @@ app.get(
   "/accumulators/unique-parameters",
   AccumulatorController.getUniqueParameters
 );
+app.post(
+  "/accumulators",
+  upload.single("imgSrc"),
+  AccumulatorController.createNewAccumulator
+);
+app.put(
+  "/accumulators",
+  upload.single("imgSrc"),
+  AccumulatorController.updateAccumulator
+);
+app.delete("/accumulators/:id", AccumulatorController.deleteAccumulator);
 app.get("/accumulators", AccumulatorController.list);
 app.get("/accumulators/:id", AccumulatorController.getById);
 

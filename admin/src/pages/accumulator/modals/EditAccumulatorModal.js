@@ -1,12 +1,11 @@
-import { Button, Card, Form, Input, Modal, Select, Space, Upload } from "antd";
+import { Button, Card, Form, Input, Modal, Space, Upload } from "antd";
 import { UploadOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 
-export const EditTyreModal = ({ open, product, onOk, onCancel }) => {
+export const EditAccumulatorModal = ({ open, product, onOk, onCancel }) => {
   const [form] = Form.useForm();
   const [currentImg, setCurrentImg] = useState(null);
   const [newImg, setNewImg] = useState(null);
-  const [showSpikes, setShowSpikes] = useState(false);
 
   useEffect(() => {
     if (product) {
@@ -15,16 +14,13 @@ export const EditTyreModal = ({ open, product, onOk, onCancel }) => {
         model: product.model,
         price: product.price,
         count: product.count,
-        season: product.season,
-        isSpiked: product.isSpiked,
-        size: {
-          width: product.size?.width,
-          height: product.size?.height,
-          radius: product.size?.radius,
-        },
+        width: product.width,
+        height: product.height,
+        length: product.length,
+        polarity: product.polarity,
+        capacity: product.capacity,
       });
       setCurrentImg(product.imgSrc || "");
-      setShowSpikes(product.season === "winter");
     }
   }, [product, form]);
 
@@ -50,8 +46,8 @@ export const EditTyreModal = ({ open, product, onOk, onCancel }) => {
         onOk({
           ...values,
           _id: product._id,
-          imgSrc: newImg || currentImg,
-          deleteImg: !currentImg,
+          imgSrc: newImg ? newImg : currentImg,
+          deleteImg: !currentImg && !newImg,
         });
         form.resetFields();
         setNewImg(null);
@@ -60,11 +56,6 @@ export const EditTyreModal = ({ open, product, onOk, onCancel }) => {
         console.error("Validation failed:", error);
       });
   };
-
-  const handleIsWinter = (value) => {
-    return value === "winter" ? setShowSpikes(true) : setShowSpikes(false);
-  };
-
   return (
     <Modal
       title="Редактирование товара"
@@ -105,13 +96,11 @@ export const EditTyreModal = ({ open, product, onOk, onCancel }) => {
           model: product?.model,
           price: product?.price,
           count: product?.count,
-          season: product?.season,
-          isSpiked: product?.isSpiked,
-          size: {
-            width: product?.size?.width,
-            radius: product?.size?.radius,
-            height: product?.size?.height,
-          },
+          width: product?.width,
+          height: product?.height,
+          length: product?.length,
+          polarity: product?.polarity,
+          capacity: product?.capacity,
         }}
       >
         <Form.Item label="Загрузить новое фото">
@@ -137,65 +126,41 @@ export const EditTyreModal = ({ open, product, onOk, onCancel }) => {
         >
           <Input />
         </Form.Item>
-
         <Form.Item
-          name="season"
-          label="Сезон"
-          rules={[{ required: true, message: "Укажите сезон" }]}
+          name="width"
+          label="Ширина"
+          rules={[{ required: true, message: "Введите модель" }]}
         >
-          <Select placeholder="Выберите значение" onChange={handleIsWinter}>
-            <Select.Option value="summer">Лето</Select.Option>
-            <Select.Option value="winter">Зима</Select.Option>
-          </Select>
+          <Input type="number" />
         </Form.Item>
-
-        {showSpikes ? (
-          <Form.Item name="spikes" label="Тип зимней резины">
-            <Select placeholder="Выберите значение">
-              <Select.Option value={true}>С шипами</Select.Option>
-              <Select.Option value={false}>Без шипов</Select.Option>
-            </Select>
-          </Form.Item>
-        ) : null}
-
-        <Form.Item label="Размеры товара">
-          <Space.Compact>
-            <Form.Item
-              name={["size", "width"]}
-              noStyle
-              rules={[{ required: true, message: "Введите ширину" }]}
-            >
-              <Input
-                type="number"
-                style={{ width: "33%" }}
-                placeholder="Ширина"
-              />
-            </Form.Item>
-            <Form.Item
-              name={["size", "height"]}
-              noStyle
-              rules={[{ required: true, message: "Введите высоту" }]}
-            >
-              <Input
-                type="number"
-                style={{ width: "33%" }}
-                placeholder="Высота"
-              />
-            </Form.Item>
-            <Form.Item
-              name={["size", "radius"]}
-              noStyle
-              rules={[{ required: true, message: "Введите радиус" }]}
-            >
-              <Input
-                type="number"
-                style={{ width: "33%" }}
-                placeholder="Радиус"
-              />
-            </Form.Item>
-          </Space.Compact>
+        <Form.Item
+          name="height"
+          label="Высота"
+          rules={[{ required: true, message: "Введите модель" }]}
+        >
+          <Input type="number" />
         </Form.Item>
-
+        <Form.Item
+          name="length"
+          label="Длинна"
+          rules={[{ required: true, message: "Введите модель" }]}
+        >
+          <Input type="number" />
+        </Form.Item>
+        <Form.Item
+          name="polarity"
+          label="Полярность"
+          rules={[{ required: true, message: "Введите модель" }]}
+        >
+          <Input type="number" />
+        </Form.Item>
+        <Form.Item
+          name="capacity"
+          label="Ёмкость"
+          rules={[{ required: true, message: "Введите модель" }]}
+        >
+          <Input type="number" />
+        </Form.Item>
         <Form.Item
           name="price"
           label="Цена"

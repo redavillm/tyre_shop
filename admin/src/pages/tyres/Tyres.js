@@ -7,6 +7,7 @@ import { EditTyreModal } from "./modals/EditTyreModal";
 import { NewTyreModal } from "./modals/NewTyreModal";
 import { senderNewItem } from "../../services/senderNewItem";
 import { itemUpdater } from "../../services/itemUpdater";
+import { deleteProduct } from "../../services/deleteProduct";
 
 export const Tyres = () => {
   const {
@@ -95,7 +96,7 @@ export const Tyres = () => {
   };
 
   const handleEditOpenModal = (product) => {
-    setCurrentProduct(product);
+    setCurrentProduct({ ...product });
     editModalOptions.show();
   };
 
@@ -117,7 +118,6 @@ export const Tyres = () => {
     }
 
     const updatedProduct = await itemUpdater(formData, "tyres");
-    console.log("updatedProduct => ", updatedProduct);
     setProductsList((prev) =>
       prev.map((prod) =>
         prod._id === updatedProduct.product._id ? updatedProduct.product : prod
@@ -128,13 +128,20 @@ export const Tyres = () => {
   };
 
   const handleDeleteOpenModal = (product) => {
-    setCurrentProduct(product); // Устанавливаем текущий товар для удаления
+    setCurrentProduct({ ...product }); // Устанавливаем текущий товар для удаления
     deleteModalOptions.show(); // Открываем модалку
   };
 
-  const handleDeleteSubmit = () => {
-    console.log("delete => ", currentProduct._id);
-    deleteModalOptions.close();
+  const handleDeleteSubmit = async () => {
+    try {
+      await deleteProduct(currentProduct._id, "tyres");
+      setProductsList((prev) =>
+        prev.filter((prod) => prod._id !== currentProduct._id)
+      );
+      deleteModalOptions.close();
+    } catch (error) {
+      console.error("Ошибка при удалении товара:", error);
+    }
   };
 
   return (

@@ -8,8 +8,22 @@ export const EditDiskModal = ({ open, product, onOk, onCancel }) => {
   const [newImg, setNewImg] = useState(null);
 
   useEffect(() => {
-    setCurrentImg(product?.imgSrc || "");
-  }, [product]);
+    if (product) {
+      form.setFieldsValue({
+        brand: product.brand,
+        model: product.model,
+        price: product.price,
+        count: product.count,
+        type: product.type,
+        diametr: product.diametr,
+        mount: product.mount,
+        width: product.width,
+        offset: product.offset,
+        color: product.color,
+      });
+      setCurrentImg(product.imgSrc || "");
+    }
+  }, [product, form]);
 
   const handleDeletePhoto = () => {
     setCurrentImg(null);
@@ -30,7 +44,12 @@ export const EditDiskModal = ({ open, product, onOk, onCancel }) => {
     form
       .validateFields()
       .then((values) => {
-        onOk({ ...values, imgSrc: newImg || currentImg }); // Передаем данные формы и новое фото
+        onOk({
+          ...values,
+          _id: product._id,
+          imgSrc: newImg ? newImg : currentImg,
+          deleteImg: !currentImg && !newImg,
+        });
         form.resetFields();
         setNewImg(null);
       })
@@ -53,15 +72,19 @@ export const EditDiskModal = ({ open, product, onOk, onCancel }) => {
       <Card
         style={{ marginBottom: "16px", textAlign: "center" }}
         cover={
-          <img
-            src={currentImg}
-            alt="Текущее фото"
-            style={{
-              maxWidth: "100%",
-              maxHeight: "200px",
-              objectFit: "contain", // добавляем для более корректного отображения изображений
-            }}
-          />
+          currentImg ? (
+            <img
+              src={currentImg}
+              alt="Текущее фото"
+              style={{
+                maxWidth: "100%",
+                maxHeight: "200px",
+                objectFit: "contain",
+              }}
+            />
+          ) : (
+            <p>Нет изображения</p>
+          )
         }
       ></Card>
       <Space direction="vertical" align="end" style={{ width: "100%" }}>

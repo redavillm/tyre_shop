@@ -1,8 +1,8 @@
-import { Button, Card, Form, Input, Modal, Select, Space, Upload } from "antd";
+import { Button, Card, Form, Input, Modal, Space, Upload } from "antd";
 import { DeleteOutlined, UploadOutlined } from "@ant-design/icons";
 import { useState } from "react";
 
-export const NewDiskModal = ({ open, onOk, onCancel }) => {
+export const NewAccumulatorModal = ({ open, onOk, onCancel }) => {
   const [form] = Form.useForm();
   const [newImg, setNewImg] = useState(null);
   const [currentImg, setCurrentImg] = useState(null);
@@ -34,9 +34,10 @@ export const NewDiskModal = ({ open, onOk, onCancel }) => {
         console.error("Validation failed:", error);
       });
   };
+
   return (
     <Modal
-      title="Создать новый товар"
+      title="Добавление нового товара"
       open={open}
       onOk={handleFinish}
       onCancel={() => {
@@ -64,8 +65,7 @@ export const NewDiskModal = ({ open, onOk, onCancel }) => {
           Удалить фото
         </Button>
       </Space>
-
-      {/* Форма редактирования товара */}
+      {/* Форма добавления нового товара */}
       <Form form={form} layout="vertical">
         <Form.Item label="Загрузить новое фото">
           <Upload
@@ -90,48 +90,41 @@ export const NewDiskModal = ({ open, onOk, onCancel }) => {
         >
           <Input />
         </Form.Item>
-        <Form.Item name="type" label="Тип диска">
-          <Select placeholder="Выберите значение">
-            <Select.Option value={"stamp"}>Штамповка</Select.Option>
-            <Select.Option value={"alloy"}>Литьё</Select.Option>
-          </Select>
-        </Form.Item>
-        <Form.Item
-          name="diametr"
-          label="Диаметр"
-          rules={[{ required: true, message: "Введите значение диаметра" }]}
-        >
-          <Input type="number" placeholder="Диаметр" />
-        </Form.Item>
-        <Form.Item
-          name="mount"
-          label="Разболтовка"
-          rules={[{ required: true, message: "Введите значение" }]}
-        >
-          <Input />
-        </Form.Item>
         <Form.Item
           name="width"
           label="Ширина"
-          rules={[{ required: true, message: "Введите значение" }]}
+          rules={[{ required: true, message: "Введите модель" }]}
         >
-          <Input />
+          <Input type="number" />
         </Form.Item>
         <Form.Item
-          name="offset"
-          label="Вынос"
-          rules={[{ required: true, message: "Введите значение" }]}
+          name="height"
+          label="Высота"
+          rules={[{ required: true, message: "Введите модель" }]}
         >
-          <Input />
+          <Input type="number" />
         </Form.Item>
         <Form.Item
-          name="color"
-          label="Цвет"
-          rules={[{ required: true, message: "Введите значение" }]}
+          name="length"
+          label="Длинна"
+          rules={[{ required: true, message: "Введите модель" }]}
         >
-          <Input />
+          <Input type="number" />
         </Form.Item>
-
+        <Form.Item
+          name="polarity"
+          label="Полярность"
+          rules={[{ required: true, message: "Введите модель" }]}
+        >
+          <Input type="number" />
+        </Form.Item>
+        <Form.Item
+          name="capacity"
+          label="Ёмкость"
+          rules={[{ required: true, message: "Введите модель" }]}
+        >
+          <Input type="number" />
+        </Form.Item>
         <Form.Item
           name="price"
           label="Цена"

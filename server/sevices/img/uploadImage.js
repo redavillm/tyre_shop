@@ -23,7 +23,6 @@ const uploadImage = async (file, bucketFolder) => {
         Key: `${bucketFolder}/${fileName}`,
         Body: optimizedImage,
         ContentType: "image/jpeg",
-        ACL: "public-read",
       },
     });
 

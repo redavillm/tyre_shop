@@ -3,7 +3,6 @@ const deleteImage = require("./img/deleteImage");
 const deleteProduct = async (req, res, Model) => {
   try {
     const { id } = req.params;
-
     // Проверяем, существует ли товар
     const product = await Model.findById(id);
     if (!product) {
@@ -11,7 +10,6 @@ const deleteProduct = async (req, res, Model) => {
         message: "Товар не найден",
       });
     }
-
     // Удаляем изображение, если оно существует
     if (product.imgSrc) {
       await deleteImage(product.imgSrc);

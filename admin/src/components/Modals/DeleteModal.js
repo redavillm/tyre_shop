@@ -1,6 +1,6 @@
 import { Modal } from "antd";
 
-export const DeleteModal = ({ open, onOk, onCancel }) => {
+export const DeleteModal = ({ open, product, onOk, onCancel }) => {
   return (
     <Modal
       title="Подтверждение удаления"
