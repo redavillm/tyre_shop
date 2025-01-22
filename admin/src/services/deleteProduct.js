@@ -11,8 +11,12 @@ export const deleteProduct = async (id, type) => {
     return;
   }
   try {
+    const accessToken = localStorage.getItem("accessToken");
     const response = await fetch(`http://localhost:3001/${type}/${id}`, {
       method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${accessToken}`, // Добавляем токен
+      },
     });
     if (!response.ok) {
       throw new Error(`Ошибка: ${response.status}`);

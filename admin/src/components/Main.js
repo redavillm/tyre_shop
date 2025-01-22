@@ -1,6 +1,7 @@
 import React from "react";
 import { Layout, Menu } from "antd";
 import Link from "antd/es/typography/Link";
+import LogoutButton from "./LogoutButton";
 
 const { Header, Content } = Layout;
 
@@ -32,7 +33,6 @@ export const Main = ({ children }) => {
           alignItems: "center",
         }}
       >
-        <div className="demo-logo" />
         <Menu
           theme="dark"
           mode="horizontal"
@@ -42,6 +42,7 @@ export const Main = ({ children }) => {
             minWidth: 0,
           }}
         />
+        <LogoutButton />
       </Header>
       <Content
         style={{

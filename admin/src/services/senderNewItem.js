@@ -2,8 +2,12 @@ import { notification } from "antd";
 
 export const senderNewItem = async (formData, type) => {
   try {
+    const accessToken = localStorage.getItem("accessToken");
     const response = await fetch(`http://localhost:3001/${type}`, {
       method: "POST",
+      headers: {
+        Authorization: `Bearer ${accessToken}`, // Добавляем токен
+      },
       body: formData,
     });
 
