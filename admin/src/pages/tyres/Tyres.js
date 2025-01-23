@@ -50,6 +50,12 @@ export const Tyres = () => {
       ),
     },
     {
+      title: "Сезон",
+      dataIndex: "season",
+      key: "season",
+      render: (season) => (season === "winter" ? "Зима" : "Лето"),
+    },
+    {
       title: "Цена",
       dataIndex: "price",
       key: "price",
@@ -81,7 +87,9 @@ export const Tyres = () => {
     formData.append("brand", newTyre.brand);
     formData.append("model", newTyre.model);
     formData.append("season", newTyre.season);
+    formData.append("count", newTyre?.count);
     formData.append("price", newTyre.price);
+    formData.append("isSpiked", newTyre?.isSpiked);
     formData.append("size[width]", newTyre.size.width);
     formData.append("size[height]", newTyre.size.height);
     formData.append("size[radius]", newTyre.size.radius);
@@ -107,6 +115,8 @@ export const Tyres = () => {
     formData.append("brand", updatedTyre.brand);
     formData.append("model", updatedTyre.model);
     formData.append("season", updatedTyre.season);
+    formData.append("isSpiked", updatedTyre?.isSpiked);
+    formData.append("count", updatedTyre?.count);
     formData.append("price", updatedTyre.price);
     formData.append("deleteImg", updatedTyre.deleteImg);
     formData.append("size[width]", updatedTyre.size.width);

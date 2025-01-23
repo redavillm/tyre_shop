@@ -15,6 +15,7 @@ const TyresSchema = new Schema({
   price: Number,
   imgSrc: String,
   count: Number,
+  isSpiked: { type: Boolean, default: undefined },
 });
 
 const model = mongoose.model("Tyre", TyresSchema, "tyres");

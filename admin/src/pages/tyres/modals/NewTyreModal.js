@@ -27,6 +27,7 @@ export const NewTyreModal = ({ open, onOk, onCancel }) => {
     form
       .validateFields()
       .then((values) => {
+        console.log("values => ", values);
         onOk({ ...values, imgSrc: newImg }); // Передаем данные формы и новое фото
         form.resetFields();
         setNewImg(null);
@@ -107,7 +108,11 @@ export const NewTyreModal = ({ open, onOk, onCancel }) => {
         </Form.Item>
 
         {showSpikes ? (
-          <Form.Item name="spikes" label="Тип зимней резины">
+          <Form.Item
+            name="isSpiked"
+            label="Тип зимней резины"
+            rules={[{ required: true, message: "Введите тип зимней шины" }]}
+          >
             <Select placeholder="Выберите значение">
               <Select.Option value={true}>С шипами</Select.Option>
               <Select.Option value={false}>Без шипов</Select.Option>

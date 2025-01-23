@@ -6,6 +6,10 @@ const updateProduct = async (req, res, Model, bucketFolder) => {
     const { body, file } = req;
     const id = body._id;
 
+    if (body.season === "summer") {
+      delete body.isSpiked;
+    }
+
     const product = await Model.findById(id);
 
     let updatedData = { ...body };

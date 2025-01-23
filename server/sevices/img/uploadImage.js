@@ -6,7 +6,8 @@ const { Upload } = require("@aws-sdk/lib-storage");
 const uploadImage = async (file, bucketFolder) => {
   try {
     if (!file) {
-      throw new Error("Файл изображения отсутствует");
+      console.warn("Изображение отсутствует, пропускаем загрузку.");
+      return null; // Вернуть null, если файл отсутствует
     }
     const fileName = `${uuidv4()}_${file.originalname}`;
 
@@ -34,9 +35,10 @@ const uploadImage = async (file, bucketFolder) => {
         .json({ message: "Ошибка при загрузке изображения" });
     }
 
-    return imageUrl;
+    return imageUrl || null;
   } catch (error) {
     console.error("Ошибка загрузки изображения:", error);
+    return null;
   }
 };
 

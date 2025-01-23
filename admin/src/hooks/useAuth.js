@@ -10,21 +10,16 @@ const useAuth = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("Initial isAuthenticated:", isAuthenticated);
-
     const token = localStorage.getItem("accessToken");
     if (!token) {
-      console.log("No access token found.");
       setIsAuthenticated(false);
       return;
     }
 
     if (!isRefreshing.current) {
-      console.log("Attempting to refresh access token...");
       isRefreshing.current = true;
       refreshAccessTokenIfNeeded({ navigate })
         .then(() => {
-          console.log("Token refreshed successfully.");
           setIsAuthenticated(true);
         })
         .catch((err) => {
@@ -33,7 +28,6 @@ const useAuth = () => {
         })
         .finally(() => {
           isRefreshing.current = false;
-          console.log("Refresh process completed.");
         });
     }
   }, [navigate, isAuthenticated]);

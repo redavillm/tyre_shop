@@ -8,6 +8,8 @@ export const EditTyreModal = ({ open, product, onOk, onCancel }) => {
   const [newImg, setNewImg] = useState(null);
   const [showSpikes, setShowSpikes] = useState(false);
 
+  // console.log("product:", product);
+
   useEffect(() => {
     if (product) {
       form.setFieldsValue({
@@ -64,6 +66,15 @@ export const EditTyreModal = ({ open, product, onOk, onCancel }) => {
   const handleIsWinter = (value) => {
     return value === "winter" ? setShowSpikes(true) : setShowSpikes(false);
   };
+
+  useEffect(() => {
+    if (product) {
+      form.setFieldsValue({
+        ...form.getFieldsValue(),
+        isSpiked: product.isSpiked,
+      });
+    }
+  }, [product, form]);
 
   return (
     <Modal
@@ -150,7 +161,11 @@ export const EditTyreModal = ({ open, product, onOk, onCancel }) => {
         </Form.Item>
 
         {showSpikes ? (
-          <Form.Item name="spikes" label="Тип зимней резины">
+          <Form.Item
+            name="isSpiked"
+            label="Тип зимней резины"
+            rules={[{ required: true, message: "Укажите тип шины" }]}
+          >
             <Select placeholder="Выберите значение">
               <Select.Option value={true}>С шипами</Select.Option>
               <Select.Option value={false}>Без шипов</Select.Option>

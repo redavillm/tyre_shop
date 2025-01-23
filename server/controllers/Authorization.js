@@ -49,7 +49,7 @@ const login = async (req, res) => {
 
 const refreshToken = (req, res) => {
   const refreshToken = req.cookies.refreshToken;
-  console.log("refreshToken in refreshToken => ", refreshToken);
+  // console.log("refreshToken in refreshToken => ", refreshToken); // dev
 
   if (!refreshToken) {
     console.log("No refresh token provided");
