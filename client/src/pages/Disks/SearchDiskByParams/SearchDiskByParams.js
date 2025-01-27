@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectDisksOptions } from "../../../store/selectors/disks/disks_selectors";
 import { setDisksSearchOptions } from "../../../store/actions/action_creators/disks/set_search_options";
-import { DISKS_FILTRED_TRUE } from "../../../store/actions/action_creators/disks/is_filter";
 import { StyledCatalogByParams, StyledCatalogEl } from "../../../components";
 import { useEffect, useState } from "react";
 import { Flex } from "../../../components/Card/StyledCard";
@@ -36,14 +35,9 @@ export const SearchDiskByParams = () => {
       .catch((error) => console.log("Error: " + error.message));
   }, []);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    dispatch(DISKS_FILTRED_TRUE);
-  };
-
   return (
     <StyledCatalogByParams>
-      <form onSubmit={handleSubmit}>
+      <form>
         <Flex>
           <StyledCatalogEl>
             Диаметр
@@ -52,7 +46,7 @@ export const SearchDiskByParams = () => {
               onChange={handleSelectChange("diametr")}
             >
               <option>all</option>
-              {options.widths?.map((el, index) => (
+              {options.diametr?.map((el, index) => (
                 <option key={index}>{el}</option>
               ))}
             </select>
@@ -94,7 +88,6 @@ export const SearchDiskByParams = () => {
             </select>
           </StyledCatalogEl>
         </Flex>
-        <button type="submit">Поиск</button>
       </form>
     </StyledCatalogByParams>
   );

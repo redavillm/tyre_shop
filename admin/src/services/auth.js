@@ -27,12 +27,12 @@ export const login = async (credentials) => {
 
   const { token, refreshToken } = await response.json();
   localStorage.setItem("accessToken", token);
-  document.cookie = `refreshToken=${refreshToken}; HttpOnly`;
+  localStorage.setItem("refreshToken", refreshToken);
 };
 
 export const logout = () => {
   localStorage.removeItem("accessToken");
-  document.cookie = "refreshToken=; HttpOnly; Max-Age=0";
+  localStorage.removeItem("refreshToken");
 };
 
 export const refreshAccessTokenIfNeeded = async ({ navigate }) => {
@@ -55,19 +55,42 @@ export const refreshAccessTokenIfNeeded = async ({ navigate }) => {
 };
 
 const refreshAccessToken = async ({ navigate }) => {
-  const response = await fetch(`${API_BASE_URL}/refresh-token`, {
-    method: "POST",
-    credentials: "include", // Обязательно указываем, чтобы cookies отправлялись с запросом
-  });
+  const refreshToken = localStorage.getItem("refreshToken");
 
-  if (!response.ok) {
+  if (!refreshToken) {
+    console.warn("No refresh token found, redirecting to login.");
     if (window.location.pathname !== "/login") {
       logout();
       navigate("/login");
     }
-    throw new Error("Failed to refresh access token");
+    throw new Error("Refresh token is missing");
   }
 
-  const { token } = await response.json();
-  localStorage.setItem("accessToken", token);
+  try {
+    const response = await fetch(`${API_BASE_URL}/refresh-token`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", // Указываем тип содержимого
+      },
+      body: JSON.stringify({ refreshToken }), // Отправляем refreshToken в формате JSON
+    });
+
+    if (!response.ok) {
+      console.error("Failed to refresh access token:", response.statusText);
+      if (window.location.pathname !== "/login") {
+        logout();
+        navigate("/login");
+      }
+      throw new Error("Failed to refresh access token");
+    }
+
+    const { token: accessToken, refreshToken: newRefreshToken } =
+      await response.json();
+    localStorage.setItem("accessToken", accessToken);
+    localStorage.setItem("refreshToken", newRefreshToken);
+    return accessToken; // Возвращаем новый accessToken
+  } catch (error) {
+    console.error("Error refreshing access token:", error.message);
+    throw error; // Пробрасываем ошибку дальше
+  }
 };

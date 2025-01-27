@@ -12,5 +12,3 @@ export const selectIsAccumulatorsByParams = (state) =>
 
 export const selectAccumulatorsOptions = (state) =>
   state.accumulatorsState.searchOptions;
-export const selectIsAccumulatorsFilter = (state) =>
-  state.accumulatorsState.isFilter;

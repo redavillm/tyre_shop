@@ -1,5 +1,0 @@
-import { ACCUMULATOR_ACTIONS } from "../../../store_const";
-
-export const CHANGE_ACCUMULATORS_FILTRED_TRUE = {
-  type: ACCUMULATOR_ACTIONS.ACCUMULATORS_FILTRED_TRUE,
-};

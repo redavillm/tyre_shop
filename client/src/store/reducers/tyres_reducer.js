@@ -10,7 +10,6 @@ export const initialTyresState = {
     radius: "all",
     brand: "all",
   },
-  isFilter: false,
   tyresList: [],
   tyreById: [],
 };
@@ -29,8 +28,6 @@ export const tyresReducer = (state = initialTyresState, action) => {
       return { ...state, isByParams: true };
     case TYRE_ACTIONS.CHANGE_TYRES_BY_PARAMS_FALSE:
       return { ...state, isByParams: false };
-    case TYRE_ACTIONS.TYRES_FILTERED_TRUE:
-      return { ...state, isFilter: true };
     case TYRE_ACTIONS.SET_TYRES_SEARCH_OPTIONS:
       return { ...state, searchOptions: action.payload };
     default:

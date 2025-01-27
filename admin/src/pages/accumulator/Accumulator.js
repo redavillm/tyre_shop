@@ -100,6 +100,7 @@ export const Accumulators = () => {
     formData.append("polarity", newAccumulator.polarity);
     formData.append("capacity", newAccumulator.capacity);
     formData.append("price", newAccumulator.price);
+    formData.append("count", newAccumulator.count);
 
     if (newAccumulator.imgSrc) {
       formData.append("imgSrc", newAccumulator.imgSrc);
@@ -119,8 +120,16 @@ export const Accumulators = () => {
     const formData = new FormData();
 
     formData.append("_id", updatedAccumulator._id);
+    formData.append("brand", updatedAccumulator.brand);
+    formData.append("model", updatedAccumulator.model);
+    formData.append("width", updatedAccumulator.width);
+    formData.append("height", updatedAccumulator.height);
+    formData.append("length", updatedAccumulator.length);
+    formData.append("polarity", updatedAccumulator.polarity);
+    formData.append("capacity", updatedAccumulator.capacity);
+    formData.append("price", updatedAccumulator.price);
+    formData.append("count", updatedAccumulator.count);
     formData.append("deleteImg", updatedAccumulator.deleteImg);
-    //добавить
 
     if (updatedAccumulator.imgSrc) {
       formData.append("imgSrc", updatedAccumulator.imgSrc);
@@ -157,7 +166,7 @@ export const Accumulators = () => {
       <Button onClick={newProductModalOptions.show}>
         Добавить новый товра
       </Button>
-      {productsList.length}
+      Колличество: {productsList.length}
       <ProductList
         columns={columns}
         type={"accumulators"}

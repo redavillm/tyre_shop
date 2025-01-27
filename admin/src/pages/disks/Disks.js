@@ -106,6 +106,7 @@ export const Disks = () => {
     formData.append("width", newDisk.width);
     formData.append("offset", newDisk.offset);
     formData.append("color", newDisk.color);
+    formData.append("count", newDisk.count);
 
     if (newDisk.imgSrc) {
       formData.append("imgSrc", newDisk.imgSrc);
@@ -135,6 +136,7 @@ export const Disks = () => {
     formData.append("offset", updatedDisk.offset);
     formData.append("color", updatedDisk.color);
     formData.append("deleteImg", updatedDisk.deleteImg || false);
+    formData.append("count", updatedDisk?.count);
 
     if (updatedDisk.imgSrc && updatedDisk.imgSrc !== currentProduct?.imgSrc) {
       formData.append("imgSrc", updatedDisk.imgSrc);

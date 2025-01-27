@@ -15,6 +15,8 @@ export const ModalCart = ({ isOrder, setIsOrder }) => {
     setIsOrder(!isOrder);
   };
 
+  const isCartProductsValid = Array.isArray(cartProducts);
+
   return (
     <StyledCart>
       <StyledModalHeader>
@@ -31,7 +33,11 @@ export const ModalCart = ({ isOrder, setIsOrder }) => {
               id={item.id}
               type={item.type}
               count={item.count}
-              item={cartProducts?.find((el) => el._id === item.id)}
+              item={
+                isCartProductsValid
+                  ? cartProducts.find((el) => el._id === item.id)
+                  : null // Безопасно обрабатываем случай, если cartProducts недоступен
+              }
             />
           ))
         )}

@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectAccumulatorsOptions } from "../../../store/selectors/accumulators/accumulators_selectors";
 import { setAccumulatorsSerachOptions } from "../../../store/actions/action_creators/accumulators/set_search_options";
 import { Flex } from "../../../components/Card/StyledCard";
-import { CHANGE_ACCUMULATORS_FILTRED_TRUE } from "../../../store/actions/action_creators/accumulators/is_filter";
 import { StyledCatalogByParams, StyledCatalogEl } from "../../../components";
 import { useEffect, useState } from "react";
 
@@ -36,14 +35,9 @@ export const SearchAccumsByParams = () => {
       .catch((error) => console.log("Error: " + error.message));
   }, []);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    dispatch(CHANGE_ACCUMULATORS_FILTRED_TRUE);
-  };
-
   return (
     <StyledCatalogByParams>
-      <form onSubmit={handleSubmit}>
+      <form>
         <Flex>
           <StyledCatalogEl>
             Размер
@@ -94,7 +88,6 @@ export const SearchAccumsByParams = () => {
             </select>
           </StyledCatalogEl>
         </Flex>
-        <button type="submit">Поиск</button>
       </form>
     </StyledCatalogByParams>
   );

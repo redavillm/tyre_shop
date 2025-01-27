@@ -8,8 +8,6 @@ export const EditTyreModal = ({ open, product, onOk, onCancel }) => {
   const [newImg, setNewImg] = useState(null);
   const [showSpikes, setShowSpikes] = useState(false);
 
-  // console.log("product:", product);
-
   useEffect(() => {
     if (product) {
       form.setFieldsValue({

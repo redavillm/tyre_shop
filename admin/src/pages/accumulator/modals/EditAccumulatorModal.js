@@ -1,4 +1,4 @@
-import { Button, Card, Form, Input, Modal, Space, Upload } from "antd";
+import { Button, Card, Form, Input, Modal, Select, Space, Upload } from "antd";
 import { UploadOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 
@@ -152,7 +152,10 @@ export const EditAccumulatorModal = ({ open, product, onOk, onCancel }) => {
           label="Полярность"
           rules={[{ required: true, message: "Введите модель" }]}
         >
-          <Input type="number" />
+          <Select placeholder="Выберите значение">
+            <Select.Option value="Обратная">Обратная</Select.Option>
+            <Select.Option value="Прямая">Прямая</Select.Option>
+          </Select>
         </Form.Item>
         <Form.Item
           name="capacity"

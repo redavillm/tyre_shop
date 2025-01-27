@@ -34,13 +34,7 @@ const login = async (req, res) => {
       expiresIn: "12h",
     });
 
-    res.cookie("refreshToken", refreshToken, {
-      httpOnly: true, // Делает cookie недоступным для JavaScript
-      secure: process.env.NODE_ENV === "production" ? true : false, // Для продакшн-режима
-      maxAge: 12 * 60 * 60 * 1000, // Устанавливаем время жизни cookie, равное 12 часам
-    });
-
-    res.send({ token: token });
+    res.send({ token: token, refreshToken: refreshToken });
   } catch (e) {
     console.log("Error while post /login: ", e.message);
     return res.status(500).json({ message: "Internal server error" });
@@ -48,8 +42,7 @@ const login = async (req, res) => {
 };
 
 const refreshToken = (req, res) => {
-  const refreshToken = req.cookies.refreshToken;
-  // console.log("refreshToken in refreshToken => ", refreshToken); // dev
+  const refreshToken = req.body.refreshToken;
 
   if (!refreshToken) {
     console.log("No refresh token provided");
@@ -75,13 +68,7 @@ const refreshToken = (req, res) => {
       { expiresIn: "12h" }
     );
 
-    res.cookie("refreshToken", newRefreshToken, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      maxAge: 12 * 60 * 60 * 1000, // Устанавливаем время жизни нового refreshToken 12 часов.
-    });
-
-    res.json({ token: accessToken });
+    res.json({ token: accessToken, refreshToken: newRefreshToken });
   });
 };
 

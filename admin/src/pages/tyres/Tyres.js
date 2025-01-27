@@ -159,7 +159,7 @@ export const Tyres = () => {
       <Button onClick={newProductModalOptions.show}>
         Добавить новый товра
       </Button>
-      {productsList.length}
+      Колличество: {productsList.length}
       <ProductList
         columns={columns}
         type={"tyres"}

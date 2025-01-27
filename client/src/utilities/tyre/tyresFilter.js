@@ -1,7 +1,7 @@
-export const tyresfilter = (data, selectedOption, isSpiked, isWinter) => {
+export const tyresfilter = (tyreList, selectedOption, isSpiked, isWinter) => {
   try {
     const { width, height, radius, brand } = selectedOption;
-    let result = data;
+    let result = tyreList;
 
     if (width !== "all") {
       result = result.filter((el) => el.size.width === +width);
@@ -17,7 +17,7 @@ export const tyresfilter = (data, selectedOption, isSpiked, isWinter) => {
     }
     if (isWinter) {
       result = result.filter((el) =>
-        isSpiked ? el.isSpiked === "true" : el.isSpiked === "false"
+        isSpiked ? el.isSpiked === true : el.isSpiked === false
       );
     }
 

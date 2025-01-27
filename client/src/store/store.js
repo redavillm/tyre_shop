@@ -8,29 +8,29 @@ import {
   cartReducer,
 } from "./reducers";
 
-const preloadCartState = () => {
-  try {
-    const localCartState = localStorage.getItem("cartState");
-    return localCartState ? JSON.parse(localCartState) : { items: [] };
-  } catch (e) {
-    console.error("Failed to load cart state from localStorage:", e);
-    return { items: [] };
-  }
-};
+// const preloadCartState = () => {
+//   try {
+//     const localCartState = localStorage.getItem("cartState");
+//     return localCartState ? JSON.parse(localCartState) : { items: [] };
+//   } catch (e) {
+//     console.error("Failed to load cart state from localStorage:", e);
+//     return { items: [] };
+//   }
+// };
 
-const saveCartStateToLocalStorage = (state) => {
-  if (!state || !state.cartState) return;
-  try {
-    const localCartState = JSON.stringify(state.cartState);
-    localStorage.setItem("cartState", localCartState);
-  } catch (e) {
-    console.error("Failed to save cart state to localStorage:", e);
-  }
-};
+// const saveCartStateToLocalStorage = (state) => {
+//   if (!state || !state.cartState) return;
+//   try {
+//     const localCartState = JSON.stringify(state.cartState);
+//     localStorage.setItem("cartState", localCartState);
+//   } catch (e) {
+//     console.error("Failed to save cart state to localStorage:", e);
+//   }
+// };
 
-const preloadState = {
-  cartState: preloadCartState() || { items: [] },
-};
+// const preloadState = {
+//   cartState: preloadCartState() || { items: [] },
+// };
 
 const reducer = combineReducers({
   tyresState: tyresReducer,

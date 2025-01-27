@@ -1,8 +1,7 @@
 const Tyre = require("../models/Tyre");
-const s3 = require("../config/s3Config");
-const createNewProduct = require("../sevices/createNewProduct");
-const updateProduct = require("../sevices/updateProduct");
-const deleteProduct = require("../sevices/deleteProduct");
+const createNewProduct = require("../services/createNewProduct");
+const updateProduct = require("../services/updateProduct");
+const deleteProduct = require("../services/deleteProduct");
 
 const list = async (req, res) => {
   try {

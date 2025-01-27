@@ -58,6 +58,8 @@ export const cartReducer = (state = initialCartState, action) => {
         ],
       };
     }
+    case CART_ACTIONS.RESET_CART:
+      return (state = initialCartState);
 
     default:
       return state;

@@ -18,7 +18,13 @@ export const ProductList = ({
           throw error;
         }
       })
-      .then((data) => setProductsList(data.items))
+      .then((data) => {
+        const dataWithKeys = data.items.map((item) => ({
+          ...item,
+          key: item.id || item._id || Math.random().toString(),
+        }));
+        setProductsList(dataWithKeys);
+      })
       .catch((e) => {
         console.log("Error: " + e.message);
       });

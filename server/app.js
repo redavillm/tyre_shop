@@ -33,7 +33,6 @@ app.post("/login", AuthorizationController.login);
 app.post(
   "/refresh-token",
   (req, res, next) => {
-    console.log("Processing refresh token request...");
     next();
   },
   AuthorizationController.refreshToken
@@ -98,6 +97,7 @@ app.get("/accumulators", AccumulatorController.list);
 app.get("/accumulators/:id", AccumulatorController.getById);
 
 app.post("/get-cart-items", ProductController.getCartItems);
+app.post("/send-email", ProductController.sendOrderData);
 
 app.use("*", (req, res) => {
   res.status(404).json({

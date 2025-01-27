@@ -1,7 +1,7 @@
 const Disk = require("../models/Disk");
-const createNewProduct = require("../sevices/createNewProduct");
-const deleteProduct = require("../sevices/deleteProduct");
-const updateProduct = require("../sevices/updateProduct");
+const createNewProduct = require("../services/createNewProduct");
+const deleteProduct = require("../services/deleteProduct");
+const updateProduct = require("../services/updateProduct");
 
 const list = async (req, res) => {
   try {

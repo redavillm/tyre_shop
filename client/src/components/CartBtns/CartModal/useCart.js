@@ -17,7 +17,7 @@ export const useCart = () => {
 
   useEffect(() => {
     if (cartItems.length > 0) {
-      fetch("http://localhost:3001/get-cart-itmes", {
+      fetch("http://localhost:3001/get-cart-items", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ cartItems }),

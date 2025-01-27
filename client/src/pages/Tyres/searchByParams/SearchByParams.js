@@ -12,7 +12,6 @@ import {
   StyledCheckbox,
 } from "../../../components/Styles/StyledCatalog";
 import { FlexCenter } from "../../../components";
-import { TYRES_FILTERED_TRUE } from "../../../store/actions/action_creators/tyres/is_filter";
 import { useEffect, useState } from "react";
 import { CHANGE_IS_SPIKED } from "../../../store/actions/action_creators/tyres/is_spiked";
 
@@ -48,23 +47,17 @@ export const SearchTyreByParams = () => {
       .catch((error) => console.log("Error: " + error.message));
   }, []);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    dispatch(TYRES_FILTERED_TRUE);
-  };
-
   const handleChanegeWinterCheckbox = () => {
     dispatch(CHANGE_IS_WINTER);
   };
 
   const handleChanegeSpikedCheckbox = () => {
     dispatch(CHANGE_IS_SPIKED);
-    console.log({ isSpiked });
   };
 
   return (
     <StyledCatalogByParams>
-      <form onSubmit={handleSubmit}>
+      <form>
         <FlexCenter>
           <StyledCatalogEl>
             Ширина
@@ -135,7 +128,6 @@ export const SearchTyreByParams = () => {
             </StyledCheckbox>
           ) : null}
         </FlexCenter>
-        <button type="submit">Поиск</button>
       </form>
     </StyledCatalogByParams>
   );

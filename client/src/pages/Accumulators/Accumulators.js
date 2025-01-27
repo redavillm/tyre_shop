@@ -18,7 +18,6 @@ import {
   selectAccumulatorsList,
   selectAccumulatorsOptions,
   // selectIsAccumulatorsByParams,
-  selectIsAccumulatorsFilter,
 } from "../../store/selectors/accumulators/accumulators_selectors";
 import { accumFilter } from "../../utilities/accum/accumFilte";
 
@@ -31,14 +30,12 @@ export const Accumulators = () => {
 
   // const isByParams = useSelector(selectIsAccumulatorsByParams);
   const isLoading = useSelector(selectIsLoading);
-  const isFilter = useSelector(selectIsAccumulatorsFilter);
   const selectedOption = useSelector(selectAccumulatorsOptions);
 
-  const accumulatorsList = useSelector(selectAccumulatorsList);
-
-  const listToDisplay = !isFilter
-    ? accumulatorsList
-    : accumFilter(accumulatorsList, selectedOption);
+  const accumulatorsList = accumFilter(
+    useSelector(selectAccumulatorsList),
+    selectedOption
+  );
 
   // const setSearchByParams = () => {
   //   dispatch(CHANGE_ACCUMULATORS_BY_PARAMS_TRUE);
@@ -63,7 +60,7 @@ export const Accumulators = () => {
       {/* {isByParams ? <SearchAccumsByParams /> : <SearchAccumsByCar />} */}
       <SearchAccumsByParams />
       {!isLoading ? (
-        <ProductsList productsList={listToDisplay} type="accumulators" />
+        <ProductsList productsList={accumulatorsList} type="accumulators" />
       ) : (
         <Loader />
       )}

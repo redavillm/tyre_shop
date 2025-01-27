@@ -17,7 +17,6 @@ import { selectIsLoading } from "../../store/selectors/mainSelector";
 import {
   selectIsSpiked,
   // selectIsTyresByParams,
-  selectIsTyresFilter,
   selectIsWinter,
   selectTyresList,
   selectTyresOptions,
@@ -34,12 +33,16 @@ export const Tyres = () => {
   const isWinter = useSelector(selectIsWinter);
   const isSpiked = useSelector(selectIsSpiked);
   const selectedOption = useSelector(selectTyresOptions);
-  const isFilter = useSelector(selectIsTyresFilter);
   // const isByParams = useSelector(selectIsTyresByParams);
   const isLoading = useSelector(selectIsLoading);
-  const tyresList = useSelector(selectTyresList)?.filter((el) => {
-    return !isWinter ? el.season === "summer" : el.season === "winter";
-  });
+  const tyresList = tyresfilter(
+    useSelector(selectTyresList)?.filter((el) => {
+      return !isWinter ? el.season === "summer" : el.season === "winter";
+    }),
+    selectedOption,
+    isSpiked,
+    isWinter
+  );
 
   // const setSearchByParams = () => {
   //   dispatch(CHANGE_TYRES_BY_PARAMS_TRUE);
@@ -49,9 +52,9 @@ export const Tyres = () => {
   //   dispatch(CHANGE_TYRES_BY_PARAMS_FALSE);
   // };
 
-  const displayList = !isFilter
-    ? tyresList
-    : tyresfilter(tyresList, selectedOption, isSpiked, isWinter);
+  // const displayList = !isFilter
+  //   ? tyresList
+  //   : tyresfilter(tyresList, selectedOption, isSpiked, isWinter);
 
   return (
     <div>
@@ -69,10 +72,7 @@ export const Tyres = () => {
       {/* {isByParams ? <SearchTyreByParams /> : <SearchByCar />} */}
       <SearchTyreByParams />
       {!isLoading ? (
-        <ProductsList
-          productsList={!displayList ? [] : displayList}
-          type="tyres"
-        />
+        <ProductsList productsList={!tyresList ? [] : tyresList} type="tyres" />
       ) : (
         <Loader />
       )}

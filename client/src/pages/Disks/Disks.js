@@ -14,7 +14,6 @@ import {
   selectDisksList,
   selectDisksOptions,
   // selectIsDisksByParams,
-  selectIsDisksFilter,
 } from "../../store/selectors/disks/disks_selectors";
 import { disksFilter } from "../../utilities/disk/disksFilter";
 // import {
@@ -31,7 +30,6 @@ export const Disks = () => {
 
   // const isByParams = useSelector(selectIsDisksByParams);
   const isLoading = useSelector(selectIsLoading);
-  const isFilter = useSelector(selectIsDisksFilter);
   const selectedOption = useSelector(selectDisksOptions);
 
   // const setSearchByParams = () => {
@@ -42,11 +40,7 @@ export const Disks = () => {
   //   dispatch(DISKS_BY_PARAMS_FALSE);
   // };
 
-  const disksList = useSelector(selectDisksList);
-
-  const displayList = !isFilter
-    ? disksList
-    : disksFilter(disksList, selectedOption);
+  const disksList = disksFilter(useSelector(selectDisksList), selectedOption);
 
   return (
     <div>
@@ -64,7 +58,7 @@ export const Disks = () => {
       {/* {isByParams ? <SearchDiskByParams /> : <SearchDiskByCar />} */}
       <SearchDiskByParams />
       {!isLoading ? (
-        <ProductsList productsList={displayList} type="disks" />
+        <ProductsList productsList={disksList} type="disks" />
       ) : (
         <Loader />
       )}

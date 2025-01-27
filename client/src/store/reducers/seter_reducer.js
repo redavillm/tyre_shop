@@ -4,6 +4,7 @@ export const initialSeterState = {
   isLoading: false,
   isError: false,
   isModalCartOpen: false,
+  toastMessage: null,
 };
 
 export const seterReducer = (state = initialSeterState, action) => {
@@ -18,6 +19,10 @@ export const seterReducer = (state = initialSeterState, action) => {
       return { ...state, isModalCartOpen: true };
     case MAIN_ACTIONS.CLOSE_CART_MODAL:
       return { ...state, isModalCartOpen: false };
+    case MAIN_ACTIONS.SET_TOAST_MESSAGE:
+      return { ...state, toastMessage: action.payload };
+    case MAIN_ACTIONS.SET_DEFAULT_TOAST_MESSAGE:
+      return { ...state, toastMessage: null };
     default:
       return state;
   }

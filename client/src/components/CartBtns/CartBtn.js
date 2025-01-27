@@ -6,7 +6,6 @@ import { BaseModal } from "../BaseModal/BaseModal";
 import { useState } from "react";
 import { OrderModal } from "./OrderModal/OrderModal";
 import { StyledCloseModalBtn } from "./StyledCart";
-
 Modal.setAppElement("#root");
 
 export const CartBtn = () => {

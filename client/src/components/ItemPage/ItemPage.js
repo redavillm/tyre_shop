@@ -1,8 +1,13 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { ADD_TO_CART } from "../../store/actions";
+import {
+  ADD_TO_CART,
+  SET_DEFAULT_TOAST_MESSAGE,
+  SET_TOAST_MESSAGE,
+} from "../../store/actions";
 import { Toast } from "../Toast/Toast";
+import { selectToastMessage } from "../../store/selectors/mainSelector";
 
 const Flex = styled.div`
   height: 500px;
@@ -73,7 +78,7 @@ export const ItemPage = ({
   type,
 }) => {
   const [counter, setCounter] = useState(minProdVal);
-  const [toastMessage, setToastMessage] = useState(null);
+  const toastMessage = useSelector(selectToastMessage);
 
   const dispatch = useDispatch();
 
@@ -92,7 +97,7 @@ export const ItemPage = ({
 
   const handlerAddToCart = () => {
     dispatch(ADD_TO_CART(id, type, counter));
-    setToastMessage("Товар добавлен");
+    dispatch(SET_TOAST_MESSAGE("Товар добавлен"));
   };
 
   return (
@@ -127,7 +132,7 @@ export const ItemPage = ({
         <Toast
           message={toastMessage}
           duration={3000}
-          onClose={() => setToastMessage(null)}
+          onClose={() => dispatch(SET_DEFAULT_TOAST_MESSAGE)}
         />
       )}
     </Flex>
