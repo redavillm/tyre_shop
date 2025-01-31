@@ -50,6 +50,12 @@ jobs:
           script: |
             cd /opt/tyre_shop_project || exit 1
 
+            # Удаляем старый файл docker-compose.yml
+            rm -f docker-compose.yml || true
+
+            # Копируем новый файл docker-compose.yml с локальной машины на сервер
+            scp -o StrictHostKeyChecking=no ./docker-compose.yml ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}:/opt/tyre_shop_project/docker-compose.yml
+
             # Останавливаем текущие контейнеры
             docker-compose down || true
 
