@@ -50,9 +50,28 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
           script: |
+            cd /opt/tyre_project || exit 1
             docker pull redavillm/tyre_server:latest
             docker pull redavillm/tyre_client:latest
             docker pull redavillm/tyre_admin:latest
 
-            docker-compose down
+            echo "
+            version: '3'
+            services:
+              tyre_server:
+                image: redavillm/tyre_server:latest
+                container_name: tyre_server
+                restart: always
+              tyre_client:
+                image: redavillm/tyre_client:latest
+                container_name: tyre_client
+                restart: always
+              tyre_admin:
+                image: redavillm/tyre_admin:latest
+                container_name: tyre_admin
+                restart: always
+            " > docker-compose.yml
+
+            docker-compose down || true
+
             docker-compose up -d --build
