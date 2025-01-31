@@ -36,51 +36,51 @@ jobs:
           docker push redavillm/tyre_admin:latest
 
   deploy:
-  runs-on: ubuntu-latest
-  needs: build
-  steps:
-    - name: SSH to server and update containers
-      uses: appleboy/ssh-action@v0.1.6
-      with:
-        host: ${{ secrets.SERVER_IP }}
-        username: ${{ secrets.SERVER_USERNAME }}
-        key: ${{ secrets.SERVER_SSH_KEY }}
-        port: 22
-        script: >-
-          # Переходим в нужную директорию на сервере
-          echo "Переходим в директорию /opt/tyre_shop_project..."
-          cd /opt/tyre_shop_project || exit 1
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: SSH to server and update containers
+        uses: appleboy/ssh-action@v0.1.6
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: 22
+          script: >-
+            # Переходим в нужную директорию на сервере
+            echo "Переходим в директорию /opt/tyre_shop_project..."
+            cd /opt/tyre_shop_project || exit 1
 
-          # Проверяем наличие docker-compose.yml на сервере
-          echo "Проверяем наличие docker-compose.yml на сервере..."
-          ls -l /opt/tyre_shop_project/docker-compose.yml || echo "docker-compose.yml не найден, будем копировать заново."
+            # Проверяем наличие docker-compose.yml на сервере
+            echo "Проверяем наличие docker-compose.yml на сервере..."
+            ls -l /opt/tyre_shop_project/docker-compose.yml || echo "docker-compose.yml не найден, будем копировать заново."
 
-          # Удаляем старый файл docker-compose.yml, если он существует
-          rm -f /opt/tyre_shop_project/docker-compose.yml || true
+            # Удаляем старый файл docker-compose.yml, если он существует
+            rm -f /opt/tyre_shop_project/docker-compose.yml || true
 
-          # Копируем новый файл docker-compose.yml на сервер
-          echo "Копируем docker-compose.yml на сервер..."
-          scp -o StrictHostKeyChecking=no ./docker-compose.yml ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}:/opt/tyre_shop_project/docker-compose.yml
+            # Копируем новый файл docker-compose.yml на сервер
+            echo "Копируем docker-compose.yml на сервер..."
+            scp -o StrictHostKeyChecking=no ./docker-compose.yml ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}:/opt/tyre_shop_project/docker-compose.yml
 
-          # Убедимся, что файл был успешно скопирован
-          echo "Список файлов в /opt/tyre_shop_project:"
-          ls -l /opt/tyre_shop_project
+            # Убедимся, что файл был успешно скопирован
+            echo "Список файлов в /opt/tyre_shop_project:"
+            ls -l /opt/tyre_shop_project
 
-          # Останавливаем текущие контейнеры
-          echo "Останавливаем текущие контейнеры..."
-          docker-compose down || true
+            # Останавливаем текущие контейнеры
+            echo "Останавливаем текущие контейнеры..."
+            docker-compose down || true
 
-          # Удаляем старые контейнеры и образы
-          echo "Удаляем старые контейнеры и образы..."
-          docker rm -f tyre_server tyre_client tyre_admin tyre_nginx || true
-          docker system prune -f || true
+            # Удаляем старые контейнеры и образы
+            echo "Удаляем старые контейнеры и образы..."
+            docker rm -f tyre_server tyre_client tyre_admin tyre_nginx || true
+            docker system prune -f || true
 
-          # Загружаем обновленные образы
-          echo "Загружаем обновленные образы..."
-          docker pull redavillm/tyre_server:latest
-          docker pull redavillm/tyre_client:latest
-          docker pull redavillm/tyre_admin:latest
+            # Загружаем обновленные образы
+            echo "Загружаем обновленные образы..."
+            docker pull redavillm/tyre_server:latest
+            docker pull redavillm/tyre_client:latest
+            docker pull redavillm/tyre_admin:latest
 
-          # Запускаем контейнеры через docker-compose
-          echo "Запускаем контейнеры с использованием нового docker-compose.yml..."
-          docker-compose up -d --build
+            # Запускаем контейнеры через docker-compose
+            echo "Запускаем контейнеры с использованием нового docker-compose.yml..."
+            docker-compose up -d --build
