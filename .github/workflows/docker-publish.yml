@@ -51,6 +51,11 @@ jobs:
           port: 22
           script: |
             cd /opt/tyre_shop_project || exit 1
+
+            docker rm -f tyre_server tyre_client tyre_admin || true
+
+            docker system prune -f || true
+
             docker pull redavillm/tyre_server:latest
             docker pull redavillm/tyre_client:latest
             docker pull redavillm/tyre_admin:latest
