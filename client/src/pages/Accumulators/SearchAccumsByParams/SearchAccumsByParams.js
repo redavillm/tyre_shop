@@ -5,6 +5,8 @@ import { Flex } from "../../../components/Card/StyledCard";
 import { StyledCatalogByParams, StyledCatalogEl } from "../../../components";
 import { useEffect, useState } from "react";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 export const SearchAccumsByParams = () => {
   const [options, setOptions] = useState({});
   const dispatch = useDispatch();
@@ -21,7 +23,7 @@ export const SearchAccumsByParams = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:3001/accumulators/unique-parameters")
+    fetch(`${apiUrl}/accumulators/unique-parameters`)
       .then((res) => {
         if (res.status >= 200 && res.status < 300) {
           return res.json();

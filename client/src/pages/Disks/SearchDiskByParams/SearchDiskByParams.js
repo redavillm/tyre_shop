@@ -5,6 +5,8 @@ import { StyledCatalogByParams, StyledCatalogEl } from "../../../components";
 import { useEffect, useState } from "react";
 import { Flex } from "../../../components/Card/StyledCard";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 export const SearchDiskByParams = () => {
   const [options, setOptions] = useState({});
   const dispatch = useDispatch();
@@ -21,7 +23,7 @@ export const SearchDiskByParams = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:3001/disks/unique-parameters")
+    fetch(`${apiUrl}/disks/unique-parameters`)
       .then((res) => {
         if (res.status >= 200 && res.status < 300) {
           return res.json();

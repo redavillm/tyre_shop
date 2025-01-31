@@ -3,7 +3,7 @@ name: Docker Build and Deploy
 on:
   push:
     branches:
-      - master # или другая ветка для деплоя
+      - master
   pull_request:
     branches:
       - master
@@ -28,12 +28,10 @@ jobs:
         run: |
           docker build -t redavillm/tyre_server:latest ./server
           docker push redavillm/tyre_server:latest
-      - name: Build and push client image
-        run: |
+
           docker build -t redavillm/tyre_client:latest ./client
           docker push redavillm/tyre_client:latest
-      - name: Build and push admin image
-        run: |
+
           docker build -t redavillm/tyre_admin:latest ./admin
           docker push redavillm/tyre_admin:latest
 
@@ -52,31 +50,17 @@ jobs:
           script: |
             cd /opt/tyre_shop_project || exit 1
 
-            docker rm -f tyre_server tyre_client tyre_admin || true
+            # Останавливаем текущие контейнеры
+            docker-compose down || true
 
+            # Удаляем старые контейнеры и образы
+            docker rm -f tyre_server tyre_client tyre_admin tyre_nginx || true
             docker system prune -f || true
 
+            # Загружаем обновленные образы
             docker pull redavillm/tyre_server:latest
             docker pull redavillm/tyre_client:latest
             docker pull redavillm/tyre_admin:latest
 
-            echo "
-            version: '3'
-            services:
-              tyre_server:
-                image: redavillm/tyre_server:latest
-                container_name: tyre_server
-                restart: always
-              tyre_client:
-                image: redavillm/tyre_client:latest
-                container_name: tyre_client
-                restart: always
-              tyre_admin:
-                image: redavillm/tyre_admin:latest
-                container_name: tyre_admin
-                restart: always
-            " > docker-compose.yml
-
-            docker-compose down || true
-
+            # Запускаем контейнеры через docker-compose
             docker-compose up -d --build

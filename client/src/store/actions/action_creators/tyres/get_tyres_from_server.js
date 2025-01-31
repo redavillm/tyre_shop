@@ -5,9 +5,11 @@ import {
   CHANGE_LOADING_IS_TRUE,
 } from "../../changes";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 export const getTyresFromServer = () => (dispatch) => {
   dispatch(CHANGE_LOADING_IS_TRUE);
-  fetch("http://localhost:3001/tyres")
+  fetch(`${apiUrl}/tyres`)
     .then((res) => {
       if (res.status >= 200 && res.status < 300) {
         return res.json();

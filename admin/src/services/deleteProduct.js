@@ -1,5 +1,7 @@
 import { notification } from "antd";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 export const deleteProduct = async (id, type) => {
   if (!id || !type) {
     console.error("Некорректные параметры: id или type отсутствуют.");
@@ -12,7 +14,7 @@ export const deleteProduct = async (id, type) => {
   }
   try {
     const accessToken = localStorage.getItem("accessToken");
-    const response = await fetch(`http://localhost:3001/${type}/${id}`, {
+    const response = await fetch(`${apiUrl}/${type}/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${accessToken}`, // Добавляем токен

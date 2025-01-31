@@ -1,6 +1,8 @@
 import { Table } from "antd";
 import { useEffect } from "react";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 export const ProductList = ({
   columns,
   type,
@@ -8,7 +10,7 @@ export const ProductList = ({
   setProductsList,
 }) => {
   useEffect(() => {
-    fetch(`http://localhost:3001/${type}`)
+    fetch(`${apiUrl}/${type}`)
       .then((res) => {
         if (res.status >= 200 && res.status < 300) {
           return res.json();

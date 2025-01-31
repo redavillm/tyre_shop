@@ -1,7 +1,7 @@
-const API_BASE_URL = "http://localhost:3001";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 export const register = async (userData) => {
-  const response = await fetch(`${API_BASE_URL}/register`, {
+  const response = await fetch(`${apiUrl}/register`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(userData),
@@ -15,7 +15,7 @@ export const register = async (userData) => {
 };
 
 export const login = async (credentials) => {
-  const response = await fetch(`${API_BASE_URL}/login`, {
+  const response = await fetch(`${apiUrl}/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(credentials),
@@ -67,7 +67,7 @@ const refreshAccessToken = async ({ navigate }) => {
   }
 
   try {
-    const response = await fetch(`${API_BASE_URL}/refresh-token`, {
+    const response = await fetch(`${apiUrl}/refresh-token`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json", // Указываем тип содержимого

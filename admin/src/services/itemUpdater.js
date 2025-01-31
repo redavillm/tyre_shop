@@ -1,9 +1,11 @@
 import { notification } from "antd";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 export const itemUpdater = async (formaData, type) => {
   try {
     const accessToken = localStorage.getItem("accessToken");
-    const response = await fetch(`http://localhost:3001/${type}`, {
+    const response = await fetch(`${apiUrl}/${type}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${accessToken}`, // Добавляем токен

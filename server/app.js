@@ -16,8 +16,21 @@ const AccumulatorController = require("./controllers/Accumulator");
 const upload = require("./middleware/upload");
 const authMiddleware = require("./middleware/auth");
 
+const allowedOrigins = [
+  "http://localhost:3002", // Локальный клиент
+  "http://localhost:3003", // Локальный админ
+  "https://tyreshop.tw1.ru", // Продакшн клиент
+  "https://admin.tyreshop.tw1.ru", // Продакшн админ
+];
+
 const corsOptions = {
-  origin: ["http://localhost:3002", "http://localhost:3003"],
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
@@ -114,5 +127,5 @@ app.use((err, req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server app listening at http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });

@@ -2,6 +2,8 @@ import { selectAccumulatorById } from "../../store/selectors/accumulators/accumu
 import { ProductPage } from "../../components/ProductPage/ProductPage";
 import { fetchProductById } from "../../utilities/fetchProductById";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 export const Accumulator = () => {
   const formatAccumulatorDescription = (accumulator) => ({
     Ширина: accumulator.width + " cm",
@@ -12,7 +14,7 @@ export const Accumulator = () => {
   });
 
   const getAccumulatorById = fetchProductById(
-    "http://localhost:3001/accumulators",
+    `${apiUrl}/accumulators`,
     "GET_ACCUMULATOR_BY_ID"
   );
 

@@ -9,6 +9,8 @@ import {
   selectIsModalCartOpen,
 } from "../../../store/selectors/mainSelector";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 export const useCart = () => {
   const [cartProducts, setCartProducts] = useState([]);
   const cartItems = useSelector(selectCartItems);
@@ -17,7 +19,7 @@ export const useCart = () => {
 
   useEffect(() => {
     if (cartItems.length > 0) {
-      fetch("http://localhost:3001/get-cart-items", {
+      fetch(`${apiUrl}/get-cart-items`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ cartItems }),

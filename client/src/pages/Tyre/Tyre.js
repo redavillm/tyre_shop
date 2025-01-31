@@ -8,6 +8,8 @@ import { BackArrow, ItemPage, Loader, Navbar } from "../../components";
 import { fetchProductById } from "../../utilities/fetchProductById";
 // import { ProductPage } from "../../components/ProductPage/ProductPage";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 export const Tyre = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -20,10 +22,7 @@ export const Tyre = () => {
     navigate(-1);
   };
 
-  const getTyreById = fetchProductById(
-    "http://localhost:3001/tyres",
-    "GET_TYRES_BY_ID"
-  );
+  const getTyreById = fetchProductById(`${apiUrl}/tyres`, "GET_TYRES_BY_ID");
 
   useEffect(() => {
     dispatch(getTyreById(id));

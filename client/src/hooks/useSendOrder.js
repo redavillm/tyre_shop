@@ -1,12 +1,14 @@
 import { useDispatch } from "react-redux";
 import { RESET_CART } from "../store/actions";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 export const useSendOrder = () => {
   const dispatch = useDispatch();
 
   const sendOrder = async (data) => {
     try {
-      const response = await fetch("http://localhost:3001/send-email", {
+      const response = await fetch(`${apiUrl}/send-email`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

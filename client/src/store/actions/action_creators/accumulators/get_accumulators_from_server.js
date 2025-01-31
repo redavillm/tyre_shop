@@ -5,9 +5,11 @@ import {
   CHANGE_LOADING_IS_TRUE,
 } from "../../changes";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 export const getAccumulatorsFromServer = () => (dispatch) => {
   dispatch(CHANGE_LOADING_IS_TRUE);
-  fetch("http://localhost:3001/accumulators")
+  fetch(`${apiUrl}/accumulators`)
     .then((res) => {
       if (res.status >= 200 && res.status < 300) {
         return res.json();
