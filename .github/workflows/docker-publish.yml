@@ -3,10 +3,10 @@ name: Docker Build and Deploy
 on:
   push:
     branches:
-      - main # или другая ветка для деплоя
+      - master # или другая ветка для деплоя
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   build:
