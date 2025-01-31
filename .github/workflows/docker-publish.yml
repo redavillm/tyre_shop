@@ -50,23 +50,35 @@ jobs:
           script: |
             cd /opt/tyre_shop_project || exit 1
 
-            # Удаляем старый файл docker-compose.yml
-            rm -f docker-compose.yml || true
+            # Проверяем наличие docker-compose.yml на сервере
+            echo "Проверяем наличие docker-compose.yml на сервере..."
+            ls -l /opt/tyre_shop_project/docker-compose.yml || echo "docker-compose.yml не найден, будем копировать заново."
+
+            # Удаляем старый файл docker-compose.yml, если он существует
+            rm -f /opt/tyre_shop_project/docker-compose.yml || true
 
             # Копируем новый файл docker-compose.yml с локальной машины на сервер
+            echo "Копируем docker-compose.yml на сервер..."
             scp -o StrictHostKeyChecking=no ./docker-compose.yml ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}:/opt/tyre_shop_project/docker-compose.yml
 
+            # Убедимся, что файл был успешно скопирован
+            ls -l /opt/tyre_shop_project/docker-compose.yml
+
             # Останавливаем текущие контейнеры
+            echo "Останавливаем текущие контейнеры..."
             docker-compose down || true
 
             # Удаляем старые контейнеры и образы
+            echo "Удаляем старые контейнеры и образы..."
             docker rm -f tyre_server tyre_client tyre_admin tyre_nginx || true
             docker system prune -f || true
 
             # Загружаем обновленные образы
+            echo "Загружаем обновленные образы..."
             docker pull redavillm/tyre_server:latest
             docker pull redavillm/tyre_client:latest
             docker pull redavillm/tyre_admin:latest
 
             # Запускаем контейнеры через docker-compose
+            echo "Запускаем контейнеры с использованием нового docker-compose.yml..."
             docker-compose up -d --build
