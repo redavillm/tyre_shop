@@ -47,7 +47,7 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
-          script: |
+          script: >-
           # Переходим в нужную директорию на сервере
           echo "Переходим в директорию /opt/tyre_shop_project..."
           cd /opt/tyre_shop_project || exit 1
@@ -59,7 +59,7 @@ jobs:
           # Удаляем старый файл docker-compose.yml, если он существует
           rm -f /opt/tyre_shop_project/docker-compose.yml || true
 
-          # Копируем новый файл docker-compose.yml с локальной машины на сервер
+          # Копируем новый файл docker-compose.yml на сервер
           echo "Копируем docker-compose.yml на сервер..."
           scp -o StrictHostKeyChecking=no ./docker-compose.yml ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}:/opt/tyre_shop_project/docker-compose.yml
 
