@@ -50,7 +50,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
           script: |
-            cd /opt/tyre_project || exit 1
+            cd /opt/tyre_shop_project || exit 1
             docker pull redavillm/tyre_server:latest
             docker pull redavillm/tyre_client:latest
             docker pull redavillm/tyre_admin:latest
