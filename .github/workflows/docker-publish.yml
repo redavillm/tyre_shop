@@ -26,16 +26,16 @@ jobs:
       # Шаг 3: Собираем Docker образы и Публикуем образы на Docker Hub
       - name: Build and push server image
         run: |
-          docker build -t yourusername/tyre_server:latest ./server
-          docker push yourusername/tyre_server:latest
+          docker build -t redavillm/tyre_server:latest ./server
+          docker push redavillm/tyre_server:latest
       - name: Build and push client image
         run: |
-          docker build -t yourusername/tyre_client:latest ./client
-          docker push yourusername/tyre_client:latest
+          docker build -t redavillm/tyre_client:latest ./client
+          docker push redavillm/tyre_client:latest
       - name: Build and push admin image
         run: |
-          docker build -t yourusername/tyre_admin:latest ./admin
-          docker push yourusername/tyre_admin:latest
+          docker build -t redavillm/tyre_admin:latest ./admin
+          docker push redavillm/tyre_admin:latest
 
   deploy:
     runs-on: ubuntu-latest
@@ -50,9 +50,9 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
           script: |
-            docker pull yourusername/tyre_server:latest
-            docker pull yourusername/tyre_client:latest
-            docker pull yourusername/tyre_admin:latest
+            docker pull redavillm/tyre_server:latest
+            docker pull redavillm/tyre_client:latest
+            docker pull redavillm/tyre_admin:latest
 
             docker-compose down
             docker-compose up -d --build
