@@ -48,8 +48,8 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
-          source: "${{ github.workspace }}/docker-compose.yml"
-          target: "/opt/tyre_shop_project/"
+          source: "docker-compose.yml"
+          target: "/opt/tyre_shop_project"
 
   deploy:
     runs-on: ubuntu-latest
