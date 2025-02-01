@@ -47,24 +47,19 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
           script: |
-            # Переходим в директорию с docker-compose.yml на сервере
             echo "Переходим в директорию /opt/tyre_shop_project..."
             cd /opt/tyre_shop_project || exit 1
 
-            # Выводим список файлов для проверки, что docker-compose.yml присутствует
-            echo "Список файлов в /opt/tyre_shop_project:"
-            ls -l /opt/tyre_shop_project
-
-            # Останавливаем текущие контейнеры
-            echo "Останавливаем контейнеры..."
-            docker-compose down || true
-
-            # Подтягиваем обновленные образы с Docker Hub
+            # Загружаем обновленные образы с Docker Hub
             echo "Загружаем обновленные образы..."
             docker pull redavillm/tyre_server:latest
             docker pull redavillm/tyre_client:latest
             docker pull redavillm/tyre_admin:latest
 
-            # Запускаем контейнеры через docker-compose (используя уже существующий docker-compose.yml)
+            # Останавливаем старые контейнеры
+            echo "Останавливаем контейнеры..."
+            docker-compose down || true
+
+            # Запускаем контейнеры через docker-compose
             echo "Запускаем контейнеры..."
             docker-compose up -d --build
