@@ -45,13 +45,20 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./client/build:/usr/share/nginx/html/client # Путь для файлов фронта клиента
+      - ./nginx/reverse-proxy.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./client/build:/usr/share/nginx/html/client
       - ./admin/build:/usr/share/nginx/html/admin
+    depends_on:
       - client
       - admin
       - server
     networks:
       - tyre_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 30s
+      retries: 3
+      timeout: 10s
 
   mongo:
     image: mongo:latest
