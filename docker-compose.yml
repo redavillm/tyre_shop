@@ -46,8 +46,7 @@ services:
       - "443:443"
     volumes:
       - ./client/build:/usr/share/nginx/html/client # Путь для файлов фронта клиента
-      - ./admin/build:/usr/share/nginx/html/admin # Путь для файлов фронта админки
-    depends_on:
+      - ./admin/build:/usr/share/nginx/html/admin
       - client
       - admin
       - server
