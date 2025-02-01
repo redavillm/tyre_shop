@@ -22,6 +22,8 @@ services:
         REACT_APP_API_URL: "http://tyre_server:3001"
     container_name: tyre_client
     restart: always
+    environment:
+      - REACT_APP_API_URL=http://tyre_server:3001
     depends_on:
       - server
     networks:
@@ -33,6 +35,8 @@ services:
       args:
         REACT_APP_API_URL: "http://tyre_server:3001"
     container_name: tyre_admin
+    environment:
+      - REACT_APP_API_URL=http://tyre_server:3001
     restart: always
     depends_on:
       - server
