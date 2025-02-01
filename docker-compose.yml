@@ -45,10 +45,8 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./client/nginx.conf:/etc/nginx/conf.d/client.conf:ro # Конфиг для client
-      - ./admin/nginx.conf:/etc/nginx/conf.d/admin.conf:ro # Конфиг для admin
-      - ./client/build:/usr/share/nginx/html # Путь для файлов фронта
-      - ./admin/build:/usr/share/nginx/html
+      - ./client/build:/usr/share/nginx/html/client # Путь для файлов фронта клиента
+      - ./admin/build:/usr/share/nginx/html/admin # Путь для файлов фронта админки
     depends_on:
       - client
       - admin
