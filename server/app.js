@@ -21,10 +21,13 @@ const allowedOrigins = [
   "http://localhost:3003",
   "https://tyreshop.tw1.ru",
   "https://tyreshop-admin.tw1.ru",
+  "http://tyreshop.tw1.ru",
+  "http://tyreshop-admin.tw1.ru",
 ];
 
 const corsOptions = {
   origin: function (origin, callback) {
+    console.log("CORS Origin:", origin);
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
@@ -34,10 +37,10 @@ const corsOptions = {
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
+  optionsSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
-
 app.options("*", cors(corsOptions));
 
 app.use(express.json());
