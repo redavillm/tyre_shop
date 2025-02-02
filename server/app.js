@@ -20,7 +20,7 @@ const allowedOrigins = [
   "http://localhost:3002",
   "http://localhost:3003",
   "https://tyreshop.tw1.ru",
-  "https://admin.tyreshop.tw1.ru",
+  "https://tyreshop-admin.tw1.ru",
 ];
 
 const corsOptions = {
