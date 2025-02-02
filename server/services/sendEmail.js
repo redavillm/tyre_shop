@@ -15,8 +15,8 @@ const transporter = nodemailer.createTransport({
   port: 2525, //Порт SMTP шифрованый
   secure: false, // Используйте false для TLS, true для SSL (порт 465)
   auth: {
-    user: MAIL_ADDRESS, // Ваш email
-    pass: MAIL_PASSWORD, // Пароль
+    user: MAIL_ADDRESS, //Ваш email
+    pass: MAIL_PASSWORD, //Пароль
   },
   logger: true, //dev
   debug: true, //dev
