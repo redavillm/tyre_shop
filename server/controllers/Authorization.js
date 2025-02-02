@@ -21,8 +21,10 @@ const registration = async (req, res) => {
 const login = async (req, res) => {
   try {
     const { username, password } = req.body;
-
+    console.log("username => ", username);
+    console.log("password => ", password);
     const user = await User.findOne({ username });
+    console.log("user => ", user);
     if (!user || !(await bcrypt.compare(password, user.password))) {
       return res.status(401).send("Invalid username or password");
     }
