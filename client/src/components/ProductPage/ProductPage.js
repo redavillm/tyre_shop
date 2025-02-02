@@ -28,7 +28,7 @@ export const ProductPage = ({
 
   useEffect(() => {
     dispatch(fetchProductById(id));
-  }, [dispatch, id, fetchProductById]);
+  }, [dispatch, id]);
 
   const product = useSelector(selectProductById);
 
