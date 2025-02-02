@@ -19,10 +19,10 @@ const authMiddleware = require("./middleware/auth");
 const allowedOrigins = [
   "http://localhost:3002",
   "http://localhost:3003",
-  "https://tyreshop.tw1.ru",
-  "https://tyreshop-admin.tw1.ru",
-  "http://tyreshop.tw1.ru",
-  "http://tyreshop-admin.tw1.ru",
+  "https://flametyre.ru",
+  "https://admin.flametyre.ru",
+  "http://flametyre.ru",
+  "http://admin.flametyre.ru",
 ];
 
 const corsOptions = {
