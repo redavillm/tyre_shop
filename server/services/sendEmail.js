@@ -26,7 +26,7 @@ const sendEmail = async (to, subject, text, html) => {
   try {
     await transporter.sendMail({
       from: `"TyreShop Order" <${MAIL_ADDRESS}>`, // От кого
-      to, // Кому
+      to, //Кому
       subject, // Тема
       text, // Текстовое содержание письма
       html, // HTML-содержание письма
