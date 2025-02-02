@@ -12,6 +12,8 @@ RUN npm install --frozen-lockfile
 
 COPY . .
 
+RUN echo "API URL is: $REACT_APP_API_URL"
+
 RUN npm run build
 
 FROM nginx:1.23
