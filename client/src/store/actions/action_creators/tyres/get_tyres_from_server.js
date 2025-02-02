@@ -8,7 +8,6 @@ import {
 const apiUrl = process.env.REACT_APP_API_URL;
 
 export const getTyresFromServer = () => (dispatch) => {
-  console.log("apiUrl => ", apiUrl);
   dispatch(CHANGE_LOADING_IS_TRUE);
   fetch(`${apiUrl}/tyres`)
     .then((res) => {
