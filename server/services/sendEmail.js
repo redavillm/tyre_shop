@@ -5,6 +5,10 @@ const MAIL_HOST = process.env.MAIL_HOST;
 const MAIL_ADDRESS = process.env.MAIL_ADDRESS;
 const MAIL_PASSWORD = process.env.MAIL_PASSWORD;
 
+console.log("MAIL_HOST => ", MAIL_HOST);
+console.log("MAIL_ADDRESS => ", MAIL_ADDRESS);
+console.log("MAIL_PASSWORD => ", MAIL_PASSWORD);
+
 // Настройка транспорта
 const transporter = nodemailer.createTransport({
   host: MAIL_HOST, // Замените на ваш SMTP-сервер
