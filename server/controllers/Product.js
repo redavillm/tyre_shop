@@ -35,6 +35,8 @@ const getCartItems = async (req, res) => {
 const sendOrderData = async (req, res) => {
   const { clientName, clientEmail, clientPhoneNumber, cartProducts } = req.body;
 
+  console.log("clientName => ", clientName);
+
   const adminEmail = ADMIN_EMAIL; // Почта администратора
   const clientEmailAddress = clientEmail; // Почта клиента
 
