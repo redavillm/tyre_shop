@@ -14,6 +14,8 @@ const transporter = nodemailer.createTransport({
     user: MAIL_ADDRESS, // Ваш email
     pass: MAIL_PASSWORD, // Пароль
   },
+  logger: true, //dev
+  debug: true, //dev
 });
 
 const sendEmail = async (to, subject, text, html) => {
