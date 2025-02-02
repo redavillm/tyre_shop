@@ -5,6 +5,7 @@ const MAIL_HOST = process.env.MAIL_HOST;
 const MAIL_ADDRESS = process.env.MAIL_ADDRESS;
 const MAIL_PASSWORD = process.env.MAIL_PASSWORD;
 
+console.log("process.env => ", process.env);
 console.log("MAIL_HOST => ", MAIL_HOST);
 console.log("MAIL_ADDRESS => ", MAIL_ADDRESS);
 console.log("MAIL_PASSWORD => ", MAIL_PASSWORD);
@@ -25,7 +26,7 @@ const transporter = nodemailer.createTransport({
 const sendEmail = async (to, subject, text, html) => {
   try {
     await transporter.sendMail({
-      from: `"TyreShop Order" <${MAIL_ADDRESS}>`, // От кого
+      from: `"TyreShop Order" <${MAIL_ADDRESS}>`, //От кого
       to, //Кому
       subject, // Тема
       text, // Текстовое содержание письма

@@ -9,6 +9,8 @@ services:
       - "3001:3001"
     env_file:
       - ./.env
+    environment:
+      - MAIL_ADDRESS=test@krossikov.ru
     depends_on:
       mongo:
         condition: service_healthy
