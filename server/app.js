@@ -17,8 +17,8 @@ const upload = require("./middleware/upload");
 const authMiddleware = require("./middleware/auth");
 
 const allowedOrigins = [
-  "http://localhost:3002", // Локальный клиент
-  "http://localhost:3003", // Локальный админ
+  "http://localhost:3002",
+  "http://localhost:3003",
   "https://tyreshop.tw1.ru", // Продакшн клиент
   "https://admin.tyreshop.tw1.ru", // Продакшн админ
 ];
