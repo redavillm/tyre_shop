@@ -46,7 +46,7 @@ export const Footer = () => {
           Санкт-Петербург, ул. Фучика 74 корпус 3
         </Link>
         <Link to="/contacts">+7(981)122-23-444</Link>
-        <Link to="/contacts">info@tyre-shop.ru</Link>
+        <Link to="/contacts">shop@flametyre.ru</Link>
       </StyledContacts>
     </StyledFooter>
   );

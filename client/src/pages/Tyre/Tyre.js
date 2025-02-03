@@ -26,7 +26,7 @@ export const Tyre = () => {
 
   useEffect(() => {
     dispatch(getTyreById(id));
-  }, [dispatch, id, getTyreById]);
+  }, [dispatch, id]);
 
   const tyre = useSelector(selectTyreById);
 

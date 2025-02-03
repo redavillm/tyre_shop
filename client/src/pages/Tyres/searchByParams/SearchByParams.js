@@ -15,7 +15,9 @@ import { FlexCenter } from "../../../components";
 import { useEffect, useState } from "react";
 import { CHANGE_IS_SPIKED } from "../../../store/actions/action_creators/tyres/is_spiked";
 
-const apiUrl = process.env.REACT_APP_API_URL;
+const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:3001";
+
+console.log("apiUrl => ", apiUrl);
 
 export const SearchTyreByParams = () => {
   const [options, setOptions] = useState({});

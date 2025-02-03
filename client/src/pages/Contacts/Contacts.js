@@ -16,7 +16,7 @@ export const Contacts = () => {
             </span>
             <span>
               <h5>Или нам можно написать на почту:</h5>
-              <a href="/">info@tyre-shop.ru</a>
+              <a href="/">shop@flametyre.ru</a>
             </span>
             <h5>Так же можно воспользоваться мессенджером:</h5>
             <StyledIcons>
