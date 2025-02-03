@@ -19,13 +19,13 @@ services:
     build:
       context: ./client
       args:
-        REACT_APP_API_URL: "http://tyre_server:3001"
+        REACT_APP_API_URL: "https://flametyre.ru/api/"
     container_name: tyre_client
     restart: always
     volumes:
       - ./nginx/certbot/conf:/etc/letsencrypt
     environment:
-      - REACT_APP_API_URL=http://tyre_server:3001
+      - REACT_APP_API_URL=https://flametyre.ru/api/
     depends_on:
       - server
     networks:
@@ -35,10 +35,10 @@ services:
     build:
       context: ./admin
       args:
-        REACT_APP_API_URL: "http://tyre_server:3001"
+        REACT_APP_API_URL: "https://flametyre.ru/api/"
     container_name: tyre_admin
     environment:
-      - REACT_APP_API_URL=http://tyre_server:3001
+      - REACT_APP_API_URL=https://flametyre.ru/api/
     restart: always
     volumes:
       - ./nginx/certbot/conf:/etc/letsencrypt
