@@ -22,6 +22,8 @@ services:
         REACT_APP_API_URL: "http://tyre_server:3001"
     container_name: tyre_client
     restart: always
+    volumes:
+      - ./nginx/certbot/conf:/etc/letsencrypt
     environment:
       - REACT_APP_API_URL=http://tyre_server:3001
     depends_on:
@@ -38,6 +40,8 @@ services:
     environment:
       - REACT_APP_API_URL=http://tyre_server:3001
     restart: always
+    volumes:
+      - ./nginx/certbot/conf:/etc/letsencrypt
     depends_on:
       - server
     networks:
