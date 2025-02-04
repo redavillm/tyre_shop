@@ -22,8 +22,20 @@ export const StyeledCard = styled.span`
     color: var(--font_2);
   }
 
+  .image-wrapper {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5f5f5; /* Фон, если картинка не заполняет всё пространство */
+  }
+
   img {
-    width: 180px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
   }
 
   &:hover {
@@ -58,7 +70,7 @@ export const StyledCounter = styled.div`
 `;
 
 export const StyledCardButton = styled.button`
-  background: rgba(52, 76, 17, 0.5);
+  background: rgba(170, 115, 31, 0.5);
   padding: 10px;
   margin: 10px 10px;
   cursor: pointer;

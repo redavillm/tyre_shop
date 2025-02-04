@@ -50,15 +50,15 @@ export const Card = ({ product, type }) => {
   return (
     <StyeledCard>
       <Link to={`/${type}/${_id}`}>
-        <div>
+        <div className="image-wrapper">
           <img src={imgSrc} alt="Product img" />
-          <h6>
-            {title}
-            {isSeasonIcon()}
-          </h6>
-          <p>{params}</p>
-          <p>{price * counter} руб.</p>
         </div>
+        <h6>
+          {title}
+          {isSeasonIcon()}
+        </h6>
+        <p>{params}</p>
+        <p>{price * counter} руб.</p>
       </Link>
       <StyledCounter>
         <button onClick={decreaseCounter}>
