@@ -9,7 +9,7 @@ export const getProductParams = (product, type) => {
   switch (type) {
     case "tyres":
       productData.title = product.brand + " " + product.model;
-      productData.params = `${product.size.width}/${product.size.radius} R${product.size.radius}`;
+      productData.params = `${product.size.width}/${product.size.height} R${product.size.radius}`;
       productData.counterStep = 2;
       productData.season = product.season;
       break;
