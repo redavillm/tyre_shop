@@ -4,7 +4,6 @@ import {
   selectIsWinter,
   selectTyresOptions,
 } from "../../../store/selectors/tyres/tyres_selectors";
-import { CHANGE_IS_WINTER } from "../../../store/actions/action_creators/tyres/is_winter";
 import { setTyresSearchOptions } from "../../../store/actions/action_creators/tyres/set_search_options";
 import {
   StyledCatalogByParams,
@@ -13,14 +12,13 @@ import {
 } from "../../../components/Styles/StyledCatalog";
 import { FlexCenter } from "../../../components";
 import { useEffect, useState } from "react";
-import { CHANGE_IS_SPIKED } from "../../../store/actions/action_creators/tyres/is_spiked";
 
 const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:3001";
 
-console.log("apiUrl => ", apiUrl);
-
 export const SearchTyreByParams = () => {
   const [options, setOptions] = useState({});
+  const [season, setSeason] = useState("all");
+  const [spiked, setSpiked] = useState("all");
   const dispatch = useDispatch();
 
   const searchOptions = useSelector(selectTyresOptions);
@@ -34,6 +32,32 @@ export const SearchTyreByParams = () => {
         [key]: event.target.value,
       })
     );
+  };
+
+  const handleSelectSeason = (event) => {
+    console.log("season => ", event.target.value);
+    setSeason(event.target.value);
+    switch (event.target.value) {
+      case "all": {
+        setSeason(event.target.value);
+        break;
+      }
+      case "Лето": {
+        setSeason(event.target.value);
+        break;
+      }
+      case "Зима": {
+        setSeason(event.target.value);
+        break;
+      }
+      default:
+        return null;
+    }
+  };
+
+  const handleSelectSpiked = (event) => {
+    console.log("spiked => ", event.target.value);
+    setSpiked(event.target.value);
   };
 
   useEffect(() => {
@@ -50,14 +74,6 @@ export const SearchTyreByParams = () => {
       .then((data) => setOptions(data))
       .catch((error) => console.log("Error: " + error.message));
   }, []);
-
-  const handleChanegeWinterCheckbox = () => {
-    dispatch(CHANGE_IS_WINTER);
-  };
-
-  const handleChanegeSpikedCheckbox = () => {
-    dispatch(CHANGE_IS_SPIKED);
-  };
 
   return (
     <StyledCatalogByParams>
@@ -111,25 +127,24 @@ export const SearchTyreByParams = () => {
               ))}
             </select>
           </StyledCatalogEl>
-          <StyledCheckbox>
-            Зима
-            <input
-              type="checkbox"
-              value="isWinter"
-              onChange={handleChanegeWinterCheckbox}
-              checked={isWinter}
-            />
-          </StyledCheckbox>
+          <StyledCatalogEl>
+            Сезон
+            <select value={season} onChange={handleSelectSeason}>
+              <option>all</option>
+              <option>Лето</option>
+              <option>Зима</option>
+            </select>
+          </StyledCatalogEl>
+
           {isWinter ? (
-            <StyledCheckbox>
-              С шипами
-              <input
-                type="checkbox"
-                value="isWinter"
-                onChange={handleChanegeSpikedCheckbox}
-                checked={isSpiked}
-              />
-            </StyledCheckbox>
+            <StyledCatalogEl>
+              Шипы
+              <select value={spiked} onChange={handleSelectSpiked}>
+                <option>all</option>
+                <option>С шипами</option>
+                <option>Без шипов</option>
+              </select>
+            </StyledCatalogEl>
           ) : null}
         </FlexCenter>
       </form>

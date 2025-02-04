@@ -20,10 +20,14 @@ export const tyresReducer = (state = initialTyresState, action) => {
       return { ...state, tyresList: action.payload };
     case TYRE_ACTIONS.GET_TYRES_BY_ID:
       return { ...state, tyreById: action.payload };
-    case TYRE_ACTIONS.CHANGE_IS_WINTER:
-      return { ...state, isWinter: !state.isWinter };
-    case TYRE_ACTIONS.CHANGE_IS_SPIKED:
-      return { ...state, isSpiked: !state.isSpiked };
+    case TYRE_ACTIONS.CHANGE_IS_WINTER_TRUE:
+      return { ...state, isWinter: true };
+    case TYRE_ACTIONS.CHANGE_IS_WINTER_FALSE:
+      return { ...state, isWinter: false };
+    case TYRE_ACTIONS.CHANGE_IS_SPIKED_TRUE:
+      return { ...state, isSpiked: true };
+    case TYRE_ACTIONS.CHANGE_IS_SPIKED_FALSE:
+      return { ...state, isSpiked: false };
     case TYRE_ACTIONS.CHANGE_TYRES_BY_PARAMS_TRUE:
       return { ...state, isByParams: true };
     case TYRE_ACTIONS.CHANGE_TYRES_BY_PARAMS_FALSE:
