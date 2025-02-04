@@ -1,10 +1,10 @@
 :root {
-  --bg: #778d45;
-  --font_2: #ffffff;
-  --bg_2: #aec670;
-  --font: #000000;
-  --borders: #344c11;
-  --grey: #aec09a;
+  --bg: #acacac;
+  --font_2: #303030;
+  --bg_2: #acacac;
+  --font: #303030;
+  --borders: #3cff00;
+  --grey: #919191;
 }
 
 @import url("fonts/font-awesome.css");
