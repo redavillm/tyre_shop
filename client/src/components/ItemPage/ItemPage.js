@@ -19,19 +19,20 @@ const Flex = styled.div`
 const StyledButton = styled.button`
   padding: 15px 30px 15px 30px;
   margin-top: 30px;
-  border: solid white 1px;
-  color: #778d45;
+  border: solid var(--font) 1px;
+  color: var(--font);
   cursor: pointer;
   font-size: 18px;
   font-weight: 600;
-  background-color: white;
+  background-color: var(--btn_card_bg);
 `;
 
 const StyledProductInfo = styled.div`
+  color: var(--font);
   width: 50%;
   & h2 {
     padding-bottom: 15px;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid var(--font);
     margin-bottom: 30px;
   }
   & p {
@@ -53,9 +54,9 @@ const StyledCounter = styled.div`
   margin-top: 30px;
   & button {
     width: 36px;
-    background-color: #778d45;
-    border: solid white 1px;
-    color: white;
+    background-color: var(--btn_card_bg);
+    border: solid var(--font) 1px;
+    color: var(--font);
     cursor: pointer;
   }
   & span {

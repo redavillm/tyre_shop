@@ -1,10 +1,10 @@
 :root {
   --bg: #acacac;
   --font_2: #303030;
-  --bg_2: #acacac;
+  --card_bg: #acacac;
   --font: #303030;
-  --borders: #3cff00;
   --grey: #919191;
+  --btn_card_bg: #919191;
 }
 
 @import url("fonts/font-awesome.css");

@@ -63,6 +63,9 @@ export const StyledCounter = styled.div`
     color: var(--font_2);
     cursor: pointer;
   }
+  & button:hover {
+    border: solid 1px var(--font_2);
+  }
   & span {
     text-align: center;
     margin: 0px 20px 0px 20px;
@@ -70,14 +73,14 @@ export const StyledCounter = styled.div`
 `;
 
 export const StyledCardButton = styled.button`
-  background: rgba(170, 115, 31, 0.5);
+  background: var(--btn_card_bg);
   padding: 10px;
   margin: 10px 10px;
   cursor: pointer;
   border: solid 1px transparent;
   text-transform: uppercase;
   font-size: 12px;
-  color: white;
+  color: var(--font_2);
   &:hover {
     border: solid 1px var(--font_2);
   }

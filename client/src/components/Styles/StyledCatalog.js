@@ -1,22 +1,5 @@
 import styled from "styled-components";
 
-export const StyledCatalogButtons = styled.div`
-  display: flex;
-  margin-top: 30px;
-  & button {
-    border: 1px solid var(--borders);
-    cursor: pointer;
-    padding: 15px 60px;
-    transition: all 400ms ease;
-    background-color: var(--grey);
-    color: var(--main_font);
-    font-size: 22px;
-    &: hover {
-      color: var(--white);
-    }
-  }
-`;
-
 export const StyledCatalogByParams = styled.div`
   border-bottom: 1px solid var(--grey);
   padding-bottom: 20px;

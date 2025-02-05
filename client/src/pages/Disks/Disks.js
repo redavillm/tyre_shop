@@ -1,11 +1,6 @@
 import { SearchDiskByParams } from "./SearchDiskByParams/SearchDiskByParams";
 // import { SearchDiskByCar } from "./SearchDiskByCar/SearchDiskByCar";
-import {
-  Loader,
-  Navbar,
-  ProductsList,
-  // StyledCatalogButtons,
-} from "../../components";
+import { Loader, Navbar, ProductsList } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getDisksFromServer } from "../../store/actions/action_creators/disks/get_disks_from_server";
@@ -45,17 +40,6 @@ export const Disks = () => {
   return (
     <div>
       <Navbar />
-      <div>
-        {/* <StyledCatalogButtons>
-          <button id="byParams" onClick={setSearchByParams}>
-            По параметрам
-          </button>
-          <button id="byCar" onClick={setSearchByCar}>
-            По авто
-          </button>
-        </StyledCatalogButtons> */}
-      </div>
-      {/* {isByParams ? <SearchDiskByParams /> : <SearchDiskByCar />} */}
       <SearchDiskByParams />
       {!isLoading ? (
         <ProductsList productsList={disksList} type="disks" />

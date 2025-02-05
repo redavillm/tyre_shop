@@ -1,11 +1,6 @@
 import { SearchAccumsByParams } from "./SearchAccumsByParams/SearchAccumsByParams";
 // import { SearchAccumsByCar } from "./SearchAccumsByCar/SearchAccumsByCar";
-import {
-  Loader,
-  Navbar,
-  ProductsList,
-  // StyledCatalogButtons,
-} from "../../components";
+import { Loader, Navbar, ProductsList } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getAccumulatorsFromServer } from "../../store/actions/action_creators/accumulators/get_accumulators_from_server";
@@ -47,17 +42,6 @@ export const Accumulators = () => {
   return (
     <div>
       <Navbar />
-      <div>
-        {/* <StyledCatalogButtons>
-          <button id="byParams" onClick={setSearchByParams}>
-            По параметрам
-          </button>
-          <button id="byCar" onClick={setSearchByCar}>
-            По авто
-          </button>
-        </StyledCatalogButtons> */}
-      </div>
-      {/* {isByParams ? <SearchAccumsByParams /> : <SearchAccumsByCar />} */}
       <SearchAccumsByParams />
       {!isLoading ? (
         <ProductsList productsList={accumulatorsList} type="accumulators" />
