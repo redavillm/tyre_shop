@@ -1,6 +1,6 @@
-export const tyresfilter = (tyreList, selectedOption, isSpiked, isWinter) => {
+export const tyresFilter = (tyreList, selectedOption) => {
   try {
-    const { width, height, radius, brand } = selectedOption;
+    const { width, height, radius, brand, season, spiked } = selectedOption;
     let result = tyreList;
 
     if (width !== "all") {
@@ -15,10 +15,17 @@ export const tyresfilter = (tyreList, selectedOption, isSpiked, isWinter) => {
     if (brand !== "all") {
       result = result.filter((el) => el.brand === brand);
     }
-    if (isWinter) {
+    if (season !== "all") {
       result = result.filter((el) =>
-        isSpiked ? el.isSpiked === true : el.isSpiked === false
+        season === "Лето" ? el.season === "summer" : el.season === "winter"
       );
+    }
+    if (spiked !== "all" && season === "Зима") {
+      result = result.filter((el) => {
+        return spiked === "С шипами"
+          ? el.isSpiked === true
+          : el.isSpiked === false;
+      });
     }
 
     return result.length !== 0 ? result : null;

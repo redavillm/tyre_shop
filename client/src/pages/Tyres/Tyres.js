@@ -15,13 +15,11 @@ import { selectIsLoading } from "../../store/selectors/mainSelector";
 //   CHANGE_TYRES_BY_PARAMS_TRUE,
 // } from "../../store/actions/action_creators/tyres/is_by_params";
 import {
-  selectIsSpiked,
   // selectIsTyresByParams,
-  selectIsWinter,
   selectTyresList,
   selectTyresOptions,
 } from "../../store/selectors/tyres/tyres_selectors";
-import { tyresfilter } from "../../utilities/tyre";
+import { tyresFilter } from "../../utilities/tyre";
 
 export const Tyres = () => {
   const dispatch = useDispatch();
@@ -30,19 +28,10 @@ export const Tyres = () => {
     dispatch(getTyresFromServer());
   }, [dispatch]);
 
-  const isWinter = useSelector(selectIsWinter);
-  const isSpiked = useSelector(selectIsSpiked);
   const selectedOption = useSelector(selectTyresOptions);
   // const isByParams = useSelector(selectIsTyresByParams);
   const isLoading = useSelector(selectIsLoading);
-  const tyresList = tyresfilter(
-    useSelector(selectTyresList)?.filter((el) => {
-      return !isWinter ? el.season === "summer" : el.season === "winter";
-    }),
-    selectedOption,
-    isSpiked,
-    isWinter
-  );
+  const tyresList = tyresFilter(useSelector(selectTyresList), selectedOption);
 
   // const setSearchByParams = () => {
   //   dispatch(CHANGE_TYRES_BY_PARAMS_TRUE);

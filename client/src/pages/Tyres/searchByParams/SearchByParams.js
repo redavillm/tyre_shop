@@ -1,14 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectIsSpiked,
-  selectIsWinter,
-  selectTyresOptions,
-} from "../../../store/selectors/tyres/tyres_selectors";
+import { selectTyresOptions } from "../../../store/selectors/tyres/tyres_selectors";
 import { setTyresSearchOptions } from "../../../store/actions/action_creators/tyres/set_search_options";
 import {
   StyledCatalogByParams,
   StyledCatalogEl,
-  StyledCheckbox,
 } from "../../../components/Styles/StyledCatalog";
 import { FlexCenter } from "../../../components";
 import { useEffect, useState } from "react";
@@ -17,13 +12,11 @@ const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:3001";
 
 export const SearchTyreByParams = () => {
   const [options, setOptions] = useState({});
-  const [season, setSeason] = useState("all");
-  const [spiked, setSpiked] = useState("all");
   const dispatch = useDispatch();
 
   const searchOptions = useSelector(selectTyresOptions);
-  const isWinter = useSelector(selectIsWinter);
-  const isSpiked = useSelector(selectIsSpiked);
+
+  const { season } = searchOptions;
 
   const handleSelectChange = (key) => (event) => {
     dispatch(
@@ -32,32 +25,6 @@ export const SearchTyreByParams = () => {
         [key]: event.target.value,
       })
     );
-  };
-
-  const handleSelectSeason = (event) => {
-    console.log("season => ", event.target.value);
-    setSeason(event.target.value);
-    switch (event.target.value) {
-      case "all": {
-        setSeason(event.target.value);
-        break;
-      }
-      case "Лето": {
-        setSeason(event.target.value);
-        break;
-      }
-      case "Зима": {
-        setSeason(event.target.value);
-        break;
-      }
-      default:
-        return null;
-    }
-  };
-
-  const handleSelectSpiked = (event) => {
-    console.log("spiked => ", event.target.value);
-    setSpiked(event.target.value);
   };
 
   useEffect(() => {
@@ -129,17 +96,23 @@ export const SearchTyreByParams = () => {
           </StyledCatalogEl>
           <StyledCatalogEl>
             Сезон
-            <select value={season} onChange={handleSelectSeason}>
+            <select
+              value={searchOptions.season}
+              onChange={handleSelectChange("season")}
+            >
               <option>all</option>
               <option>Лето</option>
               <option>Зима</option>
             </select>
           </StyledCatalogEl>
 
-          {isWinter ? (
+          {season === "Зима" ? (
             <StyledCatalogEl>
               Шипы
-              <select value={spiked} onChange={handleSelectSpiked}>
+              <select
+                value={searchOptions.spiked}
+                onChange={handleSelectChange("spiked")}
+              >
                 <option>all</option>
                 <option>С шипами</option>
                 <option>Без шипов</option>

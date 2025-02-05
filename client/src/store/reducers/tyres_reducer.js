@@ -1,14 +1,14 @@
 import { TYRE_ACTIONS } from "../store_const";
 
 export const initialTyresState = {
-  isWinter: false,
   isByParams: true,
-  isSpiked: false,
   searchOptions: {
     width: "all",
     height: "all",
     radius: "all",
     brand: "all",
+    season: "all",
+    spiked: "all",
   },
   tyresList: [],
   tyreById: [],
@@ -20,14 +20,6 @@ export const tyresReducer = (state = initialTyresState, action) => {
       return { ...state, tyresList: action.payload };
     case TYRE_ACTIONS.GET_TYRES_BY_ID:
       return { ...state, tyreById: action.payload };
-    case TYRE_ACTIONS.CHANGE_IS_WINTER_TRUE:
-      return { ...state, isWinter: true };
-    case TYRE_ACTIONS.CHANGE_IS_WINTER_FALSE:
-      return { ...state, isWinter: false };
-    case TYRE_ACTIONS.CHANGE_IS_SPIKED_TRUE:
-      return { ...state, isSpiked: true };
-    case TYRE_ACTIONS.CHANGE_IS_SPIKED_FALSE:
-      return { ...state, isSpiked: false };
     case TYRE_ACTIONS.CHANGE_TYRES_BY_PARAMS_TRUE:
       return { ...state, isByParams: true };
     case TYRE_ACTIONS.CHANGE_TYRES_BY_PARAMS_FALSE:
