@@ -11,6 +11,7 @@ const deleteProduct = async (req, res, Model) => {
       });
     }
     // Удаляем изображение, если оно существует
+
     if (product.imgSrc) {
       await deleteImage(product.imgSrc);
     }

@@ -20,7 +20,7 @@ export const EditAccumulatorModal = ({ open, product, onOk, onCancel }) => {
         polarity: product.polarity,
         capacity: product.capacity,
       });
-      setCurrentImg(product.imgSrc || "");
+      setCurrentImg(product.imgSrc || null);
     }
   }, [product, form]);
 
@@ -46,8 +46,8 @@ export const EditAccumulatorModal = ({ open, product, onOk, onCancel }) => {
         onOk({
           ...values,
           _id: product._id,
-          imgSrc: newImg ? newImg : currentImg,
-          deleteImg: !currentImg && !newImg,
+          imgSrc: newImg || currentImg,
+          deleteImg: !currentImg,
         });
         form.resetFields();
         setNewImg(null);
@@ -56,6 +56,7 @@ export const EditAccumulatorModal = ({ open, product, onOk, onCancel }) => {
         console.error("Validation failed:", error);
       });
   };
+
   return (
     <Modal
       title="Редактирование товара"

@@ -5,7 +5,7 @@ const s3 = require("../../config/s3Config");
 const deleteImage = async (imageUrl) => {
   try {
     if (!imageUrl) {
-      throw new Error("Image URL is required to delete an image.");
+      return;
     }
 
     const url = new URL(imageUrl);

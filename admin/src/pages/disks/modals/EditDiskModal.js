@@ -47,8 +47,8 @@ export const EditDiskModal = ({ open, product, onOk, onCancel }) => {
         onOk({
           ...values,
           _id: product._id,
-          imgSrc: newImg ? newImg : currentImg,
-          deleteImg: !currentImg && !newImg,
+          imgSrc: newImg || currentImg,
+          deleteImg: !currentImg,
         });
         form.resetFields();
         setNewImg(null);

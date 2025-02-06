@@ -23,7 +23,7 @@ export const EditTyreModal = ({ open, product, onOk, onCancel }) => {
           radius: product.size?.radius,
         },
       });
-      setCurrentImg(product.imgSrc || "");
+      setCurrentImg(product.imgSrc || null);
       setShowSpikes(product.season === "winter");
     }
   }, [product, form]);
