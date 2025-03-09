@@ -8,14 +8,8 @@ const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 0;
-  border-bottom: 1px solid #ccc;
-`;
-
-// Левый блок: логотип и слоган
-const LogoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+  padding: 21px 29px;
+  background-color: var(--bg-grey);
 `;
 
 // Стили для логотипа
@@ -29,21 +23,15 @@ const LogoLink = styled(Link)`
   }
 `;
 
-// Слоган
-const Slogan = styled.p`
-  font-size: 14px;
-  color: #777;
-`;
-
 export const Header = () => {
   return (
     <StyledHeader>
-      <LogoContainer>
-        <LogoLink to="/">
-          <img src="/img/flame_tyre_logo.png" alt="Flame Tyre Logo" />
-        </LogoLink>
-        <Slogan>На рынке с 1994 года.</Slogan>
-      </LogoContainer>
+      <LogoLink to="/">
+        <img src="/img/flame_tyre_logo.png" alt="Flame Tyre Logo" />
+      </LogoLink>
+      <input />
+      <h5>Контакты</h5>
+      <h5>+7 (931) 341-58-57</h5>
       <CartBtn />
     </StyledHeader>
   );

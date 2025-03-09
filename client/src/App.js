@@ -15,10 +15,8 @@ import {
 } from "./pages";
 
 const StyledContainer = styled.div`
-  margin: 0px auto;
   font-size: calc(10px + 2vmin);
-  color: white;
-  max-width: 1400px;
+  color: var(--font);
 `;
 
 const Content = styled.div`
