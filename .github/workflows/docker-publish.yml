@@ -29,10 +29,10 @@ jobs:
           docker build --build-arg REACT_APP_API_URL="http://" -t redavillm/tyre_server:latest ./server
           docker push redavillm/tyre_server:latest
 
-          docker build --build-arg REACT_APP_API_URL="https://flametyre.ru/api" -t redavillm/tyre_client:latest ./client
+          docker build --build-arg REACT_APP_API_URL="https://tyreshop-dev.tw1.ru/api" -t redavillm/tyre_client:latest ./client
           docker push redavillm/tyre_client:latest
 
-          docker build --build-arg REACT_APP_API_URL="https://flametyre.ru/api" -t redavillm/tyre_admin:latest ./admin
+          docker build --build-arg REACT_APP_API_URL="https://tyreshop-admin-dev.tw1.ru/api" -t redavillm/tyre_admin:latest ./admin
           docker push redavillm/tyre_admin:latest
 
   deploy:
@@ -47,8 +47,8 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
           script: |
-            echo "Переходим в директорию /opt/tyre_shop_project..."
-            cd /opt/tyre_shop_project || exit 1
+            echo "Переходим в директорию /home/tyre_shop..."
+            cd /home/tyre_shop || exit 1
 
             # Загружаем обновленные образы с Docker Hub
             echo "Загружаем обновленные образы..."
