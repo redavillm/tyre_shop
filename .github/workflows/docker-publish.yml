@@ -62,4 +62,4 @@ jobs:
 
             # Запускаем контейнеры через docker-compose
             echo "Запускаем контейнеры..."
-            docker-compose up -d --build
+            docker-compose up -d
