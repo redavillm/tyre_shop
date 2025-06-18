@@ -8,10 +8,6 @@
 }
 
 @import url("fonts/font-awesome.css");
-* {
-  margin: 0;
-  padding: 0;
-}
 html {
   height: 100%;
 }
@@ -28,6 +24,7 @@ a {
 
 body {
   margin: 0;
+  padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
@@ -36,23 +33,12 @@ body {
   font-family: "Red Hat Display", sans-serif;
   font-optical-sizing: auto;
   font-size: 24px;
+  font-size: calc(10px + 2vmin);
+  color: var(--font);
 }
 
 .test_styles {
-  font-size: 16px;
-  background: #9b9b9b;
-  cursor: pointer;
 }
-
-.colors {
-  background-color: #1a2902;
-  background-color: #344c11;
-  background-color: #778d45;
-  background-color: #aec670;
-  background-color: #aec09a;
-}
-
-/* подбор цветов https://color.romanuke.com/czvetovaya-palitra-4573/ */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
