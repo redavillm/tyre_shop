@@ -12,27 +12,66 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # Шаг 1: Клонируем репозиторий
+      # 1. Клонируем репозиторий
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Шаг 2: Логинимся в Docker Hub
+      # 2. Кешируем зависимости для server
+      - name: Cache server dependencies
+        uses: actions/cache@v3
+        with:
+          path: server/node_modules
+          key: ${{ runner.os }}-server-${{ hashFiles('server/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-server-
+
+      # 3. Кешируем зависимости для client
+      - name: Cache client dependencies
+        uses: actions/cache@v3
+        with:
+          path: client/node_modules
+          key: ${{ runner.os }}-client-${{ hashFiles('client/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-client-
+
+      # 4. Кешируем зависимости для admin
+      - name: Cache admin dependencies
+        uses: actions/cache@v3
+        with:
+          path: admin/node_modules
+          key: ${{ runner.os }}-admin-${{ hashFiles('admin/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-admin-
+
+      # 5. Логинимся в Docker Hub
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # Шаг 3: Собираем Docker образы и пушим их в Docker Hub
-      - name: Build and push images
+      # 6. Build & push server
+      - name: Build and push server image
         run: |
-          docker build --build-arg REACT_APP_API_URL="http://" -t redavillm/tyre_server:latest ./server
+          docker build \
+            --build-arg REACT_APP_API_URL="http://" \
+            -t redavillm/tyre_server:latest ./server
           docker push redavillm/tyre_server:latest
 
-          docker build --build-arg REACT_APP_API_URL="https://tyreshop-dev.tw1.ru/api" -t redavillm/tyre_client:latest ./client
+      # 7. Build & push client
+      - name: Build and push client image
+        run: |
+          docker build \
+            --build-arg REACT_APP_API_URL="https://tyreshop-dev.tw1.ru/api" \
+            -t redavillm/tyre_client:latest ./client
           docker push redavillm/tyre_client:latest
 
-          docker build --build-arg REACT_APP_API_URL="https://tyreshop-admin-dev.tw1.ru/api" -t redavillm/tyre_admin:latest ./admin
+      # 8. Build & push admin
+      - name: Build and push admin image
+        run: |
+          docker build \
+            --build-arg REACT_APP_API_URL="https://tyreshop-admin-dev.tw1.ru/api" \
+            -t redavillm/tyre_admin:latest ./admin
           docker push redavillm/tyre_admin:latest
 
   deploy:
@@ -46,20 +85,17 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
+          # при желании можно увеличить таймаут (в секундах):
+          # timeout: 1800
           script: |
             echo "Переходим в директорию /home/tyre_shop..."
             cd /home/tyre_shop || exit 1
 
-            # Загружаем обновленные образы с Docker Hub
-            echo "Загружаем обновленные образы..."
+            echo "Загружаем новые образы..."
             docker pull redavillm/tyre_server:latest
             docker pull redavillm/tyre_client:latest
             docker pull redavillm/tyre_admin:latest
 
-            # Останавливаем старые контейнеры
-            echo "Останавливаем контейнеры..."
+            echo "Перезапускаем контейнеры..."
             docker-compose down || true
-
-            # Запускаем контейнеры через docker-compose
-            echo "Запускаем контейнеры..."
             docker-compose up -d
