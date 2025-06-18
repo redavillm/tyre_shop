@@ -86,7 +86,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
           # при желании можно увеличить таймаут (в секундах):
-          timeout: 1800
+          timeout: 30m
           script: |
             echo "Переходим в директорию /home/tyre_shop..."
             cd /home/tyre_shop || exit 1
