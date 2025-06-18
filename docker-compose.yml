@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   server:
-    build: ./server
+    image: redavillm/tyre_server:latest
     container_name: tyre_server
     restart: always
     ports:
@@ -16,8 +16,7 @@ services:
       - tyre_network
 
   client:
-    build:
-      context: ./client
+    image: redavillm/tyre_client:latest
     container_name: tyre_client
     restart: always
     volumes:
@@ -28,8 +27,7 @@ services:
       - tyre_network
 
   admin:
-    build:
-      context: ./admin
+    image: redavillm/tyre_admin:latest
     container_name: tyre_admin
     restart: always
     volumes:
