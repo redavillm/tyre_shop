@@ -38,7 +38,7 @@ services:
       - tyre_network
 
   nginx:
-    image: nginx:latest
+    image: nginx:1.25
     container_name: tyre_nginx
     restart: always
     ports:
@@ -63,7 +63,7 @@ services:
       timeout: 10s
 
   mongo:
-    image: mongo:latest
+    image: mongo:5.0
     container_name: tyre_mongo
     restart: always
     volumes:

@@ -86,7 +86,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
           # при желании можно увеличить таймаут, в секундах:
-          timeout: 30m
+          timeout: 60m
           script: |
             echo "Переходим в директорию /home/tyre_shop..."
             cd /home/tyre_shop || exit 1
@@ -95,6 +95,8 @@ jobs:
             docker pull redavillm/tyre_server:latest
             docker pull redavillm/tyre_client:latest
             docker pull redavillm/tyre_admin:latest
+            docker pull mongo:5.0
+            docker pull nginx:1.25
 
             echo "Перезапускаем контейнеры..."
             docker-compose down || true
