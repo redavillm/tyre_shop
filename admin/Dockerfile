@@ -10,13 +10,15 @@ COPY package.json package-lock.json ./
 
 RUN npm install --frozen-lockfile
 
+ENV NODE_OPTIONS="--max-old-space-size=4096"
+
 COPY . .
 
 RUN echo "API URL is: $REACT_APP_API_URL"
 
 RUN npm run build
 
-FROM nginx:1.23
+FROM nginx:1.25
 
 COPY --from=build /app/build /usr/share/nginx/html
 
