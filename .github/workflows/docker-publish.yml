@@ -92,8 +92,6 @@ jobs:
             cd /home/tyre_shop || exit 1
 
             echo "Загружаем новые образы..."
-            docker system prune -af
-            echo 1 > /proc/sys/vm/drop_caches
             docker pull redavillm/tyre_server:latest
             docker pull redavillm/tyre_client:latest
             docker pull redavillm/tyre_admin:latest
